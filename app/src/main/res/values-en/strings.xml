@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Task2Trip</string>
+    <string name="menu_task">Tasks</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_add">New Task</string>
+    <string name="menu_chat">Contacts</string>
+    <string name="menu_profile">Profile</string>
+</resources>

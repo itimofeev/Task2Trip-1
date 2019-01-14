@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu1"
+          android:title="@string/menu_task"
+          android:icon="@drawable/vector_ic_task"
+          app:showAsAction="ifRoom|withText"/>
+
+    <item android:id="@+id/menu2"
+          android:title="@string/menu_search"
+          android:icon="@drawable/vector_ic_search_glass"
+          app:showAsAction="ifRoom|withText"/>
+
+    <item android:id="@+id/menu3"
+          android:title="@string/menu_add"
+          android:icon="@drawable/vector_ic_add_plus"
+          app:showAsAction="ifRoom|withText"/>
+
+    <item android:id="@+id/menu4"
+          android:title="@string/menu_chat"
+          android:icon="@drawable/vector_ic_message"
+          app:showAsAction="ifRoom|withText"/>
+
+    <item android:id="@+id/profileFragment"
+          android:title="@string/menu_profile"
+          android:icon="@drawable/vector_ic_user_profile"
+          app:showAsAction="ifRoom|withText"/>
+</menu>

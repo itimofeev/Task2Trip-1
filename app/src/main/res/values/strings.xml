@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Task2Trip</string>
+    <string name="menu_task">Задания</string>
+    <string name="menu_search">Поиск</string>
+    <string name="menu_add">Новое</string>
+    <string name="menu_chat">Связаться</string>
+    <string name="menu_profile">Профиль</string>
+</resources>
