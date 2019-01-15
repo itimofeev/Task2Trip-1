@@ -1,20 +1,19 @@
 package com.task2trip.android.UI.Fragment
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.task2trip.android.UI.CallBackView.HostActivityListener
+import com.task2trip.android.View.MainActivityView
 
 abstract class BaseFragment : Fragment() {
-    private var activityListener: HostActivityListener? = null
+    private var activityListener: MainActivityView? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is HostActivityListener) {
+        if (context is MainActivityView) {
             activityListener = context
         }
     }
@@ -25,17 +24,20 @@ abstract class BaseFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(setResourceLayout(), container, false)
+        return inflater.inflate(setResourceLayout(), container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initComponents(view)
-        return view
     }
 
     fun navigateTo(resourceFragment: Int, args: Bundle?) {
-//        activityListener?.navigateTo(resourceFragment, args)
+        activityListener?.navigateTo(resourceFragment, args)
     }
 
     fun onMessage(message: String) {
-        //activityListener?.onMessage(message)
+        activityListener?.onMessage(message)
     }
 
     /**

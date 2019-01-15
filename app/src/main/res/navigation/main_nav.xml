@@ -4,6 +4,20 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/main_nav" app:startDestination="@id/loginRegisterFragment">
 
-    <fragment android:id="@+id/loginRegisterFragment" android:name="com.task2trip.android.LoginRegisterFragment"
+    <fragment android:id="@+id/loginRegisterFragment" android:name="com.task2trip.android.UI.Fragment.LoginRegisterFragment"
               android:label="fragment_login_register" tools:layout="@layout/fragment_login_register"/>
+    <fragment android:id="@+id/registrationFragment" android:name="com.task2trip.android.UI.Fragment.RegistrationFragment"
+              android:label="fragment_registration" tools:layout="@layout/fragment_registration"/>
+    <fragment android:id="@+id/loginFragment" android:name="com.task2trip.android.UI.Fragment.LoginFragment"
+              android:label="fragment_login" tools:layout="@layout/fragment_login"/>
+    <fragment android:id="@+id/taskInfoFragment" android:name="com.task2trip.android.UI.Fragment.TaskInfoFragment"
+              android:label="fragment_task_info" tools:layout="@layout/fragment_task_info"/>
+    <fragment android:id="@+id/taskSearchFragment" android:name="com.task2trip.android.UI.Fragment.TaskSearchFragment"
+              android:label="fragment_task_search" tools:layout="@layout/fragment_task_search"/>
+    <fragment android:id="@+id/taskAddFragment" android:name="com.task2trip.android.UI.Fragment.TaskAddFragment"
+              android:label="fragment_task_add" tools:layout="@layout/fragment_task_add"/>
+    <fragment android:id="@+id/messageFragment" android:name="com.task2trip.android.UI.Fragment.MessageFragment"
+              android:label="fragment_message" tools:layout="@layout/fragment_message"/>
+    <fragment android:id="@+id/profileFragment" android:name="com.task2trip.android.UI.Fragment.ProfileFragment"
+              android:label="fragment_profile" tools:layout="@layout/fragment_profile"/>
 </navigation>

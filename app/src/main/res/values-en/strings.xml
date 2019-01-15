@@ -6,4 +6,10 @@
     <string name="menu_add">New Task</string>
     <string name="menu_chat">Contacts</string>
     <string name="menu_profile">Profile</string>
+    <string name="register">Registration</string>
+    <string name="login">Login</string>
+    <string name="reg_email">E-mail</string>
+    <string name="reg_password">Password</string>
+    <string name="reg_forgot">Forgot password?</string>
+    <string name="reg_login_sosial">Login with social</string>
 </resources>

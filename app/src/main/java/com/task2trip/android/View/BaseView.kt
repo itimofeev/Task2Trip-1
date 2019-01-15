@@ -1,6 +1,6 @@
 package com.task2trip.android.View
 
 interface BaseView {
-    fun onError(message: String)
+    fun onMessage(message: String)
     fun onProgress(isProgress: Boolean)
 }

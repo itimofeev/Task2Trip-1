@@ -1,6 +1,4 @@
 <resources>
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -8,4 +6,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="buttonBase">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">36dp</item>
+    </style>
+
+    <style name="buttonMargin" parent="buttonBase">
+        <item name="android:layout_marginLeft">@dimen/margin_left</item>
+        <item name="android:layout_marginStart">@dimen/margin_left</item>
+        <item name="android:layout_marginRight">@dimen/margin_right</item>
+        <item name="android:layout_marginEnd">@dimen/margin_right</item>
+        <item name="android:layout_marginTop">@dimen/margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/margin_top</item>
+    </style>
+
+    <style name="buttonSolid" parent="buttonMargin">
+        <item name="android:background">@drawable/bg_button_solid</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="buttonBorder" parent="buttonMargin">
+        <item name="android:background">@drawable/bg_button_border</item>
+        <item name="android:textColor">@color/coral</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

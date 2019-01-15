@@ -7,6 +7,7 @@
     <color name="white">#ffffff</color>
     <color name="gray">#BDBDBD</color>
     <color name="black">#000000</color>
+    <color name="coral">#D9756E</color>
     <color name="icon_active">#D9756E</color>
     <color name="icon_not_active">#BDBDBD</color>
 </resources>

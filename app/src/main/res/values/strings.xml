@@ -5,4 +5,10 @@
     <string name="menu_add">Новое</string>
     <string name="menu_chat">Связаться</string>
     <string name="menu_profile">Профиль</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="login">Войти</string>
+    <string name="reg_email">E-mail</string>
+    <string name="reg_password">Пароль</string>
+    <string name="reg_forgot">Забыли пароль?</string>
+    <string name="reg_login_sosial">Войти через социальные сети</string>
 </resources>
