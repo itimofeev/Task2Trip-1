@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/loginRegisterFragment"
+    <item android:id="@+id/taskInfoFragment"
           android:title="@string/menu_task"
           android:icon="@drawable/vector_ic_task"
           app:showAsAction="ifRoom|withText"/>

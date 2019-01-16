@@ -3,6 +3,11 @@ package com.task2trip.android.Network
 import android.content.Context
 import com.google.gson.GsonBuilder
 import com.task2trip.android.BuildConfig
+import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.LocalStoreManager
+import com.task2trip.android.Model.UserLoginResp
+import com.task2trip.android.Model.UserDataReq
+import com.task2trip.android.Model.UserInfoResp
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -11,13 +16,11 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
-import com.task2trip.android.Model.Settings
-import java.util.*
 
 interface ApiMethods {
     companion object {
-        const val BASE_URL = "https://uapi.new-staging.dog-walk.ru/"
-        private const val VERSION: String = "v2/"
+        const val BASE_URL = "http://159.69.121.222:8000/api/"
+        private const val VERSION: String = "v1/"
 
         fun getInstance(context: Context): ApiMethods {
             val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
@@ -44,14 +47,12 @@ interface ApiMethods {
 
                 // Настраиваем запросы
                 val requestBuilder: Request.Builder = original.newBuilder()
-                    .header("X-App-ID", "8ac302d08830f91dc5c7201c93f1686d4dbf3deefde0aaa5ffe7b08811906b900cc1d592e134c4890586624bc858511673a5a410b54ea39404133185acaf06fd")
-
-                val settings = Settings(context)
-                if (!settings.getLogin()?.isEmpty()!!) {
+                val localStorage = LocalStoreManager(context)
+                if (!localStorage.get(Constants.EXTRA_USER_TOKEN, "").isNullOrEmpty()) {
                     requestBuilder
-                        .header("X-User-Phone", settings.getLogin()!!)
-                        .header("X-User-Token", settings.getToken()!!)
+                        .header("Bearer ", localStorage.get(Constants.EXTRA_USER_TOKEN, "").orEmpty())
                 }
+
                 requestBuilder
                     .method(original.method(), original.body())
 
@@ -60,12 +61,12 @@ interface ApiMethods {
         }
     }
 
-    @POST("user/sessions")
-    fun login(@Query("phone") phone: String, @Query("password") password: String): Call<Objects>
+    @POST("user")
+    fun userRegister(@Body user: UserDataReq): Call<UserInfoResp>
 
-    @GET("user/sessions")
-    fun getUserInfo(): Call<Objects>
+    @POST("user/login")
+    fun userLogin(@Body user: UserDataReq): Call<UserLoginResp>
 
-    @GET("user/orders")
-    fun getOrders(@Query("hot") hot: Boolean): Call<Objects>
+    @GET("user")
+    fun userInfo(): Call<UserInfoResp>
 }

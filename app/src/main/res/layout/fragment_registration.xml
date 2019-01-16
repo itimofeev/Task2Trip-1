@@ -50,7 +50,7 @@
         android:id="@+id/btReg"
         android:text="@string/register"
         style="@style/buttonSolid"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="46dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

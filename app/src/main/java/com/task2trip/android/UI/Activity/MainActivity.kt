@@ -1,16 +1,15 @@
 package com.task2trip.android.UI.Activity
 
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.WindowManager
+import android.view.View
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
+import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Presenter.MainActivityPresenter
 import com.task2trip.android.R
 import com.task2trip.android.View.MainActivityView
@@ -19,20 +18,31 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), MainActivityView {
     private lateinit var presenter: MainActivityPresenter
     private lateinit var navController: NavController
+    private lateinit var localStoreManager: LocalStoreManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        NavigationUI.setupWithNavController(bottomNavigation, navController)
-
-        presenter = MainActivityPresenter(this)
+        supportActionBar?.hide()
         initComponents()
     }
 
     private fun initComponents() {
-        //presenter.setNavigation(R.id.loginRegisterFragment)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        NavigationUI.setupWithNavController(bottomNavigation, navController)
+
+        presenter = MainActivityPresenter(this)
+        localStoreManager = LocalStoreManager(this)
+        showBottomPanel()
+        presenter.setNavigation(if (getToken().isNotEmpty()) R.id.taskInfoFragment else R.id.loginRegisterFragment)
+    }
+
+    private fun showBottomPanel() {
+        bottomNavigation?.visibility = if (getToken().isNotEmpty()) View.VISIBLE else View.GONE
+    }
+
+    private fun getToken(): String {
+        return localStoreManager.get(Constants.EXTRA_USER_TOKEN, "").toString()
     }
 
     override fun navigateTo(@IdRes resourceId: Int, args: Bundle?) {
@@ -41,24 +51,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             R.id.loginRegisterFragment -> {
                 navController.navigate(resourceId)
                 supportActionBar?.hide()
-                window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+                //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
             }
-            R.id.registrationFragment -> {
-                navController.navigate(resourceId)
-            }
-            R.id.loginFragment -> {
-                navController.navigate(resourceId)
-            }
-            R.id.taskSearchFragment -> {
-                navController.navigate(resourceId)
-            }
-            R.id.taskAddFragment -> {
-                navController.navigate(resourceId)
-            }
-            R.id.messageFragment -> {
-                navController.navigate(resourceId)
-            }
-            R.id.profileFragment -> {
+            R.id.registrationFragment, R.id.loginFragment, R.id.taskSearchFragment, R.id.taskAddFragment,
+            R.id.messageFragment, R.id.profileFragment, R.id.taskInfoFragment -> {
                 navController.navigate(resourceId)
             }
             else -> {
@@ -72,7 +68,6 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         Snackbar.make(window.decorView, message, Snackbar.LENGTH_SHORT)
             .show()
     }
-
 
     override fun onProgress(isProgress: Boolean) {
         //

@@ -14,14 +14,14 @@ class OnBoardingFragment : BaseFragment() {
         fun instance(text: String) =
             OnBoardingFragment().apply {
                 arguments = Bundle().apply {
-                    putString(Constants.EXTRA_ONBOARDING_TEXT, text)
+                    putString(Constants.EXTRA_USER_TOKEN, text)
                 }
             }
     }
 
     override fun getArgs(args: Bundle?) {
         args.let {
-            textInfo = args?.getString(Constants.EXTRA_ONBOARDING_TEXT, "").toString()
+            textInfo = args?.getString(Constants.EXTRA_USER_TOKEN, "").toString()
         }
     }
 
