@@ -5,6 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vpOnBoardPages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <RadioGroup
+            android:id="@+id/rgDotted"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="40dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btReg"/>
+
     <Button
         android:id="@+id/btReg"
         android:text="@string/register"
