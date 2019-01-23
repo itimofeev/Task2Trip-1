@@ -45,7 +45,7 @@ class LoginRegisterFragment : BaseFragment() {
                 OnBoardingFragment.instance(
                     getString(R.string.board_title_03),
                     getString(R.string.board_msg_03),
-                    R.drawable.image_board_01), "03"))
+                    R.drawable.image_board_03), "03"))
             vpOnBoardPages.adapter = adapter
             vpOnBoardPages.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
                     override fun onPageScrollStateChanged(state: Int) {}
