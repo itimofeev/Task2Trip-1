@@ -2,6 +2,7 @@ package com.task2trip.android.Model
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.annotation.NonNull
 
 class LocalStoreManager(context: Context) {
     private val settingFile: String = "LocalStoreManager"
@@ -11,7 +12,7 @@ class LocalStoreManager(context: Context) {
         pref = context.getSharedPreferences(settingFile, Context.MODE_PRIVATE)
     }
 
-    inline fun <reified T : Any> get(key: String, defaultValue: T? = null): T? {
+    inline fun <reified T : Any> get(key: String, @NonNull defaultValue: T? = null): T? {
         return pref[key, defaultValue]
     }
 

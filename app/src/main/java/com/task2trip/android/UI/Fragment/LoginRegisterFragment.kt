@@ -3,6 +3,8 @@ package com.task2trip.android.UI.Fragment
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager.widget.ViewPager
+import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.TabFragmentTitle
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.TabAdapter
@@ -18,7 +20,14 @@ class LoginRegisterFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
-        initViewPager()
+        val storeManager = context?.let { LocalStoreManager(it) }
+        storeManager?.let {
+            if (it.get(Constants.EXTRA_FIRST_START_APP, true) != false) {
+                initViewPager()
+                it.set(Constants.EXTRA_FIRST_START_APP, false)
+            }
+        }
+
         initRadioButtons()
         btReg?.setOnClickListener {
             navigateTo(R.id.registrationFragment, Bundle())

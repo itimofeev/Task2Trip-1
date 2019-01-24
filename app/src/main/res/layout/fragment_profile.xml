@@ -1,13 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".UI.Fragment.ProfileFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line_photo_add"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.025"/>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile"/>
+            android:id="@+id/tvPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Фото профиля"
+            app:layout_constraintTop_toTopOf="@+id/line_photo_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"/>
 
-</FrameLayout>
+    <TextView
+            android:id="@+id/tvPhotoAdd"
+            android:text="Добавить"
+            style="@style/textColored"
+            app:layout_constraintTop_toTopOf="@id/line_photo_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line_photo_list"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.05"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProfilePhotoList"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            style="@style/MarginBase"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/line_photo_list"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAboutCategoryList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            style="@style/MarginBase"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btRevertUserRole"
+            app:layout_constraintTop_toBottomOf="@+id/rvProfilePhotoList"/>
+
+    <Button
+            android:id="@+id/btRevertUserRole"
+            android:text="Хочу быть Местным жителем"
+            style="@style/buttonSolid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

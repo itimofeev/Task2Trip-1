@@ -6,5 +6,6 @@ class Constants {
         const val EXTRA_BOARD_MESSAGE = "EXTRA_BOARD_MESSAGE"
         const val EXTRA_BOARD_IMAGE = "EXTRA_BOARD_IMAGE"
         const val EXTRA_USER_TOKEN = "EXTRA_USER_TOKEN"
+        const val EXTRA_FIRST_START_APP = "EXTRA_FIRST_START_APP"
     }
 }

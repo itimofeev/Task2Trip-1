@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import com.task2trip.android.View.MainActivityView
 
@@ -61,5 +62,5 @@ abstract class BaseFragment : Fragment() {
     /**
      * В это методе можно инициализировать свои компоненты
      */
-    abstract fun initComponents(view: View)
+    abstract fun initComponents(@NonNull view: View)
 }

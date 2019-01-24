@@ -18,6 +18,12 @@
     <string name="board_msg_02">
         1. Опишите задачу, которую нужно выполнить.\n
         2. Местные жители предложат вам свои услуги и цены\n
-        3. Выберите лучшее предложение и заключите сделку</string>
-    <string name="board_msg_03">Сразу после создания задания ты можешь начать общаться с местными жителямя с помощью чата!</string>
+        3. Выберите лучшее предложение и заключите сделку
+    </string>
+    <string name="board_msg_03">Сразу после создания задания ты можешь начать общаться с местными жителямя с помощью
+        чата!
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
