@@ -1,4 +1,4 @@
-package com.task2trip.android.UI.Fragment
+package com.task2trip.android.UI.Fragment.Profile
 
 import android.os.Bundle
 import android.view.View
@@ -6,10 +6,12 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Model.UserCategoryForUsed
 import com.task2trip.android.R
-import com.task2trip.android.UI.Adapter.SimpleListAdapter
+import com.task2trip.android.UI.Adapter.ProfileMainCategoryAdapter
+import com.task2trip.android.UI.Fragment.BaseFragment
+import com.task2trip.android.UI.Listener.ItemClickListener
 import kotlinx.android.synthetic.main.fragment_profile.*
 
-class ProfileFragment : BaseFragment() {
+class ProfileFragment : BaseFragment(), ItemClickListener<UserCategoryForUsed> {
     override fun getArgs(args: Bundle?) {
         //
     }
@@ -33,12 +35,20 @@ class ProfileFragment : BaseFragment() {
 
     private fun initAboutUserCategoryList(@NonNull view: View) {
         val items = ArrayList<UserCategoryForUsed>()
-        items.add(UserCategoryForUsed("1111"))
-        items.add(UserCategoryForUsed("2222"))
+        items.add(UserCategoryForUsed(R.id.profileCategoryFragment, "Категории", emptyList()))
+        items.add(UserCategoryForUsed(R.id.profileMainInfoFragment, "Основное", emptyList()))
+        items.add(UserCategoryForUsed(R.id.profileContactsFragment, "Контакты", emptyList()))
+        items.add(UserCategoryForUsed(R.id.profileAboutFragment, "Обо мне", emptyList()))
 
+        val adapter = ProfileMainCategoryAdapter(items)
+        adapter.setClickListener(this)
         rvAboutCategoryList.setHasFixedSize(true)
         rvAboutCategoryList.layoutManager = LinearLayoutManager(view.context)
-        rvAboutCategoryList.adapter = SimpleListAdapter(items)
+        rvAboutCategoryList.adapter = adapter
+    }
+
+    override fun onItemClick(item: UserCategoryForUsed, position: Int) {
+        navigateTo(item.id, Bundle())
     }
 
     private fun onPhotoAddClick() {

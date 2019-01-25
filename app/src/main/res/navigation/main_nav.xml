@@ -18,14 +18,14 @@
               android:label="fragment_task_add" tools:layout="@layout/fragment_task_add"/>
     <fragment android:id="@+id/messageFragment" android:name="com.task2trip.android.UI.Fragment.MessageFragment"
               android:label="fragment_message" tools:layout="@layout/fragment_message"/>
-    <fragment android:id="@+id/profileFragment" android:name="com.task2trip.android.UI.Fragment.ProfileFragment"
+    <fragment android:id="@+id/profileFragment" android:name="com.task2trip.android.UI.Fragment.Profile.ProfileFragment"
               android:label="fragment_profile" tools:layout="@layout/fragment_profile"/>
-    <fragment android:id="@+id/profileAboutFragment" android:name="com.task2trip.android.ProfileAboutFragment"
+    <fragment android:id="@+id/profileAboutFragment" android:name="com.task2trip.android.UI.Fragment.Profile.ProfileAboutFragment"
               android:label="fragment_profile_about" tools:layout="@layout/fragment_profile_about"/>
-    <fragment android:id="@+id/profileContactsFragment" android:name="com.task2trip.android.ProfileContactsFragment"
+    <fragment android:id="@+id/profileContactsFragment" android:name="com.task2trip.android.UI.Fragment.Profile.ProfileContactsFragment"
               android:label="fragment_profile_contacts" tools:layout="@layout/fragment_profile_contacts"/>
-    <fragment android:id="@+id/profileMainInfoFragment" android:name="com.task2trip.android.ProfileMainInfoFragment"
+    <fragment android:id="@+id/profileMainInfoFragment" android:name="com.task2trip.android.UI.Fragment.Profile.ProfileMainInfoFragment"
               android:label="fragment_profile_main_info" tools:layout="@layout/fragment_profile_main_info"/>
-    <fragment android:id="@+id/profileCategoryFragment" android:name="com.task2trip.android.ProfileCategoryFragment"
+    <fragment android:id="@+id/profileCategoryFragment" android:name="com.task2trip.android.UI.Fragment.Profile.ProfileCategoryFragment"
               android:label="fragment_profile_category" tools:layout="@layout/fragment_profile_category"/>
 </navigation>

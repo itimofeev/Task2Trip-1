@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_left_8dp">8dp</dimen>
+    <dimen name="margin_right_8dp">8dp</dimen>
+    <dimen name="margin_top_8dp">8dp</dimen>
+    <dimen name="margin_bottom_8dp">8dp</dimen>
+
+    <dimen name="margin_all_8dp">8dp</dimen>
+    <dimen name="margin_all_16dp">16dp</dimen>
+
     <dimen name="margin_left">16dp</dimen>
     <dimen name="margin_right">16dp</dimen>
     <dimen name="margin_top">16dp</dimen>
@@ -8,4 +16,8 @@
 
     <dimen name="top_step">80dp</dimen>
     <dimen name="bottom_step">40dp</dimen>
+
+    <dimen name="item_height_profile_category">28dp</dimen>
+    <dimen name="item_width_profile_name">100dp</dimen>
+    <dimen name="profile_avatar_img_height">120dp</dimen>
 </resources>

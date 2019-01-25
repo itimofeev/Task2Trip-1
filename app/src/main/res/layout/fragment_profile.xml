@@ -41,7 +41,7 @@
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProfilePhotoList"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="@dimen/profile_avatar_img_height"
             style="@style/MarginBase"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

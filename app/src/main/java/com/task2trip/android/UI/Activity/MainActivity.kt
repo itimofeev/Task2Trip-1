@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         presenter = MainActivityPresenter(this)
         localStoreManager = LocalStoreManager(this)
         showBottomPanel()
-        presenter.setNavigation(if (getToken().isNotEmpty()) R.id.taskInfoFragment else R.id.loginRegisterFragment)
+        presenter.setNavigation(if (getToken().isNotEmpty()) R.id.taskInfoFragment else R.id.profileFragment)
     }
 
     private fun showBottomPanel() {
@@ -54,7 +54,11 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
             }
             R.id.registrationFragment, R.id.loginFragment, R.id.taskSearchFragment, R.id.taskAddFragment,
-            R.id.messageFragment, R.id.profileFragment, R.id.taskInfoFragment -> {
+            R.id.messageFragment, R.id.taskInfoFragment -> {
+                navController.navigate(resourceId)
+            }
+            R.id.profileFragment, R.id.profileCategoryFragment, R.id.profileMainInfoFragment,
+            R.id.profileContactsFragment, R.id.profileAboutFragment -> {
                 navController.navigate(resourceId)
             }
             else -> {
