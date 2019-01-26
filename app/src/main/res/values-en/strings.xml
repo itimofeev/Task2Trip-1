@@ -23,4 +23,10 @@
     <string name="board_msg_03">Сразу после создания задания ты можешь начать общаться с местными жителямя с помощью
         чата!
     </string>
+
+    <string name="profile_name_title">Name</string>
+    <string name="profile_birthday_title">Birthday</string>
+    <string name="profile_gender_title">Gender</string>
+    <string name="profile_country_title">Country</string>
+    <string name="profile_city_title">City</string>
 </resources>

@@ -1,4 +1,5 @@
-<resources>
+<resources
+        xmlns:app="http://schemas.android.com/apk/res-auto">
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -22,21 +23,21 @@
     </style>
 
     <style name="MarginBase">
-        <item name="android:layout_marginTop">@dimen/margin_top</item>
-        <item name="android:layout_marginLeft">@dimen/margin_left</item>
-        <item name="android:layout_marginStart">@dimen/margin_left</item>
-        <item name="android:layout_marginEnd">@dimen/margin_right</item>
-        <item name="android:layout_marginRight">@dimen/margin_right</item>
-        <item name="android:layout_marginBottom">@dimen/margin_bottom</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_16dp</item>
+        <item name="android:layout_marginLeft">@dimen/margin_left_16dp</item>
+        <item name="android:layout_marginStart">@dimen/margin_left_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_right_16dp</item>
+        <item name="android:layout_marginRight">@dimen/margin_right_16dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_16dp</item>
     </style>
 
     <style name="buttonMargin" parent="buttonBase">
-        <item name="android:layout_marginLeft">@dimen/margin_left</item>
-        <item name="android:layout_marginStart">@dimen/margin_left</item>
-        <item name="android:layout_marginRight">@dimen/margin_right</item>
-        <item name="android:layout_marginEnd">@dimen/margin_right</item>
-        <item name="android:layout_marginTop">@dimen/margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/margin_left_16dp</item>
+        <item name="android:layout_marginStart">@dimen/margin_left_16dp</item>
+        <item name="android:layout_marginRight">@dimen/margin_right_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_right_16dp</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_16dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_16dp</item>
     </style>
 
     <style name="buttonSolid" parent="buttonMargin">
@@ -49,5 +50,30 @@
         <item name="android:background">@drawable/bg_button_border</item>
         <item name="android:textColor">@color/coral</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="textLayout" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:text">@color/gray</item>
+    </style>
+
+    <style name="Guideline">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AboutProfileBase">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">@dimen/margin_all_16dp</item>
+    </style>
+
+    <style name="EditTextProfile" parent="AboutProfileBase">
+        <item name="android:background">@drawable/bg_edittext_profile</item>
+        <item name="android:padding">@dimen/margin_all_8dp</item>
+    </style>
+
+    <style name="TextTitleAboutProfile" parent="AboutProfileBase">
+        <item name="android:layout_height">wrap_content</item>
     </style>
 </resources>

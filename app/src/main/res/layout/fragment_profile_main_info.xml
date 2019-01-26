@@ -5,26 +5,76 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Имя"
+            android:hint="@string/profile_name_title"
+            style="@style/textLayout"
+            android:layout_marginTop="@dimen/top_step"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-            android:id="@+id/tv2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Дата рождения"
-            app:layout_constraintTop_toBottomOf="@+id/textView"/>
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-            android:id="@+id/tv3"
-            android:layout_width="match_parent"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvBirthday"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Пол"
-            app:layout_constraintTop_toBottomOf="@+id/tv2"/>
+            android:hint="@string/profile_birthday_title"
+            style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox"
+            android:layout_marginTop="@dimen/top_step"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/profile_gender_title"
+            style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox"
+            android:layout_marginTop="@dimen/top_step"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBirthday">
+
+        <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:weightSum="1">
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="Man"/>
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="woman"/>
+        </RadioGroup>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

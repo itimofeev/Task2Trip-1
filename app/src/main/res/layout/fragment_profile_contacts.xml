@@ -5,26 +5,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvCountry"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Страна"
+            android:hint="@string/profile_country_title"
+            style="@style/textLayout"
+            android:layout_marginTop="@dimen/top_step"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-            android:id="@+id/tv2"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/etCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvCity"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Город"
-            app:layout_constraintTop_toBottomOf="@+id/textView"/>
+            android:hint="@string/profile_city_title"
+            style="@style/textLayout"
+            android:layout_marginTop="@dimen/top_step"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCountry">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
             android:id="@+id/tv3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="@dimen/margin_left_16dp"
+            android:layout_marginLeft="@dimen/margin_left_16dp"
+            android:textSize="24sp"
+            android:textColor="@color/black"
             android:text="Аккаунты в соц.сетях"
-            app:layout_constraintTop_toBottomOf="@+id/tv2"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvCity"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

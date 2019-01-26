@@ -8,10 +8,10 @@
     <dimen name="margin_all_8dp">8dp</dimen>
     <dimen name="margin_all_16dp">16dp</dimen>
 
-    <dimen name="margin_left">16dp</dimen>
-    <dimen name="margin_right">16dp</dimen>
-    <dimen name="margin_top">16dp</dimen>
-    <dimen name="margin_bottom">16dp</dimen>
+    <dimen name="margin_left_16dp">16dp</dimen>
+    <dimen name="margin_right_16dp">16dp</dimen>
+    <dimen name="margin_top_16dp">16dp</dimen>
+    <dimen name="margin_bottom_16dp">16dp</dimen>
     <dimen name="bt_social">80dp</dimen>
 
     <dimen name="top_step">80dp</dimen>
