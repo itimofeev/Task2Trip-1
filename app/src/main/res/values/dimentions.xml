@@ -20,4 +20,12 @@
     <dimen name="item_height_profile_category">28dp</dimen>
     <dimen name="item_width_profile_name">100dp</dimen>
     <dimen name="profile_avatar_img_height">120dp</dimen>
+
+    <dimen name="corner_radius_2dp">2dp</dimen>
+    <dimen name="corner_radius_4dp">4dp</dimen>
+    <dimen name="corner_radius_8dp">8dp</dimen>
+    <dimen name="corner_radius_16dp">16dp</dimen>
+
+    <dimen name="elevation_4dp">4dp</dimen>
+    <dimen name="elevation_8dp">8dp</dimen>
 </resources>

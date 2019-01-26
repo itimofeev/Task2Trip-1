@@ -10,4 +10,6 @@
     <color name="coral">#D9756E</color>
     <color name="icon_active">#D9756E</color>
     <color name="icon_not_active">#BDBDBD</color>
+    <color name="yellow">#FFE400</color>
+    <color name="semi_yellow">#7ECA14</color>
 </resources>

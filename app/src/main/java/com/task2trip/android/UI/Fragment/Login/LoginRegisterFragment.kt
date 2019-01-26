@@ -1,4 +1,4 @@
-package com.task2trip.android.UI.Fragment
+package com.task2trip.android.UI.Fragment.Login
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,8 @@ import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.TabFragmentTitle
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.TabAdapter
+import com.task2trip.android.UI.Fragment.BaseFragment
+import com.task2trip.android.UI.Fragment.OnBoardingFragment
 import kotlinx.android.synthetic.main.fragment_login_register.*
 
 class LoginRegisterFragment : BaseFragment() {

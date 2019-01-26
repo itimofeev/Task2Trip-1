@@ -53,8 +53,11 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 supportActionBar?.hide()
                 //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
             }
-            R.id.registrationFragment, R.id.loginFragment, R.id.taskSearchFragment, R.id.taskAddFragment,
+            R.id.registrationFragment, R.id.loginFragment, R.id.taskAddFragment,
             R.id.messageFragment, R.id.taskInfoFragment -> {
+                navController.navigate(resourceId)
+            }
+            R.id.searchFragment, R.id.searchFilterFragment -> {
                 navController.navigate(resourceId)
             }
             R.id.profileFragment, R.id.profileCategoryFragment, R.id.profileMainInfoFragment,

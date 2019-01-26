@@ -7,7 +7,7 @@
           android:icon="@drawable/vector_ic_task"
           app:showAsAction="ifRoom|withText"/>
 
-    <item android:id="@+id/taskSearchFragment"
+    <item android:id="@+id/searchFragment"
           android:title="@string/menu_search"
           android:icon="@drawable/vector_ic_search_glass"
           app:showAsAction="ifRoom|withText"/>

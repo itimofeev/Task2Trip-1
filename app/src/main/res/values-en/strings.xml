@@ -29,4 +29,8 @@
     <string name="profile_gender_title">Gender</string>
     <string name="profile_country_title">Country</string>
     <string name="profile_city_title">City</string>
+
+    <string name="search_filter_category_title">Category</string>
+    <string name="search_filter_region_title">Регион поиска</string>
+    <string name="search_filter_status_title">Статус заданий</string>
 </resources>

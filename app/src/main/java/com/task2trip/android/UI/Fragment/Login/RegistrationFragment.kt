@@ -1,4 +1,4 @@
-package com.task2trip.android.UI.Fragment
+package com.task2trip.android.UI.Fragment.Login
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import com.task2trip.android.Model.UserInfoResp
 import com.task2trip.android.Model.UserLoginResp
 import com.task2trip.android.Presenter.UserPresenter
 import com.task2trip.android.R
+import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.View.UserView
 import kotlinx.android.synthetic.main.fragment_registration.*
 
