@@ -28,4 +28,11 @@
               android:label="fragment_profile_main_info" tools:layout="@layout/fragment_profile_main_info"/>
     <fragment android:id="@+id/profileCategoryFragment" android:name="com.task2trip.android.UI.Fragment.Profile.ProfileCategoryFragment"
               android:label="fragment_profile_category" tools:layout="@layout/fragment_profile_category"/>
+    <fragment android:id="@+id/settingsFragment" android:name="com.task2trip.android.UI.Fragment.Settings.SettingsFragment"
+              android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
+    <fragment android:id="@+id/settingsBlackListFragment" android:name="com.task2trip.android.UI.Fragment.Settings.SettingsBlackListFragment"
+              android:label="fragment_settings_black_list" tools:layout="@layout/fragment_settings_black_list"/>
+    <fragment android:id="@+id/settingsNotificationFragment"
+              android:name="com.task2trip.android.UI.Fragment.Settings.SettingsNotificationFragment"
+              android:label="fragment_settings_notification" tools:layout="@layout/fragment_settings_notification"/>
 </navigation>

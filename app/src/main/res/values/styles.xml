@@ -1,5 +1,4 @@
-<resources
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+<resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>

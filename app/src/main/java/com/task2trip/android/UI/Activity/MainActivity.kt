@@ -61,6 +61,9 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             R.id.profileContactsFragment, R.id.profileAboutFragment -> {
                 navController.navigate(resourceId)
             }
+            R.id.settingsFragment, R.id.settingsBlackListFragment, R.id.settingsNotificationFragment -> {
+                navController.navigate(resourceId)
+            }
             else -> {
                 navController.navigate(R.id.loginRegisterFragment)
                 supportActionBar?.title = "Заказы"
