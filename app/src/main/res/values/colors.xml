@@ -8,6 +8,7 @@
     <color name="gray">#BDBDBD</color>
     <color name="black">#000000</color>
     <color name="coral">#D9756E</color>
+    <color name="coral_light">#D6B4B3</color>
     <color name="icon_active">#D9756E</color>
     <color name="icon_not_active">#BDBDBD</color>
     <color name="yellow">#FFE400</color>

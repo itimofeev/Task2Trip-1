@@ -33,4 +33,8 @@
     <string name="search_filter_category_title">Category</string>
     <string name="search_filter_region_title">Регион поиска</string>
     <string name="search_filter_status_title">Статус заданий</string>
+
+    <string name="task_create">Create task</string>
+    <string name="task_get_my">My tasks</string>
+    <string name="task_add_my">Добавить предложение</string>
 </resources>

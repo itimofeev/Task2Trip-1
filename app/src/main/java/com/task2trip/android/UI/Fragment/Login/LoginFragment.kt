@@ -28,7 +28,8 @@ class LoginFragment : BaseFragment(), UserView {
         presenter = UserPresenter(this, view.context)
         localStoreManager = LocalStoreManager(view.context)
         btLogin.setOnClickListener {
-            presenter.userLogin(etEmail.text.toString(), etPassword.text.toString())
+            //presenter.userLogin(etEmail.text.toString(), etPassword.text.toString())
+            onLoginResult(UserLoginResp("GFVJHBKL98yu87huyg6"))
         }
     }
 

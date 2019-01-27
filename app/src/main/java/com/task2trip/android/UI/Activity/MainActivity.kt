@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         presenter = MainActivityPresenter(this)
         localStoreManager = LocalStoreManager(this)
         showBottomPanel()
-        presenter.setNavigation(if (getToken().isNotEmpty()) R.id.taskInfoFragment else R.id.profileFragment)
+        presenter.setNavigation(if (getToken().isNotEmpty()) R.id.taskInfoFragment else R.id.loginRegisterFragment)
     }
 
     private fun showBottomPanel() {
@@ -47,14 +47,17 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     override fun navigateTo(@IdRes resourceId: Int, args: Bundle?) {
         supportActionBar?.show()
+        showBottomPanel()
         when(resourceId) {
             R.id.loginRegisterFragment -> {
                 navController.navigate(resourceId)
                 supportActionBar?.hide()
                 //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
             }
-            R.id.registrationFragment, R.id.loginFragment, R.id.taskAddFragment,
-            R.id.messageFragment, R.id.taskInfoFragment -> {
+            R.id.taskInfoFragment, R.id.taskAddFragment, R.id.taskListFragment -> {
+                navController.navigate(resourceId)
+            }
+            R.id.registrationFragment, R.id.loginFragment, R.id.messageFragment -> {
                 navController.navigate(resourceId)
             }
             R.id.searchFragment, R.id.searchFilterFragment -> {

@@ -15,12 +15,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <RadioGroup
+    <com.task2trip.android.UI.Widget.RadioSwipeView
             android:id="@+id/rgDotted"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            android:background="@color/black"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/btReg"/>

@@ -26,11 +26,12 @@ class LoginRegisterFragment : BaseFragment() {
         storeManager?.let {
             if (it.get(Constants.EXTRA_FIRST_START_APP, true) != false) {
                 initViewPager()
+                initRadioButtons(3)
                 it.set(Constants.EXTRA_FIRST_START_APP, false)
+            } else {
+                rgDotted.visibility = View.GONE
             }
         }
-
-        initRadioButtons()
         btReg?.setOnClickListener {
             navigateTo(R.id.registrationFragment, Bundle())
         }
@@ -62,14 +63,14 @@ class LoginRegisterFragment : BaseFragment() {
                     override fun onPageScrollStateChanged(state: Int) {}
                     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
                     override fun onPageSelected(position: Int) {
-                        //
+                        rgDotted.setCheckedPosition(position)
                     }
                 }
             )
         }
     }
     
-    private fun initRadioButtons() {
-        //rgDotted.addView(null)
+    private fun initRadioButtons(count: Int) {
+        rgDotted.init(count)
     }
 }

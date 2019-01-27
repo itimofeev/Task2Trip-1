@@ -12,6 +12,20 @@
     <dimen name="margin_right_16dp">16dp</dimen>
     <dimen name="margin_top_16dp">16dp</dimen>
     <dimen name="margin_bottom_16dp">16dp</dimen>
+
+    <dimen name="padding_left_8dp">8dp</dimen>
+    <dimen name="padding_right_8dp">8dp</dimen>
+    <dimen name="padding_top_8dp">8dp</dimen>
+    <dimen name="padding_bottom_8dp">8dp</dimen>
+
+    <dimen name="padding_all_8dp">8dp</dimen>
+    <dimen name="padding_all_16dp">16dp</dimen>
+
+    <dimen name="padding_left_16dp">16dp</dimen>
+    <dimen name="padding_right_16dp">16dp</dimen>
+    <dimen name="padding_top_16dp">16dp</dimen>
+    <dimen name="padding_bottom_16dp">16dp</dimen>
+
     <dimen name="bt_social">80dp</dimen>
 
     <dimen name="top_step">80dp</dimen>
