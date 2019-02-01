@@ -3,14 +3,14 @@
     <string name="menu_task">Задания</string>
     <string name="menu_search">Поиск</string>
     <string name="menu_add">Новое</string>
-    <string name="menu_chat">Связаться</string>
+    <string name="menu_chat">Входящие</string>
     <string name="menu_profile">Профиль</string>
     <string name="register">Зарегистрироваться</string>
     <string name="login">Войти</string>
     <string name="reg_email">E-mail</string>
     <string name="reg_password">Пароль</string>
     <string name="reg_forgot">Забыли пароль?</string>
-    <string name="reg_login_sosial">Войти через социальные сети</string>
+    <string name="reg_login_social">Войти через социальные сети</string>
     <string name="board_title_01">Местные жители по всему миру помогут выполнить ваши задачи в путешествии</string>
     <string name="board_title_02">Создайте своё задание и местные жители Вам помогут!</string>
     <string name="board_title_03">Общайся с местными жителями напрямую!</string>

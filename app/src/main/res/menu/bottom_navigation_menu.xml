@@ -7,12 +7,12 @@
           android:icon="@drawable/vector_ic_task"
           app:showAsAction="ifRoom|withText"/>
 
-    <item android:id="@+id/searchFragment"
+    <item android:id="@+id/searchFilterFragment"
           android:title="@string/menu_search"
           android:icon="@drawable/vector_ic_search_glass"
           app:showAsAction="ifRoom|withText"/>
 
-    <item android:id="@+id/taskAddFragment"
+    <item android:id="@+id/taskCategoryFragment"
           android:title="@string/menu_add"
           android:icon="@drawable/vector_ic_add_plus"
           app:showAsAction="ifRoom|withText"/>

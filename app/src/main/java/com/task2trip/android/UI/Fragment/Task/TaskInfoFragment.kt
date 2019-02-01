@@ -25,7 +25,7 @@ class TaskInfoFragment : BaseFragment() {
     }
 
     private fun createTaskOnClick() {
-        navigateTo(R.id.taskAddFragment, Bundle())
+        navigateTo(R.id.taskCategoryFragment, Bundle())
     }
 
     private fun getMyTaskOnClick() {

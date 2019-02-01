@@ -12,6 +12,8 @@
               android:label="fragment_login" tools:layout="@layout/fragment_login"/>
     <fragment android:id="@+id/searchFragment" android:name="com.task2trip.android.UI.Fragment.Search.SearchFragment"
               android:label="fragment_task_search" tools:layout="@layout/fragment_task_search"/>
+    <fragment android:id="@+id/searchFilterFragment" android:name="com.task2trip.android.UI.Fragment.Search.SearchFilterFragment"
+              android:label="fragment_search_filter" tools:layout="@layout/fragment_search_filter"/>
     <fragment android:id="@+id/messageFragment" android:name="com.task2trip.android.UI.Fragment.Message.MessageFragment"
               android:label="fragment_message" tools:layout="@layout/fragment_message"/>
     <fragment android:id="@+id/messageChatListFragment" android:name="com.task2trip.android.UI.Fragment.Message.MessageChatListFragment"
@@ -34,12 +36,12 @@
               android:label="fragment_settings_black_list" tools:layout="@layout/fragment_settings_black_list"/>
     <fragment android:id="@+id/settingsNotificationFragment" android:name="com.task2trip.android.UI.Fragment.Settings.SettingsNotificationFragment"
               android:label="fragment_settings_notification" tools:layout="@layout/fragment_settings_notification"/>
-    <fragment android:id="@+id/searchFilterFragment" android:name="com.task2trip.android.UI.Fragment.Search.SearchFilterFragment"
-              android:label="fragment_search_filter" tools:layout="@layout/fragment_search_filter"/>
     <fragment android:id="@+id/taskInfoFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskInfoFragment"
               android:label="fragment_task_info" tools:layout="@layout/fragment_task_info"/>
-    <fragment android:id="@+id/taskAddFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddFragment"
-              android:label="fragment_task_add" tools:layout="@layout/fragment_task_add"/>
+    <fragment android:id="@+id/taskAddParamsFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddParamsFragment"
+              android:label="fragment_task_add" tools:layout="@layout/fragment_task_add_params"/>
     <fragment android:id="@+id/taskListFragment" android:name="com.task2trip.android.TaskListFragment"
               android:label="fragment_task_list" tools:layout="@layout/fragment_task_list"/>
+    <fragment android:id="@+id/taskCategoryFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddCategoryFragment"
+              android:label="fragment_task_category" tools:layout="@layout/fragment_task_add_category"/>
 </navigation>

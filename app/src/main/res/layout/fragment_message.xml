@@ -11,9 +11,9 @@
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/coral"
             app:tabIndicatorHeight="4dp"
-            app:tabTextColor="@color/semi_yellow"
-            app:tabSelectedTextColor="@color/yellow"
-            app:tabBackground="@color/colorPrimaryDark"/>
+            app:tabTextColor="@color/gray"
+            app:tabSelectedTextColor="@color/black"
+            app:tabBackground="@color/white"/>
 
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/vpMessage"
