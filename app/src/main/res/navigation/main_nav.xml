@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/main_nav" app:startDestination="@id/loginRegisterFragment">
+            android:id="@+id/main_nav"
+            app:startDestination="@id/loginRegisterFragment">
 
     <fragment android:id="@+id/loginRegisterFragment" android:name="com.task2trip.android.UI.Fragment.Login.LoginRegisterFragment"
               android:label="fragment_login_register" tools:layout="@layout/fragment_login_register"/>
@@ -36,8 +37,8 @@
               android:label="fragment_settings_black_list" tools:layout="@layout/fragment_settings_black_list"/>
     <fragment android:id="@+id/settingsNotificationFragment" android:name="com.task2trip.android.UI.Fragment.Settings.SettingsNotificationFragment"
               android:label="fragment_settings_notification" tools:layout="@layout/fragment_settings_notification"/>
-    <fragment android:id="@+id/taskInfoFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskInfoFragment"
-              android:label="fragment_task_info" tools:layout="@layout/fragment_task_info"/>
+    <fragment android:id="@+id/taskGetMyListFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskGetMyListFragment"
+              android:label="fragment_task_get_my_list" tools:layout="@layout/fragment_task_get_my_list"/>
     <fragment android:id="@+id/taskAddParamsFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddParamsFragment"
               android:label="fragment_task_add" tools:layout="@layout/fragment_task_add_params"/>
     <fragment android:id="@+id/taskListFragment" android:name="com.task2trip.android.TaskListFragment"

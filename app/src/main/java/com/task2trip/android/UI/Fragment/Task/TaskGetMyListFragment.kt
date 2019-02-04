@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.View
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
-import kotlinx.android.synthetic.main.fragment_task_info.*
+import kotlinx.android.synthetic.main.fragment_task_get_my_list.*
 
-class TaskInfoFragment : BaseFragment() {
+class TaskGetMyListFragment : BaseFragment() {
     override fun getArgs(args: Bundle?) {
         //
     }
 
     override fun setResourceLayout(): Int {
-        return R.layout.fragment_task_info
+        return R.layout.fragment_task_get_my_list
     }
 
     override fun initComponents(view: View) {

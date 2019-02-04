@@ -44,7 +44,7 @@ class LoginFragment : BaseFragment(), UserView {
     override fun onLoginResult(userToken: UserLoginResp) {
         if (userToken.authToken.isNotEmpty()) {
             localStoreManager.set(Constants.EXTRA_USER_TOKEN, userToken.authToken)
-            navigateTo(R.id.taskInfoFragment, Bundle())
+            navigateTo(R.id.taskGetMyListFragment, Bundle())
         }
     }
 
