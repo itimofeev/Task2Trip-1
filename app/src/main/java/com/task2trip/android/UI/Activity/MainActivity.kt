@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     private fun initToolBar() {
+        setSupportActionBar(toolBarApp)
         this.actionBar = supportActionBar
         setToolBarVisibility(false)
     }

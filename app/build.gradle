@@ -33,10 +33,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$supLib"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
 
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation "com.google.android.material:material:1.0.0"
 
     implementation "androidx.core:core-ktx:1.0.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinLib"
@@ -48,6 +48,8 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitLib"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitLib"
     implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
+
+    implementation "com.squareup.picasso:picasso:2.71828"
 
     // not support AndroidX
     //implementation "com.arello-mobile:moxy:$moxyLib"
