@@ -44,4 +44,5 @@
     <dimen name="elevation_8dp">8dp</dimen>
 
     <dimen name="category_height">60dp</dimen>
+    <dimen name="image_size_arrow">24dp</dimen>
 </resources>
