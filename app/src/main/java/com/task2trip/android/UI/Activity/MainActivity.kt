@@ -7,20 +7,21 @@ import android.view.View
 import androidx.annotation.IdRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.snackbar.Snackbar
-import com.task2trip.android.Common.Constants
-import com.task2trip.android.Model.LocalStoreManager
+import com.task2trip.android.Model.User.User
+import com.task2trip.android.Model.User.UserImpl
 import com.task2trip.android.Presenter.MainActivityPresenter
 import com.task2trip.android.R
 import com.task2trip.android.View.MainActivityView
 import kotlinx.android.synthetic.main.activity_main.*
-import androidx.navigation.*
 
 class MainActivity : AppCompatActivity(), MainActivityView {
     private lateinit var presenter: MainActivityPresenter
     private lateinit var navController: NavController
-    private lateinit var localStoreManager: LocalStoreManager
+    private var user: User = UserImpl()
     private var actionBar: ActionBar? = null
     private val navHostID = R.id.nav_host_fragment
 
@@ -31,13 +32,12 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     private fun initComponents() {
+        user.initStorageData(applicationContext)
         initToolBar()
         initNavigation()
 
         presenter = MainActivityPresenter(this)
-        localStoreManager = LocalStoreManager(this)
-        showBottomPanel()
-        presenter.setNavigation(if (getToken().isNotEmpty()) R.id.taskGetMyListFragment else R.id.loginRegisterFragment)
+        presenter.setNavigation(if (user.isAuthorized()) R.id.taskGetMyListFragment else R.id.loginRegisterFragment)
     }
 
     private fun initToolBar() {
@@ -54,17 +54,20 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         }
     }
 
-    private fun showBottomPanel() {
-        bottomNavigation?.visibility = if (getToken().isNotEmpty()) View.VISIBLE else View.GONE
-    }
-
-    private fun getToken(): String {
-        return localStoreManager.get(Constants.EXTRA_USER_TOKEN, "").toString()
+    private fun showBottomPanel(@IdRes resourceId: Int) {
+        bottomNavigation?.visibility = when (resourceId) {
+            R.id.loginRegisterFragment, R.id.loginFragment, R.id.registrationFragment -> {
+                View.GONE
+            }
+            else -> {
+                View.VISIBLE
+            }
+        }
     }
 
     override fun navigateTo(@IdRes resourceId: Int, args: Bundle?) {
         setToolBarVisibility(true)
-        showBottomPanel()
+        showBottomPanel(resourceId)
         navigateApp(navController, resourceId, args)
     }
 
@@ -195,6 +198,14 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     private fun setDefaultMenu() {
         presenter.setLastMenu(0)
+    }
+
+    fun getUser(): User {
+        return this.user
+    }
+
+    override fun setUser(user: User) {
+        this.user = user
     }
 
     override fun onMessage(message: String) {

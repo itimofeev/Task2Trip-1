@@ -41,7 +41,7 @@
               android:label="fragment_task_get_my_list" tools:layout="@layout/fragment_task_get_my_list"/>
     <fragment android:id="@+id/taskAddParamsFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddParamsFragment"
               android:label="fragment_task_add" tools:layout="@layout/fragment_task_add_params"/>
-    <fragment android:id="@+id/taskListFragment" android:name="com.task2trip.android.TaskListFragment"
+    <fragment android:id="@+id/taskListFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListFragment"
               android:label="fragment_task_list" tools:layout="@layout/fragment_task_list"/>
     <fragment android:id="@+id/taskCategoryFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddCategoryFragment"
               android:label="fragment_task_category" tools:layout="@layout/fragment_task_add_category"/>

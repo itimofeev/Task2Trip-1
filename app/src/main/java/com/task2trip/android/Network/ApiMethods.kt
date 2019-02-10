@@ -5,9 +5,9 @@ import com.google.gson.GsonBuilder
 import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
-import com.task2trip.android.Model.UserLoginResp
-import com.task2trip.android.Model.UserDataReq
-import com.task2trip.android.Model.UserInfoResp
+import com.task2trip.android.Model.User.UserLoginResp
+import com.task2trip.android.Model.User.UserDataReq
+import com.task2trip.android.Model.User.UserInfoResp
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request

@@ -1,4 +1,4 @@
-package com.task2trip.android.Model
+package com.task2trip.android.Model.User
 
 import androidx.annotation.NonNull
 

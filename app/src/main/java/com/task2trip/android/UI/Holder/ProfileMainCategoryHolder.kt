@@ -3,7 +3,7 @@ package com.task2trip.android.UI.Holder
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.task2trip.android.Model.UserCategoryForUsed
+import com.task2trip.android.Model.User.UserCategoryForUsed
 import com.task2trip.android.R
 
 class ProfileMainCategoryHolder(itemView: View) : BaseHolder<UserCategoryForUsed>(itemView) {

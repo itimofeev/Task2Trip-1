@@ -1,105 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mainFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
-            android:id="@+id/ivWomanSea"
+    <FrameLayout
+            android:id="@+id/framePerformer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/woman_sea"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/hLine1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_bottom_16dp"
-            android:layout_marginLeft="@dimen/margin_left_16dp"
-            android:layout_marginStart="@dimen/margin_left_16dp"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:text="Создавайте
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabTaskList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/coral"
+                app:tabIndicatorHeight="4dp"
+                app:tabTextColor="@color/gray"
+                app:tabSelectedTextColor="@color/black"
+                app:tabBackground="@color/white"/>
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpTaskList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTaskList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+    <FrameLayout
+            android:id="@+id/emptyFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:id="@+id/ivBannerTaskCreate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/banner_task_create"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@+id/hLine1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_bottom_16dp"
+                    android:layout_marginLeft="@dimen/margin_left_16dp"
+                    android:layout_marginStart="@dimen/margin_left_16dp"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:text="Создавайте
 любые задания"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="@dimen/margin_bottom_16dp"
-            android:layout_marginLeft="@dimen/margin_left_16dp"
-            android:layout_marginStart="@dimen/margin_left_16dp"
-            android:text="и находите местных жителей
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="@dimen/margin_bottom_16dp"
+                    android:layout_marginLeft="@dimen/margin_left_16dp"
+                    android:layout_marginStart="@dimen/margin_left_16dp"
+                    android:text="и находите местных жителей
 для его выполнения!"
-            app:layout_constraintBottom_toTopOf="@+id/btCreateTask"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/textView"/>
+                    app:layout_constraintBottom_toTopOf="@+id/btCreateTask"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/textView"/>
 
-    <Button
-            android:id="@+id/btCreateTask"
-            style="@style/buttonSolid"
-            android:layout_width="wrap_content"
-            android:text="@string/task_create"
-            android:paddingLeft="@dimen/padding_right_16dp"
-            android:paddingStart="@dimen/padding_right_16dp"
-            android:paddingEnd="@dimen/padding_right_16dp"
-            android:paddingRight="@dimen/padding_right_16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/ivWomanSea"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <Button
+                    android:id="@+id/btCreateTask"
+                    style="@style/buttonSolid"
+                    android:layout_width="wrap_content"
+                    android:text="@string/task_create"
+                    android:paddingLeft="@dimen/padding_right_16dp"
+                    android:paddingStart="@dimen/padding_right_16dp"
+                    android:paddingEnd="@dimen/padding_right_16dp"
+                    android:paddingRight="@dimen/padding_right_16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivBannerTaskCreate"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-    <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/hLine1"
-            style="@style/Guideline"
-            app:layout_constraintGuide_percent="0.40"/>
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/hLine1"
+                    style="@style/Guideline"
+                    app:layout_constraintGuide_percent="0.40"/>
 
-    <TextView
-            android:id="@+id/tv_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="32dp"
-            android:layout_marginLeft="@dimen/margin_left_16dp"
-            android:layout_marginStart="@dimen/margin_left_16dp"
-            android:text="Маршруты путешествий"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hLine1"/>
-
-    <ImageView
-            android:id="@+id/ivCarTravel"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/car_travel"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="@dimen/margin_top_8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_03"/>
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Заказать составление маршрута
-у местных жителей. По вашим запросам и пожеланиям:
-- маршрут с посещением не туристических мест
-- сложный маршрут путешествия
-- маршрут-квест
-- маршрут для путешествий с детьми"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivCarTravel"/>
-
-    <Button
-            android:id="@+id/btMyTask"
-            style="@style/buttonSolid"
-            android:text="@string/task_get_my"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTaskCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="@+id/hLine1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</FrameLayout>

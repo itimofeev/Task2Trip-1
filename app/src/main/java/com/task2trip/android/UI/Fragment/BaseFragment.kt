@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
+import com.task2trip.android.Model.User.User
 import com.task2trip.android.View.MainActivityView
 
 abstract class BaseFragment : Fragment() {
@@ -33,7 +34,7 @@ abstract class BaseFragment : Fragment() {
         initComponents(view)
     }
 
-    fun navigateTo(resourceFragment: Int, args: Bundle?) {
+    protected fun navigateTo(resourceFragment: Int, args: Bundle?) {
         activityListener?.navigateTo(resourceFragment, args)
     }
 
@@ -44,8 +45,12 @@ abstract class BaseFragment : Fragment() {
     /**
      * Устанавливает видимость панели внизу
      */
-    fun setBottomPanelVisibility(isVisible: Boolean) {
+    protected fun setBottomPanelVisibility(isVisible: Boolean) {
         //activityListener?.showBottomPanel(isVisible)
+    }
+
+    protected fun setUser(user: User) {
+        activityListener?.setUser(user)
     }
 
     override fun onDetach() {

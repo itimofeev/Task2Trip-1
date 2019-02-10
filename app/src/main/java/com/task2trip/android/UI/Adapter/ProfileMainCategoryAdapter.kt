@@ -1,7 +1,7 @@
 package com.task2trip.android.UI.Adapter
 
 import android.view.View
-import com.task2trip.android.Model.UserCategoryForUsed
+import com.task2trip.android.Model.User.UserCategoryForUsed
 import com.task2trip.android.R
 import com.task2trip.android.UI.Holder.ProfileMainCategoryHolder
 import com.task2trip.android.UI.Listener.ItemClickListener

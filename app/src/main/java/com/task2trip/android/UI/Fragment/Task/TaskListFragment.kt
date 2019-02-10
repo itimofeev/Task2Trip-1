@@ -1,10 +1,11 @@
-package com.task2trip.android
+package com.task2trip.android.UI.Fragment.Task
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.task2trip.android.R
 
 class TaskListFragment : Fragment() {
 

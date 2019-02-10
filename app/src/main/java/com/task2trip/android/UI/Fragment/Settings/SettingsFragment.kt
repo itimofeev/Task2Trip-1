@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.task2trip.android.Model.UserCategoryForUsed
+import com.task2trip.android.Model.User.UserCategoryForUsed
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.ProfileMainCategoryAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment

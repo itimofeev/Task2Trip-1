@@ -11,6 +11,7 @@
     <string name="reg_password">Пароль</string>
     <string name="reg_forgot">Забыли пароль?</string>
     <string name="reg_login_social">Войти через социальные сети</string>
+    <string name="board_skip_text"><u>Пропустить</u></string>
     <string name="board_title_01">Местные жители по всему миру помогут выполнить ваши задачи в путешествии</string>
     <string name="board_title_02">Создайте своё задание и местные жители Вам помогут!</string>
     <string name="board_title_03">Общайся с местными жителями напрямую!</string>
@@ -37,4 +38,6 @@
     <string name="task_create">Создать задание</string>
     <string name="task_get_my">Мои задания</string>
     <string name="task_add_my">Опубликовать</string>
+    <string name="logo1">task</string>
+    <string name="logo2">2\ntrip</string>
 </resources>

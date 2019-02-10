@@ -2,10 +2,8 @@ package com.task2trip.android.UI.Fragment.Login
 
 import android.os.Bundle
 import android.view.View
-import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
-import com.task2trip.android.Model.UserInfoResp
-import com.task2trip.android.Model.UserLoginResp
+import com.task2trip.android.Model.User.*
 import com.task2trip.android.Presenter.UserPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
@@ -29,7 +27,12 @@ class LoginFragment : BaseFragment(), UserView {
         localStoreManager = LocalStoreManager(view.context)
         btLogin.setOnClickListener {
             //presenter.userLogin(etEmail.text.toString(), etPassword.text.toString())
-            onLoginResult(UserLoginResp("GFVJHBKL98yu87huyg6"))
+            val login = etEmail.text.toString()
+            when {
+                login.equals("TRAVELER", true) -> onLoginResult(UserLoginResp(1, "GFVJHBKL98yu87huyg6"))
+                login.equals("PERFORMER", true) -> onLoginResult(UserLoginResp(2, "GFVJHBKL98yu87huyg6"))
+                else -> onLoginResult(UserLoginResp(0, "GFVJHBKL98yu87huyg6"))
+            }
         }
     }
 
@@ -43,7 +46,19 @@ class LoginFragment : BaseFragment(), UserView {
 
     override fun onLoginResult(userToken: UserLoginResp) {
         if (userToken.authToken.isNotEmpty()) {
-            localStoreManager.set(Constants.EXTRA_USER_TOKEN, userToken.authToken)
+            val user: User = UserImpl()
+            with(user) {
+                setName("Test user")
+                setEmail("test@email.com")
+                when {
+                    userToken.id == 1L -> setRole(UserRole.TRAVELER)
+                    userToken.id == 2L -> setRole(UserRole.PERFORMER)
+                    else -> setRole(UserRole.NOT_AUTHORIZED)
+                }
+                setToken(userToken.authToken)
+                context?.let { saveUserData(it) }
+            }
+            super.setUser(user)
             navigateTo(R.id.taskGetMyListFragment, Bundle())
         }
     }

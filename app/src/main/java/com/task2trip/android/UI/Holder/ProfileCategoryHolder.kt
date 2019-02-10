@@ -3,7 +3,7 @@ package com.task2trip.android.UI.Holder
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
-import com.task2trip.android.Model.UserCategory
+import com.task2trip.android.Model.User.UserCategory
 import com.task2trip.android.R
 
 class ProfileCategoryHolder(itemView: View) : BaseHolder<UserCategory>(itemView) {

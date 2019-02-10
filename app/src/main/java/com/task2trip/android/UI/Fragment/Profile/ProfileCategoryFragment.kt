@@ -3,7 +3,7 @@ package com.task2trip.android.UI.Fragment.Profile
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.task2trip.android.Model.UserCategory
+import com.task2trip.android.Model.User.UserCategory
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.ProfileCategoryAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment

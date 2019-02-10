@@ -2,8 +2,8 @@ package com.task2trip.android.UI.Fragment.Login
 
 import android.os.Bundle
 import android.view.View
-import com.task2trip.android.Model.UserInfoResp
-import com.task2trip.android.Model.UserLoginResp
+import com.task2trip.android.Model.User.UserInfoResp
+import com.task2trip.android.Model.User.UserLoginResp
 import com.task2trip.android.Presenter.UserPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment

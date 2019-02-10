@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.task2trip.android.Model.UserCategoryForUsed
+import com.task2trip.android.Model.User.UserCategoryForUsed
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.ProfileMainCategoryAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment
@@ -35,10 +35,34 @@ class ProfileFragment : BaseFragment(), ItemClickListener<UserCategoryForUsed> {
 
     private fun initAboutUserCategoryList(@NonNull view: View) {
         val items = ArrayList<UserCategoryForUsed>()
-        items.add(UserCategoryForUsed(R.id.profileCategoryFragment, "Категории", emptyList()))
-        items.add(UserCategoryForUsed(R.id.profileMainInfoFragment, "Основное", emptyList()))
-        items.add(UserCategoryForUsed(R.id.profileContactsFragment, "Контакты", emptyList()))
-        items.add(UserCategoryForUsed(R.id.profileAboutFragment, "Обо мне", emptyList()))
+        items.add(
+            UserCategoryForUsed(
+                R.id.profileCategoryFragment,
+                "Категории",
+                emptyList()
+            )
+        )
+        items.add(
+            UserCategoryForUsed(
+                R.id.profileMainInfoFragment,
+                "Основное",
+                emptyList()
+            )
+        )
+        items.add(
+            UserCategoryForUsed(
+                R.id.profileContactsFragment,
+                "Контакты",
+                emptyList()
+            )
+        )
+        items.add(
+            UserCategoryForUsed(
+                R.id.profileAboutFragment,
+                "Обо мне",
+                emptyList()
+            )
+        )
 
         val adapter = ProfileMainCategoryAdapter(items)
         adapter.setClickListener(this)

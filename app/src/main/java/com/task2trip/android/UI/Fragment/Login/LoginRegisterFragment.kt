@@ -6,6 +6,9 @@ import androidx.viewpager.widget.ViewPager
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.TabFragmentTitle
+import com.task2trip.android.Model.User.User
+import com.task2trip.android.Model.User.UserImpl
+import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.TabAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment
@@ -37,6 +40,15 @@ class LoginRegisterFragment : BaseFragment() {
         }
         btLogin?.setOnClickListener {
             navigateTo(R.id.loginFragment, Bundle())
+        }
+        tvSkip?.setOnClickListener {
+            val user: User = UserImpl()
+            with(user) {
+                setName("Гость")
+                setRole(UserRole.NOT_AUTHORIZED)
+                context?.let { saveUserData(it) }
+            }
+            navigateTo(R.id.taskGetMyListFragment, Bundle())
         }
     }
 

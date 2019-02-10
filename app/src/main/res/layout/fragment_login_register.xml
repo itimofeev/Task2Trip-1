@@ -6,6 +6,38 @@
     android:layout_height="match_parent"
     android:background="@drawable/image_board">
 
+    <TextView
+            android:id="@+id/tvLogo_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:layout_marginTop="32dp"
+            android:paddingStart="32dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="@dimen/padding_right_16dp"
+            android:paddingEnd="@dimen/padding_right_16dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="56sp"
+            android:text="@string/logo1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+            android:id="@+id/tvLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:maxLines="2"
+            android:paddingStart="32dp"
+            android:paddingLeft="32dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="56sp"
+            android:text="@string/logo2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogo_color"/>
+
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/vpOnBoardPages"
             android:layout_width="match_parent"
@@ -26,21 +58,37 @@
             app:layout_constraintBottom_toTopOf="@+id/btReg"/>
 
     <Button
-        android:id="@+id/btReg"
-        android:text="@string/register"
-        style="@style/buttonSolid"
-        app:layout_constraintBottom_toTopOf="@+id/btLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            android:id="@+id/btReg"
+            android:text="@string/register"
+            style="@style/buttonSolid"
+            app:layout_constraintBottom_toTopOf="@+id/btLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"/>
 
     <Button
-        android:id="@+id/btLogin"
-        android:text="@string/login"
-        style="@style/buttonBorder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+            android:id="@+id/btLogin"
+            android:text="@string/login"
+            style="@style/buttonBorder"
+            app:layout_constraintBottom_toTopOf="@+id/tvSkip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"/>
+
+    <TextView
+            android:id="@+id/tvSkip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/margin_bottom_16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:text="@string/board_skip_text"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
