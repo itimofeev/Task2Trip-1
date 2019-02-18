@@ -37,12 +37,16 @@
               android:label="fragment_settings_black_list" tools:layout="@layout/fragment_settings_black_list"/>
     <fragment android:id="@+id/settingsNotificationFragment" android:name="com.task2trip.android.UI.Fragment.Settings.SettingsNotificationFragment"
               android:label="fragment_settings_notification" tools:layout="@layout/fragment_settings_notification"/>
-    <fragment android:id="@+id/taskGetMyListFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskGetMyListFragment"
-              android:label="fragment_task_get_my_list" tools:layout="@layout/fragment_task_get_my_list"/>
+    <fragment android:id="@+id/taskListPerformerFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListPerformerFragment"
+              android:label="fragment_task_get_my_list" tools:layout="@layout/fragment_task_list_performer"/>
+    <fragment android:id="@+id/taskListTravelerFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListTravelerFragment"
+              android:label="fragment_task_list" tools:layout="@layout/fragment_task_list_traveler"/>
+    <fragment android:id="@+id/taskListNotAuthorizedFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListNotAuthorizedFragment"
+              android:label="fragment_task_list_not_authorized" tools:layout="@layout/fragment_task_list_not_authorized"/>
     <fragment android:id="@+id/taskAddParamsFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddParamsFragment"
               android:label="fragment_task_add" tools:layout="@layout/fragment_task_add_params"/>
-    <fragment android:id="@+id/taskListFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListFragment"
-              android:label="fragment_task_list" tools:layout="@layout/fragment_task_list"/>
     <fragment android:id="@+id/taskCategoryFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddCategoryFragment"
               android:label="fragment_task_category" tools:layout="@layout/fragment_task_add_category"/>
+    <fragment android:id="@+id/taskDetailsFragment" android:name="com.task2trip.android.TaskDetailsFragment"
+              android:label="fragment_task_details" tools:layout="@layout/fragment_task_details"/>
 </navigation>

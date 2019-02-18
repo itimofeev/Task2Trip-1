@@ -59,7 +59,7 @@ class LoginFragment : BaseFragment(), UserView {
                 context?.let { saveUserData(it) }
             }
             super.setUser(user)
-            navigateTo(R.id.taskGetMyListFragment, Bundle())
+            navigateTo(R.id.taskListPerformerFragment, Bundle())
         }
     }
 

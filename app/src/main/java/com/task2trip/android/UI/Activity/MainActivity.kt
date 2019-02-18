@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.snackbar.Snackbar
 import com.task2trip.android.Model.User.User
 import com.task2trip.android.Model.User.UserImpl
+import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.Presenter.MainActivityPresenter
 import com.task2trip.android.R
 import com.task2trip.android.View.MainActivityView
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         initNavigation()
 
         presenter = MainActivityPresenter(this)
-        presenter.setNavigation(if (user.isAuthorized()) R.id.taskGetMyListFragment else R.id.loginRegisterFragment)
+        presenter.setNavigation(if (user.isAuthorized()) R.id.taskListPerformerFragment else R.id.loginRegisterFragment)
     }
 
     private fun initToolBar() {
@@ -85,9 +86,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         return navigateApp(navController, item.itemId, Bundle()) || super.onOptionsItemSelected(item)
     }
 
-    private fun navigateApp(navController: NavController, @IdRes resourceId: Int, args: Bundle?): Boolean {
+    private fun navigateApp(navController: NavController, @IdRes resourceIdNav: Int, args: Bundle?): Boolean {
         setDefaultMenu()
         setToolBarVisibility(true)
+        val resourceId = navigationHook(resourceIdNav)
         when(resourceId) {
             R.id.loginRegisterFragment -> {
                 navController.navigate(resourceId)
@@ -102,15 +104,11 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.navigate(resourceId)
                 setToolBarParams(false, "Регистрация", false)
             }
-            R.id.taskGetMyListFragment -> {
-                navController.clearBackStack(resourceId)
-                setToolBarParams(true, "Мои задания", false)
-            }
             R.id.taskCategoryFragment -> {
                 navController.clearBackStack(resourceId)
                 setToolBarParams(true, "Добавить задание", false)
             }
-            R.id.taskAddParamsFragment, R.id.taskListFragment -> {
+            R.id.taskAddParamsFragment -> {
                 navController.navigate(resourceId)
                 setToolBarParams(true, "Параметры задания", true)
             }
@@ -150,6 +148,15 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.navigate(resourceId)
                 setToolBarTitle("Уведомления")
             }
+            R.id.taskListPerformerFragment, R.id.taskListNotAuthorizedFragment,
+            R.id.taskListTravelerFragment -> {
+                navController.clearBackStack(resourceId)
+                setToolBarParams(true, "Мои задания", false)
+            }
+            R.id.taskDetailsFragment -> {
+                navController.navigate(resourceId)
+                setToolBarTitle("Задача №ххх")
+            }
             else -> {
                 navController.navigate(R.id.loginRegisterFragment)
                 setToolBarTitle("Task2Trip")
@@ -157,6 +164,38 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         }
         invalidateOptionsMenu()
         return true
+    }
+
+    private fun navigationHook(@IdRes resourceId: Int): Int {
+        val userRole = getUser().getRole()
+        return when(resourceId) {
+            R.id.taskListPerformerFragment -> {
+                return when (userRole) {
+                    UserRole.NOT_AUTHORIZED -> {
+                        R.id.taskListNotAuthorizedFragment
+                    }
+                    UserRole.PERFORMER -> {
+                        R.id.taskListPerformerFragment
+                    }
+                    UserRole.TRAVELER -> {
+                        R.id.taskListTravelerFragment
+                    }
+                }
+            }
+            R.id.taskCategoryFragment -> {
+                return when (userRole) {
+                    UserRole.NOT_AUTHORIZED -> {
+                        R.id.loginRegisterFragment
+                    }
+                    UserRole.PERFORMER, UserRole.TRAVELER -> {
+                        R.id.taskCategoryFragment
+                    }
+                }
+            }
+            else -> {
+                resourceId
+            }
+        }
     }
 
     private fun NavController.clearBackStack(nextNavigation: Int?) {
@@ -200,7 +239,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         presenter.setLastMenu(0)
     }
 
-    fun getUser(): User {
+    private fun getUser(): User {
         return this.user
     }
 

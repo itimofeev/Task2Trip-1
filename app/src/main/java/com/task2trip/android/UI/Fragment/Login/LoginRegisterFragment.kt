@@ -48,7 +48,7 @@ class LoginRegisterFragment : BaseFragment() {
                 setRole(UserRole.NOT_AUTHORIZED)
                 context?.let { saveUserData(it) }
             }
-            navigateTo(R.id.taskGetMyListFragment, Bundle())
+            navigateTo(R.id.taskListPerformerFragment, Bundle())
         }
     }
 
