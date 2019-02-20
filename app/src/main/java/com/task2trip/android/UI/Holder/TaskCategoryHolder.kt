@@ -4,10 +4,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.task2trip.android.Model.ImageLoader.ImageLoader
-import com.task2trip.android.Model.TaskAddCategory
+import com.task2trip.android.Model.TaskCategory
 import com.task2trip.android.R
 
-class TaskAddCategoryHolder(itemView: View) : BaseHolder<TaskAddCategory>(itemView) {
+class TaskCategoryHolder(itemView: View) : BaseHolder<TaskCategory>(itemView) {
     private var tvCategoryName: TextView? = null
     private var ivCategoryImage: ImageView? = null
 
@@ -16,10 +16,10 @@ class TaskAddCategoryHolder(itemView: View) : BaseHolder<TaskAddCategory>(itemVi
         ivCategoryImage = itemView.findViewById<ImageView>(R.id.ivCategoryImage)
     }
 
-    override fun setData(item: TaskAddCategory) {
-        tvCategoryName?.text = item.categoryName
+    override fun setData(item: TaskCategory) {
+        tvCategoryName?.text = item.defaultValue
         ivCategoryImage?.let {
-            ImageLoader(item.categoryImage, it)
+            ImageLoader(item.imageUrl, it)
         }
     }
 

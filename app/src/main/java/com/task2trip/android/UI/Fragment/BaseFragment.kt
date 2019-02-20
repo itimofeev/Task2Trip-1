@@ -9,6 +9,8 @@ import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import com.task2trip.android.Model.User.User
 import com.task2trip.android.View.MainActivityView
+import android.app.Activity
+import android.view.inputmethod.InputMethodManager
 
 abstract class BaseFragment : Fragment() {
     private var activityListener: MainActivityView? = null
@@ -36,6 +38,16 @@ abstract class BaseFragment : Fragment() {
 
     protected fun navigateTo(resourceFragment: Int, args: Bundle?) {
         activityListener?.navigateTo(resourceFragment, args)
+    }
+
+    protected fun hideKeyboard() {
+        val imm = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var view = activity?.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     fun onMessage(message: String) {

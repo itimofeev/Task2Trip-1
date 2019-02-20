@@ -5,6 +5,9 @@ import com.google.gson.GsonBuilder
 import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
+import com.task2trip.android.Model.Task
+import com.task2trip.android.Model.TaskCategory
+import com.task2trip.android.Model.TaskSaveModel
 import com.task2trip.android.Model.User.UserLoginResp
 import com.task2trip.android.Model.User.UserDataReq
 import com.task2trip.android.Model.User.UserInfoResp
@@ -19,7 +22,7 @@ import retrofit2.http.*
 
 interface ApiMethods {
     companion object {
-        const val BASE_URL = "http://159.69.121.222:8000/api/"
+        const val BASE_URL = "http://116.203.97.169:8000/api/"
         private const val VERSION: String = "v1/"
 
         fun getInstance(context: Context): ApiMethods {
@@ -50,7 +53,7 @@ interface ApiMethods {
                 val localStorage = LocalStoreManager(context)
                 if (!localStorage.get(Constants.EXTRA_USER_TOKEN, "").isNullOrEmpty()) {
                     requestBuilder
-                        .header("Bearer ", localStorage.get(Constants.EXTRA_USER_TOKEN, "").orEmpty())
+                        .header("Authorization", localStorage.get(Constants.EXTRA_USER_TOKEN, "").orEmpty())
                 }
 
                 requestBuilder
@@ -69,4 +72,10 @@ interface ApiMethods {
 
     @GET("user")
     fun userInfo(): Call<UserInfoResp>
+
+    @GET("category")
+    fun getCategoryList(): Call<List<TaskCategory>>
+
+    @PUT("task")
+    fun saveTask(@Body taskSaveModel: TaskSaveModel): Call<Task>
 }

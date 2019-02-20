@@ -51,6 +51,7 @@
                                 app:layout_constraintStart_toStartOf="parent"/>
 
                         <TextView
+                                android:id="@+id/tvCategoryName"
                                 android:gravity="center_vertical"
                                 style="@style/textGrayConstraint"
                                 android:layout_marginStart="@dimen/margin_left_8dp"
@@ -190,6 +191,7 @@
                                 app:layout_constraintStart_toStartOf="parent"/>
 
                         <TextView
+                                android:id="@+id/tvDateTimeFromTo"
                                 android:gravity="center_vertical"
                                 style="@style/textGrayConstraint"
                                 android:layout_marginStart="@dimen/margin_left_8dp"
@@ -232,6 +234,7 @@
                                 app:layout_constraintStart_toStartOf="parent"/>
 
                         <TextView
+                                android:id="@+id/tvPrice"
                                 android:gravity="center_vertical"
                                 style="@style/textGrayConstraint"
                                 android:layout_marginStart="@dimen/margin_left_8dp"

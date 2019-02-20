@@ -28,6 +28,10 @@ abstract class BaseListAdapter<VH: BaseHolder<IL>, IL: Any>(@NonNull private val
         holder.setItemClickListener(listener)
     }
 
+    fun getItems(): List<IL> {
+        return items
+    }
+
     abstract fun setLayoutRes(): Int
     abstract fun returnViewHolder(view: View): VH
     abstract fun onItemClicked(item: IL, position: Int)

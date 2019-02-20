@@ -2,6 +2,7 @@ package com.task2trip.android.Presenter
 
 import android.content.Context
 import com.task2trip.android.Model.User.UserDataReq
+import com.task2trip.android.Model.User.UserImpl
 import com.task2trip.android.Model.User.UserInfoResp
 import com.task2trip.android.Model.User.UserLoginResp
 import com.task2trip.android.View.UserView
@@ -40,19 +41,11 @@ class UserPresenter(val view: UserView, context: Context): BasePresenter(context
     }
 
     fun userLogin(email: String, password: String) {
-        val req: Call<UserLoginResp> = getApi().userLogin(
-            UserDataReq(
-                email,
-                password
-            )
-        )
+        val req: Call<UserLoginResp> = getApi().userLogin(UserDataReq(email, password))
         req.enqueue {
             onResponse = { response ->
                 if (response.code() in 200..299) {
-                    val client: UserLoginResp? = response.body()
-                    client?.let { view.onLoginResult(client) } ?: view.onLoginResult(
-                        UserLoginResp(0, "")
-                    )
+                    view.onLoginResult(response.body() ?: UserLoginResp("", UserImpl()))
                 } else {
                     view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
                 }

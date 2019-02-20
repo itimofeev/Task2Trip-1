@@ -92,69 +92,69 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         val resourceId = navigationHook(resourceIdNav)
         when(resourceId) {
             R.id.loginRegisterFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarParams(false, "Вход / Регистрация", false)
                 //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
             }
             R.id.loginFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarParams(false, "Вход в приложение", false)
             }
             R.id.registrationFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarParams(false, "Регистрация", false)
             }
             R.id.taskCategoryFragment -> {
-                navController.clearBackStack(resourceId)
+                navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, "Добавить задание", false)
             }
             R.id.taskAddParamsFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarParams(true, "Параметры задания", true)
             }
             R.id.messageFragment -> {
-                navController.clearBackStack(resourceId)
+                navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, "Входящие", false)
             }
             R.id.searchFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarTitle("Результат: список заданий")
             }
             R.id.searchFilterFragment -> {
-                navController.clearBackStack(resourceId)
+                navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, "Поиск заданий", false)
                 presenter.setLastMenu(R.menu.menu_serch_filter)
             }
             R.id.profileFragment -> {
-                navController.clearBackStack(resourceId)
+                navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, "Профиль", false)
             }
             R.id.profileCategoryFragment, R.id.profileMainInfoFragment,
             R.id.profileContactsFragment, R.id.profileAboutFragment -> {
                 presenter.setLastMenu(R.menu.menu_settings)
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarTitle("Профиль. Параметры")
             }
             R.id.settingsFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarTitle("Настройки")
             }
             R.id.settingsBlackListFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 presenter.setLastMenu(R.menu.menu_serch_filter)
                 setToolBarTitle("Черный список")
             }
             R.id.settingsNotificationFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarTitle("Уведомления")
             }
             R.id.taskListPerformerFragment, R.id.taskListNotAuthorizedFragment,
             R.id.taskListTravelerFragment -> {
-                navController.clearBackStack(resourceId)
+                navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, "Мои задания", false)
             }
             R.id.taskDetailsFragment -> {
-                navController.navigate(resourceId)
+                navController.navigate(resourceId, args)
                 setToolBarTitle("Задача №ххх")
             }
             else -> {
@@ -198,13 +198,13 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         }
     }
 
-    private fun NavController.clearBackStack(nextNavigation: Int?) {
+    private fun NavController.clearBackStack(nextNavigation: Int?, args: Bundle?) {
         var isNotEmptyStack: Boolean = true
         while (isNotEmptyStack) {
             isNotEmptyStack = this.popBackStack()
         }
         nextNavigation?.let {
-            this.navigate(it)
+            this.navigate(it, args)
         }
     }
 
