@@ -2,14 +2,20 @@ package com.task2trip.android.UI.Fragment.Task
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
-import com.task2trip.android.Model.MockData
-import com.task2trip.android.Model.TaskAddCategory
+import com.task2trip.android.Model.Task
+import com.task2trip.android.Model.TaskList
+import com.task2trip.android.Presenter.TaskListPresenter
 import com.task2trip.android.R
+import com.task2trip.android.UI.Adapter.TaskListAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.UI.Listener.ItemClickListener
+import com.task2trip.android.View.TaskListView
+import kotlinx.android.synthetic.main.fragment_task_list_traveler.*
 
-class TaskListTravelerFragment : BaseFragment(), ItemClickListener<TaskAddCategory> {
+class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
+    private lateinit var presenter: TaskListPresenter
     private var message = ""
     private var isMessage = false
 
@@ -26,23 +32,36 @@ class TaskListTravelerFragment : BaseFragment(), ItemClickListener<TaskAddCatego
 
     override fun initComponents(view: View) {
         initCategoryRecycleView(view)
+        initPresenter(view)
         if (isMessage) {
             onMessage(message)
         }
     }
 
-    private fun initCategoryRecycleView(view: View) {
-//        val adapter = TaskCategoryAdapter(MockData.dataTaskAddCategory())
-//        adapter.setClickListener(this)
-//        rvTaskList.setHasFixedSize(true)
-//        rvTaskList.layoutManager = LinearLayoutManager(view.context)
-//        rvTaskList.adapter = adapter
+    private fun initPresenter(view: View) {
+        presenter = TaskListPresenter(this, view.context)
+        presenter.getAllTask()
     }
 
-    override fun onItemClick(item: TaskAddCategory, position: Int) {
-        val args = Bundle()
-        args.putParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST, ArrayList(MockData.dataTaskAddCategory()))
-        args.putInt(Constants.EXTRA_TASK_CATEGORY_SELECTED_POSITION, position)
-        navigateTo(R.id.taskAddParamsFragment, args)
+    private fun initCategoryRecycleView(view: View) {
+        rvTaskList.setHasFixedSize(true)
+        rvTaskList.layoutManager = LinearLayoutManager(view.context)
+    }
+
+    override fun onTaskListResult(taskResult: TaskList) {
+        val adapter = TaskListAdapter(taskResult.payload)
+        adapter.setClickListener(this)
+        rvTaskList.adapter = adapter
+    }
+
+    override fun onItemClick(item: Task, position: Int) {
+//        val args = Bundle()
+//        args.putParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST, ArrayList(MockData.dataTaskAddCategory()))
+//        args.putInt(Constants.EXTRA_TASK_CATEGORY_SELECTED_POSITION, position)
+//        navigateTo(R.id.taskAddParamsFragment, args)
+    }
+
+    override fun onProgress(isProgress: Boolean) {
+        //
     }
 }

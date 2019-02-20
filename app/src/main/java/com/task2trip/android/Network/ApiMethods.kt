@@ -4,13 +4,8 @@ import android.content.Context
 import com.google.gson.GsonBuilder
 import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
-import com.task2trip.android.Model.LocalStoreManager
-import com.task2trip.android.Model.Task
-import com.task2trip.android.Model.TaskCategory
-import com.task2trip.android.Model.TaskSaveModel
-import com.task2trip.android.Model.User.UserLoginResp
-import com.task2trip.android.Model.User.UserDataReq
-import com.task2trip.android.Model.User.UserInfoResp
+import com.task2trip.android.Model.*
+import com.task2trip.android.Model.User.*
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -78,4 +73,15 @@ interface ApiMethods {
 
     @PUT("task")
     fun saveTask(@Body taskSaveModel: TaskSaveModel): Call<Task>
+
+    @GET("task")
+    fun getAllTasks(): Call<TaskList>
+
+    @GET("task")
+    fun getTasks(@Query("userId") userId: String,
+                 @Query("searchString") searchString: String,
+                 @Query("categoryId") categoryId: String,
+                 @Query("skip") skip: Int,
+                 @Query("limit") limit: Int,
+                 @Query("status") status: String): Call<TaskList>
 }
