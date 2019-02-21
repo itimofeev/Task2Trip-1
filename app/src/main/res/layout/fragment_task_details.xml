@@ -2,16 +2,54 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Подробное описание задачи"
+            android:id="@+id/tvStatusDateTime"
+            style="@style/textBaseConstraintContent"
+            android:text=""
+            tools:text="tvStatusDateTime"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"/>
+
+    <TextView
+            android:id="@+id/tvTaskName"
+            style="@style/textBaseConstraintContent"
+            android:text=""
+            tools:text="tvTaskName"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatusDateTime"/>
+
+    <TextView
+            android:id="@+id/tvTaskPrice"
+            style="@style/textBaseConstraintContent"
+            android:text=""
+            tools:text="tvTaskPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tvTaskName"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"/>
+
+    <TextView
+            android:id="@+id/tvTaskLocation"
+            style="@style/textBaseConstraintContent"
+            android:text=""
+            tools:text="tvTaskLocation"
+            app:layout_constraintTop_toBottomOf="@+id/tvTaskPrice"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"/>
+
+    <TextView
+            android:id="@+id/tvTaskDescription"
+            style="@style/textBaseConstraintContent"
+            android:text=""
+            tools:text="tvTaskDescription"
+            app:layout_constraintTop_toBottomOf="@+id/tvTaskLocation"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"/>
 
     <Button
             android:id="@+id/btApplyTask"
@@ -20,4 +58,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineLeft"
+            app:layout_constraintGuide_begin="@dimen/margin_left_16dp"
+            android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineRight"
+            app:layout_constraintGuide_end="@dimen/margin_right_16dp"
+            android:orientation="vertical"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

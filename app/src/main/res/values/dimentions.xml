@@ -44,5 +44,7 @@
     <dimen name="elevation_8dp">8dp</dimen>
 
     <dimen name="category_height">60dp</dimen>
+    <dimen name="list_item_height">100dp</dimen>
+    <dimen name="image_list_item_height">80dp</dimen>
     <dimen name="image_size_arrow">24dp</dimen>
 </resources>

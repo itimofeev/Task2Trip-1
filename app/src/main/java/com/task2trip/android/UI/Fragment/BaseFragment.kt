@@ -54,6 +54,10 @@ abstract class BaseFragment : Fragment() {
         activityListener?.onMessage(message)
     }
 
+    fun setToolbarTitle(title: String) {
+        //TODO:
+    }
+
     /**
      * Устанавливает видимость панели внизу
      */

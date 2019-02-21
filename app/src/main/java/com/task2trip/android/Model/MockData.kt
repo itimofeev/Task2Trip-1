@@ -12,5 +12,15 @@ class MockData {
             items.add(TaskAddCategory(6, "", "Category 006", "Category Description 006"))
             return items
         }
+
+        fun getEmptyTask(): Task {
+            return Task("", "", "", "",
+                "", "", 0, "",
+                "", "", "", "", getEmptyCategory())
+        }
+
+        fun getEmptyCategory(): TaskCategory {
+            return TaskCategory("", "", "", "")
+        }
     }
 }

@@ -6,7 +6,7 @@ import android.os.Parcelable
 data class TaskCategory(val id: String,
                         val key: String,
                         val defaultValue: String,
-                        val imageUrl: String): Parcelable {
+                        var imageUrl: String): Parcelable {
     constructor(parcel: Parcel) : this(parcel.readString(), parcel.readString(), parcel.readString(), parcel.readString())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

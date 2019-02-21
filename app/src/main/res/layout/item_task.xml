@@ -3,22 +3,58 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="@dimen/list_item_height">
 
     <ImageView
             android:id="@+id/ivCategoryImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/image_list_item_height"
+            android:layout_height="@dimen/image_list_item_height"
+            android:layout_margin="@dimen/margin_all_8dp"
             android:src="@drawable/vector_ic_user_profile"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
-            android:id="@+id/tvTaskName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="10001"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/tvTaskDescription"
+            style="@style/textBaseConstraintContent"
+            android:layout_marginLeft="@dimen/margin_left_8dp"
+            android:layout_marginStart="@dimen/margin_left_8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:text=""
+            app:layout_constraintTop_toTopOf="@+id/ivCategoryImage"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toEndOf="@+id/ivCategoryImage"/>
+
+    <TextView
+            android:id="@+id/tvTaskPrice"
+            style="@style/textBaseConstraintContent"
+            android:layout_marginLeft="@dimen/margin_left_8dp"
+            android:layout_marginStart="@dimen/margin_left_8dp"
+            android:textColor="@color/purple"
+            android:textSize="20sp"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/ivCategoryImage"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintBottom_toTopOf="@+id/tvTaskPerformerName"/>
+
+    <TextView
+            android:id="@+id/tvTaskPerformerName"
+            style="@style/textGrayConstraintContent"
+            android:layout_marginLeft="@dimen/margin_left_8dp"
+            android:layout_marginStart="@dimen/margin_left_8dp"
+            android:textSize="12sp"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/ivCategoryImage"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCategoryImage"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_end="@dimen/margin_right_8dp"
+            android:orientation="vertical"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

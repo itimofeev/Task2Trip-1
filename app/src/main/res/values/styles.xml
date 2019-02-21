@@ -29,11 +29,21 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="textBaseConstraintContent">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="textGrayParent" parent="textBaseParent">
         <item name="android:textColor">@color/gray_text</item>
     </style>
 
     <style name="textGrayConstraint" parent="textBaseConstraint">
+        <item name="android:textColor">@color/gray_text</item>
+    </style>
+
+    <style name="textGrayConstraintContent" parent="textBaseConstraintContent">
         <item name="android:textColor">@color/gray_text</item>
     </style>
 

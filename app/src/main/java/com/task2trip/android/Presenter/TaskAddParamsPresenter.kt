@@ -1,18 +1,13 @@
 package com.task2trip.android.Presenter
 
 import android.content.Context
+import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Task
-import com.task2trip.android.Model.TaskCategory
 import com.task2trip.android.Model.TaskSaveModel
 import com.task2trip.android.View.TaskParamsView
 import retrofit2.Call
 
 class TaskAddParamsPresenter(val view: TaskParamsView, context: Context) : BasePresenter(context) {
-    private val emptyTask = Task("", "", "",
-        "", "", "",
-        0, "", "",
-        "", "", "", TaskCategory("", "", "", "")
-    )
 
     fun saveTask(taskSaveModel: TaskSaveModel) {
         view.onProgress(true)
@@ -20,7 +15,7 @@ class TaskAddParamsPresenter(val view: TaskParamsView, context: Context) : BaseP
         req.enqueue {
             onResponse = { response ->
                 if (response.code() in 200..299) {
-                    view.onSaveTaskResult(response.body() ?: emptyTask)
+                    view.onSaveTaskResult(response.body() ?: MockData.getEmptyTask())
                 } else {
                     view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
                 }

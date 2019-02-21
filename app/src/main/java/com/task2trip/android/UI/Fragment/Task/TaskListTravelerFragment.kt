@@ -55,10 +55,10 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     }
 
     override fun onItemClick(item: Task, position: Int) {
-//        val args = Bundle()
-//        args.putParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST, ArrayList(MockData.dataTaskAddCategory()))
-//        args.putInt(Constants.EXTRA_TASK_CATEGORY_SELECTED_POSITION, position)
-//        navigateTo(R.id.taskAddParamsFragment, args)
+        val args = Bundle()
+        args.putParcelable(Constants.EXTRA_TASK, item)
+        args.putBoolean(Constants.EXTRA_IS_PERFORMER, false)
+        navigateTo(R.id.taskDetailsFragment, args)
     }
 
     override fun onProgress(isProgress: Boolean) {

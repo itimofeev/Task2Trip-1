@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Common.toPattern
+import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Task
 import com.task2trip.android.Model.TaskCategory
 import com.task2trip.android.Model.TaskSaveModel
@@ -48,7 +49,7 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         return if (categoryList.size > categorySelectedPosition) {
             categoryList[categorySelectedPosition]
         } else {
-            TaskCategory("", "", "", "")
+            MockData.getEmptyCategory()
         }
     }
 
