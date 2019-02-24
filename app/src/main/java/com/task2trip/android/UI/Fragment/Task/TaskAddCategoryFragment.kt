@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
-import com.task2trip.android.Model.TaskCategory
+import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Presenter.TaskCategoryPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.TaskCategoryAdapter

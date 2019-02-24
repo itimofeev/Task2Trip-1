@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.task2trip.android.Model.ImageLoader.ImageLoader
-import com.task2trip.android.Model.TaskCategory
+import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.R
 
 class TaskCategoryHolder(itemView: View) : BaseHolder<TaskCategory>(itemView) {

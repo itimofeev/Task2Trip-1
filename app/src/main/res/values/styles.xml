@@ -11,13 +11,13 @@
         <item name="android:layout_height">36dp</item>
     </style>
 
-    <style name="textBaseContent">
+    <style name="textBaseContentContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="textBaseParent">
+    <style name="textBaseParentParent">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textSize">14sp</item>
@@ -35,7 +35,13 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="textGrayParent" parent="textBaseParent">
+    <style name="textBaseParentContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="textGrayParent" parent="textBaseParentParent">
         <item name="android:textColor">@color/gray_text</item>
     </style>
 
@@ -47,7 +53,7 @@
         <item name="android:textColor">@color/gray_text</item>
     </style>
 
-    <style name="textColored" parent="textBaseContent">
+    <style name="textColored" parent="textBaseContentContent">
         <item name="android:textColor">@color/coral</item>
     </style>
 

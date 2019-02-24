@@ -7,6 +7,7 @@
     <color name="white">#ffffff</color>
     <color name="gray">#BDBDBD</color>
     <color name="gray_light">#E0E0E0</color>
+    <color name="gray_very_light">#F1F1F1</color>
     <color name="gray_text">#B1ACB9</color>
     <color name="black">#000000</color>
     <color name="purple">#6F5FAF</color>

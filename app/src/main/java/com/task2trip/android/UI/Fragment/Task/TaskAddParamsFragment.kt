@@ -5,9 +5,9 @@ import android.view.View
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Common.toPattern
 import com.task2trip.android.Model.MockData
-import com.task2trip.android.Model.Task
-import com.task2trip.android.Model.TaskCategory
-import com.task2trip.android.Model.TaskSaveModel
+import com.task2trip.android.Model.Task.Task
+import com.task2trip.android.Model.Task.TaskCategory
+import com.task2trip.android.Model.Task.TaskSaveModel
 import com.task2trip.android.Presenter.TaskAddParamsPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
@@ -39,9 +39,13 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         tvCategoryName.text = getSelectedCategory().defaultValue
         btAddMyTask.setOnClickListener {
             hideKeyboard()
-            addMyTaskClick(TaskSaveModel(etTaskName.text.toString(), etTaskDescription.text.toString(),
-                getSelectedCategory().id, 1299,
-                Calendar.getInstance().toPattern(), Calendar.getInstance().toPattern()))
+            addMyTaskClick(
+                TaskSaveModel(
+                    etTaskName.text.toString(), etTaskDescription.text.toString(),
+                    getSelectedCategory().id, 1299,
+                    Calendar.getInstance().toPattern(), Calendar.getInstance().toPattern()
+                )
+            )
         }
     }
 

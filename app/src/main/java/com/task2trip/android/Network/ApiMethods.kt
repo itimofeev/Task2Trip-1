@@ -5,6 +5,10 @@ import com.google.gson.GsonBuilder
 import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.*
+import com.task2trip.android.Model.Task.Task
+import com.task2trip.android.Model.Task.TaskCategory
+import com.task2trip.android.Model.Task.TaskList
+import com.task2trip.android.Model.Task.TaskSaveModel
 import com.task2trip.android.Model.User.*
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -78,10 +82,16 @@ interface ApiMethods {
     fun getAllTasks(): Call<TaskList>
 
     @GET("task")
-    fun getTasks(@Query("userId") userId: String,
-                 @Query("searchString") searchString: String,
-                 @Query("categoryId") categoryId: String,
-                 @Query("skip") skip: Int,
-                 @Query("limit") limit: Int,
-                 @Query("status") status: String): Call<TaskList>
+    fun getTasks(@Query("userId") userId: String? = null,
+                 @Query("searchString") searchString: String? = null,
+                 @Query("categoryId") categoryId: String? = null,
+                 @Query("skip") skip: Int? = null,
+                 @Query("limit") limit: Int? = null,
+                 @Query("status") status: String? = null): Call<TaskList>
+
+    @PUT("/task/{taskId}/offer")
+    fun sendOfferByTaskId(@Path("taskId") taskId: String): Call<Offer>
+
+    @GET("/task/{taskId}/offer")
+    fun getOffersByTaskId(@Path("taskId") taskId: String): Call<List<Offer>>
 }

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/tvOfferTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_all_16dp"
+            android:textAllCaps="true"
+            android:textColor="@color/gray_light"
+            android:text="Описание предложения"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAboutOffer"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_margin="@dimen/margin_all_16dp"
+            android:padding="@dimen/padding_all_8dp"
+            android:background="@drawable/bg_edittext_profile"
+            android:maxLines="8"
+            android:gravity="start|top"
+            android:hint="Расскажите о вашем предложении"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOfferTitle"/>
+
+    <LinearLayout
+            android:id="@+id/groupPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin_top_16dp"
+            android:padding="@dimen/padding_all_16dp"
+            android:background="@color/gray_very_light"
+            app:layout_constraintTop_toBottomOf="@+id/etAboutOffer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_right_16dp"
+                android:layout_marginRight="@dimen/margin_right_16dp"
+                android:textColor="@color/black"
+                android:text="Путешественник указал стоимость"/>
+
+        <TextView
+                android:id="@+id/tvTaskPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:text="1500 Rub"
+                android:text=""/>
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/tvOfferPriceTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_16dp"
+            android:layout_marginStart="@dimen/margin_left_16dp"
+            android:layout_marginLeft="@dimen/margin_left_16dp"
+            android:layout_marginRight="@dimen/margin_right_16dp"
+            android:layout_marginEnd="@dimen/margin_right_16dp"
+            android:textAllCaps="true"
+            android:textColor="@color/gray_light"
+            android:text="Желаемый гонорар"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/groupPrice"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etOfferPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left_16dp"
+            android:layout_marginLeft="@dimen/margin_left_16dp"
+            android:layout_marginRight="@dimen/margin_right_16dp"
+            android:layout_marginEnd="@dimen/margin_right_16dp"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:gravity="start|top"
+            android:hint="Rub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOfferPriceTitle"/>
+
+
+    <TextView
+            android:id="@+id/tvOfferPaymentTypeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_all_16dp"
+            android:textColor="@color/black"
+            android:text="Оплата картой"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etOfferPrice"
+            app:layout_constraintEnd_toStartOf="@+id/switchPaymentType"/>
+
+    <Switch
+            android:id="@+id/switchPaymentType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_all_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etOfferPrice"/>
+
+    <Button
+            android:id="@+id/btAddOffer"
+            style="@style/buttonSolid"
+            android:text="Добавить предложение"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

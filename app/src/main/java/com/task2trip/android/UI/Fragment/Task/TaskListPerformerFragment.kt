@@ -3,6 +3,7 @@ package com.task2trip.android.UI.Fragment.Task
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager.widget.ViewPager
+import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.TabFragmentTitle
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.TabAdapter
@@ -10,8 +11,12 @@ import com.task2trip.android.UI.Fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_task_list_performer.*
 
 class TaskListPerformerFragment : BaseFragment() {
+    var userId: String = ""
+    var userRole: String = ""
+
     override fun getArgs(args: Bundle?) {
-        //
+        userId = args?.getString(Constants.EXTRA_USER_ID, "") ?: ""
+        userRole = args?.getString(Constants.EXTRA_USER_ROLE, "") ?: ""
     }
 
     override fun setResourceLayout(): Int {
@@ -25,8 +30,10 @@ class TaskListPerformerFragment : BaseFragment() {
     private fun initViewPager() {
         fragmentManager?.let {
             val adapter = TabAdapter(it)
-            adapter.addItem(TabFragmentTitle(TaskListTravelerFragment(), "Путешественник"))
-            adapter.addItem(TabFragmentTitle(TaskListTravelerFragment(), "Исполнитель"))
+            adapter.addItem(TabFragmentTitle(
+                TaskListTravelerFragment.getInstance(userId, userRole), "Путешественник"))
+            adapter.addItem(TabFragmentTitle(
+                TaskListTravelerFragment.getInstance(userId, userRole), "Исполнитель"))
             vpTaskList.adapter = adapter
             vpTaskList.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}

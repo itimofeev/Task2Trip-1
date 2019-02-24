@@ -2,7 +2,7 @@ package com.task2trip.android.Model.User
 
 enum class UserRole {
     TRAVELER,
-    PERFORMER,
+    LOCAL,
     NOT_AUTHORIZED;
 
     companion object {
@@ -11,6 +11,8 @@ enum class UserRole {
             return try {
                 if (name.equals("traveller", true)) {
                     name = UserRole.TRAVELER.name
+                } else if (name.equals("local", true)) {
+                    name = UserRole.LOCAL.name
                 }
                 UserRole.valueOf(name.toUpperCase())
             } catch (ex: Exception) {

@@ -2,8 +2,8 @@ package com.task2trip.android.Presenter
 
 import android.content.Context
 import com.task2trip.android.Model.MockData
-import com.task2trip.android.Model.Task
-import com.task2trip.android.Model.TaskSaveModel
+import com.task2trip.android.Model.Task.Task
+import com.task2trip.android.Model.Task.TaskSaveModel
 import com.task2trip.android.View.TaskParamsView
 import retrofit2.Call
 

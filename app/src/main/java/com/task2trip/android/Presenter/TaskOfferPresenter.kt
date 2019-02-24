@@ -1,19 +1,19 @@
 package com.task2trip.android.Presenter
 
 import android.content.Context
-import com.task2trip.android.Model.Task.TaskCategory
-import com.task2trip.android.View.TaskCategoryView
+import com.task2trip.android.Model.MockData
+import com.task2trip.android.Model.Offer
+import com.task2trip.android.View.TaskOfferView
 import retrofit2.Call
 
-class TaskCategoryPresenter(val view: TaskCategoryView, context: Context) : BasePresenter(context) {
-
-    fun getCategoryList() {
+class TaskOfferPresenter(val view: TaskOfferView, context: Context): BasePresenter(context) {
+    fun offerSaveByTask(taskId: String) {
         view.onProgress(true)
-        val req: Call<List<TaskCategory>> = getApi().getCategoryList()
+        val req: Call<Offer> = getApi().sendOfferByTaskId(taskId)
         req.enqueue {
             onResponse = { response ->
                 if (response.code() in 200..299) {
-                    view.onCategoryList(response.body() ?: emptyList<TaskCategory>())
+                    view.onSaveOfferResult(response.body() ?: MockData.getEmptyOffer())
                 } else {
                     view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
                 }

@@ -52,9 +52,9 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"/>
 
     <Button
-            android:id="@+id/btApplyTask"
+            android:id="@+id/btTaskAddOffer"
             style="@style/buttonSolid"
-            android:text="Взять в работу"
+            android:text="Предложить свои услуги"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>

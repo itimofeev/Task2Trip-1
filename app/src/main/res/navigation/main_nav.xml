@@ -49,4 +49,6 @@
               android:label="fragment_task_category" tools:layout="@layout/fragment_task_add_category"/>
     <fragment android:id="@+id/taskDetailsFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskDetailsFragment"
               android:label="fragment_task_details" tools:layout="@layout/fragment_task_details"/>
+    <fragment android:id="@+id/taskAddOfferFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddOfferFragment"
+              android:label="fragment_task_add_offer" tools:layout="@layout/fragment_task_add_offer"/>
 </navigation>

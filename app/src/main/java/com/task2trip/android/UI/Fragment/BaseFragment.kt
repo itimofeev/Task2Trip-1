@@ -69,6 +69,10 @@ abstract class BaseFragment : Fragment() {
         activityListener?.setUser(user)
     }
 
+    protected fun logoutUser() {
+        activityListener?.logoutUser()
+    }
+
     override fun onDetach() {
         super.onDetach()
         activityListener = null

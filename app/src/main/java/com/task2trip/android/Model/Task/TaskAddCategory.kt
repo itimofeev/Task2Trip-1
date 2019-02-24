@@ -1,4 +1,4 @@
-package com.task2trip.android.Model
+package com.task2trip.android.Model.Task
 
 import android.os.Parcel
 import android.os.Parcelable

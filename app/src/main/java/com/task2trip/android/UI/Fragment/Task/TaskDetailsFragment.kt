@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.MockData
-import com.task2trip.android.Model.Task
+import com.task2trip.android.Model.Task.Task
+import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_task_details.*
 
 class TaskDetailsFragment : BaseFragment() {
-    var isPerformer = false
+    var userRole = ""
     var taskItem: Task = MockData.getEmptyTask()
 
     override fun getArgs(args: Bundle?) {
         args?.let {
-            isPerformer = it.getBoolean(Constants.EXTRA_IS_PERFORMER, false)
+            userRole = it.getString(Constants.EXTRA_USER_ROLE, UserRole.NOT_AUTHORIZED.name)
             taskItem = it.getParcelable(Constants.EXTRA_TASK) ?: MockData.getEmptyTask()
         }
     }
@@ -38,17 +39,19 @@ class TaskDetailsFragment : BaseFragment() {
     }
 
     private fun initApplyButton() {
-        if (isPerformer) {
-            btApplyTask.visibility = View.VISIBLE
-            btApplyTask.setOnClickListener {
-                onApplyTaskClick("1234")
+        if (userRole == UserRole.LOCAL.name) {
+            btTaskAddOffer.visibility = View.VISIBLE
+            btTaskAddOffer.setOnClickListener {
+                onApplyTaskClick(taskItem)
             }
         } else {
-            btApplyTask.visibility = View.GONE
+            btTaskAddOffer.visibility = View.GONE
         }
     }
 
-    private fun onApplyTaskClick(taskId: String) {
-        //
+    private fun onApplyTaskClick(task: Task) {
+        val args = Bundle()
+        args.putParcelable(Constants.EXTRA_TASK, task)
+        navigateTo(R.id.taskAddOfferFragment, args)
     }
 }

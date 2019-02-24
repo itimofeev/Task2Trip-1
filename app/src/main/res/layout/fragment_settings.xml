@@ -8,18 +8,84 @@
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSettingList"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/margin_bottom_16dp"
-            app:layout_constraintBottom_toTopOf="@+id/btProfileExit"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-    <Button
-            android:id="@+id/btProfileExit"
-            android:text="Выйти из аккаунта"
-            style="@style/buttonSolid"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+            android:id="@+id/view_big_delimiter_1"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@color/gray_light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvSettingList"/>
+
+    <LinearLayout
+            android:id="@+id/groupAboutApp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height_small"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/view_big_delimiter_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+                android:id="@+id/ivTypeAbout"
+                android:layout_width="@dimen/image_size_very_small"
+                android:layout_height="@dimen/image_size_very_small"
+                android:layout_margin="@dimen/margin_all_8dp"
+                android:src="@drawable/vector_ic_about_app"/>
+
+        <TextView
+                android:id="@+id/tvTypeAbout"
+                style="@style/textBaseParentContent"
+                android:layout_marginLeft="@dimen/margin_left_32dp"
+                android:layout_marginStart="@dimen/margin_left_32dp"
+                android:layout_marginRight="@dimen/margin_right_16dp"
+                android:layout_marginEnd="@dimen/margin_right_16dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_setting_item"
+                android:text="@string/setting_about"/>
+    </LinearLayout>
+
+    <View
+            android:id="@+id/view_big_delimiter_2"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@color/gray_light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/groupAboutApp"/>
+
+    <LinearLayout
+            android:id="@+id/groupExitApp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height_small"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/view_big_delimiter_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+                android:id="@+id/ivTypeExit"
+                android:layout_width="@dimen/image_size_very_small"
+                android:layout_height="@dimen/image_size_very_small"
+                android:layout_margin="@dimen/margin_all_8dp"
+                android:src="@drawable/vector_ic_logout"/>
+
+        <TextView
+                android:id="@+id/tvTypeExit"
+                style="@style/textBaseParentContent"
+                android:layout_marginLeft="@dimen/margin_left_32dp"
+                android:layout_marginStart="@dimen/margin_left_32dp"
+                android:layout_marginRight="@dimen/margin_right_16dp"
+                android:layout_marginEnd="@dimen/margin_right_16dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_setting_item"
+                android:text="@string/setting_exit_app"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

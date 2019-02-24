@@ -11,8 +11,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.snackbar.Snackbar
+import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.User.User
-import com.task2trip.android.Model.User.UserImpl
 import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.Presenter.MainActivityPresenter
 import com.task2trip.android.R
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), MainActivityView {
     private lateinit var presenter: MainActivityPresenter
     private lateinit var navController: NavController
-    private var user: User = UserImpl()
+    private var user: User = MockData.getEmptyUser()
     private var actionBar: ActionBar? = null
     private val navHostID = R.id.nav_host_fragment
 
@@ -128,16 +129,16 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             R.id.profileFragment -> {
                 navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, "Профиль", false)
+                presenter.setLastMenu(R.menu.menu_settings)
             }
             R.id.profileCategoryFragment, R.id.profileMainInfoFragment,
             R.id.profileContactsFragment, R.id.profileAboutFragment -> {
-                presenter.setLastMenu(R.menu.menu_settings)
                 navController.navigate(resourceId, args)
                 setToolBarTitle("Профиль. Параметры")
             }
             R.id.settingsFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle("Настройки")
+                setToolBarParams(true, "Настройки", true)
             }
             R.id.settingsBlackListFragment -> {
                 navController.navigate(resourceId, args)
@@ -150,8 +151,15 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             R.id.taskListPerformerFragment, R.id.taskListNotAuthorizedFragment,
             R.id.taskListTravelerFragment -> {
-                navController.clearBackStack(resourceId, args)
+                val params = args ?: Bundle()
+                params.putString(Constants.EXTRA_USER_ID, this.user.getId())
+                params.putString(Constants.EXTRA_USER_ROLE, this.user.getRole().name)
+                navController.clearBackStack(resourceId, params)
                 setToolBarParams(true, "Мои задания", false)
+            }
+            R.id.taskAddOfferFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, "Добавить предложение", true)
             }
             R.id.taskDetailsFragment -> {
                 navController.navigate(resourceId, args)
@@ -174,7 +182,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                     UserRole.NOT_AUTHORIZED -> {
                         R.id.taskListNotAuthorizedFragment
                     }
-                    UserRole.PERFORMER -> {
+                    UserRole.LOCAL -> {
                         R.id.taskListPerformerFragment
                     }
                     UserRole.TRAVELER -> {
@@ -187,8 +195,28 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                     UserRole.NOT_AUTHORIZED -> {
                         R.id.loginRegisterFragment
                     }
-                    UserRole.PERFORMER, UserRole.TRAVELER -> {
+                    UserRole.LOCAL, UserRole.TRAVELER -> {
                         R.id.taskCategoryFragment
+                    }
+                }
+            }
+            R.id.profileFragment -> {
+                return when (userRole) {
+                    UserRole.NOT_AUTHORIZED -> {
+                        R.id.loginRegisterFragment
+                    }
+                    UserRole.LOCAL, UserRole.TRAVELER -> {
+                        R.id.profileFragment
+                    }
+                }
+            }
+            R.id.messageFragment -> {
+                return when (userRole) {
+                    UserRole.NOT_AUTHORIZED -> {
+                        R.id.loginRegisterFragment
+                    }
+                    UserRole.LOCAL, UserRole.TRAVELER -> {
+                        R.id.messageFragment
                     }
                 }
             }
@@ -237,6 +265,12 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     private fun setDefaultMenu() {
         presenter.setLastMenu(0)
+    }
+
+    override fun logoutUser() {
+        setUser(MockData.getEmptyUser())
+        this.user.saveUserData(applicationContext)
+        navigateTo(R.id.taskListPerformerFragment, Bundle())
     }
 
     private fun getUser(): User {

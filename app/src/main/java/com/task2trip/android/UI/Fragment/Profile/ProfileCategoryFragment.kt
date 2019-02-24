@@ -20,6 +20,13 @@ class ProfileCategoryFragment : BaseFragment(), ItemClickListener<UserCategory> 
     }
 
     override fun initComponents(view: View) {
+        btNextStep.setOnClickListener {
+            //navigateTo(R.id.profileCategoryFragment, Bundle())
+        }
+        initRecycleView(view)
+    }
+
+    private fun initRecycleView(view: View) {
         val adapter = ProfileCategoryAdapter(getItems())
         adapter.setClickListener(this)
         rvCategoryList.setHasFixedSize(true)

@@ -1,5 +1,11 @@
 package com.task2trip.android.Model
 
+import com.task2trip.android.Model.Task.Task
+import com.task2trip.android.Model.Task.TaskAddCategory
+import com.task2trip.android.Model.Task.TaskCategory
+import com.task2trip.android.Model.User.User
+import com.task2trip.android.Model.User.UserImpl
+
 class MockData {
     companion object {
         fun dataTaskAddCategory(): List<TaskAddCategory> {
@@ -21,6 +27,14 @@ class MockData {
 
         fun getEmptyCategory(): TaskCategory {
             return TaskCategory("", "", "", "")
+        }
+
+        fun getEmptyUser(): User {
+            return UserImpl()
+        }
+
+        fun getEmptyOffer(): Offer {
+            return Offer("", "", 0, getEmptyUser() as UserImpl, "", "")
         }
     }
 }

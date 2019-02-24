@@ -1,7 +1,7 @@
 package com.task2trip.android.UI.Adapter
 
 import android.view.View
-import com.task2trip.android.Model.Task
+import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.R
 import com.task2trip.android.UI.Holder.TaskListHolder
 import com.task2trip.android.UI.Listener.ItemClickListener

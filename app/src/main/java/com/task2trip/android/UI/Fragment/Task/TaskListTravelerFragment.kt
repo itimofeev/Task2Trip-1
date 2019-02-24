@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
-import com.task2trip.android.Model.Task
-import com.task2trip.android.Model.TaskList
+import com.task2trip.android.Model.Task.Task
+import com.task2trip.android.Model.Task.TaskList
+import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.Presenter.TaskListPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.TaskListAdapter
@@ -18,11 +19,26 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     private lateinit var presenter: TaskListPresenter
     private var message = ""
     private var isMessage = false
+    private var userId = ""
+    private var userRole = ""
+
+    companion object {
+        fun getInstance(userId: String, userRole: String): TaskListTravelerFragment {
+            val fragment = TaskListTravelerFragment()
+            val args = Bundle()
+            args.putString(Constants.EXTRA_USER_ID, userId)
+            args.putString(Constants.EXTRA_USER_ROLE, userRole)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun getArgs(args: Bundle?) {
         args?.let {
             isMessage = it.getBoolean(Constants.EXTRA_IS_MESSAGE, false)
             message = it.getString(Constants.EXTRA_MESSAGE_TEXT, "")
+            userId = it.getString(Constants.EXTRA_USER_ID, "")
+            userRole = it.getString(Constants.EXTRA_USER_ROLE, "")
         }
     }
 
@@ -40,7 +56,12 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
 
     private fun initPresenter(view: View) {
         presenter = TaskListPresenter(this, view.context)
-        presenter.getAllTask()
+        if (userRole == UserRole.LOCAL.name) {
+            // TODO: Получить список предложений
+            presenter.getTasksByUserId(userId)
+        } else if (userRole == UserRole.TRAVELER.name) {
+            presenter.getTasksByUserId(userId)
+        }
     }
 
     private fun initCategoryRecycleView(view: View) {
@@ -57,7 +78,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     override fun onItemClick(item: Task, position: Int) {
         val args = Bundle()
         args.putParcelable(Constants.EXTRA_TASK, item)
-        args.putBoolean(Constants.EXTRA_IS_PERFORMER, false)
+        args.putString(Constants.EXTRA_USER_ROLE, userRole)
         navigateTo(R.id.taskDetailsFragment, args)
     }
 

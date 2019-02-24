@@ -30,6 +30,11 @@
     <string name="profile_gender_title">Пол</string>
     <string name="profile_country_title">Страна</string>
     <string name="profile_city_title">Город</string>
+    <string name="profile_photo">Моя фотография</string>
+    <string name="profile_task_execute">Выполнять задания</string>
+    <string name="profile_task_execute_description">Откликайтесь на задания путешественников и получайте вознаграждение
+        за свою работу!
+    </string>
 
     <string name="search_filter_category_title">Категории</string>
     <string name="search_filter_region_title">Регион поиска</string>
@@ -40,4 +45,13 @@
     <string name="task_add_my">Опубликовать</string>
     <string name="logo1">task</string>
     <string name="logo2">2\ntrip</string>
+
+    <string name="next_step">Далее</string>
+
+    <string name="setting_about">О приложении</string>
+    <string name="setting_exit_app">Выйти из профиля</string>
+    <string name="setting_black_list">Черный список</string>
+    <string name="setting_change_password">Изменить пароль</string>
+    <string name="setting_notifications">Уведомления</string>
+    <string name="setting_ask_question">Задать вопрос</string>
 </resources>
