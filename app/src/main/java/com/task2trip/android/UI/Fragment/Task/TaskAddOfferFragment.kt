@@ -3,8 +3,10 @@ package com.task2trip.android.UI.Fragment.Task
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Common.toInt
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Offer
+import com.task2trip.android.Model.OfferForSave
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Presenter.TaskOfferPresenter
 import com.task2trip.android.R
@@ -17,7 +19,7 @@ class TaskAddOfferFragment : BaseFragment(), TaskOfferView {
     private lateinit var presenter: TaskOfferPresenter
 
     override fun getArgs(args: Bundle?) {
-        task = args?.getParcelable<Task>(Constants.EXTRA_TASK) ?: com.task2trip.android.Model.MockData.getEmptyTask()
+        task = args?.getParcelable<Task>(Constants.EXTRA_TASK) ?: MockData.getEmptyTask()
     }
 
     override fun setResourceLayout(): Int {
@@ -27,7 +29,7 @@ class TaskAddOfferFragment : BaseFragment(), TaskOfferView {
     override fun initComponents(view: View) {
         initPresenter(view)
         btAddOffer.setOnClickListener {
-            onOfferAddClick()
+            onOfferAddClick(etAboutOffer.text.toString(), etOfferPrice.toInt())
         }
         tvTaskPrice.text = "${task.budgetEstimate} Rub"
     }
@@ -36,8 +38,8 @@ class TaskAddOfferFragment : BaseFragment(), TaskOfferView {
         presenter = TaskOfferPresenter(this, view.context)
     }
 
-    private fun onOfferAddClick() {
-        presenter.offerSaveByTask(task.id)
+    private fun onOfferAddClick(comment: String, price: Int) {
+        presenter.offerSaveByTask(task.id, OfferForSave(comment, price))
     }
 
     override fun onProgress(isProgress: Boolean) {
@@ -45,6 +47,13 @@ class TaskAddOfferFragment : BaseFragment(), TaskOfferView {
     }
 
     override fun onSaveOfferResult(offer: Offer) {
-        //
+        if (offer.id.isNotEmpty()) {
+            val args = Bundle()
+            with(args) {
+                putBoolean(Constants.EXTRA_IS_MESSAGE, true)
+                putString(Constants.EXTRA_MESSAGE_TEXT, "Вы успешно откликнулись на предложени!")
+            }
+            navigateTo(R.id.taskListPerformerFragment, args)
+        }
     }
 }

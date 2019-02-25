@@ -21,7 +21,7 @@
                 android:id="@+id/etCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Все категории"/>
+                android:text="Гиды"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -38,10 +38,10 @@
             app:layout_constraintTop_toBottomOf="@+id/tvCategory">
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                android:id="@+id/etCity"
+                android:id="@+id/etCountryAndCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Весь мир"/>
+                android:text="Россия"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,32 +61,12 @@
                 android:id="@+id/etStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Открытые задания"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Имя пользователя"
-            style="@style/textLayout"
-            android:layout_marginTop="@dimen/top_step"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvStatus">
-
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                android:id="@+id/etName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Оно точно нужно?"/>
+                android:text="new"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-            android:id="@+id/btSearchShow"
+            android:id="@+id/btSearch"
             android:text="Показать"
             style="@style/buttonSolid"
             app:layout_constraintStart_toStartOf="parent"

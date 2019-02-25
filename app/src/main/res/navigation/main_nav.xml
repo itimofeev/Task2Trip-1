@@ -37,8 +37,10 @@
               android:label="fragment_settings_black_list" tools:layout="@layout/fragment_settings_black_list"/>
     <fragment android:id="@+id/settingsNotificationFragment" android:name="com.task2trip.android.UI.Fragment.Settings.SettingsNotificationFragment"
               android:label="fragment_settings_notification" tools:layout="@layout/fragment_settings_notification"/>
+    <fragment android:id="@+id/taskListPerformerPagerFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListPerformerPagerFragment"
+              android:label="fragment_task_performer_pager" tools:layout="@layout/fragment_task_list_performer_pager"/>
     <fragment android:id="@+id/taskListPerformerFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListPerformerFragment"
-              android:label="fragment_task_get_my_list" tools:layout="@layout/fragment_task_list_performer"/>
+              android:label="fragment_task_list_performer" tools:layout="@layout/fragment_task_list_performer"/>
     <fragment android:id="@+id/taskListTravelerFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListTravelerFragment"
               android:label="fragment_task_list" tools:layout="@layout/fragment_task_list_traveler"/>
     <fragment android:id="@+id/taskListNotAuthorizedFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskListNotAuthorizedFragment"
@@ -51,4 +53,6 @@
               android:label="fragment_task_details" tools:layout="@layout/fragment_task_details"/>
     <fragment android:id="@+id/taskAddOfferFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskAddOfferFragment"
               android:label="fragment_task_add_offer" tools:layout="@layout/fragment_task_add_offer"/>
+    <fragment android:id="@+id/taskOffersFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskOffersFragment"
+              android:label="fragment_task_offers" tools:layout="@layout/fragment_task_offers"/>
 </navigation>

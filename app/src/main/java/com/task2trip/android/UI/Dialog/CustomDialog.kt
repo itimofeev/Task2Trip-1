@@ -1,209 +1,195 @@
-class CustomDialog: DialogFragment {
-/*
-public class CustomDialog extends AppCompatDialogFragment {
+package com.task2trip.android.UI.Dialog
 
-    private static final int DIALOG_THEME = R.style.CustomDialogTheme;
-    private static final int BUTTON_PADDING = 40;
+import android.app.Activity
+import android.app.Dialog
+import android.os.Bundle
+import androidx.annotation.ColorInt
+import androidx.annotation.LayoutRes
+import androidx.annotation.StyleRes
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 
-    @NonNull
-    private String title;
-    @NonNull
-    private String message;
-    @NonNull
-    private String positiveButton;
-    @NonNull
-    private String negativeButton;
-    @LayoutRes
-    private int dialogLayout;
+class CustomDialog: DialogFragment() {
+    private var title: String? = null
+    private var message: String = ""
+    private var positiveButton: String = ""
+    private var negativeButton: String = ""
+    private var dialogLayout: Int = 0
+    private var activityRequestCode: Int = 0
+    private val BUTTON_PADDING = 40
+    private var isCancelableDialog = false
     @StyleRes
-    private int dialogTheme;
+    private var dialogTheme: Int = 0
     @ColorInt
-    private int positiveButtonColor;
+    private var positiveButtonColor: Int = 0
     @ColorInt
-    private int negativeButtonColor;
-    private boolean cancelable;
-    private int activityRequestCode;
+    private var negativeButtonColor: Int = 0
 
-    public static CustomDialog newInstance(Builder builder) {
-        Bundle args = new Bundle();
-        if (builder.title != null)
-            args.putString(AppExtras.EXTRA_DIALOG_TITLE, builder.title);
-        if (builder.message != null)
-            args.putString(AppExtras.EXTRA_DIALOG_DESCRIPTION, builder.message);
-        if (builder.positiveButton != null)
-            args.putString(AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_TITLE, builder.positiveButton);
-        if (builder.negativeButton != null)
-            args.putString(AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_TITLE, builder.negativeButton);
-        if (builder.dialogLayout > 0)
-            args.putInt(AppExtras.EXTRA_DIALOG_LAYOUT, builder.dialogLayout);
-        if (builder.dialogTheme > 0)
-            args.putInt(AppExtras.EXTRA_DIALOG_THEME, builder.dialogLayout);
-        if (builder.positiveButtonColor != 0)
-            args.putInt(AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_COLOR, builder.positiveButtonColor);
-        if (builder.negativeButtonColor != 0)
-            args.putInt(AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_COLOR, builder.negativeButtonColor);
-        if (builder.activityRequestCode > 0)
-            args.putInt(AppExtras.EXTRA_DIALOG_REQUEST_CODE, builder.activityRequestCode);
-        args.putBoolean(AppExtras.EXTRA_DIALOG_CANCELABLE, builder.cancelable);
-        CustomDialog fragment = new CustomDialog();
-        fragment.setArguments(args);
-        return fragment;
+    companion object {
+        fun getInstance(builder: Builder): CustomDialog {
+            val args = Bundle()
+            if (builder.title != null)
+                args.putString("AppExtras.EXTRA_DIALOG_TITLE", builder.title)
+            if (builder.message != null)
+                args.putString("AppExtras.EXTRA_DIALOG_DESCRIPTION", builder.message)
+            if (builder.positiveButton != null)
+                args.putString("AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_TITLE", builder.positiveButton)
+            if (builder.negativeButton != null)
+                args.putString("AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_TITLE", builder.negativeButton)
+            if (builder.dialogLayout > 0)
+                args.putInt("AppExtras.EXTRA_DIALOG_LAYOUT", builder.dialogLayout)
+            if (builder.positiveButtonColor !== 0)
+                args.putInt("AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_COLOR", builder.positiveButtonColor)
+            if (builder.negativeButtonColor !== 0)
+                args.putInt("AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_COLOR", builder.negativeButtonColor)
+            if (builder.activityRequestCode > 0)
+                args.putInt("AppExtras.EXTRA_DIALOG_REQUEST_CODE", builder.activityRequestCode)
+            args.putBoolean("AppExtras.EXTRA_DIALOG_CANCELABLE", builder.cancelable)
+            val fragment = CustomDialog()
+            fragment.arguments = args
+            return fragment
+        }
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        readArguments(getArguments());
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        readArguments(arguments)
     }
 
-    private void readArguments(@Nullable Bundle arguments) {
-        if (arguments == null) return;
-        title = arguments.getString(AppExtras.EXTRA_DIALOG_TITLE, "");
-        message = arguments.getString(AppExtras.EXTRA_DIALOG_DESCRIPTION, "");
-        positiveButton = arguments.getString(AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_TITLE, "");
-        negativeButton = arguments.getString(AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_TITLE, "");
-        dialogLayout = arguments.getInt(AppExtras.EXTRA_DIALOG_LAYOUT, 0);
-        dialogTheme = arguments.getInt(AppExtras.EXTRA_DIALOG_THEME, DIALOG_THEME);
-        positiveButtonColor = arguments.getInt(AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_COLOR, 0);
-        negativeButtonColor = arguments.getInt(AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_COLOR, 0);
-        cancelable = arguments.getBoolean(AppExtras.EXTRA_DIALOG_CANCELABLE, false);
-        activityRequestCode = arguments.getInt(AppExtras.EXTRA_DIALOG_REQUEST_CODE);
+    private fun readArguments(arguments: Bundle?) {
+        if (arguments == null) return
+        title = arguments.getString("AppExtras.EXTRA_DIALOG_TITLE", "")
+        message = arguments.getString("AppExtras.EXTRA_DIALOG_DESCRIPTION", "")
+        positiveButton = arguments.getString("AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_TITLE", "")
+        negativeButton = arguments.getString("AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_TITLE", "")
+        dialogLayout = arguments.getInt("AppExtras.EXTRA_DIALOG_LAYOUT", 0)
+        positiveButtonColor = arguments.getInt("AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_COLOR", 0)
+        negativeButtonColor = arguments.getInt("AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_COLOR", 0)
+        isCancelableDialog = arguments.getBoolean("AppExtras.EXTRA_DIALOG_CANCELABLE", false)
+        activityRequestCode = arguments.getInt("AppExtras.EXTRA_DIALOG_REQUEST_CODE")
     }
 
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        setCancelable(cancelable);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), dialogTheme);
-        builder.setTitle(title);
-        if (dialogLayout > 0) {
-            builder.setView(dialogLayout);
-        } else {
-            builder.setMessage(message);
-        }
-        if (!positiveButton.isEmpty()) {
-            builder.setPositiveButton(positiveButton, (dialog, id) -> {
-                dialog.cancel();
-                onResult(Activity.RESULT_OK);
-            });
-        }
-        if (!negativeButton.isEmpty()) {
-            builder.setNegativeButton(negativeButton, (dialog, id) -> {
-                dialog.cancel();
-                onResult(Activity.RESULT_CANCELED);
-            });
-        }
-        AlertDialog dialog = builder.create();
-        dialog.setOnShowListener(arg -> {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setPadding(BUTTON_PADDING, 0, 0, 0);
-            if (positiveButtonColor != 0) {
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(positiveButtonColor);
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        isCancelable = isCancelableDialog
+        context?.let {
+            val builder = AlertDialog.Builder(it, dialogTheme)
+            builder.setTitle(title)
+            if (dialogLayout > 0) {
+                builder.setView(dialogLayout)
+            } else {
+                builder.setMessage(message)
             }
-            if (negativeButtonColor != 0) {
-                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(negativeButtonColor);
+            if (!positiveButton.isEmpty()) {
+                builder.setPositiveButton(positiveButton) { dialog, id ->
+                    dialog.cancel()
+                    onResult(Activity.RESULT_OK)
+                }
             }
-        });
-        return dialog;
+            if (!negativeButton.isEmpty()) {
+                builder.setNegativeButton(negativeButton) { dialog, id ->
+                    dialog.cancel()
+                    onResult(Activity.RESULT_CANCELED)
+                }
+            }
+
+            val dialog = builder.create()
+            dialog.setOnShowListener {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setPadding(BUTTON_PADDING, 0, 0, 0)
+                if (positiveButtonColor !== 0) {
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(positiveButtonColor)
+                }
+                if (negativeButtonColor !== 0) {
+                    dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(negativeButtonColor)
+                }
+            }
+            return dialog
+        }
+        return super.onCreateDialog(savedInstanceState)
     }
 
-    private void onResult(int resultCode) {
-        Fragment targetFragment = getTargetFragment();
+    private fun onResult(resultCode: Int) {
+        val targetFragment = targetFragment
         if (targetFragment != null) {
-            targetFragment.onActivityResult(getTargetRequestCode(), resultCode, null);
-        } else if (activityRequestCode > 0 && getActivity() instanceof CustomDialogListener) {
-            CustomDialogListener listener = (CustomDialogListener) getActivity();
-            listener.onDialogResult(activityRequestCode, resultCode, null);
+            targetFragment.onActivityResult(targetRequestCode, resultCode, null)
+        } else if (activityRequestCode > 0 && activity is CustomDialogListener) {
+            val listener = activity as CustomDialogListener?
+            listener!!.onDialogResult(activityRequestCode, resultCode, null)
         }
     }
 
-    public static final class Builder {
+    inner class Builder {
+        var title: String? = null
+        var message: String? = null
+        var positiveButton: String? = null
+        var negativeButton: String? = null
+        @LayoutRes var dialogLayout: Int = 0
+        @StyleRes var dialogTheme: Int = 0
+        @ColorInt var positiveButtonColor: Int = 0
+        @ColorInt var negativeButtonColor: Int = 0
+        var cancelable: Boolean = false
+        var activityRequestCode: Int = 0
 
-        @Nullable
-        private String title;
-        @Nullable
-        private String message;
-        @Nullable
-        private String positiveButton;
-        @Nullable
-        private String negativeButton;
-        @LayoutRes
-        private int dialogLayout;
-        @StyleRes
-        private int dialogTheme;
-        @ColorInt
-        private int positiveButtonColor;
-        @ColorInt
-        private int negativeButtonColor;
-        private boolean cancelable;
-        private int activityRequestCode;
-
-        public Builder() {
-            dialogLayout = 0;
-            cancelable = false;
+        init {
+            dialogLayout = 0
+            cancelable = false
         }
 
-        public Builder title(@NonNull String val) {
-            title = val;
-            return this;
+        fun title(value: String): Builder {
+            title = value
+            return this
         }
 
-        public Builder message(@NonNull String val) {
-            message = val;
-            return this;
+        fun message(value: String): Builder {
+            message = value
+            return this
         }
 
-        public Builder positiveButton(@NonNull String val) {
-            positiveButton = val;
-            return this;
+        fun positiveButton(value: String): Builder {
+            positiveButton = value
+            return this
         }
 
-        public Builder negativeButton(@NonNull String val) {
-            negativeButton = val;
-            return this;
+        fun negativeButton(value: String): Builder {
+            negativeButton = value
+            return this
         }
 
-        public Builder dialogLayout(@LayoutRes int val) {
-            dialogLayout = val;
-            return this;
+        fun dialogLayout(@LayoutRes value: Int): Builder {
+            dialogLayout = value
+            return this
         }
 
-        public Builder cancelable(boolean val) {
-            cancelable = val;
-            return this;
+        fun cancelable(value: Boolean): Builder {
+            cancelable = value
+            return this
         }
 
-        public Builder dialogTheme(@StyleRes int val) {
-            dialogTheme = val;
-            return this;
+        fun dialogTheme(@StyleRes value: Int): Builder {
+            dialogTheme = value
+            return this
         }
 
-        public Builder positiveButtonColor(@ColorInt int val) {
-            positiveButtonColor = val;
-            return this;
+        fun positiveButtonColor(@ColorInt value: Int): Builder {
+            positiveButtonColor = value
+            return this
         }
 
-        public Builder negativeButtonColor(@ColorInt int val) {
-            negativeButtonColor = val;
-            return this;
+        fun negativeButtonColor(@ColorInt value: Int): Builder {
+            negativeButtonColor = value
+            return this
         }
 
-        public Builder requestCode(int val) {
-            activityRequestCode = val;
-            return this;
+        fun requestCode(value: Int): Builder {
+            activityRequestCode = value
+            return this
         }
 
-        public CustomDialog build() {
-            return CustomDialog.newInstance(this);
+        fun build(): CustomDialog {
+            return CustomDialog.getInstance(this)
         }
-
     }
 
-    public interface CustomDialogListener {
-
-        void onDialogResult(int requestCode, int resultCode, @Nullable Bundle bundle);
-
+    interface CustomDialogListener {
+        fun onDialogResult(requestCode: Int, resultCode: Int, bundle: Bundle?)
     }
-
-}
-*/
 }

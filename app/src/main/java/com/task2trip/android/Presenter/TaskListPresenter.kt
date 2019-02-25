@@ -46,4 +46,29 @@ class TaskListPresenter(val view: TaskListView, context: Context) : BasePresente
             }
         }
     }
+
+    fun searchTasks(userId: String? = null,
+                    searchString: String? = null,
+                    categoryId: String? = null,
+                    skip: Int? = null,
+                    limit: Int? = null,
+                    status: String? = null) {
+        view.onProgress(true)
+        val req: Call<TaskList> = getApi().getTasks(userId, searchString, categoryId, skip, limit, status)
+        req.enqueue {
+            onResponse = { response ->
+                if (response.code() in 200..299) {
+                    view.onTaskListResult(response.body() ?: TaskList(emptyList(), 0))
+                } else {
+                    view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
+                }
+                view.onProgress(false)
+            }
+
+            onFailure = { onFailure ->
+                view.onMessage("Сетевая ошибка ${onFailure?.message}")
+                view.onProgress(false)
+            }
+        }
+    }
 }

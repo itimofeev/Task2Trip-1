@@ -2,21 +2,28 @@ package com.task2trip.android.UI.Fragment.Task
 
 import android.os.Bundle
 import android.view.View
-import androidx.viewpager.widget.ViewPager
 import com.task2trip.android.Common.Constants
-import com.task2trip.android.Model.TabFragmentTitle
 import com.task2trip.android.R
-import com.task2trip.android.UI.Adapter.TabAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_task_list_performer.*
 
 class TaskListPerformerFragment : BaseFragment() {
-    var userId: String = ""
-    var userRole: String = ""
+    private var userId = ""
+
+    companion object {
+        fun getInstance(userId: String): TaskListPerformerFragment {
+            val fragment = TaskListPerformerFragment()
+            val args = Bundle()
+            args.putString(Constants.EXTRA_USER_ID, userId)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun getArgs(args: Bundle?) {
-        userId = args?.getString(Constants.EXTRA_USER_ID, "") ?: ""
-        userRole = args?.getString(Constants.EXTRA_USER_ROLE, "") ?: ""
+        args?.let {
+            userId = it.getString(Constants.EXTRA_USER_ID, "")
+        }
     }
 
     override fun setResourceLayout(): Int {
@@ -24,25 +31,45 @@ class TaskListPerformerFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
-        initViewPager()
+        initYoySelect()
+        initConfirmation()
     }
 
-    private fun initViewPager() {
-        fragmentManager?.let {
-            val adapter = TabAdapter(it)
-            adapter.addItem(TabFragmentTitle(
-                TaskListTravelerFragment.getInstance(userId, userRole), "Путешественник"))
-            adapter.addItem(TabFragmentTitle(
-                TaskListTravelerFragment.getInstance(userId, userRole), "Исполнитель"))
-            vpTaskList.adapter = adapter
-            vpTaskList.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {}
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-                override fun onPageSelected(position: Int) {
-                    //
-                }
-            })
-            tabTaskList.setupWithViewPager(vpTaskList)
+    private fun initYoySelect() {
+        groupYouSelect.setOnClickListener {
+            onYouSelectClick()
         }
+        ivYouSelect.setOnClickListener {
+            onYouSelectClick()
+        }
+        tvYouSelect.setOnClickListener {
+            onYouSelectClick()
+        }
+        ivArrowYouSelect.setOnClickListener {
+            onYouSelectClick()
+        }
+    }
+
+    private fun initConfirmation() {
+        groupConfirmation.setOnClickListener {
+            onConfirmationClick()
+        }
+        ivConfirmation.setOnClickListener {
+            onConfirmationClick()
+        }
+        tvConfirmation.setOnClickListener {
+            onConfirmationClick()
+        }
+        ivArrowConfirmation.setOnClickListener {
+            onConfirmationClick()
+        }
+    }
+
+    private fun onYouSelectClick() {
+        //navigateTo(R.id.TaskListPerformerYouSelect)
+    }
+
+    private fun onConfirmationClick() {
+        //navigateTo(R.id.TaskListPerformerConfirmation)
     }
 }

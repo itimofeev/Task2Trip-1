@@ -3,6 +3,7 @@ package com.task2trip.android.UI.Fragment.Task
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Common.toInt
 import com.task2trip.android.Common.toPattern
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Task.Task
@@ -39,13 +40,9 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         tvCategoryName.text = getSelectedCategory().defaultValue
         btAddMyTask.setOnClickListener {
             hideKeyboard()
-            addMyTaskClick(
-                TaskSaveModel(
-                    etTaskName.text.toString(), etTaskDescription.text.toString(),
-                    getSelectedCategory().id, 1299,
-                    Calendar.getInstance().toPattern(), Calendar.getInstance().toPattern()
-                )
-            )
+            addMyTaskClick(TaskSaveModel(etTaskName.text.toString() + " " + etCountryAndCity.text.toString(),
+                etTaskDescription.text.toString(), getSelectedCategory().id, etPrice.toInt(),
+                Calendar.getInstance().toPattern(), Calendar.getInstance().toPattern()))
         }
     }
 

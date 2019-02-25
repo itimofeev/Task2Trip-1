@@ -3,6 +3,8 @@ package com.task2trip.android.UI.Fragment.Task
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Common.toCalendar
+import com.task2trip.android.Common.toPattern
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.User.UserRole
@@ -11,13 +13,16 @@ import com.task2trip.android.UI.Fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_task_details.*
 
 class TaskDetailsFragment : BaseFragment() {
-    var userRole = ""
-    var taskItem: Task = MockData.getEmptyTask()
+    private var isEditTask = false
+    private var taskItem: Task = MockData.getEmptyTask()
+    private var userRole: UserRole = MockData.getEmptyUser().getRole()
 
     override fun getArgs(args: Bundle?) {
         args?.let {
-            userRole = it.getString(Constants.EXTRA_USER_ROLE, UserRole.NOT_AUTHORIZED.name)
+            isEditTask = it.getBoolean(Constants.EXTRA_TASK_IS_EDIT, false)
             taskItem = it.getParcelable(Constants.EXTRA_TASK) ?: MockData.getEmptyTask()
+            val userRoleName = it.getString(Constants.EXTRA_USER_ROLE, UserRole.TRAVELER.name) ?: MockData.getEmptyUser().getRole().name
+            userRole = UserRole.getName(userRoleName)
         }
     }
 
@@ -31,27 +36,36 @@ class TaskDetailsFragment : BaseFragment() {
     }
 
     private fun setData(task: Task) {
-        tvStatusDateTime.text = task.status.plus(task.canceledTime)
+        val dateTime = task.canceledTime.toCalendar()
+        tvStatusDateTime.text = task.status.plus(dateTime.toPattern("dd.MM.yyyy HH:mm"))
         tvTaskName.text = task.name
         tvTaskPrice.text = "${task.budgetEstimate} Rub"
-        tvTaskLocation.text = "не определено"
+        tvTaskLocation.text = "Местоположение не определено"
         tvTaskDescription.text = task.description
     }
 
     private fun initApplyButton() {
-        if (userRole == UserRole.LOCAL.name) {
-            btTaskAddOffer.visibility = View.VISIBLE
-            btTaskAddOffer.setOnClickListener {
-                onApplyTaskClick(taskItem)
-            }
+        if (isEditTask) {
+            btTaskOfferOrEdit.text = getString(R.string.task_edit)
         } else {
-            btTaskAddOffer.visibility = View.GONE
+            btTaskOfferOrEdit.text = getString(R.string.task_add_offer)
+        }
+        btTaskOfferOrEdit.setOnClickListener {
+            onApplyTaskClick(taskItem)
         }
     }
 
     private fun onApplyTaskClick(task: Task) {
         val args = Bundle()
         args.putParcelable(Constants.EXTRA_TASK, task)
-        navigateTo(R.id.taskAddOfferFragment, args)
+        if (isEditTask) {
+            navigateTo(R.id.taskAddParamsFragment, args)
+        } else {
+            when (userRole) {
+                UserRole.LOCAL -> navigateTo(R.id.taskAddOfferFragment, args)
+                UserRole.TRAVELER -> navigateTo(R.id.profileFragment, args)
+                else -> navigateTo(R.id.loginRegisterFragment, Bundle())
+            }
+        }
     }
 }

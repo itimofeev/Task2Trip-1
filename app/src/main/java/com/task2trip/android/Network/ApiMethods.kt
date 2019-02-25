@@ -89,9 +89,10 @@ interface ApiMethods {
                  @Query("limit") limit: Int? = null,
                  @Query("status") status: String? = null): Call<TaskList>
 
-    @PUT("/task/{taskId}/offer")
-    fun sendOfferByTaskId(@Path("taskId") taskId: String): Call<Offer>
+    @PUT("task/{taskId}/offer")
+    fun sendOfferByTaskId(@Path("taskId") taskId: String,
+                          @Body offerForSave: OfferForSave): Call<Offer>
 
-    @GET("/task/{taskId}/offer")
+    @GET("task/{taskId}/offer")
     fun getOffersByTaskId(@Path("taskId") taskId: String): Call<List<Offer>>
 }

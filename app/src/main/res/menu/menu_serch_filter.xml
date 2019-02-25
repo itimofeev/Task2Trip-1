@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-            android:id="@+id/searchFragment"
+            android:id="@+id/searchFilterFragment"
             android:orderInCategory="10"
             android:title="Filter"
             android:icon="@drawable/vector_ic_filter_settings"

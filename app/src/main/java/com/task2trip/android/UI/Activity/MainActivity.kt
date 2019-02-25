@@ -119,12 +119,14 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             R.id.searchFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle("Результат: список заданий")
+                setToolBarParams(true, "Результат: список заданий", true)
+                presenter.setLastMenu(R.menu.menu_serch_filter)
             }
             R.id.searchFilterFragment -> {
-                navController.clearBackStack(resourceId, args)
+                val params = args ?: Bundle()
+                params.putString(Constants.EXTRA_USER_ROLE, user.getRole().name)
+                navController.clearBackStack(resourceId, params)
                 setToolBarParams(true, "Поиск заданий", false)
-                presenter.setLastMenu(R.menu.menu_serch_filter)
             }
             R.id.profileFragment -> {
                 navController.clearBackStack(resourceId, args)
@@ -149,8 +151,8 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.navigate(resourceId, args)
                 setToolBarTitle("Уведомления")
             }
-            R.id.taskListPerformerFragment, R.id.taskListNotAuthorizedFragment,
-            R.id.taskListTravelerFragment -> {
+            R.id.taskListPerformerFragment, R.id.taskListPerformerPagerFragment,
+            R.id.taskListNotAuthorizedFragment, R.id.taskListTravelerFragment -> {
                 val params = args ?: Bundle()
                 params.putString(Constants.EXTRA_USER_ID, this.user.getId())
                 params.putString(Constants.EXTRA_USER_ROLE, this.user.getRole().name)
@@ -183,7 +185,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                         R.id.taskListNotAuthorizedFragment
                     }
                     UserRole.LOCAL -> {
-                        R.id.taskListPerformerFragment
+                        R.id.taskListPerformerPagerFragment
                     }
                     UserRole.TRAVELER -> {
                         R.id.taskListTravelerFragment

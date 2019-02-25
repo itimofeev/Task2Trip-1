@@ -20,14 +20,12 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     private var message = ""
     private var isMessage = false
     private var userId = ""
-    private var userRole = ""
 
     companion object {
-        fun getInstance(userId: String, userRole: String): TaskListTravelerFragment {
+        fun getInstance(userId: String): TaskListTravelerFragment {
             val fragment = TaskListTravelerFragment()
             val args = Bundle()
             args.putString(Constants.EXTRA_USER_ID, userId)
-            args.putString(Constants.EXTRA_USER_ROLE, userRole)
             fragment.arguments = args
             return fragment
         }
@@ -38,7 +36,6 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
             isMessage = it.getBoolean(Constants.EXTRA_IS_MESSAGE, false)
             message = it.getString(Constants.EXTRA_MESSAGE_TEXT, "")
             userId = it.getString(Constants.EXTRA_USER_ID, "")
-            userRole = it.getString(Constants.EXTRA_USER_ROLE, "")
         }
     }
 
@@ -56,12 +53,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
 
     private fun initPresenter(view: View) {
         presenter = TaskListPresenter(this, view.context)
-        if (userRole == UserRole.LOCAL.name) {
-            // TODO: Получить список предложений
-            presenter.getTasksByUserId(userId)
-        } else if (userRole == UserRole.TRAVELER.name) {
-            presenter.getTasksByUserId(userId)
-        }
+        presenter.getTasksByUserId(userId)
     }
 
     private fun initCategoryRecycleView(view: View) {
@@ -77,8 +69,11 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
 
     override fun onItemClick(item: Task, position: Int) {
         val args = Bundle()
-        args.putParcelable(Constants.EXTRA_TASK, item)
-        args.putString(Constants.EXTRA_USER_ROLE, userRole)
+        with(args) {
+            putParcelable(Constants.EXTRA_TASK, item)
+            putBoolean(Constants.EXTRA_TASK_IS_EDIT, true)
+            putString(Constants.EXTRA_USER_ROLE, UserRole.TRAVELER.name)
+        }
         navigateTo(R.id.taskDetailsFragment, args)
     }
 

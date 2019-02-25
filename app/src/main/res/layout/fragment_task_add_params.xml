@@ -148,15 +148,17 @@
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"/>
 
-                        <TextView
+                        <EditText
+                                android:id="@+id/etCountryAndCity"
                                 android:gravity="center_vertical"
                                 style="@style/textGrayConstraint"
                                 android:layout_marginStart="@dimen/margin_left_8dp"
                                 android:layout_marginLeft="@dimen/margin_left_8dp"
                                 android:layout_marginEnd="@dimen/margin_right_8dp"
                                 android:layout_marginRight="@dimen/margin_right_8dp"
+                                android:hint="Введите страну и город"
                                 android:textSize="20sp"
-                                android:text="Адресс"
+                                android:text=""
                                 app:layout_constraintEnd_toStartOf="@+id/ivArrowRight2"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -233,16 +235,17 @@
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"/>
 
-                        <TextView
-                                android:id="@+id/tvPrice"
+                        <EditText
+                                android:id="@+id/etPrice"
                                 android:gravity="center_vertical"
                                 style="@style/textGrayConstraint"
                                 android:layout_marginStart="@dimen/margin_left_8dp"
                                 android:layout_marginLeft="@dimen/margin_left_8dp"
                                 android:layout_marginEnd="@dimen/margin_right_8dp"
                                 android:layout_marginRight="@dimen/margin_right_8dp"
+                                android:hint="Цена"
                                 android:textSize="20sp"
-                                android:text="Цена"
+                                android:text=""
                                 app:layout_constraintEnd_toStartOf="@+id/ivArrowRight4"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
