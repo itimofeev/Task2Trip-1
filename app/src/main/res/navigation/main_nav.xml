@@ -55,4 +55,8 @@
               android:label="fragment_task_add_offer" tools:layout="@layout/fragment_task_add_offer"/>
     <fragment android:id="@+id/taskOffersFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskOffersFragment"
               android:label="fragment_task_offers" tools:layout="@layout/fragment_task_offers"/>
+    <fragment android:id="@+id/taskDetailOfferPagerFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskDetailOfferPagerFragment"
+              android:label="fragment_task_detail_offer_pager" tools:layout="@layout/fragment_task_detail_offer_pager"/>
+    <fragment android:id="@+id/offerDetailFragment" android:name="com.task2trip.android.UI.Fragment.Task.OfferDetailFragment"
+              android:label="fragment_offer_detail" tools:layout="@layout/fragment_offer_detail"/>
 </navigation>

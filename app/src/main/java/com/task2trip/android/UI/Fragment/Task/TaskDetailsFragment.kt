@@ -17,6 +17,20 @@ class TaskDetailsFragment : BaseFragment() {
     private var taskItem: Task = MockData.getEmptyTask()
     private var userRole: UserRole = MockData.getEmptyUser().getRole()
 
+    companion object {
+        fun getInstance(task: Task, isEdit: Boolean, userRoleName: String): TaskDetailsFragment {
+            val fragment = TaskDetailsFragment()
+            val args = Bundle()
+            with(args) {
+                putParcelable(Constants.EXTRA_TASK, task)
+                putBoolean(Constants.EXTRA_TASK_IS_EDIT, isEdit)
+                putString(Constants.EXTRA_USER_ROLE, userRoleName)
+            }
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
     override fun getArgs(args: Bundle?) {
         args?.let {
             isEditTask = it.getBoolean(Constants.EXTRA_TASK_IS_EDIT, false)
@@ -48,6 +62,9 @@ class TaskDetailsFragment : BaseFragment() {
         if (isEditTask) {
             btTaskOfferOrEdit.text = getString(R.string.task_edit)
         } else {
+            if (userRole == UserRole.TRAVELER) {
+                btTaskOfferOrEdit.visibility = View.GONE
+            }
             btTaskOfferOrEdit.text = getString(R.string.task_add_offer)
         }
         btTaskOfferOrEdit.setOnClickListener {

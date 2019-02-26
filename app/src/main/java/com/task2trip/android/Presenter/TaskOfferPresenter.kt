@@ -27,4 +27,24 @@ class TaskOfferPresenter(val view: TaskOfferView, context: Context): BasePresent
             }
         }
     }
+
+    fun getOffersByTaskId(taskId: String) {
+        view.onProgress(true)
+        val req: Call<List<Offer>> = getApi().getOffersByTaskId(taskId)
+        req.enqueue {
+            onResponse = { response ->
+                if (response.code() in 200..299) {
+                    view.onOffersResult(response.body() ?: MockData.getEmptyOfferList())//MockData.getOfferList()
+                } else {
+                    view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
+                }
+                view.onProgress(false)
+            }
+
+            onFailure = { onFailure ->
+                view.onMessage("Сетевая ошибка ${onFailure?.message}")
+                view.onProgress(false)
+            }
+        }
+    }
 }

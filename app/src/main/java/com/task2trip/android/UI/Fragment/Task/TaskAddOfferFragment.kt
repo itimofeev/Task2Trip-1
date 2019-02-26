@@ -56,4 +56,8 @@ class TaskAddOfferFragment : BaseFragment(), TaskOfferView {
             navigateTo(R.id.taskListPerformerFragment, args)
         }
     }
+
+    override fun onOffersResult(offerList: List<Offer>) {
+        //
+    }
 }

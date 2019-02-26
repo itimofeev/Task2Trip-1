@@ -40,7 +40,7 @@ class TaskListPerformerPagerFragment: BaseFragment() {
         childFragmentManager.let {
             val adapter = TabAdapter(it)
             adapter.addItem(
-                TabFragmentTitle(TaskListTravelerFragment.getInstance(userId), "Путешественник"))
+                TabFragmentTitle(TaskListTravelerFragment.getInstance(userId, userRole), "Путешественник"))
             adapter.addItem(
                 TabFragmentTitle(TaskListPerformerFragment.getInstance(userId), "Местный житель"))
             vpTaskList.adapter = adapter

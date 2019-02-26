@@ -1,10 +1,12 @@
 package com.task2trip.android.Model.User
 
 import android.content.Context
+import android.os.Parcel
+import android.os.Parcelable
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
 
-class UserImpl: User {
+class UserImpl() : User, Parcelable {
     private var id: String = ""
     private var login: String = ""
     private var name: String = ""
@@ -12,6 +14,16 @@ class UserImpl: User {
     private var imageUrl: String = ""
     private var role: String = ""
     private var token: String = ""
+
+    constructor(parcel: Parcel) : this() {
+        id = parcel.readString()
+        login = parcel.readString()
+        name = parcel.readString()
+        email = parcel.readString()
+        imageUrl = parcel.readString()
+        role = parcel.readString()
+        token = parcel.readString()
+    }
 
     override fun isAuthorized(): Boolean {
         return token.isNotEmpty()
@@ -112,6 +124,30 @@ class UserImpl: User {
             role = get(Constants.EXTRA_USER_ROLE, UserRole.NOT_AUTHORIZED.name)!!
             token = get(Constants.EXTRA_USER_TOKEN, "")!!
             imageUrl = get(Constants.EXTRA_USER_IMAGE_URL, "")!!
+        }
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
+        parcel.writeString(login)
+        parcel.writeString(name)
+        parcel.writeString(email)
+        parcel.writeString(imageUrl)
+        parcel.writeString(role)
+        parcel.writeString(token)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<UserImpl> {
+        override fun createFromParcel(parcel: Parcel): UserImpl {
+            return UserImpl(parcel)
+        }
+
+        override fun newArray(size: Int): Array<UserImpl?> {
+            return arrayOfNulls(size)
         }
     }
 }

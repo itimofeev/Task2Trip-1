@@ -20,12 +20,14 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     private var message = ""
     private var isMessage = false
     private var userId = ""
+    private var userRole = ""
 
     companion object {
-        fun getInstance(userId: String): TaskListTravelerFragment {
+        fun getInstance(userId: String, userRole: String): TaskListTravelerFragment {
             val fragment = TaskListTravelerFragment()
             val args = Bundle()
             args.putString(Constants.EXTRA_USER_ID, userId)
+            args.putString(Constants.EXTRA_USER_ROLE, userRole)
             fragment.arguments = args
             return fragment
         }
@@ -36,6 +38,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
             isMessage = it.getBoolean(Constants.EXTRA_IS_MESSAGE, false)
             message = it.getString(Constants.EXTRA_MESSAGE_TEXT, "")
             userId = it.getString(Constants.EXTRA_USER_ID, "")
+            userRole = it.getString(Constants.EXTRA_USER_ROLE, "")
         }
     }
 
@@ -72,9 +75,9 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
         with(args) {
             putParcelable(Constants.EXTRA_TASK, item)
             putBoolean(Constants.EXTRA_TASK_IS_EDIT, true)
-            putString(Constants.EXTRA_USER_ROLE, UserRole.TRAVELER.name)
+            putString(Constants.EXTRA_USER_ROLE, userRole)
         }
-        navigateTo(R.id.taskDetailsFragment, args)
+        navigateTo(R.id.taskDetailOfferPagerFragment, args)
     }
 
     override fun onProgress(isProgress: Boolean) {

@@ -62,4 +62,5 @@
     <dimen name="image_size_big">80dp</dimen>
 
     <dimen name="text_size_setting_item">18sp</dimen>
+    <dimen name="text_size_text_16sp">16sp</dimen>
 </resources>

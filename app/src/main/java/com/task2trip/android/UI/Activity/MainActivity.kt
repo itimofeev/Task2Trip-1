@@ -163,9 +163,20 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, "Добавить предложение", true)
             }
+            R.id.taskDetailOfferPagerFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, "Задание №YYY", true)
+            }
+            R.id.offerDetailFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, "Просмотр предложения", true)
+            }
             R.id.taskDetailsFragment -> {
                 navController.navigate(resourceId, args)
                 setToolBarTitle("Задача №ххх")
+            }
+            android.R.id.home -> {
+                navController.popBackStack()
             }
             else -> {
                 navController.navigate(R.id.loginRegisterFragment)
