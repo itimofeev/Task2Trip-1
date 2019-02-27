@@ -21,7 +21,7 @@ import retrofit2.http.*
 
 interface ApiMethods {
     companion object {
-        const val BASE_URL = "http://116.203.97.169:8000/api/"
+        const val BASE_URL = "http://task2trip.com/api/"
         private const val VERSION: String = "v1/"
 
         fun getInstance(context: Context): ApiMethods {

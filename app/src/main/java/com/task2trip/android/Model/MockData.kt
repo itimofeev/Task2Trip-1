@@ -22,19 +22,19 @@ class MockData {
         fun getEmptyTask(): Task {
             return Task("", "", "", "",
                 "", "", 0, "",
-                "", "", "", "", getEmptyCategory())
+                "", "", "", "", getEmptyCategory(), getEmptyUser())
         }
 
         fun getEmptyCategory(): TaskCategory {
             return TaskCategory("", "", "", "")
         }
 
-        fun getEmptyUser(): User {
+        fun getEmptyUser(): UserImpl {
             return UserImpl()
         }
 
         fun getEmptyOffer(): Offer {
-            return Offer("", "", 0, getEmptyUser() as UserImpl, "", "")
+            return Offer("", "", 0, getEmptyUser(), "", "", getEmptyTask())
         }
 
         fun getEmptyOfferList(): List<Offer> {
@@ -43,11 +43,11 @@ class MockData {
 
         fun getOfferList(): List<Offer> {
             val offers = ArrayList<Offer>()
-            offers.add(Offer("1", "test comment 11", 111, getEmptyUser() as UserImpl, "", ""))
-            offers.add(Offer("2", "test comment 22", 222, getEmptyUser() as UserImpl, "", ""))
-            offers.add(Offer("3", "test comment 33", 333, getEmptyUser() as UserImpl, "", ""))
-            offers.add(Offer("4", "test comment 44", 444, getEmptyUser() as UserImpl, "", ""))
-            offers.add(Offer("5", "test comment 55", 555, getEmptyUser() as UserImpl, "", ""))
+            offers.add(Offer("1", "test comment 11", 111, getEmptyUser(), "", "", getEmptyTask()))
+            offers.add(Offer("2", "test comment 22", 222, getEmptyUser(), "", "", getEmptyTask()))
+            offers.add(Offer("3", "test comment 33", 333, getEmptyUser(), "", "", getEmptyTask()))
+            offers.add(Offer("4", "test comment 44", 444, getEmptyUser(), "", "", getEmptyTask()))
+            offers.add(Offer("5", "test comment 55", 555, getEmptyUser(), "", "", getEmptyTask()))
             return offers
         }
     }

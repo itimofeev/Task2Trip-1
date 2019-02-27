@@ -12,17 +12,13 @@
     <string name="reg_forgot">Забыли пароль?</string>
     <string name="reg_login_social">Войти через социальные сети</string>
     <string name="board_skip_text"><u>Пропустить</u></string>
-    <string name="board_title_01">Местные жители по всему миру помогут выполнить ваши задачи в путешествии</string>
-    <string name="board_title_02">Создайте своё задание и местные жители Вам помогут!</string>
-    <string name="board_title_03">Общайся с местными жителями напрямую!</string>
-    <string name="board_msg_01">Создать маршрут путешествия, найти гида или трансфер</string>
+    <string name="board_title_01">Местные жители выполняют ваши задачи в путешествиях по всему миру!</string>
+    <string name="board_title_02">Создайте любое задание!</string>
+    <string name="board_msg_01">Создать маршрут путешествия,\nнайти гида или трансфер</string>
     <string name="board_msg_02">
         1. Опишите задачу, которую нужно выполнить.\n
         2. Местные жители предложат вам свои услуги и цены\n
         3. Выберите лучшее предложение и заключите сделку
-    </string>
-    <string name="board_msg_03">Сразу после создания задания ты можешь начать общаться с местными жителямя с помощью
-        чата!
     </string>
 
     <string name="profile_name_title">Имя</string>
@@ -45,8 +41,8 @@
     <string name="task_add_my">Опубликовать</string>
     <string name="task_add_offer">Предложить свои услуги</string>
     <string name="task_edit">Редактировать</string>
-    <string name="logo1">task</string>
-    <string name="logo2">2\ntrip</string>
+    <string name="logo1">Создавайте любые задания</string>
+    <string name="logo2">и находите местных жителей\nдля их выполнения</string>
 
     <string name="next_step">Далее</string>
 

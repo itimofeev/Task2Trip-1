@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/image_board">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/tvLogo_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/purple"
-            android:layout_marginTop="32dp"
-            android:paddingStart="32dp"
-            android:paddingLeft="32dp"
-            android:paddingRight="@dimen/padding_right_16dp"
-            android:paddingEnd="@dimen/padding_right_16dp"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="56sp"
-            android:text="@string/logo1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-            android:id="@+id/tvLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:maxLines="2"
-            android:paddingStart="32dp"
-            android:paddingLeft="32dp"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="56sp"
-            android:text="@string/logo2"
+    <ImageView
+            android:id="@+id/ivBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/image_login_background"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLogo_color"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+            android:id="@+id/tvTitleBig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_64dp"
+            android:fontFamily="FuturaBookC"
+            android:textSize="@dimen/text_size_text_24sp"
+            android:textColor="@color/white"
+            android:text="@string/logo1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/tvTitleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_top_8dp"
+            android:fontFamily="FuturaBookC"
+            android:textColor="@color/gray_very_light"
+            android:text="@string/logo2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleBig"/>
 
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/vpOnBoardPages"

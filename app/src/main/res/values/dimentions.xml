@@ -7,6 +7,8 @@
 
     <dimen name="margin_all_8dp">8dp</dimen>
     <dimen name="margin_all_16dp">16dp</dimen>
+    <dimen name="margin_all_32dp">32dp</dimen>
+    <dimen name="margin_all_64dp">64dp</dimen>
 
     <dimen name="margin_left_16dp">16dp</dimen>
     <dimen name="margin_right_16dp">16dp</dimen>
@@ -17,6 +19,11 @@
     <dimen name="margin_right_32dp">32dp</dimen>
     <dimen name="margin_top_32dp">32dp</dimen>
     <dimen name="margin_bottom_32dp">32dp</dimen>
+
+    <dimen name="margin_left_64dp">64dp</dimen>
+    <dimen name="margin_right_64dp">64dp</dimen>
+    <dimen name="margin_top_64dp">64dp</dimen>
+    <dimen name="margin_bottom_64dp">64dp</dimen>
 
     <dimen name="padding_left_8dp">8dp</dimen>
     <dimen name="padding_right_8dp">8dp</dimen>
@@ -63,4 +70,5 @@
 
     <dimen name="text_size_setting_item">18sp</dimen>
     <dimen name="text_size_text_16sp">16sp</dimen>
+    <dimen name="text_size_text_24sp">24sp</dimen>
 </resources>
