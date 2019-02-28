@@ -9,7 +9,7 @@ import androidx.annotation.StyleRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
-class CustomDialog: DialogFragment() {
+open class CustomDialog: DialogFragment() {
     private var title: String? = null
     private var message: String = ""
     private var positiveButton: String = ""
@@ -38,9 +38,9 @@ class CustomDialog: DialogFragment() {
                 args.putString("AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_TITLE", builder.negativeButton)
             if (builder.dialogLayout > 0)
                 args.putInt("AppExtras.EXTRA_DIALOG_LAYOUT", builder.dialogLayout)
-            if (builder.positiveButtonColor !== 0)
+            if (builder.positiveButtonColor != 0)
                 args.putInt("AppExtras.EXTRA_DIALOG_POSITIVE_BUTTON_COLOR", builder.positiveButtonColor)
-            if (builder.negativeButtonColor !== 0)
+            if (builder.negativeButtonColor != 0)
                 args.putInt("AppExtras.EXTRA_DIALOG_NEGATIVE_BUTTON_COLOR", builder.negativeButtonColor)
             if (builder.activityRequestCode > 0)
                 args.putInt("AppExtras.EXTRA_DIALOG_REQUEST_CODE", builder.activityRequestCode)
@@ -49,6 +49,8 @@ class CustomDialog: DialogFragment() {
             fragment.arguments = args
             return fragment
         }
+
+        inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,10 +97,10 @@ class CustomDialog: DialogFragment() {
             val dialog = builder.create()
             dialog.setOnShowListener {
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE).setPadding(BUTTON_PADDING, 0, 0, 0)
-                if (positiveButtonColor !== 0) {
+                if (positiveButtonColor != 0) {
                     dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(positiveButtonColor)
                 }
-                if (negativeButtonColor !== 0) {
+                if (negativeButtonColor != 0) {
                     dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(negativeButtonColor)
                 }
             }
@@ -117,7 +119,7 @@ class CustomDialog: DialogFragment() {
         }
     }
 
-    inner class Builder {
+    class Builder {
         var title: String? = null
         var message: String? = null
         var positiveButton: String? = null
@@ -132,56 +134,6 @@ class CustomDialog: DialogFragment() {
         init {
             dialogLayout = 0
             cancelable = false
-        }
-
-        fun title(value: String): Builder {
-            title = value
-            return this
-        }
-
-        fun message(value: String): Builder {
-            message = value
-            return this
-        }
-
-        fun positiveButton(value: String): Builder {
-            positiveButton = value
-            return this
-        }
-
-        fun negativeButton(value: String): Builder {
-            negativeButton = value
-            return this
-        }
-
-        fun dialogLayout(@LayoutRes value: Int): Builder {
-            dialogLayout = value
-            return this
-        }
-
-        fun cancelable(value: Boolean): Builder {
-            cancelable = value
-            return this
-        }
-
-        fun dialogTheme(@StyleRes value: Int): Builder {
-            dialogTheme = value
-            return this
-        }
-
-        fun positiveButtonColor(@ColorInt value: Int): Builder {
-            positiveButtonColor = value
-            return this
-        }
-
-        fun negativeButtonColor(@ColorInt value: Int): Builder {
-            negativeButtonColor = value
-            return this
-        }
-
-        fun requestCode(value: Int): Builder {
-            activityRequestCode = value
-            return this
         }
 
         fun build(): CustomDialog {

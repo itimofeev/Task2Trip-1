@@ -35,7 +35,7 @@ class LoginFragment : BaseFragment(), UserView {
         //
     }
 
-    override fun onRegisterResult(user: UserInfoResp) {
+    override fun onRegisterResult(user: Void?) {
         //
     }
 

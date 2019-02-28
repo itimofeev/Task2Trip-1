@@ -11,6 +11,7 @@ import com.task2trip.android.Model.User.User
 import com.task2trip.android.View.MainActivityView
 import android.app.Activity
 import android.view.inputmethod.InputMethodManager
+import java.util.*
 
 abstract class BaseFragment : Fragment() {
     private var activityListener: MainActivityView? = null
@@ -71,6 +72,10 @@ abstract class BaseFragment : Fragment() {
 
     protected fun logoutUser() {
         activityListener?.logoutUser()
+    }
+
+    protected fun getDefaultLocale(): String {
+        return Locale.getDefault().language.toLowerCase()
     }
 
     override fun onDetach() {

@@ -21,7 +21,7 @@ import retrofit2.http.*
 
 interface ApiMethods {
     companion object {
-        const val BASE_URL = "http://task2trip.com/api/"
+        const val BASE_URL = "http://task2trip.com:8000/api/"
         private const val VERSION: String = "v1/"
 
         fun getInstance(context: Context): ApiMethods {
@@ -63,11 +63,17 @@ interface ApiMethods {
         }
     }
 
-    @POST("user")
-    fun userRegister(@Body user: UserDataReq): Call<UserInfoResp>
-
+    /**
+     * Вход пользователя
+     */
     @POST("user/login")
-    fun userLogin(@Body user: UserDataReq): Call<UserLoginResp>
+    fun userLogin(@Body user: UserLoginReq): Call<UserLoginResp>
+
+    /**
+     * Регистрация пользователя
+     */
+    @POST("user/signup")
+    fun userRegister(@Body user: UserSignUpReq): Call<Void>
 
     @GET("user")
     fun userInfo(): Call<UserInfoResp>

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,16 +18,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCategory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Гиды"/>
+                android:layout_height="match_parent"
+                android:inputType="none"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                tools:text="Гиды, Трансфер"
+                android:text=""/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvCity"
+            android:id="@+id/tvCountryAndCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/search_filter_region_title"
@@ -55,7 +62,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCity">
+            app:layout_constraintTop_toBottomOf="@+id/tvCountryAndCity">
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/etStatus"

@@ -3,8 +3,10 @@ package com.task2trip.android.Model
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskAddCategory
 import com.task2trip.android.Model.Task.TaskCategory
-import com.task2trip.android.Model.User.User
 import com.task2trip.android.Model.User.UserImpl
+import com.task2trip.android.Model.User.UserInfoResp
+import com.task2trip.android.Model.User.UserLoginResp
+import com.task2trip.android.Model.User.UserSignUpResp
 
 class MockData {
     companion object {
@@ -49,6 +51,18 @@ class MockData {
             offers.add(Offer("4", "test comment 44", 444, getEmptyUser(), "", "", getEmptyTask()))
             offers.add(Offer("5", "test comment 55", 555, getEmptyUser(), "", "", getEmptyTask()))
             return offers
+        }
+
+        fun getEmptyUserInfoResp(): UserInfoResp {
+            return UserInfoResp("", "", "", "")
+        }
+
+        fun getEmptyUserSignUpResp(): UserSignUpResp {
+            return UserSignUpResp("", "")
+        }
+
+        fun getEmptyUserLoginResp(): UserLoginResp {
+            return UserLoginResp("", getEmptyUser())
         }
     }
 }

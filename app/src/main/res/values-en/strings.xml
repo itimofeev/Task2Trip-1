@@ -10,20 +10,16 @@
     <string name="login">Login</string>
     <string name="reg_email">E-mail</string>
     <string name="reg_password">Password</string>
+    <string name="reg_name">you name</string>
     <string name="reg_forgot">Forgot password?</string>
     <string name="reg_login_social">Login with social</string>
     <string name="board_title_01">Местные жители по всему миру помогут выполнить ваши задачи в путешествии</string>
     <string name="board_title_02">Создайте своё задание и местные жители Вам помогут!</string>
-    <string name="board_title_03">Общайся с местными жителями напрямую!</string>
     <string name="board_msg_01">Создать маршрут путешествия, найти гида или трансфер</string>
     <string name="board_msg_02">
         1. Опишите задачу, которую нужно выполнить.\n
         2. Местные жители предложат вам свои услуги и цены\n
         3. Выберите лучшее предложение и заключите сделку</string>
-    <string name="board_msg_03">Сразу после создания задания ты можешь начать общаться с местными жителямя с помощью
-        чата!
-    </string>
-
     <string name="profile_name_title">Name</string>
     <string name="profile_birthday_title">Birthday</string>
     <string name="profile_gender_title">Gender</string>
@@ -34,17 +30,17 @@
     <string name="profile_task_execute_description">Откликайтесь на задания путешественников и получайте вознаграждение за свою работу!</string>
 
     <string name="search_filter_category_title">Category</string>
-    <string name="search_filter_region_title">Регион поиска</string>
-    <string name="search_filter_status_title">Статус заданий</string>
+    <string name="search_filter_region_title">Region for search</string>
+    <string name="search_filter_status_title">Status of tasks</string>
 
     <string name="task_create">Create task</string>
     <string name="task_get_my">My tasks</string>
-    <string name="task_add_my">Добавить предложение</string>
+    <string name="task_add_my">Add offer</string>
     <string name="task_add_offer">offer me</string>
     <string name="task_edit">Edit</string>
     <string name="board_skip_text"><u>Skip</u></string>
-    <string name="logo1">task</string>
-    <string name="logo2">2trip</string>
+    <string name="logo1">Создавайте любые задания</string>
+    <string name="logo2">и находите местных жителей\nдля их выполнения</string>
 
     <string name="next_step">Next</string>
 
