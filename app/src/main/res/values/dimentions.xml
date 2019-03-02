@@ -56,8 +56,8 @@
     <dimen name="elevation_4dp">4dp</dimen>
     <dimen name="elevation_8dp">8dp</dimen>
 
-    <dimen name="category_height">60dp</dimen>
     <dimen name="list_item_height">100dp</dimen>
+    <dimen name="item_height_very_small">40dp</dimen>
     <dimen name="item_height_small">60dp</dimen>
     <dimen name="item_height_medium">80dp</dimen>
 

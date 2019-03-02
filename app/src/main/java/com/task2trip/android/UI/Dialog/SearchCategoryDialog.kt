@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.content.Context
 import android.graphics.Rect
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.R
@@ -71,6 +72,7 @@ class SearchCategoryDialog: DialogFragment(), ItemClickListener<TaskCategory> {
         val rvSearchCategory: RecyclerView = view.findViewById<RecyclerView>(R.id.rvSearchCategory)
         val adapter = TaskCategorySearchAdapter(categoryList)
         adapter.setClickListener(this)
+        rvSearchCategory.layoutManager = LinearLayoutManager(view.context)
         rvSearchCategory.adapter = adapter
     }
 
