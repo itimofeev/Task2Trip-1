@@ -28,7 +28,7 @@ class MockData {
         }
 
         fun getEmptyCategory(): TaskCategory {
-            return TaskCategory("", "", "", "")
+            return TaskCategory("", "", "", "", false)
         }
 
         fun getEmptyUser(): UserImpl {

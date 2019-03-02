@@ -60,4 +60,12 @@ class TaskAddOfferFragment : BaseFragment(), TaskOfferView {
     override fun onOffersResult(offerList: List<Offer>) {
         //
     }
+
+    override fun onSetOfferForUser(offer: Offer) {
+        //
+    }
+
+    override fun onMyOffersResult(offers: List<Offer>) {
+        //
+    }
 }

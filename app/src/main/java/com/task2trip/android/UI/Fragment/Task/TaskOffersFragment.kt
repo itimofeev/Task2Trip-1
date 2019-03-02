@@ -16,12 +16,14 @@ import kotlinx.android.synthetic.main.fragment_task_offers.*
 class TaskOffersFragment : BaseFragment(), TaskOfferView, ItemClickListener<Offer> {
     private lateinit var presenter: TaskOfferPresenter
     private var taskId = ""
+    private var isMyOffers = false
 
     companion object {
-        fun getInstance(taskId: String): TaskOffersFragment {
+        fun getInstance(taskId: String, isMyOffers: Boolean): TaskOffersFragment {
             val fragment = TaskOffersFragment()
             val args = Bundle()
             args.putString(Constants.EXTRA_TASK_ID, taskId)
+            args.putBoolean(Constants.EXTRA_OFFER_IS_SHOW_MY, isMyOffers)
             fragment.arguments = args
             return fragment
         }
@@ -30,6 +32,7 @@ class TaskOffersFragment : BaseFragment(), TaskOfferView, ItemClickListener<Offe
     override fun getArgs(args: Bundle?) {
         args?.let {
             taskId = it.getString(Constants.EXTRA_TASK_ID, "")
+            isMyOffers = it.getBoolean(Constants.EXTRA_OFFER_IS_SHOW_MY, false)
         }
     }
 
@@ -50,24 +53,11 @@ class TaskOffersFragment : BaseFragment(), TaskOfferView, ItemClickListener<Offe
 
     private fun initPresenter(view: View) {
         presenter = TaskOfferPresenter(this, view.context)
-        presenter.getOffersByTaskId(taskId)
-    }
-
-    override fun onSaveOfferResult(offer: Offer) {
-        //
-    }
-
-    override fun onOffersResult(offerList: List<Offer>) {
-        if (offerList.isEmpty()) {
-            tvEmptyMessage.visibility = View.VISIBLE
-            rvOffersList.visibility = View.GONE
+        if (isMyOffers) {
+            presenter.getMyOffers()
         } else {
-            tvEmptyMessage.visibility = View.GONE
-            rvOffersList.visibility = View.VISIBLE
+            presenter.getOffersByTaskId(taskId)
         }
-        val adapter = TaskOfferListAdapter(offerList)
-        adapter.setClickListener(this)
-        rvOffersList.adapter = adapter
     }
 
     override fun onItemClick(item: Offer, position: Int) {
@@ -81,5 +71,34 @@ class TaskOffersFragment : BaseFragment(), TaskOfferView, ItemClickListener<Offe
 
     override fun onProgress(isProgress: Boolean) {
         //
+    }
+
+    override fun onSaveOfferResult(offer: Offer) {
+        //
+    }
+
+    override fun onOffersResult(offerList: List<Offer>) {
+        setAdapter(offerList)
+    }
+
+    override fun onSetOfferForUser(offer: Offer) {
+        //
+    }
+
+    override fun onMyOffersResult(offers: List<Offer>) {
+        setAdapter(offers)
+    }
+
+    private fun setAdapter(offerList: List<Offer>) {
+        if (offerList.isEmpty()) {
+            tvEmptyMessage.visibility = View.VISIBLE
+            rvOffersList.visibility = View.GONE
+        } else {
+            tvEmptyMessage.visibility = View.GONE
+            rvOffersList.visibility = View.VISIBLE
+        }
+        val adapter = TaskOfferListAdapter(offerList)
+        adapter.setClickListener(this)
+        rvOffersList.adapter = adapter
     }
 }

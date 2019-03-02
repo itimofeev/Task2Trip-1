@@ -6,11 +6,14 @@ import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.ImageLoader.ImageLoader
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Offer
+import com.task2trip.android.Presenter.TaskOfferPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
+import com.task2trip.android.View.TaskOfferView
 import kotlinx.android.synthetic.main.fragment_offer_detail.*
 
-class OfferDetailFragment : BaseFragment() {
+class OfferDetailFragment : BaseFragment(), TaskOfferView {
+    private lateinit var presenter: TaskOfferPresenter
     private var taskId: String = ""
     private var offer: Offer = MockData.getEmptyOffer()
 
@@ -45,11 +48,16 @@ class OfferDetailFragment : BaseFragment() {
         tvPaymentType.text = "Оплата наличными"
         tvOfferDescription.text = offer.comment
         btSetMyLocal.setOnClickListener {
-            onSetMyLocal()
+            presenter.setOfferForUser(taskId, offer.id)
         }
         btSendMessage.setOnClickListener {
             onSendMessage()
         }
+        initPresenter(view)
+    }
+
+    private fun initPresenter(view: View) {
+        presenter = TaskOfferPresenter(this, view.context)
     }
 
     private fun onSetMyLocal() {
@@ -63,5 +71,25 @@ class OfferDetailFragment : BaseFragment() {
         val args = Bundle()
         args.putParcelable(Constants.EXTRA_USER, offer.user)
         navigateTo(R.id.messageFragment, args)
+    }
+
+    override fun onSaveOfferResult(offer: Offer) {
+        //
+    }
+
+    override fun onOffersResult(offerList: List<Offer>) {
+        //
+    }
+
+    override fun onSetOfferForUser(offer: Offer) {
+        onSetMyLocal()
+    }
+
+    override fun onMyOffersResult(offers: List<Offer>) {
+        //
+    }
+
+    override fun onProgress(isProgress: Boolean) {
+        //
     }
 }

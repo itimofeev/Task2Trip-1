@@ -33,6 +33,9 @@ class TaskListPerformerFragment : BaseFragment() {
     override fun initComponents(view: View) {
         initYoySelect()
         initConfirmation()
+        btSearch.setOnClickListener {
+            navigateTo(R.id.searchFilterFragment, Bundle())
+        }
     }
 
     private fun initYoySelect() {
@@ -66,10 +69,14 @@ class TaskListPerformerFragment : BaseFragment() {
     }
 
     private fun onYouSelectClick() {
-        //navigateTo(R.id.TaskListPerformerYouSelect)
+        val args = Bundle()
+        args.putBoolean(Constants.EXTRA_OFFER_IS_SHOW_MY, true)
+        navigateTo(R.id.taskOffersFragment, args)
     }
 
     private fun onConfirmationClick() {
-        //navigateTo(R.id.TaskListPerformerConfirmation)
+        val args = Bundle()
+        args.putBoolean(Constants.EXTRA_OFFER_IS_SHOW_MY, true)
+        navigateTo(R.id.taskOffersFragment, args)
     }
 }

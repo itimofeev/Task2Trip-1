@@ -8,6 +8,8 @@ import androidx.fragment.app.DialogFragment
 import com.task2trip.android.Common.Constants
 import android.view.LayoutInflater
 import android.content.Context
+import android.content.Intent
+import android.graphics.Point
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +20,7 @@ import com.task2trip.android.UI.Adapter.TaskCategorySearchAdapter
 import com.task2trip.android.UI.Listener.ItemClickListener
 
 class SearchCategoryDialog: DialogFragment(), ItemClickListener<TaskCategory> {
-    var categoryList: ArrayList<TaskCategory> = ArrayList()
+    private var categoryList: ArrayList<TaskCategory> = ArrayList()
 
     companion object {
         fun getInstance(categoryList: ArrayList<TaskCategory>): SearchCategoryDialog {
@@ -35,22 +37,29 @@ class SearchCategoryDialog: DialogFragment(), ItemClickListener<TaskCategory> {
         arguments?.let {
             val lst: ArrayList<TaskCategory>? = it.getParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST)
             if (!lst.isNullOrEmpty()) {
-                categoryList.addAll(lst)
+                categoryList.clear()
+                for (item in lst) {
+                    categoryList.add(item.copy())
+                }
             }
         }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return if (activity != null) {
-            val view: View = getResizeView(activity!!)
+            val displayRectangle = Rect()
+            activity?.window?.decorView?.getWindowVisibleDisplayFrame(displayRectangle)
+            val view: View = getResizeView(activity!!, getMinimumSize(displayRectangle))
             initRecycleView(view)
+
             return AlertDialog.Builder(activity!!)
-                .setPositiveButton("ok") {
-                        dialog, _ -> dialog.dismiss()
+                .setPositiveButton("ok") { dialog, _ ->
+                        setSelectedResult()
+                        dialog.dismiss()
                 }
-                .setNegativeButton("Отмена") {
-                        dialog, _ -> dialog.dismiss()
-                }
+                .setNegativeButton("Отмена") { dialog, _ ->
+                    targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_CANCELED, Intent())
+                    dialog.dismiss() }
                 .setView(view)
                 .create()
         } else {
@@ -58,14 +67,24 @@ class SearchCategoryDialog: DialogFragment(), ItemClickListener<TaskCategory> {
         }
     }
 
-    private fun getResizeView(activity: Activity): View {
-        val displayRectangle = Rect()
-        activity.window.decorView.getWindowVisibleDisplayFrame(displayRectangle)
+    private fun setSelectedResult() {
+        val intent = Intent()
+        intent.putParcelableArrayListExtra(Constants.EXTRA_TASK_CATEGORY_LIST, categoryList.clone() as ArrayList<TaskCategory>)
+        targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+    }
+
+    private fun getResizeView(activity: Activity, size: Point): View {
         val inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val layout = inflater.inflate(R.layout.dialog_search_category, null)
-        layout.minimumWidth = (displayRectangle.width() * 0.5f).toInt()
-        layout.minimumHeight = (displayRectangle.height() * 0.5f).toInt()
+        layout.minimumWidth = size.x
+        layout.minimumHeight = size.y
         return layout
+    }
+
+    private fun getMinimumSize(displayRectangle: Rect): Point {
+        val minimumWidth = (displayRectangle.width() * 0.5f).toInt()
+        val minimumHeight = (displayRectangle.height() * 0.5f).toInt()
+        return Point(minimumWidth, minimumHeight)
     }
 
     private fun initRecycleView(view: View) {
@@ -77,6 +96,7 @@ class SearchCategoryDialog: DialogFragment(), ItemClickListener<TaskCategory> {
     }
 
     override fun onItemClick(item: TaskCategory, position: Int) {
-        //
+        item.isSelected = !categoryList[position].isSelected
+        categoryList[position] = item
     }
 }

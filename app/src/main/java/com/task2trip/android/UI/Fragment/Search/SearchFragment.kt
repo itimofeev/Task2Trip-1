@@ -5,6 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.Task.Task
+import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskList
 import com.task2trip.android.Presenter.TaskListPresenter
 import com.task2trip.android.R
@@ -16,14 +17,17 @@ import kotlinx.android.synthetic.main.fragment_task_search.*
 
 class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     private lateinit var presenter: TaskListPresenter
-    private var taskCategory = ""
+    private val categoryList: ArrayList<TaskCategory> = ArrayList()
     private var taskCountryAndCity = ""
     private var taskStatus = ""
     private var userRole = ""
 
     override fun getArgs(args: Bundle?) {
         args?.let {
-            taskCategory = it.getString(Constants.EXTRA_TASK_SEARCH_CATEGORY, "")
+            val lst: ArrayList<TaskCategory>? = it.getParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST)
+            if (!lst.isNullOrEmpty()) {
+                categoryList.addAll(lst)
+            }
             taskCountryAndCity = it.getString(Constants.EXTRA_TASK_SEARCH_COUNTRY_CITY, "")
             taskStatus = it.getString(Constants.EXTRA_TASK_SEARCH_STATUS, "")
             userRole = it.getString(Constants.EXTRA_USER_ROLE, "")
@@ -45,8 +49,11 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     }
 
     private fun initPresenter(view: View) {
+        val categoryStrList = ArrayList<String>()
         presenter = TaskListPresenter(this, view.context)
-        presenter.searchTasks(null, null, null, null, null, taskStatus)
+        presenter.searchTasks(null, null,
+            categoryList.mapTo(categoryStrList) { it.defaultValue },
+            null, null, taskStatus.toLowerCase())
     }
 
     override fun onTaskListResult(taskResult: TaskList) {

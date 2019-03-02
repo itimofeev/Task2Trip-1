@@ -38,7 +38,7 @@ class TaskDetailOfferPagerFragment : BaseFragment() {
         childFragmentManager.let {
             val adapter = TabAdapter(it)
             adapter.addItem(TabFragmentTitle(TaskDetailsFragment.getInstance(taskItem, isEditTask, userRoleName), "Детали"))
-            adapter.addItem(TabFragmentTitle(TaskOffersFragment.getInstance(taskItem.id), "Предложения"))
+            adapter.addItem(TabFragmentTitle(TaskOffersFragment.getInstance(taskItem.id, false), "Предложения"))
             vpOfferList.adapter = adapter
             vpOfferList.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}

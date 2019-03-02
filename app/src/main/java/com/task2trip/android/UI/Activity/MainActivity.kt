@@ -171,6 +171,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, "Задание №YYY", true)
             }
+            R.id.taskOffersFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, "Предложения", true)
+            }
             R.id.offerDetailFragment -> {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, "Просмотр предложения", true)

@@ -53,7 +53,7 @@ class TaskDetailsFragment : BaseFragment() {
         val dateTime = task.canceledTime?.toCalendar()
         tvStatusDateTime.text = task.status.plus(dateTime?.toPattern("dd.MM.yyyy HH:mm"))
         tvTaskName.text = task.name
-        tvTaskPrice.text = "${task.budgetEstimate} Rub"
+        tvTaskPrice.text = task.budgetEstimate.toString().plus(" Rub")
         tvTaskLocation.text = "Местоположение не определено"
         tvTaskDescription.text = task.description
     }

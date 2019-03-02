@@ -15,7 +15,7 @@ class TaskCategorySearchAdapter(items: List<TaskCategory>):
     }
 
     override fun returnViewHolder(view: View): TaskCategorySearchHolder {
-        return TaskCategorySearchHolder(view)
+        return  TaskCategorySearchHolder(view)
     }
 
     override fun onItemClicked(item: TaskCategory, position: Int) {

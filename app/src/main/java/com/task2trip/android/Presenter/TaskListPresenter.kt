@@ -49,12 +49,13 @@ class TaskListPresenter(val view: TaskListView, context: Context) : BasePresente
 
     fun searchTasks(userId: String? = null,
                     searchString: String? = null,
-                    categoryId: String? = null,
+                    categoryIds: List<String>? = null,
                     skip: Int? = null,
                     limit: Int? = null,
                     status: String? = null) {
         view.onProgress(true)
-        val req: Call<TaskList> = getApi().getTasks(userId, searchString, categoryId, skip, limit, status)
+        //TODO:categoryIds
+        val req: Call<TaskList> = getApi().getTasks(userId, searchString, null, skip, limit, status)
         req.enqueue {
             onResponse = { response ->
                 if (response.code() in 200..299) {

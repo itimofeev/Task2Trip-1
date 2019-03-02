@@ -90,7 +90,7 @@ interface ApiMethods {
     @GET("task")
     fun getTasks(@Query("userId") userId: String? = null,
                  @Query("searchString") searchString: String? = null,
-                 @Query("categoryId") categoryId: String? = null,
+                 @Query("categoryId") categoryIds: List<String>? = null,
                  @Query("skip") skip: Int? = null,
                  @Query("limit") limit: Int? = null,
                  @Query("status") status: String? = null): Call<TaskList>
@@ -101,4 +101,16 @@ interface ApiMethods {
 
     @GET("task/{taskId}/offer")
     fun getOffersByTaskId(@Path("taskId") taskId: String): Call<List<Offer>>
+
+    @POST("task/{taskId}/offer/{offerId}")
+    fun setPerformerOfferForTask(@Path("taskId") taskId: String,
+                                 @Path("offerId") offerId: String): Call<Offer>
+
+    @PATCH("task/{taskId}/offer/{offerId}")
+    fun setTaskCompletedOrCanceled(@Path("taskId") taskId: String,
+                                   @Path("offerId") offerId: String,
+                                   @Body status: String): Call<List<Offer>>
+
+    @GET("offer")
+    fun getMyOffers(): Call<List<Offer>>
 }

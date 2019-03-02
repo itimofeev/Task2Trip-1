@@ -84,4 +84,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/groupConfirmation"
             app:layout_constraintBottom_toBottomOf="@+id/groupConfirmation"/>
+
+    <Button
+            android:id="@+id/btSearch"
+            style="@style/buttonSolid"
+            android:text="Найти задание"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

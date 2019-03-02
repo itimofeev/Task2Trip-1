@@ -4,15 +4,24 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+    <View
+            android:id="@+id/view_delimiter_01"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray_light"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvCategory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:hint="@string/search_filter_category_title"
-            style="@style/textLayout"
             android:layout_marginTop="@dimen/top_step"
+            style="@style/textLayoutSearch"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,6 +31,8 @@
                 android:id="@+id/etCategory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingTop="16dp"
+                android:background="@android:color/transparent"
                 android:inputType="none"
                 android:cursorVisible="false"
                 android:focusable="false"
@@ -34,11 +45,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvCountryAndCity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:hint="@string/search_filter_region_title"
-            style="@style/textLayout"
-            android:layout_marginTop="@dimen/top_step"
+            style="@style/textLayoutSearch"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,29 +56,51 @@
                 android:id="@+id/etCountryAndCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Россия"/>
+                android:paddingTop="16dp"
+                android:background="@android:color/transparent"
+                android:text="Весь мир"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvStatus"
+    <TextView
+            android:id="@+id/etStatusHint"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/search_filter_status_title"
-            style="@style/textLayout"
-            android:layout_marginTop="@dimen/top_step"
+            android:layout_margin="@dimen/margin_all_16dp"
+            android:text="Статус заданий"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCountryAndCity">
+            app:layout_constraintTop_toBottomOf="@+id/tvCountryAndCity"/>
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                android:id="@+id/etStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="new"/>
+    <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/etStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left_16dp"
+            android:layout_marginLeft="@dimen/margin_left_16dp"
+            android:layout_marginRight="@dimen/margin_right_16dp"
+            android:layout_marginEnd="@dimen/margin_right_16dp"
+            android:spinnerMode="dropdown"
+            android:dropDownVerticalOffset="40dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etStatusHint"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <View
+            android:id="@+id/view_delimiter_02"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray_light"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/margin_left_16dp"
+            android:layout_marginLeft="@dimen/margin_left_16dp"
+            android:layout_marginRight="@dimen/margin_right_16dp"
+            android:layout_marginEnd="@dimen/margin_right_16dp"
+            app:layout_constraintTop_toBottomOf="@+id/etStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
             android:id="@+id/btSearch"

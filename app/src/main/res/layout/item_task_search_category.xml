@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_height_very_small">
+        android:layout_height="@dimen/item_height_small">
 
     <TextView
             android:id="@+id/tvCategoryName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""/>
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_all_16dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_text_16sp"
+            android:text=""
+            tools:text="hello text it`s first category"
+            app:layout_constraintEnd_toStartOf="@+id/switchCategory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchCategory"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"/>
-</LinearLayout>
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_all_16dp"
+            android:checked="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

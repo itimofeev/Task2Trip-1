@@ -6,16 +6,22 @@ import android.os.Parcelable
 data class TaskCategory(val id: String,
                         val key: String,
                         val defaultValue: String,
-                        var imageUrl: String): Parcelable {
-    constructor(parcel: Parcel) : this(parcel.readString(), parcel.readString(), parcel.readString(), parcel.readString())
+                        var imageUrl: String,
+                        var isSelected: Boolean): Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readByte() != 0.toByte()
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        with(parcel) {
-            writeString(id)
-            writeString(key)
-            writeString(defaultValue)
-            writeString(imageUrl)
-        }
+        parcel.writeString(id)
+        parcel.writeString(key)
+        parcel.writeString(defaultValue)
+        parcel.writeString(imageUrl)
+        parcel.writeByte(if (isSelected) 1 else 0)
     }
 
     override fun describeContents(): Int {
