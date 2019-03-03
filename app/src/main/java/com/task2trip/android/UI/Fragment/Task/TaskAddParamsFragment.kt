@@ -1,5 +1,6 @@
 package com.task2trip.android.UI.Fragment.Task
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
@@ -37,12 +38,28 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
 
     override fun initComponents(view: View) {
         presenter = TaskAddParamsPresenter(this, view.context)
+        initDateTimeCalendar()
         tvCategoryName.text = getSelectedCategory().defaultValue
         btAddMyTask.setOnClickListener {
             hideKeyboard()
             addMyTaskClick(TaskSaveModel(etTaskName.text.toString() + " " + etCountryAndCity.text.toString(),
                 etTaskDescription.text.toString(), getSelectedCategory().id, etPrice.toInt(),
                 Calendar.getInstance().toPattern(), Calendar.getInstance().toPattern()))
+        }
+    }
+
+    private fun initDateTimeCalendar() {
+        layoutDateTime.setOnClickListener {
+            onShowCalendar()
+        }
+        ivDateTime.setOnClickListener {
+            onShowCalendar()
+        }
+        tvDateTimeFromTo.setOnClickListener {
+            onShowCalendar()
+        }
+        ivArrowRight3.setOnClickListener {
+            onShowCalendar()
         }
     }
 
@@ -53,6 +70,25 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
             MockData.getEmptyCategory()
         }
     }
+
+    private fun onShowCalendar() {
+        val dateAndTime = Calendar.getInstance()
+        context?.let {
+            DatePickerDialog(
+                it, dateCallback, dateAndTime.get(Calendar.YEAR), dateAndTime.get(Calendar.MONTH),
+                dateAndTime.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+    }
+
+    var dateCallback: DatePickerDialog.OnDateSetListener =
+        DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            val dateAndTime = Calendar.getInstance()
+            dateAndTime.set(Calendar.YEAR, year)
+            dateAndTime.set(Calendar.MONTH, monthOfYear)
+            dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            tvDateTimeFromTo.text = dateAndTime.toPattern("yyyy.MM.dd")
+        }
 
     private fun addMyTaskClick(taskSaveModel: TaskSaveModel) {
         presenter.saveTask(taskSaveModel)

@@ -23,7 +23,7 @@ class TaskOfferHolder(itemView: View) : BaseHolder<Offer>(itemView) {
     override fun setData(item: Offer) {
         ivUserImage?.let {ImageLoader("image_url", it)}
         tvUserOfferDescription?.text = item.comment
-        tvUserOfferPrice?.text = item.price.toString()
+        tvUserOfferPrice?.text = item.price.toString().plus(" Rub")
         tvUserPerformerName?.text = item.user.getName()
     }
 

@@ -1,6 +1,7 @@
 package com.task2trip.android.Common
 
 import android.widget.EditText
+import com.task2trip.android.Model.Task.TaskStatus
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,5 +31,23 @@ fun EditText.toInt(): Int {
         strValue.toInt()
     } catch (ex: Exception) {
         0
+    }
+}
+
+
+fun TaskStatus.getMyName(): String {
+    return when(this) {
+        TaskStatus.NEW -> {
+            "Новая"
+        }
+        TaskStatus.IN_PROGRESS -> {
+            "Выполняется"
+        }
+        TaskStatus.FINISHED -> {
+            "Завершена"
+        }
+        TaskStatus.CANCELED -> {
+            "Отменена"
+        }
     }
 }
