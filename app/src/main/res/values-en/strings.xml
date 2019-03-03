@@ -7,12 +7,12 @@
     <string name="menu_chat">Contacts</string>
     <string name="menu_profile">Profile</string>
     <string name="register">Registration</string>
-    <string name="login">Login</string>
+    <string name="login">Log in</string>
     <string name="reg_email">E-mail</string>
     <string name="reg_password">Password</string>
-    <string name="reg_name">you name</string>
-    <string name="reg_forgot">Forgot password?</string>
-    <string name="reg_login_social">Login with social</string>
+    <string name="reg_name">Name</string>
+    <string name="reg_forgot">Forgot password</string>
+    <string name="reg_login_social">Log in with social</string>
     <string name="board_title_01">Местные жители по всему миру помогут выполнить ваши задачи в путешествии</string>
     <string name="board_title_02">Создайте своё задание и местные жители Вам помогут!</string>
     <string name="board_msg_01">Создать маршрут путешествия, найти гида или трансфер</string>
@@ -50,4 +50,6 @@
     <string name="setting_change_password">Change password</string>
     <string name="setting_notifications">Notifications</string>
     <string name="setting_ask_question">Ask question</string>
+    <string name="login_into_app">Log in</string>
+    <string name="registration">Registration</string>
 </resources>

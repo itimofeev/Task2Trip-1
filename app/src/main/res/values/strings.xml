@@ -10,7 +10,7 @@
     <string name="reg_email">E-mail</string>
     <string name="reg_password">Пароль</string>
     <string name="reg_name">Ваше имя</string>
-    <string name="reg_forgot">Забыли пароль?</string>
+    <string name="reg_forgot">Забыли пароль</string>
     <string name="reg_login_social">Войти через социальные сети</string>
     <string name="board_skip_text"><u>Пропустить</u></string>
     <string name="board_title_01">Местные жители выполняют ваши задачи в путешествиях по всему миру!</string>
@@ -51,4 +51,6 @@
     <string name="setting_change_password">Изменить пароль</string>
     <string name="setting_notifications">Уведомления</string>
     <string name="setting_ask_question">Задать вопрос</string>
+    <string name="login_into_app">Вход в приложение</string>
+    <string name="registration">Регистрация</string>
 </resources>

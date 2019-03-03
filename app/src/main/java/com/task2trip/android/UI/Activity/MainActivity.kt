@@ -106,11 +106,11 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             R.id.loginFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(false, "Вход в приложение", false)
+                setToolBarParams(true, getString(R.string.login_into_app), false)
             }
             R.id.registrationFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(false, "Регистрация", false)
+                setToolBarParams(true, getString(R.string.registration), false)
             }
             R.id.taskCategoryFragment -> {
                 navController.clearBackStack(resourceId, args)
