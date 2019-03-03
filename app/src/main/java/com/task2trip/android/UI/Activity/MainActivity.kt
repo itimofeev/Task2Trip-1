@@ -1,5 +1,6 @@
 package com.task2trip.android.UI.Activity
 
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,6 +10,7 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.snackbar.Snackbar
@@ -32,9 +34,6 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initComponents()
-        //window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        //window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)// Hide status bar
-        //window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)// Show status bar
     }
 
     private fun initComponents() {
@@ -54,6 +53,11 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     private fun initNavigation() {
         navController = Navigation.findNavController(this, navHostID)
+        navController.addOnDestinationChangedListener { navController: NavController, navDestination: NavDestination, bundle: Bundle? ->
+            if (navDestination.id == R.id.loginRegisterFragment) {
+                setToolBarParams(false, getString(R.string.login_into_app), false)
+            }
+        }
         NavigationUI.setupWithNavController(bottomNavigation, navController)
         bottomNavigation.setOnNavigationItemSelectedListener {
                 item -> navigateApp(navController, item.itemId, Bundle())
@@ -99,7 +103,6 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             R.id.loginRegisterFragment -> {
                 navController.navigate(resourceId, args)
                 setToolBarParams(false, "Вход / Регистрация", false)
-                //window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
             }
             R.id.loginFragment -> {
                 navController.navigate(resourceId, args)
@@ -258,6 +261,13 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     private fun setToolBarParams(isVisible: Boolean, title: String, isHasBackButton: Boolean) {
+        if (!isVisible) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+            }
+        } else {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }
         setToolBarVisibility(isVisible)
         setToolBarVisibilityBackButton(isHasBackButton)
         setToolBarTitle(title)
