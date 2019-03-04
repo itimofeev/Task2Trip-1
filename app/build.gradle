@@ -9,8 +9,8 @@ android {
         applicationId "com.task2trip.android"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 103
-        versionName "1.0.3"
+        versionCode 104
+        versionName "1.0.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -24,7 +24,7 @@ android {
 ext {
     supLib = '1.1.0-alpha01'
     retrofitLib = '2.4.0'
-    navLib = '1.0.0-rc01'
+    navLib = '1.0.0-rc02'
     coroutinLib = '1.0.0'
     moxyLib = '1.5.0'
 }
