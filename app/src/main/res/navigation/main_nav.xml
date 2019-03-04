@@ -59,4 +59,6 @@
               android:label="fragment_task_detail_offer_pager" tools:layout="@layout/fragment_task_detail_offer_pager"/>
     <fragment android:id="@+id/offerDetailFragment" android:name="com.task2trip.android.UI.Fragment.Task.OfferDetailFragment"
               android:label="fragment_offer_detail" tools:layout="@layout/fragment_offer_detail"/>
+    <fragment android:id="@+id/profileUserFragment" android:name="com.task2trip.android.UI.Fragment.Profile.ProfileUserFragment"
+              android:label="fragment_profile_user" tools:layout="@layout/fragment_profile_user"/>
 </navigation>

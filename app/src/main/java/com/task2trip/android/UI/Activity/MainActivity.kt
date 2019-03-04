@@ -145,6 +145,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.navigate(resourceId, args)
                 setToolBarTitle(getString(R.string.title_profile_params))
             }
+            R.id.profileUserFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarTitle("Просмотр профиля")
+            }
             R.id.settingsFragment -> {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_settings), true)

@@ -30,6 +30,8 @@
     <string name="profile_task_execute_description">Откликайтесь на задания путешественников и получайте вознаграждение
         за свою работу!
     </string>
+    <string name="profile_task_created">Заданий\nсоздано</string>
+    <string name="profile_task_executed">Заданий\nвыполнено</string>
 
     <string name="search_filter_category_title">Категории</string>
     <string name="search_filter_region_title">Регион поиска</string>

@@ -42,9 +42,10 @@
 
                         <ImageView
                                 android:id="@+id/imageView"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:padding="8dp"
+                                android:layout_width="@dimen/image_size_very_small"
+                                android:layout_height="@dimen/image_size_very_small"
+                                android:layout_marginStart="@dimen/margin_left_16dp"
+                                android:layout_marginLeft="@dimen/margin_left_16dp"
                                 android:src="@drawable/vector_ic_category"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -92,32 +93,47 @@
                             android:id="@+id/layoutDescription"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_margin="@dimen/margin_all_16dp"
                             android:orientation="vertical">
 
                         <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/tvTaskName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:paddingTop="@dimen/padding_top_8dp"
                                 android:hint="Название"
-                                style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox">
+                                style="@style/textLayoutSearch">
 
                             <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/etTaskName"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"/>
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="16dp"
+                                    android:background="@android:color/transparent"
+                                    android:text=""/>
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
                                 android:id="@+id/tvDescription"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_left_16dp"
+                                android:layout_marginStart="@dimen/margin_left_16dp"
+                                android:layout_marginEnd="@dimen/margin_right_16dp"
+                                android:layout_marginRight="@dimen/margin_right_16dp"
+                                android:layout_marginBottom="0dp"
                                 android:text="Описание"/>
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etTaskDescription"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"/>
+                                android:layout_height="match_parent"
+                                android:gravity="top|start"
+                                android:layout_marginLeft="@dimen/margin_left_16dp"
+                                android:layout_marginStart="@dimen/margin_left_16dp"
+                                android:layout_marginEnd="@dimen/margin_right_16dp"
+                                android:layout_marginRight="@dimen/margin_right_16dp"
+                                android:layout_marginBottom="@dimen/margin_bottom_16dp"
+                                android:text=""/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

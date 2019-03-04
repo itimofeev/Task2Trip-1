@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Common.getMyName
 import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskStatus
 import com.task2trip.android.Presenter.TaskCategoryPresenter

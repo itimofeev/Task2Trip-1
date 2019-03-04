@@ -28,7 +28,9 @@
     <string name="profile_photo">My photo</string>
     <string name="profile_task_execute">Execute tasks</string>
     <string name="profile_task_execute_description">Make offers for travelers tasks and get a reward for your job!</string>
-
+    <string name="profile_task_created">Task\ncreated</string>
+    <string name="profile_task_executed">Task\nexecuted</string>
+  
     <string name="search_filter_category_title">Category</string>
     <string name="search_filter_region_title">Region for search</string>
     <string name="search_filter_status_title">Status of tasks</string>

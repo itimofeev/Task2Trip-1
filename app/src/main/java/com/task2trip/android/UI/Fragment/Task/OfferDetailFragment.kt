@@ -43,6 +43,12 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
 
     override fun initComponents(view: View) {
         ImageLoader("offer.url", ivUserPhoto)
+        ivUserPhoto.setOnClickListener {
+            onViewProfileDetail()
+        }
+        tvPerformerName.setOnClickListener {
+            onViewProfileDetail()
+        }
         tvPerformerName.text = offer.user.getName()
         tvTaskPrice.text = "${offer.price} Rub"
         tvPaymentType.text = "Оплата наличными"
@@ -71,6 +77,12 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
         val args = Bundle()
         args.putParcelable(Constants.EXTRA_USER, offer.user)
         navigateTo(R.id.messageFragment, args)
+    }
+
+    private fun onViewProfileDetail() {
+        val args = Bundle()
+        args.putParcelable(Constants.EXTRA_USER, offer.user)
+        navigateTo(R.id.profileUserFragment, args)
     }
 
     override fun onSaveOfferResult(offer: Offer) {
