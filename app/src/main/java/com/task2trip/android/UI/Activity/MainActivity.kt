@@ -53,11 +53,6 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     private fun initNavigation() {
         navController = Navigation.findNavController(this, navHostID)
-        navController.addOnDestinationChangedListener { navController: NavController, navDestination: NavDestination, bundle: Bundle? ->
-            if (navDestination.id == R.id.loginRegisterFragment) {
-                setToolBarParams(false, getString(R.string.title_login_into_app), false)
-            }
-        }
         NavigationUI.setupWithNavController(bottomNavigation, navController)
         bottomNavigation.setOnNavigationItemSelectedListener {
                 item -> navigateApp(navController, item.itemId, Bundle())
@@ -147,7 +142,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             R.id.profileUserFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle("Просмотр профиля")
+                setToolBarTitle(getString(R.string.title_view_profile))
             }
             R.id.settingsFragment -> {
                 navController.navigate(resourceId, args)
@@ -265,7 +260,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     private fun setToolBarParams(isVisible: Boolean, title: String, isHasBackButton: Boolean) {
-        if (!isVisible) {
+        if (!isVisible && bottomNavigation?.visibility == View.GONE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
             }

@@ -45,9 +45,9 @@ class ProfileFragment : BaseFragment(), ItemClickListener<UserCategoryForUsed> {
 
     private fun initAboutUserCategoryList(@NonNull view: View) {
         val items = ArrayList<UserCategoryForUsed>()
-        items.add(UserCategoryForUsed(R.id.profileMainInfoFragment, "Основное", emptyList()))
-        items.add(UserCategoryForUsed(R.id.profileContactsFragment, "Контакты", emptyList()))
-        items.add(UserCategoryForUsed(R.id.profileAboutFragment, "Обо мне", emptyList()))
+        items.add(UserCategoryForUsed(R.id.profileMainInfoFragment, getString(R.string.profile_main), emptyList()))
+        items.add(UserCategoryForUsed(R.id.profileContactsFragment, getString(R.string.profile_contacts), emptyList()))
+        items.add(UserCategoryForUsed(R.id.profileAboutFragment, getString(R.string.profile_about), emptyList()))
 
         val adapter = ProfileMainCategoryAdapter(items)
         adapter.setClickListener(this)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="top_step">0dp</dimen>
+    <dimen name="top_step">60dp</dimen>
     <dimen name="bottom_step">0dp</dimen>
 
     <dimen name="item_width_profile_name">70dp</dimen>

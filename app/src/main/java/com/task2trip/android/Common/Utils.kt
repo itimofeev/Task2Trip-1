@@ -36,18 +36,35 @@ fun EditText.toInt(): Int {
 
 
 fun TaskStatus.getMyName(): String {
+    val local = Locale.getDefault().language
     return when(this) {
         TaskStatus.NEW -> {
-            "Новая"
+            when(local) {
+                "ru" -> {"Новая"}
+                "en" -> {"New"}
+                else -> {"Новая"}
+            }
         }
         TaskStatus.IN_PROGRESS -> {
-            "Выполняется"
+            when(local) {
+                "ru" -> {"Выполняется"}
+                "en" -> {"In progress"}
+                else -> {"Выполняется"}
+            }
         }
         TaskStatus.FINISHED -> {
-            "Завершена"
+            when(local) {
+                "ru" -> {"Завершена"}
+                "en" -> {"finished"}
+                else -> {"Завершена"}
+            }
         }
         TaskStatus.CANCELED -> {
-            "Отменена"
+            when(local) {
+                "ru" -> {"Отменена"}
+                "en" -> {"Canceled"}
+                else -> {"Отменена"}
+            }
         }
     }
 }

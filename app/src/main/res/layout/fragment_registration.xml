@@ -10,11 +10,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/reg_name"
-            android:layout_margin="@dimen/margin_right_16dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="@dimen/margin_left_16dp"
+            android:layout_marginStart="@dimen/margin_left_16dp"
+            android:layout_marginRight="@dimen/margin_right_16dp"
+            android:layout_marginEnd="@dimen/margin_right_16dp"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPassword">
+            app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etName"
@@ -23,21 +27,20 @@
                 android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/reg_email"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="@dimen/margin_top_16dp"
         android:layout_marginStart="@dimen/margin_left_16dp"
         android:layout_marginLeft="@dimen/margin_left_16dp"
         android:layout_marginRight="@dimen/margin_right_16dp"
         android:layout_marginEnd="@dimen/margin_right_16dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"

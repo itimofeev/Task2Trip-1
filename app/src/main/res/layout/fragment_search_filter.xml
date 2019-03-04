@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_all_16dp"
-            android:text="Статус заданий"
+            android:text="@string/search_filter_status_title"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,7 @@
 
     <Button
             android:id="@+id/btSearch"
-            android:text="Показать"
+            android:text="@string/task_show"
             style="@style/buttonSolid"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -25,8 +25,8 @@ class MessageFragment : BaseFragment() {
     private fun initViewPager() {
         fragmentManager?.let {
             val adapter = TabAdapter(it)
-            adapter.addItem(TabFragmentTitle(MessageChatListFragment(), "Сообщения"))
-            adapter.addItem(TabFragmentTitle(MessageNotificationFragment(), "Уведомления"))
+            adapter.addItem(TabFragmentTitle(MessageChatListFragment(), getString(R.string.title_messages)))
+            adapter.addItem(TabFragmentTitle(MessageNotificationFragment(), getString(R.string.title_notifications)))
             vpMessage.adapter = adapter
             vpMessage.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}

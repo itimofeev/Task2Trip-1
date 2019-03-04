@@ -12,7 +12,7 @@
 
     <TextView
             android:id="@+id/tvWork"
-            android:text="Сфера деятельности"
+            android:text="@string/profile_my_activity"
             style="@style/TextTitleAboutProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
 
     <TextView
             android:id="@+id/tvInterest"
-            android:text="Интересы"
+            android:text="@string/profile_interest"
             style="@style/TextTitleAboutProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
 
     <TextView
             android:id="@+id/tvAboutMe"
-            android:text="Расскажите о себе"
+            android:text="@string/profile_tell_myself"
             style="@style/TextTitleAboutProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
 
     <TextView
             android:id="@+id/tvWhy"
-            android:text="Почему вы на task2trip"
+            android:text="@string/profile_why_you_there"
             style="@style/TextTitleAboutProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

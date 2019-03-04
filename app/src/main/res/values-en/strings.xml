@@ -71,4 +71,18 @@
     <string name="title_offer_details">Offer details</string>
     <string name="title_task_details">Task №ххх</string>
     <string name="title_login_registration">Log in / Registration</string>
+    <string name="title_view_profile">View profile</string>
+    <string name="task_show">Show tasks</string>
+    <string name="title_messages">Messages</string>
+    <string name="profile_main">Basic info</string>
+    <string name="profile_contacts">Contact info</string>
+    <string name="profile_about">About me</string>
+    <string name="title_details">Details</string>
+    <string name="profile_social">Account in social networks</string>
+    <string name="profile_male">Male</string>
+    <string name="profile_female">Female</string>
+    <string name="profile_my_activity">field of activity</string>
+    <string name="profile_tell_myself">tell us about yourself</string>
+    <string name="profile_interest">Interest</string>
+    <string name="profile_why_you_there">Why you are there</string>
 </resources>

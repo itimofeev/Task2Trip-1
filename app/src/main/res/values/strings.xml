@@ -32,6 +32,15 @@
     </string>
     <string name="profile_task_created">Заданий\nсоздано</string>
     <string name="profile_task_executed">Заданий\nвыполнено</string>
+    <string name="profile_main">Основное</string>
+    <string name="profile_contacts">Контакты</string>
+    <string name="profile_about">Обо мне</string>
+    <string name="profile_social">Аккаунты в соц.сетях</string>
+    <string name="profile_male">Мужской</string>
+    <string name="profile_my_activity">Сфера деятельности</string>
+    <string name="profile_tell_myself">Расскажите о себе</string>
+    <string name="profile_interest">Интересы</string>
+    <string name="profile_why_you_there">Почему вы на task2trip</string>
 
     <string name="search_filter_category_title">Категории</string>
     <string name="search_filter_region_title">Регион поиска</string>
@@ -46,6 +55,7 @@
     <string name="logo2">и находите местных жителей\nдля их выполнения</string>
 
     <string name="next_step">Далее</string>
+    <string name="task_show">Показать</string>
 
     <string name="setting_about">О приложении</string>
     <string name="setting_exit_app">Выйти из профиля</string>
@@ -72,4 +82,8 @@
     <string name="title_offer_details">Просмотр предложения</string>
     <string name="title_task_details">Задача №ххх</string>
     <string name="title_login_registration">Вход / Регистрация</string>
+    <string name="title_view_profile">Просмотр профиля</string>
+    <string name="title_messages">Сообщения</string>
+    <string name="title_details">Детали</string>
+    <string name="profile_female">Женский</string>
 </resources>
