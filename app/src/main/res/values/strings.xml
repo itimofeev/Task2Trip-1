@@ -53,6 +53,23 @@
     <string name="setting_change_password">Изменить пароль</string>
     <string name="setting_notifications">Уведомления</string>
     <string name="setting_ask_question">Задать вопрос</string>
-    <string name="login_into_app">Вход в приложение</string>
-    <string name="registration">Регистрация</string>
+    <string name="title_login_into_app">Вход в приложение</string>
+    <string name="title_registration">Регистрация</string>
+    <string name="title_create_task">Добавить задание</string>
+    <string name="title_search_task">Поиск заданий</string>
+    <string name="title_inbox">Входящие</string>
+    <string name="title_result_task_list">Результат: список заданий</string>
+    <string name="title_task_params">Параметры задания</string>
+    <string name="title_profile">Профиль</string>
+    <string name="title_profile_params">Профиль. Параметры</string>
+    <string name="title_settings">Настройки</string>
+    <string name="title_black_list">Черный список</string>
+    <string name="title_notifications">Уведомления</string>
+    <string name="title_my_tasks">Мои задания</string>
+    <string name="title_add_offer">Добавить предложение</string>
+    <string name="title_offer_details_pager">Задание №YYY</string>
+    <string name="title_offers">Предложения</string>
+    <string name="title_offer_details">Просмотр предложения</string>
+    <string name="title_task_details">Задача №ххх</string>
+    <string name="title_login_registration">Вход / Регистрация</string>
 </resources>

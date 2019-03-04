@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         navController = Navigation.findNavController(this, navHostID)
         navController.addOnDestinationChangedListener { navController: NavController, navDestination: NavDestination, bundle: Bundle? ->
             if (navDestination.id == R.id.loginRegisterFragment) {
-                setToolBarParams(false, getString(R.string.login_into_app), false)
+                setToolBarParams(false, getString(R.string.title_login_into_app), false)
             }
         }
         NavigationUI.setupWithNavController(bottomNavigation, navController)
@@ -102,48 +102,48 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         when(resourceId) {
             R.id.loginRegisterFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(false, "Вход / Регистрация", false)
+                setToolBarParams(false, getString(R.string.title_login_registration), false)
             }
             R.id.loginFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.login_into_app), false)
+                setToolBarParams(true, getString(R.string.title_login_into_app), false)
             }
             R.id.registrationFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.registration), false)
+                setToolBarParams(true, getString(R.string.title_registration), false)
             }
             R.id.taskCategoryFragment -> {
                 navController.clearBackStack(resourceId, args)
-                setToolBarParams(true, "Добавить задание", false)
+                setToolBarParams(true, getString(R.string.title_create_task), false)
             }
             R.id.taskAddParamsFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, "Параметры задания", true)
+                setToolBarParams(true, getString(R.string.title_task_params), true)
             }
             R.id.messageFragment -> {
                 navController.clearBackStack(resourceId, args)
-                setToolBarParams(true, "Входящие", false)
+                setToolBarParams(true, getString(R.string.title_inbox), false)
             }
             R.id.searchFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, "Результат: список заданий", true)
+                setToolBarParams(true, getString(R.string.title_result_task_list), true)
                 presenter.setLastMenu(R.menu.menu_serch_filter)
             }
             R.id.searchFilterFragment -> {
                 val params = args ?: Bundle()
                 params.putString(Constants.EXTRA_USER_ROLE, user.getRole().name)
                 navController.clearBackStack(resourceId, params)
-                setToolBarParams(true, "Поиск заданий", false)
+                setToolBarParams(true, getString(R.string.title_search_task), false)
             }
             R.id.profileFragment -> {
                 navController.clearBackStack(resourceId, args)
-                setToolBarParams(true, "Профиль", false)
+                setToolBarParams(true, getString(R.string.title_profile), false)
                 presenter.setLastMenu(R.menu.menu_settings)
             }
             R.id.profileCategoryFragment, R.id.profileMainInfoFragment,
             R.id.profileContactsFragment, R.id.profileAboutFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle("Профиль. Параметры")
+                setToolBarTitle(getString(R.string.title_profile_params))
             }
             R.id.profileUserFragment -> {
                 navController.navigate(resourceId, args)
@@ -151,16 +151,16 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             R.id.settingsFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, "Настройки", true)
+                setToolBarParams(true, getString(R.string.title_settings), true)
             }
             R.id.settingsBlackListFragment -> {
                 navController.navigate(resourceId, args)
                 presenter.setLastMenu(R.menu.menu_serch_filter)
-                setToolBarTitle("Черный список")
+                setToolBarTitle(getString(R.string.title_black_list))
             }
             R.id.settingsNotificationFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle("Уведомления")
+                setToolBarTitle(getString(R.string.title_notifications))
             }
             R.id.taskListPerformerFragment, R.id.taskListPerformerPagerFragment,
             R.id.taskListNotAuthorizedFragment, R.id.taskListTravelerFragment -> {
@@ -168,34 +168,34 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 params.putString(Constants.EXTRA_USER_ID, this.user.getId())
                 params.putString(Constants.EXTRA_USER_ROLE, this.user.getRole().name)
                 navController.clearBackStack(resourceId, params)
-                setToolBarParams(true, "Мои задания", false)
+                setToolBarParams(true, getString(R.string.title_my_tasks), false)
             }
             R.id.taskAddOfferFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, "Добавить предложение", true)
+                setToolBarParams(true, getString(R.string.title_add_offer), true)
             }
             R.id.taskDetailOfferPagerFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, "Задание №YYY", true)
+                setToolBarParams(true, getString(R.string.title_offer_details_pager), true)
             }
             R.id.taskOffersFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, "Предложения", true)
+                setToolBarParams(true, getString(R.string.title_offers), true)
             }
             R.id.offerDetailFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, "Просмотр предложения", true)
+                setToolBarParams(true, getString(R.string.title_offer_details), true)
             }
             R.id.taskDetailsFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle("Задача №ххх")
+                setToolBarTitle(getString(R.string.title_task_details))
             }
             android.R.id.home -> {
                 navController.popBackStack()
             }
             else -> {
                 navController.navigate(R.id.loginRegisterFragment)
-                setToolBarTitle("Task2Trip")
+                setToolBarTitle(getString(R.string.app_name))
             }
         }
         invalidateOptionsMenu()
