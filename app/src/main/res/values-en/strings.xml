@@ -85,4 +85,11 @@
     <string name="profile_tell_myself">tell us about yourself</string>
     <string name="profile_interest">Interest</string>
     <string name="profile_why_you_there">Why you are there</string>
+    <string name="title_travel">Traveler</string>
+    <string name="title_local">Local</string>
+    <string name="error_no_location">Location not founded</string>
+    <string name="payment_type_cash">Cash</string>
+    <string name="title_you_select">You have been selected</string>
+    <string name="title_pending">Pending</string>
+    <string name="title_find_task">Find a task</string>
 </resources>

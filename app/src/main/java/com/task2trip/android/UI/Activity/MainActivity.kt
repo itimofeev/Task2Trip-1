@@ -181,6 +181,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_offer_details), true)
             }
+            R.id.offersShowMyFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, getString(R.string.task_get_my), true)
+            }
             R.id.taskDetailsFragment -> {
                 navController.navigate(resourceId, args)
                 setToolBarTitle(getString(R.string.title_task_details))
