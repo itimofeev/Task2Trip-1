@@ -35,6 +35,7 @@
     <string name="search_filter_region_title">Region for search</string>
     <string name="search_filter_status_title">Status of tasks</string>
 
+    <string name="task_show">Show tasks</string>
     <string name="task_create">Create task</string>
     <string name="task_get_my">My tasks</string>
     <string name="task_add_my">Add offer</string>
@@ -43,8 +44,21 @@
     <string name="board_skip_text"><u>Skip</u></string>
     <string name="logo1">Create any task</string>
     <string name="logo2">and find locals\nto help with</string>
+    <string name="board_no_task">Create\nany task</string>
+    <string name="board_no_task_subtitle">and find locals\nto help with</string>
 
     <string name="next_step">Next</string>
+
+    <string name="profile_main">Basic info</string>
+    <string name="profile_contacts">Contact info</string>
+    <string name="profile_about">About me</string>
+    <string name="profile_social">Account in social networks</string>
+    <string name="profile_male">Male</string>
+    <string name="profile_female">Female</string>
+    <string name="profile_my_activity">field of activity</string>
+    <string name="profile_tell_myself">tell us about yourself</string>
+    <string name="profile_interest">Interest</string>
+    <string name="profile_why_you_there">Why you are there</string>
 
     <string name="setting_about">About app</string>
     <string name="setting_exit_app">Exit from profile</string>
@@ -52,6 +66,7 @@
     <string name="setting_change_password">Change password</string>
     <string name="setting_notifications">Notifications</string>
     <string name="setting_ask_question">Ask question</string>
+
     <string name="title_login_into_app">Log in</string>
     <string name="title_registration">Registration</string>
     <string name="title_create_task">Create task</string>
@@ -72,24 +87,16 @@
     <string name="title_task_details">Task №ххх</string>
     <string name="title_login_registration">Log in / Registration</string>
     <string name="title_view_profile">View profile</string>
-    <string name="task_show">Show tasks</string>
     <string name="title_messages">Messages</string>
-    <string name="profile_main">Basic info</string>
-    <string name="profile_contacts">Contact info</string>
-    <string name="profile_about">About me</string>
     <string name="title_details">Details</string>
-    <string name="profile_social">Account in social networks</string>
-    <string name="profile_male">Male</string>
-    <string name="profile_female">Female</string>
-    <string name="profile_my_activity">field of activity</string>
-    <string name="profile_tell_myself">tell us about yourself</string>
-    <string name="profile_interest">Interest</string>
-    <string name="profile_why_you_there">Why you are there</string>
     <string name="title_travel">Traveler</string>
     <string name="title_local">Local</string>
-    <string name="error_no_location">Location not founded</string>
-    <string name="payment_type_cash">Cash</string>
     <string name="title_you_select">You have been selected</string>
     <string name="title_pending">Pending</string>
     <string name="title_find_task">Find a task</string>
+    <string name="title_name">Title</string>
+    <string name="title_description">Description</string>
+    <string name="title_price">Price</string>
+    <string name="title_select_location">Select country and city</string>
+    <string name="title_date_time_start_finish">Date and time</string>
 </resources>

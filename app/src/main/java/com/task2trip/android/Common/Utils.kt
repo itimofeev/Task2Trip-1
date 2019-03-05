@@ -34,6 +34,13 @@ fun EditText.toInt(): Int {
     }
 }
 
+fun String.parseStatusValue(): TaskStatus {
+    return try {
+        TaskStatus.valueOf(this.toUpperCase())
+    } catch (ex: Exception) {
+        TaskStatus.NEW
+    }
+}
 
 fun TaskStatus.getMyName(): String {
     val local = Locale.getDefault().language

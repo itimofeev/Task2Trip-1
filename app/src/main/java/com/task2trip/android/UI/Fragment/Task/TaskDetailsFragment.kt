@@ -3,6 +3,8 @@ package com.task2trip.android.UI.Fragment.Task
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Common.getMyName
+import com.task2trip.android.Common.parseStatusValue
 import com.task2trip.android.Common.toCalendar
 import com.task2trip.android.Common.toPattern
 import com.task2trip.android.Model.MockData
@@ -51,7 +53,11 @@ class TaskDetailsFragment : BaseFragment() {
 
     private fun setData(task: Task) {
         val dateTime = task.canceledTime?.toCalendar()
-        tvStatusDateTime.text = task.status.plus(dateTime?.toPattern("dd.MM.yyyy HH:mm"))
+        var statusAndTime = task.status.parseStatusValue().getMyName()
+        if (dateTime != null) {
+            statusAndTime += ". актуальна до: " + dateTime.toPattern("dd.MM.yyyy HH:mm")
+        }
+        tvStatusDateTime.text = statusAndTime
         tvTaskName.text = task.name
         tvTaskPrice.text = task.budgetEstimate.toString().plus(" Rub")
         tvTaskLocation.text = getString(R.string.error_no_location)

@@ -54,6 +54,8 @@
     <string name="task_edit">Редактировать</string>
     <string name="logo1">Создавайте любые задания</string>
     <string name="logo2">и находите местных жителей\nдля их выполнения</string>
+    <string name="board_no_task">Создавайте\nлюбые задания</string>
+    <string name="board_no_task_subtitle">и находите местных жителей\nдля его выполнения!</string>
 
     <string name="next_step">Далее</string>
     <string name="task_show">Показать</string>
@@ -91,6 +93,11 @@
     <string name="title_local">Местный житель</string>
     <string name="title_you_select">Вас выбрали</string>
     <string name="title_pending">На рассмотрении</string>
+    <string name="title_name">Название</string>
+    <string name="title_description">Описание</string>
+    <string name="title_select_location">Введите страну и город</string>
+    <string name="title_date_time_start_finish">Дата и время</string>
+    <string name="title_price">Цена</string>
 
     <string name="error_no_location">Местоположение не определено</string>
 

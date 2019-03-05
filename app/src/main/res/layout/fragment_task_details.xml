@@ -8,6 +8,7 @@
 
     <TextView
             android:id="@+id/tvStatusDateTime"
+            android:layout_marginTop="@dimen/margin_top_16dp"
             style="@style/textBaseConstraintContent"
             android:text=""
             tools:text="tvStatusDateTime"

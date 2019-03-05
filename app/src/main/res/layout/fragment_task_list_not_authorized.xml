@@ -11,7 +11,6 @@
             android:layout_height="wrap_content"
             android:src="@drawable/banner_task_create"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/hLine1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -23,8 +22,7 @@
             android:layout_marginStart="@dimen/margin_left_16dp"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:text="Создавайте
-любые задания"
+            android:text="@string/board_no_task"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -35,8 +33,7 @@
             android:layout_marginBottom="@dimen/margin_bottom_16dp"
             android:layout_marginLeft="@dimen/margin_left_16dp"
             android:layout_marginStart="@dimen/margin_left_16dp"
-            android:text="и находите местных жителей
-для его выполнения!"
+            android:text="@string/board_no_task_subtitle"
             app:layout_constraintBottom_toTopOf="@+id/btCreateTask"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/textView"/>
