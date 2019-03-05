@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
-import com.task2trip.android.Common.getMyName
 import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskStatus
 import com.task2trip.android.Presenter.TaskCategoryPresenter
@@ -71,7 +70,7 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView {
     private fun onCategoryClick() {
         hideKeyboard()
         val dialogBuilder = SearchCategoryDialog.getInstance(this.categoryList)
-        dialogBuilder.setTargetFragment(this, Constants.REQUEST_DIALOG_CALEGORY)
+        dialogBuilder.setTargetFragment(this, Constants.REQUEST_DIALOG_CATEGORY)
         fragmentManager?.let {
             dialogBuilder.show(it, SearchCategoryDialog::class.java.name)
         }
@@ -104,7 +103,7 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Constants.REQUEST_DIALOG_CALEGORY) {
+        if (requestCode == Constants.REQUEST_DIALOG_CATEGORY) {
             if (resultCode == Activity.RESULT_OK) {
                 data?.let {
                     val selectedCategory: ArrayList<TaskCategory> = it.getParcelableArrayListExtra(Constants.EXTRA_TASK_CATEGORY_LIST)

@@ -71,12 +71,14 @@ class TaskListPerformerFragment : BaseFragment() {
     private fun onYouSelectClick() {
         val args = Bundle()
         args.putBoolean(Constants.EXTRA_OFFER_IS_SHOW_MY, true)
-        navigateTo(R.id.taskOffersFragment, args)
+        args.putInt(Constants.EXTRA_SELECTED_PAGE, 0)
+        navigateTo(R.id.offersShowMyFragment, args)
     }
 
     private fun onConfirmationClick() {
         val args = Bundle()
         args.putBoolean(Constants.EXTRA_OFFER_IS_SHOW_MY, true)
-        navigateTo(R.id.taskOffersFragment, args)
+        args.putInt(Constants.EXTRA_SELECTED_PAGE, 1)
+        navigateTo(R.id.offersShowMyFragment, args)
     }
 }

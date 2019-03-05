@@ -37,6 +37,7 @@
     <string name="profile_about">Обо мне</string>
     <string name="profile_social">Аккаунты в соц.сетях</string>
     <string name="profile_male">Мужской</string>
+    <string name="profile_female">Женский</string>
     <string name="profile_my_activity">Сфера деятельности</string>
     <string name="profile_tell_myself">Расскажите о себе</string>
     <string name="profile_interest">Интересы</string>
@@ -67,6 +68,7 @@
     <string name="title_registration">Регистрация</string>
     <string name="title_create_task">Добавить задание</string>
     <string name="title_search_task">Поиск заданий</string>
+    <string name="title_find_task">Найти задание</string>
     <string name="title_inbox">Входящие</string>
     <string name="title_result_task_list">Результат: список заданий</string>
     <string name="title_task_params">Параметры задания</string>
@@ -85,5 +87,12 @@
     <string name="title_view_profile">Просмотр профиля</string>
     <string name="title_messages">Сообщения</string>
     <string name="title_details">Детали</string>
-    <string name="profile_female">Женский</string>
+    <string name="title_travel">Путешественник</string>
+    <string name="title_local">Местный житель</string>
+    <string name="title_you_select">Вас выбрали</string>
+    <string name="title_pending">На рассмотрении</string>
+
+    <string name="error_no_location">Местоположение не определено</string>
+
+    <string name="payment_type_cash">Оплата наличными</string>
 </resources>

@@ -52,6 +52,8 @@ dependencies {
 
     implementation "com.squareup.picasso:picasso:2.71828"
 
+    implementation project(path: ':widgetlibrary')
+
     // not support AndroidX
     //implementation "com.arello-mobile:moxy:$moxyLib"
     //implementation "com.arello-mobile:moxy-android:$moxyLib"

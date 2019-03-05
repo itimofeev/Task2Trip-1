@@ -54,7 +54,7 @@ class TaskDetailsFragment : BaseFragment() {
         tvStatusDateTime.text = task.status.plus(dateTime?.toPattern("dd.MM.yyyy HH:mm"))
         tvTaskName.text = task.name
         tvTaskPrice.text = task.budgetEstimate.toString().plus(" Rub")
-        tvTaskLocation.text = "Местоположение не определено"
+        tvTaskLocation.text = getString(R.string.error_no_location)
         tvTaskDescription.text = task.description
     }
 

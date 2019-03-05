@@ -33,7 +33,7 @@
                 android:layout_marginEnd="@dimen/margin_right_16dp"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/text_size_setting_item"
-                android:text="Вас выбрали"/>
+                android:text="@string/title_you_select"/>
     </LinearLayout>
 
     <ImageView
@@ -72,7 +72,7 @@
                 android:layout_marginEnd="@dimen/margin_right_16dp"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/text_size_setting_item"
-                android:text="На рассмотрении"/>
+                android:text="@string/title_pending"/>
     </LinearLayout>
 
     <ImageView
@@ -88,7 +88,7 @@
     <Button
             android:id="@+id/btSearch"
             style="@style/buttonSolid"
-            android:text="Найти задание"
+            android:text="@string/title_find_task"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>

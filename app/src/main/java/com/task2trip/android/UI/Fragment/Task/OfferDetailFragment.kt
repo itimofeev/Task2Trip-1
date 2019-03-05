@@ -16,6 +16,7 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
     private lateinit var presenter: TaskOfferPresenter
     private var taskId: String = ""
     private var offer: Offer = MockData.getEmptyOffer()
+    private var isMyOffers = false
 
     companion object {
         fun getInstance(offer: Offer, taskId: String): OfferDetailFragment {
@@ -34,6 +35,7 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
         args?.let {
             taskId = it.getString(Constants.EXTRA_TASK_ID, "")
             offer = it.getParcelable(Constants.EXTRA_OFFER) ?: MockData.getEmptyOffer()
+            isMyOffers = it.getBoolean(Constants.EXTRA_OFFER_IS_SHOW_MY, false)
         }
     }
 
@@ -51,15 +53,26 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
         }
         tvPerformerName.text = offer.user.getName()
         tvTaskPrice.text = "${offer.price} Rub"
-        tvPaymentType.text = "Оплата наличными"
+        tvPaymentType.text = getString(R.string.payment_type_cash)
         tvOfferDescription.text = offer.comment
+        initButtons()
+        initPresenter(view)
+    }
+
+    private fun initButtons() {
+        if (isMyOffers) {
+            btSetMyLocal.visibility = View.GONE
+            btSendMessage.visibility = View.GONE
+        } else {
+            btSetMyLocal.visibility = View.VISIBLE
+            btSendMessage.visibility = View.VISIBLE
+        }
         btSetMyLocal.setOnClickListener {
             presenter.setOfferForUser(taskId, offer.id)
         }
         btSendMessage.setOnClickListener {
             onSendMessage()
         }
-        initPresenter(view)
     }
 
     private fun initPresenter(view: View) {

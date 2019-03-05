@@ -40,9 +40,9 @@ class TaskListPerformerPagerFragment: BaseFragment() {
         childFragmentManager.let {
             val adapter = TabAdapter(it)
             adapter.addItem(
-                TabFragmentTitle(TaskListTravelerFragment.getInstance(userId, userRole), "Путешественник"))
+                TabFragmentTitle(TaskListTravelerFragment.getInstance(userId, userRole), getString(R.string.title_travel)))
             adapter.addItem(
-                TabFragmentTitle(TaskListPerformerFragment.getInstance(userId), "Местный житель"))
+                TabFragmentTitle(TaskListPerformerFragment.getInstance(userId), getString(R.string.title_local)))
             vpTaskList.adapter = adapter
             vpTaskList.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}

@@ -51,6 +51,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
         initPresenter(view)
         if (isMessage) {
             onMessage(message)
+            viewLoadAndMessage.setMessage(message)
         }
     }
 
@@ -68,6 +69,11 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
         val adapter = TaskListAdapter(taskResult.payload)
         adapter.setClickListener(this)
         rvTaskList.adapter = adapter
+        if (taskResult.count < 1) {
+            viewLoadAndMessage.setMessage("У вас еще не было задач!")
+        } else {
+            viewLoadAndMessage.hide()
+        }
     }
 
     override fun onItemClick(item: Task, position: Int) {
@@ -81,6 +87,6 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     }
 
     override fun onProgress(isProgress: Boolean) {
-        //
+        viewLoadAndMessage.setProgress(isProgress)
     }
 }

@@ -36,7 +36,7 @@ class Constants {
         const val EXTRA_IS_MESSAGE = "EXTRA_IS_MESSAGE"
         const val EXTRA_MESSAGE_TEXT = "EXTRA_MESSAGE_TEXT"
 
-
-        const val REQUEST_DIALOG_CALEGORY = 255
+        const val EXTRA_SELECTED_PAGE = "EXTRA_SELECTED_PAGE"
+        const val REQUEST_DIALOG_CATEGORY = 255
     }
 }

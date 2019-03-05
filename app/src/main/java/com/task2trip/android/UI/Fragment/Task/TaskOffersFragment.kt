@@ -65,6 +65,7 @@ class TaskOffersFragment : BaseFragment(), TaskOfferView, ItemClickListener<Offe
         with(args) {
             putParcelable(Constants.EXTRA_OFFER, item)
             putString(Constants.EXTRA_TASK_ID, taskId)
+            putBoolean(Constants.EXTRA_OFFER_IS_SHOW_MY, isMyOffers)
         }
         navigateTo(R.id.offerDetailFragment, args)
     }
