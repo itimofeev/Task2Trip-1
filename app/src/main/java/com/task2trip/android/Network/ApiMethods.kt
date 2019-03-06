@@ -109,7 +109,7 @@ interface ApiMethods {
     @PATCH("task/{taskId}/offer/{offerId}")
     fun setTaskCompletedOrCanceled(@Path("taskId") taskId: String,
                                    @Path("offerId") offerId: String,
-                                   @Body status: String): Call<List<Offer>>
+                                   @Body status: String): Call<Offer>
 
     @GET("offer")
     fun getMyOffers(): Call<List<Offer>>

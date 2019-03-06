@@ -87,4 +87,24 @@ class TaskOfferPresenter(val view: TaskOfferView, context: Context): BasePresent
             }
         }
     }
+
+    fun setTaskWithOfferFinished(taskId: String, offerId: String, status: String) {
+        view.onProgress(true)
+        val req: Call<Offer> = getApi().setTaskCompletedOrCanceled(taskId, offerId, status)
+        req.enqueue {
+            onResponse = { response ->
+                if (response.code() in 200..299) {
+                    view.onTaskStatusResult(response.body() ?: MockData.getEmptyOffer())
+                } else {
+                    view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
+                }
+                view.onProgress(false)
+            }
+
+            onFailure = { onFailure ->
+                view.onMessage("Сетевая ошибка ${onFailure?.message}")
+                view.onProgress(false)
+            }
+        }
+    }
 }

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskList
-import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.Presenter.TaskListPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.TaskListAdapter
@@ -53,6 +52,9 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
             onMessage(message)
             viewLoadAndMessage.setMessage(message)
         }
+        btCreateTask.setOnClickListener {
+            navigateTo(R.id.taskCategoryFragment, Bundle())
+        }
     }
 
     private fun initPresenter(view: View) {
@@ -69,7 +71,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
         val adapter = TaskListAdapter(taskResult.payload)
         adapter.setClickListener(this)
         rvTaskList.adapter = adapter
-        if (taskResult.count < 1) {
+        if (taskResult.total < 1) {
             viewLoadAndMessage.setMessage("У вас еще не было задач!")
         } else {
             viewLoadAndMessage.hide()

@@ -68,4 +68,8 @@ class TaskAddOfferFragment : BaseFragment(), TaskOfferView {
     override fun onMyOffersResult(offers: List<Offer>) {
         //
     }
+
+    override fun onTaskStatusResult(offer: Offer) {
+        //
+    }
 }

@@ -67,8 +67,13 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
             btSetMyLocal.visibility = View.VISIBLE
             btSendMessage.visibility = View.VISIBLE
         }
+        if (taskId == offer.task.id) {
+            btSetMyLocal.text = "Отменить исполнение"
+        }
         btSetMyLocal.setOnClickListener {
-            presenter.setOfferForUser(taskId, offer.id)
+            if (taskId != offer.task.id) {
+                presenter.setOfferForUser(taskId, offer.id)
+            }
         }
         btSendMessage.setOnClickListener {
             onSendMessage()
@@ -111,6 +116,10 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
     }
 
     override fun onMyOffersResult(offers: List<Offer>) {
+        //
+    }
+
+    override fun onTaskStatusResult(offer: Offer) {
         //
     }
 

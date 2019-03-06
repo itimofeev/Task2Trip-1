@@ -12,7 +12,7 @@ data class Task(val id: String,
                 val toDate: String,
                 val budgetEstimate: Int,
                 val status: String,
-                val newDate: String,
+                val newTime: String,
                 val inProgressTime: String,
                 val finishedTime: String?,
                 val canceledTime: String?,
@@ -44,7 +44,7 @@ data class Task(val id: String,
         parcel.writeString(toDate)
         parcel.writeInt(budgetEstimate)
         parcel.writeString(status)
-        parcel.writeString(newDate)
+        parcel.writeString(newTime)
         parcel.writeString(inProgressTime)
         parcel.writeString(finishedTime)
         parcel.writeString(canceledTime)

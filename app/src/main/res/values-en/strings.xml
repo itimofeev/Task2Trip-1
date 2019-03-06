@@ -99,4 +99,8 @@
     <string name="title_price">Price</string>
     <string name="title_select_location">Select country and city</string>
     <string name="title_date_time_start_finish">Date and time</string>
+    <string name="payment_type_cash">Cash</string>
+    <string name="error_no_location">location not founded</string>
+    <string name="task_finish">Finish</string>
+    <string name="task_finished">Finished</string>
 </resources>

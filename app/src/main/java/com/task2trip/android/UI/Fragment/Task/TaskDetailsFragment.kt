@@ -7,14 +7,20 @@ import com.task2trip.android.Common.getMyName
 import com.task2trip.android.Common.parseStatusValue
 import com.task2trip.android.Common.toCalendar
 import com.task2trip.android.Common.toPattern
+import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.MockData
+import com.task2trip.android.Model.Offer
 import com.task2trip.android.Model.Task.Task
+import com.task2trip.android.Model.Task.TaskStatus
 import com.task2trip.android.Model.User.UserRole
+import com.task2trip.android.Presenter.TaskOfferPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
+import com.task2trip.android.View.TaskOfferView
 import kotlinx.android.synthetic.main.fragment_task_details.*
 
-class TaskDetailsFragment : BaseFragment() {
+class TaskDetailsFragment : BaseFragment(), TaskOfferView {
+    private lateinit var presenter: TaskOfferPresenter
     private var isEditTask = false
     private var taskItem: Task = MockData.getEmptyTask()
     private var userRole: UserRole = MockData.getEmptyUser().getRole()
@@ -47,6 +53,12 @@ class TaskDetailsFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
+        presenter = TaskOfferPresenter(this, view.context)
+        val storage = LocalStoreManager(view.context)
+        // Если моя собственная задача
+        if (taskItem.user.getId() == storage.get(Constants.EXTRA_USER_ID, "")) {
+            isEditTask = true
+        }
         initApplyButton()
         setData(taskItem)
     }
@@ -66,29 +78,82 @@ class TaskDetailsFragment : BaseFragment() {
 
     private fun initApplyButton() {
         if (isEditTask) {
-            btTaskOfferOrEdit.text = getString(R.string.task_edit)
+            when(taskItem.status.parseStatusValue()) {
+                TaskStatus.NEW -> {
+                    btTaskOfferOrEdit.text = getString(R.string.task_edit)
+                    btTaskOfferOrEdit.setOnClickListener {
+                        onApplyEditClick(taskItem)
+                    }
+                }
+                TaskStatus.IN_PROGRESS -> {
+                    btTaskOfferOrEdit.text = getString(R.string.task_finish)
+                    btTaskOfferOrEdit.setOnClickListener {
+                        onApplyFinishClick(taskItem, MockData.getEmptyOffer())//TODO: offer должен быть
+                    }
+                }
+                else -> {
+                    setButtonFinished()
+                }
+            }
         } else {
             if (userRole == UserRole.TRAVELER) {
                 btTaskOfferOrEdit.visibility = View.GONE
             }
             btTaskOfferOrEdit.text = getString(R.string.task_add_offer)
-        }
-        btTaskOfferOrEdit.setOnClickListener {
-            onApplyTaskClick(taskItem)
+            btTaskOfferOrEdit.setOnClickListener {
+                onApplyOfferTaskClick(taskItem)
+            }
         }
     }
 
-    private fun onApplyTaskClick(task: Task) {
+    private fun setButtonFinished() {
+        btTaskOfferOrEdit.text = getString(R.string.task_finished)
+        btTaskOfferOrEdit.isEnabled = false
+    }
+
+    private fun onApplyOfferTaskClick(task: Task) {
         val args = Bundle()
         args.putParcelable(Constants.EXTRA_TASK, task)
-        if (isEditTask) {
-            navigateTo(R.id.taskAddParamsFragment, args)
-        } else {
-            when (userRole) {
-                UserRole.LOCAL -> navigateTo(R.id.taskAddOfferFragment, args)
-                UserRole.TRAVELER -> navigateTo(R.id.profileFragment, args)
-                else -> navigateTo(R.id.loginRegisterFragment, Bundle())
-            }
+        when (userRole) {
+            UserRole.LOCAL -> navigateTo(R.id.taskAddOfferFragment, args)
+            UserRole.TRAVELER -> navigateTo(R.id.profileFragment, args)
+            else -> navigateTo(R.id.loginRegisterFragment, Bundle())
         }
+    }
+
+    private fun onApplyEditClick(task: Task) {
+        val args = Bundle()
+        args.putParcelable(Constants.EXTRA_TASK, task)
+        navigateTo(R.id.taskAddParamsFragment, args)
+    }
+
+    private fun onApplyFinishClick(task: Task, offer: Offer) {
+        presenter.setTaskWithOfferFinished(task.id, offer.id, TaskStatus.FINISHED.name.toLowerCase())
+    }
+
+    override fun onSaveOfferResult(offer: Offer) {
+        //
+    }
+
+    override fun onOffersResult(offerList: List<Offer>) {
+        //
+    }
+
+    override fun onSetOfferForUser(offer: Offer) {
+        //
+    }
+
+    override fun onMyOffersResult(offers: List<Offer>) {
+        //
+    }
+
+    override fun onTaskStatusResult(offer: Offer) {
+        if (offer.task.status.parseStatusValue() == TaskStatus.FINISHED) {
+            setButtonFinished()
+        }
+    }
+
+    override fun onProgress(isProgress: Boolean) {
+        //
     }
 }

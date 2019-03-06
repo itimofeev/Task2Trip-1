@@ -29,7 +29,7 @@ class TaskListHolder(itemView: View) : BaseHolder<Task>(itemView) {
         }
         tvTaskDescription?.text = item.description
         tvTaskPrice?.text = "${item.budgetEstimate} Rub"
-        tvTaskPerformerName?.text = "имя не указано"
+        tvTaskPerformerName?.text = item.user.getName()
     }
 
     override fun setItemClickListener(listener: View.OnClickListener?) {
