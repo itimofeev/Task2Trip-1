@@ -5,14 +5,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <LinearLayout
+            android:id="@+id/group_step_color"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <View
+                android:id="@+id/view_step_01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:background="@color/purple"/>
+
+        <View
+                android:id="@+id/view_step_02"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:background="@color/gray_light"/>
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCategoryList"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/btNextStep"/>
+            app:layout_constraintBottom_toTopOf="@+id/btNextStep"
+            app:layout_constraintTop_toBottomOf="@+id/group_step_color"/>
 
     <Button
             android:id="@+id/btNextStep"

@@ -60,6 +60,7 @@
     <string name="board_no_task_subtitle">и находите местных жителей\nдля его выполнения!</string>
 
     <string name="next_step">Далее</string>
+    <string name="next_finish">Готово</string>
     <string name="task_show">Показать</string>
 
     <string name="setting_about">О приложении</string>

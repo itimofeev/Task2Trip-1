@@ -24,7 +24,7 @@ class MockData {
         fun getEmptyTask(): Task {
             return Task("", "", "", "",
                 "", "", 0, "",
-                "", "", "", "", getEmptyCategory(), getEmptyUser())
+                "", "", "", "", getEmptyCategory(), getEmptyUser(), "")
         }
 
         fun getEmptyCategory(): TaskCategory {

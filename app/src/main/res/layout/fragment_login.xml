@@ -67,55 +67,57 @@
         app:layout_constraintTop_toBottomOf="@+id/btLogin"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clSocial"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/bottom_step"
-        android:layout_marginStart="@dimen/margin_left_16dp"
-        android:layout_marginLeft="@dimen/margin_left_16dp"
-        android:layout_marginRight="@dimen/margin_right_16dp"
-        android:layout_marginEnd="@dimen/margin_right_16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+            android:id="@+id/clSocial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bottom_step"
+            android:layout_marginStart="@dimen/margin_left_16dp"
+            android:layout_marginLeft="@dimen/margin_left_16dp"
+            android:layout_marginRight="@dimen/margin_right_16dp"
+            android:layout_marginEnd="@dimen/margin_right_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword">
 
         <TextView
-            android:id="@+id/tvSocialTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/reg_login_social"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+                android:id="@+id/tvSocialTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/reg_login_social"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-        <Button
-            android:id="@+id/btLogin_FB"
-            android:layout_width="@dimen/bt_social"
-            android:text="FB"
-            style="@style/buttonBorder"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSocialTitle"/>
+        <ImageView
+                android:id="@+id/btLogin_FB"
+                android:layout_width="@dimen/image_size_medium"
+                android:layout_height="@dimen/image_size_medium"
+                android:src="@drawable/vector_ic_facebook"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSocialTitle"
+                app:layout_constraintEnd_toStartOf="@+id/btLogin_VK"/>
 
-        <Button
-            android:id="@+id/btLogin_VK"
-            android:layout_width="@dimen/bt_social"
-            android:text="VK"
-            style="@style/buttonBorder"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSocialTitle"/>
+        <ImageView
+                android:id="@+id/btLogin_VK"
+                android:layout_width="@dimen/image_size_medium"
+                android:layout_height="@dimen/image_size_medium"
+                android:src="@drawable/vector_ic_vk"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSocialTitle"/>
 
-        <Button
-            android:id="@+id/btLogin_Google"
-            android:layout_width="@dimen/bt_social"
-            android:text="Google"
-            style="@style/buttonBorder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSocialTitle"/>
+        <ImageView
+                android:id="@+id/btLogin_Google"
+                android:layout_width="@dimen/image_size_medium"
+                android:layout_height="@dimen/image_size_medium"
+                android:src="@drawable/vector_ic_google"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSocialTitle"
+                app:layout_constraintStart_toEndOf="@+id/btLogin_VK"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

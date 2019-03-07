@@ -3,14 +3,18 @@ package com.task2trip.android.UI.Fragment.Profile
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.task2trip.android.Model.User.UserCategory
+import com.task2trip.android.Model.Task.TaskCategory
+import com.task2trip.android.Presenter.TaskCategoryPresenter
 import com.task2trip.android.R
-import com.task2trip.android.UI.Adapter.ProfileCategoryAdapter
+import com.task2trip.android.UI.Adapter.TaskCategorySearchAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.UI.Listener.ItemClickListener
+import com.task2trip.android.View.TaskCategoryView
 import kotlinx.android.synthetic.main.fragment_profile_category.*
 
-class ProfileCategoryFragment : BaseFragment(), ItemClickListener<UserCategory> {
+class ProfileCategoryFragment : BaseFragment(), TaskCategoryView, ItemClickListener<TaskCategory> {
+    private lateinit var presenter: TaskCategoryPresenter
+
     override fun getArgs(args: Bundle?) {
         //
     }
@@ -20,32 +24,34 @@ class ProfileCategoryFragment : BaseFragment(), ItemClickListener<UserCategory> 
     }
 
     override fun initComponents(view: View) {
+        initPresenter(view)
         btNextStep.setOnClickListener {
-            //navigateTo(R.id.profileCategoryFragment, Bundle())
+            navigateTo(R.id.profileContactsFragment, Bundle())
         }
         initRecycleView(view)
     }
 
+    private fun initPresenter(view: View) {
+        presenter = TaskCategoryPresenter(this, view.context)
+        presenter.getCategoryList()
+    }
+
     private fun initRecycleView(view: View) {
-        val adapter = ProfileCategoryAdapter(getItems())
-        adapter.setClickListener(this)
         rvCategoryList.setHasFixedSize(true)
         rvCategoryList.layoutManager = LinearLayoutManager(view.context)
+    }
+
+    override fun onCategoryList(categoryList: List<TaskCategory>) {
+        val adapter = TaskCategorySearchAdapter(categoryList)
+        adapter.setClickListener(this)
         rvCategoryList.adapter = adapter
     }
 
-    private fun getItems(): List<UserCategory> {
-        val items = ArrayList<UserCategory>()
-
-        items.add(UserCategory("Маршруты путешествий", false))
-        items.add(UserCategory("Гиды и проводники", false))
-        items.add(UserCategory("Трансфер", false))
-        items.add(UserCategory("Помощники в путешествиях", false))
-
-        return items
+    override fun onProgress(isProgress: Boolean) {
+        //
     }
 
-    override fun onItemClick(item: UserCategory, position: Int) {
+    override fun onItemClick(item: TaskCategory, position: Int) {
         //
     }
 }

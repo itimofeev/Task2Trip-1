@@ -17,7 +17,8 @@ data class Task(val id: String,
                 val finishedTime: String?,
                 val canceledTime: String?,
                 val category: TaskCategory,
-                val user: UserImpl): Parcelable {
+                val user: UserImpl,
+                val chosen_offer_id: String): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -32,7 +33,8 @@ data class Task(val id: String,
         parcel.readString(),
         parcel.readString(),
         parcel.readParcelable(TaskCategory::class.java.classLoader),
-        parcel.readParcelable(UserImpl::class.java.classLoader)
+        parcel.readParcelable(UserImpl::class.java.classLoader),
+        parcel.readString()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -50,6 +52,7 @@ data class Task(val id: String,
         parcel.writeString(canceledTime)
         parcel.writeParcelable(category, flags)
         parcel.writeParcelable(user, flags)
+        parcel.writeString(chosen_offer_id)
     }
 
     override fun describeContents(): Int {

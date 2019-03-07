@@ -103,4 +103,5 @@
     <string name="error_no_location">location not founded</string>
     <string name="task_finish">Finish</string>
     <string name="task_finished">Finished</string>
+    <string name="next_finish">Finish</string>
 </resources>
