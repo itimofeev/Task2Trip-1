@@ -2,6 +2,7 @@ package com.task2trip.android.UI.Fragment.Login
 
 import android.os.Bundle
 import android.view.View
+import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.User.*
 import com.task2trip.android.Presenter.UserPresenter
@@ -27,8 +28,29 @@ class LoginFragment : BaseFragment(), UserView {
         localStoreManager = LocalStoreManager(view.context)
         btLogin.setOnClickListener {
             super.hideKeyboard()
-            presenter.userLogin(etEmail.text.toString().trim(), etPassword.text.toString())
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString()
+            if (validateData(email, password)) {
+                presenter.userLogin(email, password)
+            }
         }
+    }
+
+    private fun validateData(email: String, password: String): Boolean {
+        if (email.isEmpty() || email.length < Constants.MIN_EMAIL_LENGTH) {
+            onMessage("Почта должна быть более ${Constants.MIN_EMAIL_LENGTH} символов!")
+            return false
+        }
+        if (password.isEmpty() || password.length < Constants.MIN_PASSWORD_LENGTH) {
+            onMessage("Пароль должен быть более ${Constants.MIN_PASSWORD_LENGTH} символов!")
+            tvPassword.error = "Пароль должен быть более ${Constants.MIN_PASSWORD_LENGTH} символов!"
+            tvPassword.isErrorEnabled = true
+            return false
+        } else {
+            tvPassword.error = null
+            tvPassword.isErrorEnabled = false
+        }
+        return true
     }
 
     override fun onProgress(isProgress: Boolean) {

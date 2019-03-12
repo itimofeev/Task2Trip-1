@@ -30,7 +30,7 @@ class LoadingAndMessage(context: Context?, attrs: AttributeSet?) : LinearLayoutC
     fun setMessage(message: String, hideMessage: Boolean) {
         setMessage(message)
         if (hideMessage) {
-            this.visibility = View.GONE
+            this.postDelayed({ this.visibility = View.GONE }, 3000)
         }
     }
 

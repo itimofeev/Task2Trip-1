@@ -9,6 +9,7 @@ import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskStatus
 import com.task2trip.android.Presenter.TaskCategoryPresenter
 import com.task2trip.android.R
+import com.task2trip.android.UI.Adapter.CountryAndCityAdapter
 import com.task2trip.android.UI.Adapter.TaskStatusAdapter
 import com.task2trip.android.UI.Dialog.SearchCategoryDialog
 import com.task2trip.android.UI.Fragment.BaseFragment
@@ -33,6 +34,7 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView {
     override fun initComponents(view: View) {
         initPresenter(view)
         initStatuses(view)
+        CountryAndCityAdapter(view.context)
         tvCategory.setOnClickListener {
             onCategoryClick()
         }

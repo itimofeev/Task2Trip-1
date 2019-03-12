@@ -6,7 +6,7 @@ import com.task2trip.android.Model.User.*
 import com.task2trip.android.View.UserView
 import retrofit2.Call
 
-class UserPresenter(val view: UserView, context: Context): BasePresenter(context) {
+class UserPresenter(val view: UserView, context: Context): BasePresenter(view, context) {
 
     fun registerUser(email: String, password: String, name: String, locale: String = "ru") {
         val req: Call<Void> = getApi().userRegister(UserSignUpReq(email, password, locale, name))
@@ -14,14 +14,7 @@ class UserPresenter(val view: UserView, context: Context): BasePresenter(context
             onResponse = { response ->
                 if (response.code() in 200..299) {
                     view.onRegisterResult(response.body())
-                } else {
-                    view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
                 }
-                view.onProgress(false)
-            }
-
-            onFailure = { onFailure ->
-                view.onMessage("Сетевая ошибка ${onFailure?.message}")
                 view.onProgress(false)
             }
         }
@@ -33,14 +26,7 @@ class UserPresenter(val view: UserView, context: Context): BasePresenter(context
             onResponse = { response ->
                 if (response.code() in 200..299) {
                     view.onLoginResult(response.body() ?: MockData.getEmptyUserLoginResp())
-                } else {
-                    view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
                 }
-                view.onProgress(false)
-            }
-
-            onFailure = { onFailure ->
-                view.onMessage("Сетевая ошибка ${onFailure?.message}")
                 view.onProgress(false)
             }
         }
@@ -52,14 +38,7 @@ class UserPresenter(val view: UserView, context: Context): BasePresenter(context
             onResponse = { response ->
                 if (response.code() in 200..299) {
                     view.onUserInfoResult(response.body() ?: MockData.getEmptyUserInfoResp())
-                } else {
-                    view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
                 }
-                view.onProgress(false)
-            }
-
-            onFailure = { onFailure ->
-                view.onMessage("Сетевая ошибка ${onFailure?.message}")
                 view.onProgress(false)
             }
         }
