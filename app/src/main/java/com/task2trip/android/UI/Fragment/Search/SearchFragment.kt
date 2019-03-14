@@ -49,11 +49,24 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     }
 
     private fun initPresenter(view: View) {
-        val categoryStrList = ArrayList<String>()
+        val query = getSearchCategoryQuery()
         presenter = TaskListPresenter(this, view.context)
-        presenter.searchTasks(null, null,
-            categoryList.mapTo(categoryStrList) { it.defaultValue },
-            null, null, taskStatus.toLowerCase())
+        presenter.searchTasks(null, null, "",null, null, taskStatus.toLowerCase())
+    }
+
+    private fun getSearchCategoryQuery(): String {
+        var searchText = ""
+        for ((index, item) in this.categoryList.withIndex()) {
+            val delimiter = ","
+            searchText += item.id + delimiter
+            if (index + 1 == this.categoryList.size) {
+                val textSizeLength = searchText.length
+                if (textSizeLength > delimiter.length) {
+                    searchText = searchText.substring(0, textSizeLength - delimiter.length)
+                }
+            }
+        }
+        return searchText
     }
 
     override fun onTaskListResult(taskResult: TaskList) {

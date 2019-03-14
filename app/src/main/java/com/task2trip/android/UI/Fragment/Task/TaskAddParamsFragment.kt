@@ -12,6 +12,8 @@ import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskSaveModel
 import com.task2trip.android.Presenter.TaskAddParamsPresenter
 import com.task2trip.android.R
+import com.task2trip.android.UI.Dialog.DateTimeDialog
+import com.task2trip.android.UI.Dialog.show
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.View.TaskParamsView
 import kotlinx.android.synthetic.main.fragment_task_add_params.*
@@ -21,6 +23,8 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
     private lateinit var presenter: TaskAddParamsPresenter
     private var categoryList = ArrayList<TaskCategory>()
     private var categorySelectedPosition = 0
+    private val dateStart = Calendar.getInstance()
+    private val dateEnd = Calendar.getInstance()
 
     override fun getArgs(args: Bundle?) {
         args?.let {
@@ -44,7 +48,7 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
             hideKeyboard()
             addMyTaskClick(TaskSaveModel(etTaskName.text.toString() + " " + etCountryAndCity.text.toString(),
                 etTaskDescription.text.toString(), getSelectedCategory().id, etPrice.toInt(),
-                Calendar.getInstance().toPattern(), Calendar.getInstance().toPattern()))
+                Calendar.getInstance().toPattern(), Calendar.getInstance().toPattern(), MockData.getEmptyGeoLocations()))
         }
     }
 
@@ -74,10 +78,8 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
     private fun onShowCalendar() {
         val dateAndTime = Calendar.getInstance()
         context?.let {
-            DatePickerDialog(
-                it, dateCallback, dateAndTime.get(Calendar.YEAR), dateAndTime.get(Calendar.MONTH),
-                dateAndTime.get(Calendar.DAY_OF_MONTH)
-            ).show()
+            DateTimeDialog.getInstance("Укажите НАЧАЛО задания", true, dateAndTime.timeInMillis)
+                .show(this)
         }
     }
 

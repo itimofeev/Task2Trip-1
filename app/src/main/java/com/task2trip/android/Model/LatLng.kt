@@ -3,15 +3,15 @@ package com.task2trip.android.Model
 import android.os.Parcel
 import android.os.Parcelable
 
-data class LatLng(val latitude: Double, val longitude: Double): Parcelable {
+data class LatLng(val lat: Double, val long: Double): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readDouble(),
         parcel.readDouble()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeDouble(latitude)
-        parcel.writeDouble(longitude)
+        parcel.writeDouble(lat)
+        parcel.writeDouble(long)
     }
 
     override fun describeContents(): Int {

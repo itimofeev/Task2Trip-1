@@ -8,12 +8,24 @@ import android.widget.BaseAdapter
 import android.widget.Filter
 import android.widget.Filterable
 import com.task2trip.android.Model.GeoCountryCity
+import com.task2trip.android.Model.MockData
 import com.task2trip.android.R
 import com.task2trip.android.UI.CountryAndCityFilter
 import com.task2trip.android.UI.Holder.CountryAndCityHolder
 
 class CountryAndCityAdapter(val context: Context): BaseAdapter(), Filterable {
     private val items = ArrayList<GeoCountryCity>()
+    private val filter = CountryAndCityFilter()
+
+    init {
+        items.addAll(MockData.getGeoLocations())
+    }
+
+    fun setItems(items: List<GeoCountryCity>) {
+        this.items.clear()
+        this.items.addAll(items)
+        filter.setItems(this.items)
+    }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         var view = convertView
@@ -41,6 +53,6 @@ class CountryAndCityAdapter(val context: Context): BaseAdapter(), Filterable {
     }
 
     override fun getFilter(): Filter {
-        return CountryAndCityFilter()
+        return filter
     }
 }

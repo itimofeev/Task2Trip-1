@@ -21,7 +21,7 @@ import retrofit2.http.*
 
 interface ApiMethods {
     companion object {
-        const val BASE_URL = "http://task2trip.com:8000/api/"
+        const val BASE_URL = "https://task2trip.com/api/"
         private const val VERSION: String = "v1/"
 
         fun getInstance(context: Context): ApiMethods {
@@ -90,7 +90,7 @@ interface ApiMethods {
     @GET("task")
     fun getTasks(@Query("userId") userId: String? = null,
                  @Query("searchString") searchString: String? = null,
-                 @Query("categoryId") categoryIds: List<String>? = null,
+                 @Query("categoryId") categoryIds: String? = null,
                  @Query("skip") skip: Int? = null,
                  @Query("limit") limit: Int? = null,
                  @Query("status") status: String? = null): Call<TaskList>
@@ -113,4 +113,7 @@ interface ApiMethods {
 
     @GET("offer")
     fun getMyOffers(): Call<List<Offer>>
+
+    @GET("geocode")
+    fun getCountryAndCity(@Query("query") query: String?): Call<List<GeoCountryCity>>
 }

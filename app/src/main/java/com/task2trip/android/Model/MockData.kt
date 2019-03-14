@@ -64,5 +64,25 @@ class MockData {
         fun getEmptyUserLoginResp(): UserLoginResp {
             return UserLoginResp("", getEmptyUser())
         }
+
+        fun getGeoLocations(): ArrayList<GeoCountryCity> {
+            val items = ArrayList<GeoCountryCity>()
+            items.add(GeoCountryCity("Россия", "Москва", LatLng(55.755814, 37.617635)))
+            items.add(GeoCountryCity("Пембрукшир-Сэр-Бенфроу, Великобритания", "Ллис-и-фран", LatLng(51.884496, -4.844983)))
+            items.add(GeoCountryCity("Кувен, Намюр, Бельгия", "Фран", LatLng(50.081247, 4.514978)))
+            items.add(GeoCountryCity("Овернь-Рона-Альпы, Франция", "Фран", LatLng(45.992277, 4.779154)))
+            items.add(GeoCountryCity("Нагайбакский район, Челябинская область, Россия", "село Париж", LatLng(53.296639, 60.10156)))
+            items.add(GeoCountryCity("Иль-де-Франс, Франция", "Париж", LatLng(48.856663, 2.351556)))
+            items.add(GeoCountryCity("Онтарио, Канада", "Париж", LatLng(43.199399, -80.385186)))
+            return items
+        }
+
+        fun getEmptyGeoLocationsList(): ArrayList<GeoCountryCity> {
+            return ArrayList<GeoCountryCity>()
+        }
+
+        fun getEmptyGeoLocations(): GeoCountryCity {
+            return GeoCountryCity("", "", LatLng(0.0, 0.0))
+        }
     }
 }

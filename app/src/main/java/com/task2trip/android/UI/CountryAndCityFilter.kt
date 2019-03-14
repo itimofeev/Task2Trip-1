@@ -2,33 +2,53 @@ package com.task2trip.android.UI
 
 import android.widget.Filter
 import com.task2trip.android.Model.GeoCountryCity
-import java.util.*
+import kotlin.collections.ArrayList
 
 class CountryAndCityFilter: Filter() {
+    private val items: ArrayList<GeoCountryCity> = ArrayList()
+    private var lastWord = ""
+
+    fun setItems(items: ArrayList<GeoCountryCity>) {
+        this.items.clear()
+        this.items.addAll(items)
+        val result: FilterResults = performFiltering(lastWord)
+        publishResults(lastWord, result)
+    }
+
     override fun performFiltering(constraint: CharSequence?): FilterResults {
-        val filterResults = Filter.FilterResults()
-        filterResults.values = null
-        filterResults.count - 0
+        val text: String = constraint?.toString() ?: ""
+        lastWord = text
+        val filterResults = FilterResults()
+        if (lastWord.isEmpty()) {
+            return filterResults
+        }
+        val resultItems: List<GeoCountryCity> = searchEngine(items, lastWord)
+        filterResults.values = resultItems
+        filterResults.count = resultItems.size
         return filterResults
     }
 
     override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-        //
+        if (results != null && results.count > 0) {
+            //
+        } else {
+            //notifyDataSetInvalidated()
+        }
     }
 
-    private fun searchEngine(listForSearch: List<GeoCountryCity>?, strForSearch: String): List<GeoCountryCity> {
+    private fun searchEngine(listForSearch: ArrayList<GeoCountryCity>, strForSearch: String): List<GeoCountryCity> {
         val filterList = ArrayList<GeoCountryCity>()
-        if (listForSearch != null) {
-            for (i in listForSearch.indices) {
-                val item = listForSearch[i]
-                // Ищем в любой части названия
-                val nameStr = item.description.toLowerCase(Locale.getDefault())
-                val searchStr = strForSearch.toLowerCase(Locale.getDefault())
-                if (nameStr.contains(searchStr)) {
+        return if (listForSearch.isEmpty()) {
+            filterList
+        } else {
+            for (item in listForSearch) {
+                val countryAndRegion = item.description
+                val city = item.name
+                if (countryAndRegion.contains(strForSearch, true) || city.contains(strForSearch, true)) {
                     filterList.add(item)
                 }
             }
+            filterList
         }
-        return filterList
     }
 }

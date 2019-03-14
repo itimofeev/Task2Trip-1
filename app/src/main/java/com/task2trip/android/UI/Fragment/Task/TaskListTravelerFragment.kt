@@ -70,7 +70,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     override fun onTaskListResult(taskResult: TaskList) {
         val adapter = TaskListAdapter(taskResult.payload)
         adapter.setClickListener(this)
-        rvTaskList.adapter = adapter
+        rvTaskList?.adapter = adapter
         if (taskResult.total < 1) {
             viewLoadAndMessage.setMessage("У вас еще не было задач!")
         } else {
