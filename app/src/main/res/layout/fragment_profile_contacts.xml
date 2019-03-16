@@ -80,6 +80,16 @@
             android:text="@string/profile_social"
             app:layout_constraintTop_toBottomOf="@+id/tvCity"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSocialAccounts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            style="@style/marginLeftRight16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleSocial"
+            app:layout_constraintBottom_toTopOf="@+id/btNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
     <Button
             android:id="@+id/btNext"
             android:text="@string/next_finish"

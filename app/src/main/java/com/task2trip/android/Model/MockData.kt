@@ -1,12 +1,11 @@
 package com.task2trip.android.Model
 
+import com.task2trip.android.Model.Location.GeoCountryCity
+import com.task2trip.android.Model.Location.LatLng
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskAddCategory
 import com.task2trip.android.Model.Task.TaskCategory
-import com.task2trip.android.Model.User.UserImpl
-import com.task2trip.android.Model.User.UserInfoResp
-import com.task2trip.android.Model.User.UserLoginResp
-import com.task2trip.android.Model.User.UserSignUpResp
+import com.task2trip.android.Model.User.*
 
 class MockData {
     companion object {
@@ -53,10 +52,6 @@ class MockData {
             return offers
         }
 
-        fun getEmptyUserInfoResp(): UserInfoResp {
-            return UserInfoResp("", "", "", "")
-        }
-
         fun getEmptyUserSignUpResp(): UserSignUpResp {
             return UserSignUpResp("", "")
         }
@@ -83,6 +78,11 @@ class MockData {
 
         fun getEmptyGeoLocations(): GeoCountryCity {
             return GeoCountryCity("", "", LatLng(0.0, 0.0))
+        }
+
+        fun getEmptyProfile(): ProfileImpl {
+            return ProfileImpl("", "", "", "", "", "",
+                "", "", "", "", ArrayList<TaskCategory>())
         }
     }
 }

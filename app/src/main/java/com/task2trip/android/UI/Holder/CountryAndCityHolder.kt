@@ -2,7 +2,7 @@ package com.task2trip.android.UI.Holder
 
 import android.view.View
 import android.widget.TextView
-import com.task2trip.android.Model.GeoCountryCity
+import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.R
 
 class CountryAndCityHolder(itemView: View) {

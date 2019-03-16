@@ -5,14 +5,14 @@ import android.view.View
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.User.*
-import com.task2trip.android.Presenter.UserPresenter
+import com.task2trip.android.Presenter.UserAuthPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
-import com.task2trip.android.View.UserView
+import com.task2trip.android.View.UserAuthView
 import kotlinx.android.synthetic.main.fragment_login.*
 
-class LoginFragment : BaseFragment(), UserView {
-    private lateinit var presenter: UserPresenter
+class LoginFragment : BaseFragment(), UserAuthView {
+    private lateinit var presenter: UserAuthPresenter
     private lateinit var localStoreManager: LocalStoreManager
 
     override fun getArgs(args: Bundle?) {
@@ -24,7 +24,7 @@ class LoginFragment : BaseFragment(), UserView {
     }
 
     override fun initComponents(view: View) {
-        presenter = UserPresenter(this, view.context)
+        presenter = UserAuthPresenter(this, view.context)
         localStoreManager = LocalStoreManager(view.context)
         btLogin.setOnClickListener {
             super.hideKeyboard()
@@ -71,9 +71,5 @@ class LoginFragment : BaseFragment(), UserView {
             super.setUser(user)
             navigateTo(R.id.taskListPerformerFragment, Bundle())
         }
-    }
-
-    override fun onUserInfoResult(user: UserInfoResp) {
-        //
     }
 }

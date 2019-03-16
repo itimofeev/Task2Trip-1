@@ -5,17 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
-import com.task2trip.android.Model.User.UserInfoResp
 import com.task2trip.android.Model.User.UserLoginResp
-import com.task2trip.android.Presenter.UserPresenter
+import com.task2trip.android.Presenter.UserAuthPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Dialog.SimpleFragmentDialog
 import com.task2trip.android.UI.Fragment.BaseFragment
-import com.task2trip.android.View.UserView
+import com.task2trip.android.View.UserAuthView
 import kotlinx.android.synthetic.main.fragment_registration.*
 
-class RegistrationFragment : BaseFragment(), UserView {
-    private lateinit var presenter: UserPresenter
+class RegistrationFragment : BaseFragment(), UserAuthView {
+    private lateinit var presenter: UserAuthPresenter
 
     override fun getArgs(args: Bundle?) {
         //
@@ -26,7 +25,7 @@ class RegistrationFragment : BaseFragment(), UserView {
     }
 
     override fun initComponents(view: View) {
-        presenter = UserPresenter(this, view.context)
+        presenter = UserAuthPresenter(this, view.context)
         btReg.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -85,10 +84,6 @@ class RegistrationFragment : BaseFragment(), UserView {
     }
 
     override fun onLoginResult(userToken: UserLoginResp) {
-        //
-    }
-
-    override fun onUserInfoResult(user: UserInfoResp) {
         //
     }
 }

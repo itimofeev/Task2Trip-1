@@ -8,13 +8,20 @@ class Constants {
         const val EXTRA_BOARD_PAGE = "EXTRA_BOARD_PAGE"
 
         const val EXTRA_USER = "EXTRA_USER"
+        const val EXTRA_PROFILE = "EXTRA_PROFILE"
         const val EXTRA_USER_ID = "EXTRA_USER_ID"
-        const val EXTRA_USER_LOGIN = "EXTRA_USER_LOGIN"
-        const val EXTRA_USER_NAME = "EXTRA_USER_NAME"
-        const val EXTRA_USER_EMAIL = "EXTRA_USER_EMAIL"
         const val EXTRA_USER_ROLE = "EXTRA_USER_ROLE"
         const val EXTRA_USER_TOKEN = "EXTRA_USER_TOKEN"
+        const val EXTRA_USER_FIRST_NAME = "EXTRA_USER_FIRST_NAME"
+        const val EXTRA_USER_LAST_NAME = "EXTRA_USER_LAST_NAME"
+        const val EXTRA_USER_MIDDLE_NAME = "EXTRA_USER_MIDDLE_NAME"
         const val EXTRA_USER_IMAGE_URL = "EXTRA_USER_IMAGE_URL"
+        const val EXTRA_USER_SEX = "EXTRA_USER_SEX"
+        const val EXTRA_USER_BIRTHDATE = "EXTRA_USER_BIRTHDATE"
+        const val EXTRA_USER_FIELD_OF_ACTIVITY = "EXTRA_USER_FIELD_OF_ACTIVITY"
+        const val EXTRA_USER_INTEREST = "EXTRA_USER_INTEREST"
+        const val EXTRA_USER_ABOUT = "EXTRA_USER_ABOUT"
+        const val EXTRA_USER_WHY_USE = "EXTRA_USER_WHY_USE"
 
         const val EXTRA_FIRST_START_APP = "EXTRA_FIRST_START_APP"
 
@@ -41,6 +48,7 @@ class Constants {
         const val EXTRA_MESSAGE_TEXT = "EXTRA_MESSAGE_TEXT"
 
         const val EXTRA_SELECTED_PAGE = "EXTRA_SELECTED_PAGE"
+        const val EXTRA_USER_LEVEL_UP = "EXTRA_USER_LEVEL_UP"
 
         const val REQUEST_DIALOG_DATE_TIME = 253
         const val REQUEST_DIALOG_SIMPLE = 254

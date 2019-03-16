@@ -2,17 +2,25 @@ package com.task2trip.android.UI.Fragment.Profile
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.MockData
+import com.task2trip.android.Model.User.ProfileImpl
 import com.task2trip.android.Model.User.UserCategoryForUsed
+import com.task2trip.android.Model.User.UserImpl
+import com.task2trip.android.Presenter.UserPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.ProfileMainCategoryAdapter
 import com.task2trip.android.UI.Dialog.SimpleFragmentDialog
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.UI.Listener.ItemClickListener
+import com.task2trip.android.View.UserView
 import kotlinx.android.synthetic.main.fragment_profile.*
 
-class ProfileFragment : BaseFragment(), ItemClickListener<UserCategoryForUsed> {
+class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategoryForUsed> {
+    private lateinit var presenter: UserPresenter
+    private var user: UserImpl = MockData.getEmptyUser()
+
     override fun getArgs(args: Bundle?) {
         //
     }
@@ -21,7 +29,8 @@ class ProfileFragment : BaseFragment(), ItemClickListener<UserCategoryForUsed> {
         return R.layout.fragment_profile
     }
 
-    override fun initComponents(@NonNull view: View) {
+    override fun initComponents(view: View) {
+        initPresenter(view)
         tvProfilePhoto.setOnClickListener {
             onChangePhotoClick()
         }
@@ -43,11 +52,16 @@ class ProfileFragment : BaseFragment(), ItemClickListener<UserCategoryForUsed> {
         initAboutUserCategoryList(view)
     }
 
-    private fun initAboutUserCategoryList(@NonNull view: View) {
+    private fun initPresenter(view: View) {
+        presenter = UserPresenter(this, view.context)
+        presenter.getUserInfo()
+    }
+
+    private fun initAboutUserCategoryList(view: View) {
         val items = ArrayList<UserCategoryForUsed>()
-        items.add(UserCategoryForUsed(R.id.profileMainInfoFragment, getString(R.string.profile_main), emptyList()))
-        items.add(UserCategoryForUsed(R.id.profileContactsFragment, getString(R.string.profile_contacts), emptyList()))
-        items.add(UserCategoryForUsed(R.id.profileAboutFragment, getString(R.string.profile_about), emptyList()))
+        items.add(UserCategoryForUsed(R.id.profileMainInfoFragment, getString(R.string.profile_main), ""))
+        items.add(UserCategoryForUsed(R.id.profileContactsFragment, getString(R.string.profile_contacts), ""))
+        items.add(UserCategoryForUsed(R.id.profileAboutFragment, getString(R.string.profile_about), ""))
 
         val adapter = ProfileMainCategoryAdapter(items)
         adapter.setClickListener(this)
@@ -57,7 +71,10 @@ class ProfileFragment : BaseFragment(), ItemClickListener<UserCategoryForUsed> {
     }
 
     override fun onItemClick(item: UserCategoryForUsed, position: Int) {
-        navigateTo(item.id, Bundle())
+        val args = Bundle()
+        val profile: ProfileImpl = user.getProfile() as ProfileImpl
+        args.putParcelable(Constants.EXTRA_PROFILE, profile)
+        navigateTo(item.id, args)
     }
 
     private fun onChangePhotoClick() {
@@ -65,6 +82,14 @@ class ProfileFragment : BaseFragment(), ItemClickListener<UserCategoryForUsed> {
         fragmentManager?.let {
             dialog.show(it, SimpleFragmentDialog.TAG)
         }
+    }
+
+    override fun onUserInfoResult(user: UserImpl) {
+        this.user = user
+    }
+
+    override fun onProgress(isProgress: Boolean) {
+        viewLoadAndMessage.setProgress(isProgress)
     }
 
     private fun onUserLevelUp() {

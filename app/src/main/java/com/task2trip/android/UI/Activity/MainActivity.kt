@@ -10,12 +10,13 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.snackbar.Snackbar
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.MockData
+import com.task2trip.android.Model.User.Profile
+import com.task2trip.android.Model.User.ProfileImpl
 import com.task2trip.android.Model.User.User
 import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.Presenter.MainActivityPresenter
@@ -313,6 +314,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     override fun setUser(user: User) {
         this.user = user
+    }
+
+    override fun setUserProfile(profile: Profile) {
+        this.user.setProfile(profile as ProfileImpl)
     }
 
     override fun onMessage(message: String) {

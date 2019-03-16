@@ -11,6 +11,7 @@ import com.task2trip.android.Model.User.User
 import com.task2trip.android.View.MainActivityView
 import android.app.Activity
 import android.view.inputmethod.InputMethodManager
+import com.task2trip.android.Model.User.Profile
 import java.util.*
 
 abstract class BaseFragment : Fragment() {
@@ -68,6 +69,10 @@ abstract class BaseFragment : Fragment() {
 
     protected fun setUser(user: User) {
         activityListener?.setUser(user)
+    }
+
+    protected fun setUserProfile(profile: Profile) {
+        activityListener?.setUserProfile(profile)
     }
 
     protected fun logoutUser() {

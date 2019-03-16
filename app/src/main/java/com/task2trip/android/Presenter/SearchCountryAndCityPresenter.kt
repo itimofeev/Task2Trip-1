@@ -1,7 +1,7 @@
 package com.task2trip.android.Presenter
 
 import android.content.Context
-import com.task2trip.android.Model.GeoCountryCity
+import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.View.SearchCountryAndCityView
 import retrofit2.Call

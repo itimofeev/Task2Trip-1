@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Filter
 import android.widget.Filterable
-import com.task2trip.android.Model.GeoCountryCity
+import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.R
 import com.task2trip.android.UI.CountryAndCityFilter

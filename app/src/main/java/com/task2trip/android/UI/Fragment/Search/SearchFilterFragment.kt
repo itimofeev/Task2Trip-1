@@ -7,7 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import com.task2trip.android.Common.Constants
-import com.task2trip.android.Model.GeoCountryCity
+import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskStatus
 import com.task2trip.android.Presenter.SearchCountryAndCityPresenter

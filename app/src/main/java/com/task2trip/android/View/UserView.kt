@@ -1,10 +1,7 @@
 package com.task2trip.android.View
 
-import com.task2trip.android.Model.User.UserInfoResp
-import com.task2trip.android.Model.User.UserLoginResp
+import com.task2trip.android.Model.User.UserImpl
 
 interface UserView: BaseView {
-    fun onRegisterResult(user: Void?)
-    fun onLoginResult(userToken: UserLoginResp)
-    fun onUserInfoResult(user: UserInfoResp)
+    fun onUserInfoResult(user: UserImpl)
 }

@@ -86,8 +86,9 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
 
     private fun onSetMyLocal() {
         val args = Bundle()
+        val userName = offer.user.getName()
         args.putBoolean(Constants.EXTRA_IS_MESSAGE, true)
-        args.putString(Constants.EXTRA_MESSAGE_TEXT, "Пользователь ${offer.user.getName()} выбран исполнителем!")
+        args.putString(Constants.EXTRA_MESSAGE_TEXT, "Пользователь $userName выбран исполнителем!")
         navigateTo(R.id.taskListPerformerFragment, args)
     }
 

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.viewpager.widget.ViewPager
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
+import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.TabFragmentTitle
 import com.task2trip.android.Model.User.User
 import com.task2trip.android.Model.User.UserImpl
@@ -44,8 +45,9 @@ class LoginRegisterFragment : BaseFragment() {
         tvSkip?.setOnClickListener {
             val user: User = UserImpl()
             with(user) {
-                setName("Гость")
                 setRole(UserRole.NOT_AUTHORIZED)
+                setToken("")
+                setProfile(MockData.getEmptyProfile())
                 context?.let { saveUserData(it) }
             }
             navigateTo(R.id.taskListPerformerFragment, Bundle())

@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.*
+import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskList
@@ -76,7 +77,7 @@ interface ApiMethods {
     fun userRegister(@Body user: UserSignUpReq): Call<Void>
 
     @GET("user")
-    fun userInfo(): Call<UserInfoResp>
+    fun getUserInfo(): Call<UserImpl>
 
     @GET("category")
     fun getCategoryList(): Call<List<TaskCategory>>
@@ -116,4 +117,7 @@ interface ApiMethods {
 
     @GET("geocode")
     fun getCountryAndCity(@Query("query") query: String?): Call<List<GeoCountryCity>>
+
+    @PATCH("user/profile")
+    fun updateUserProfile(@Body profile: ProfileImpl): Call<ProfileImpl>
 }

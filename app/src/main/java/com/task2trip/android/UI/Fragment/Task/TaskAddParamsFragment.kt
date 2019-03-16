@@ -1,6 +1,8 @@
 package com.task2trip.android.UI.Fragment.Task
 
+import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
@@ -80,6 +82,17 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         context?.let {
             DateTimeDialog.getInstance("Укажите НАЧАЛО задания", true, dateAndTime.timeInMillis)
                 .show(this)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == Constants.REQUEST_DIALOG_DATE_TIME) {
+            if (resultCode == Activity.RESULT_OK) {
+                //
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                //
+            }
         }
     }
 

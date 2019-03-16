@@ -1,7 +1,7 @@
 package com.task2trip.android.UI
 
 import android.widget.Filter
-import com.task2trip.android.Model.GeoCountryCity
+import com.task2trip.android.Model.Location.GeoCountryCity
 import kotlin.collections.ArrayList
 
 class CountryAndCityFilter: Filter() {
