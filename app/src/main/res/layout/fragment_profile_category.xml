@@ -6,7 +6,7 @@
         android:layout_height="match_parent">
 
     <LinearLayout
-            android:id="@+id/group_step_color"
+            android:id="@+id/groupStepLevelUp"
             android:layout_width="0dp"
             android:layout_height="4dp"
             android:orientation="horizontal"
@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/btNextStep"
-            app:layout_constraintTop_toBottomOf="@+id/group_step_color"/>
+            app:layout_constraintTop_toBottomOf="@+id/groupStepLevelUp"/>
 
     <Button
             android:id="@+id/btNextStep"
@@ -46,4 +46,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.task2trip.widgetlibrary.LoadingAndMessage
+            android:id="@+id/viewLoadAndMessage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:elevation="2dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

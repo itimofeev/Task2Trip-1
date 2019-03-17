@@ -12,6 +12,7 @@ import com.task2trip.android.Model.Task.TaskList
 import com.task2trip.android.Model.Task.TaskSaveModel
 import com.task2trip.android.Model.User.*
 import okhttp3.Interceptor
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
@@ -79,6 +80,16 @@ interface ApiMethods {
     @GET("user")
     fun getUserInfo(): Call<UserImpl>
 
+    @PATCH("user/profile")
+    fun updateUserProfile(@Body profile: ProfileImpl): Call<ProfileImpl>
+
+    @POST("user")
+    fun setUserRoleLocal(@Body role: String): Call<UserImpl>
+
+    @Multipart
+    @PUT("user/profile/image")
+    fun saveUserImageAvatar(@Part image: MultipartBody.Part)
+
     @GET("category")
     fun getCategoryList(): Call<List<TaskCategory>>
 
@@ -118,6 +129,4 @@ interface ApiMethods {
     @GET("geocode")
     fun getCountryAndCity(@Query("query") query: String?): Call<List<GeoCountryCity>>
 
-    @PATCH("user/profile")
-    fun updateUserProfile(@Body profile: ProfileImpl): Call<ProfileImpl>
 }

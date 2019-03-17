@@ -8,6 +8,13 @@ import android.view.View
 import kotlinx.android.synthetic.main.view_loading_and_message.view.*
 
 class LoadingAndMessage(context: Context?, attrs: AttributeSet?) : LinearLayoutCompat(context, attrs) {
+    private var messageCallback: MessageFinishShowCallback? = null
+
+    companion object {
+        const val SHOW_SHORT: Long = 1000L
+        const val SHOW_MIDDLE: Long = 2500L
+        const val SHOW_LONG: Long = 5000L
+    }
 
     init {
         init(attrs)
@@ -19,6 +26,10 @@ class LoadingAndMessage(context: Context?, attrs: AttributeSet?) : LinearLayoutC
         tvMessage.text = ""
     }
 
+    fun setMessageCloseCallback(messageCallback: MessageFinishShowCallback) {
+        this.messageCallback = messageCallback
+    }
+
     fun setProgress(isProgress: Boolean) {
         if (isProgress) {
             pbLoading.visibility = View.VISIBLE
@@ -27,11 +38,16 @@ class LoadingAndMessage(context: Context?, attrs: AttributeSet?) : LinearLayoutC
         }
     }
 
-    fun setMessage(message: String, hideMessage: Boolean) {
+    fun setMessage(message: String, showTime: Long) {
         setMessage(message)
-        if (hideMessage) {
-            this.postDelayed({ this.visibility = View.GONE }, 3000)
+        if (showTime > 0 && showTime < 30 * 1000L) {
+            this.postDelayed({ onMessageFinishShow() }, showTime)
         }
+    }
+
+    private fun onMessageFinishShow() {
+        hide()
+        messageCallback?.onCloseMessage()
     }
 
     fun setMessage(message: String) {

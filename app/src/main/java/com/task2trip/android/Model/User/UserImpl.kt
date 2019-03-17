@@ -115,7 +115,7 @@ class UserImpl() : User, Parcelable {
             profile.setLastName(get(Constants.EXTRA_USER_LAST_NAME, "")!!)
             profile.setMiddleName(get(Constants.EXTRA_USER_MIDDLE_NAME, "")!!)
             profile.setImageAvatarUrl(get(Constants.EXTRA_USER_IMAGE_URL, "")!!)
-            profile.setSex(UserSex.getUserSex(get(Constants.EXTRA_USER_SEX, false)!!).name)
+            profile.setSex(get(Constants.EXTRA_USER_SEX, "")!!)
             profile.setBirthDate(get(Constants.EXTRA_USER_BIRTHDATE, "")!!)
             profile.setFieldOfActivity(get(Constants.EXTRA_USER_FIELD_OF_ACTIVITY, "")!!)
             profile.setInterests(get(Constants.EXTRA_USER_INTEREST, "")!!)

@@ -46,8 +46,8 @@ data class ProfileImpl(private var firstName: String,
         return imageUrl
     }
 
-    override fun getSex(): Boolean {
-        return sex == "male"
+    override fun getSex(): String {
+        return sex
     }
 
     override fun getBirthDate(): String {

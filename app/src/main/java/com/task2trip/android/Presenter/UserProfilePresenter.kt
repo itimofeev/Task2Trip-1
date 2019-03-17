@@ -13,12 +13,12 @@ class UserProfilePresenter(val view: UserProfileView, context: Context): BasePre
         val req: Call<ProfileImpl> = getApi().updateUserProfile(profile)
         req.enqueue {
             onResponse = { response ->
+                view.onProgress(false)
                 if (response.code() in 200..299) {
                     view.onUserProfileResult(response.body() ?: MockData.getEmptyProfile())
                 } else {
                     view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
                 }
-                view.onProgress(false)
             }
         }
     }

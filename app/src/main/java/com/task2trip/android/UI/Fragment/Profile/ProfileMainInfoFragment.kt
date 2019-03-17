@@ -10,6 +10,7 @@ import com.task2trip.android.Presenter.UserProfilePresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.View.UserProfileView
+import com.task2trip.widgetlibrary.LoadingAndMessage
 import kotlinx.android.synthetic.main.fragment_profile_main_info.*
 
 class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
@@ -28,7 +29,7 @@ class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
 
     override fun initComponents(view: View) {
         presenter = UserProfilePresenter(this, view.context)
-        viewLoadAndMessage.visibility = View.GONE
+        viewLoadAndMessage.hide()
         initProfileData(profile)
         btSaveMainInfo.setOnClickListener {
             if (validateData(etName.text.toString(), etBirthday.text.toString())) {
@@ -47,9 +48,10 @@ class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
     private fun initProfileData(profile: ProfileImpl) {
         etName.setText(profile.getFirstName())
         etBirthday.setText(profile.getBirthDate())
-        //TODO: check
-        if (profile.getSex()) {
+        if (profile.getSex() == UserSex.male.name) {
             rgGender.check(R.id.rbMale)
+        } else if (profile.getSex() == UserSex.female.name) {
+            rgGender.check(R.id.rbFemale)
         }
     }
 
@@ -62,10 +64,16 @@ class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
 
     override fun onUserProfileResult(profile: ProfileImpl) {
         setUserProfile(profile)
-        viewLoadAndMessage.setMessage("Профиль успешно обновлен", true)
+        viewLoadAndMessage.show()
+        viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_MIDDLE)
     }
 
     override fun onProgress(isProgress: Boolean) {
+        if (isProgress) {
+            viewLoadAndMessage.show()
+        } else {
+            viewLoadAndMessage.hide()
+        }
         viewLoadAndMessage.setProgress(isProgress)
     }
 }

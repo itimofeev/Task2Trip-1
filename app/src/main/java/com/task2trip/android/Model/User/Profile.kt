@@ -7,7 +7,7 @@ interface Profile {
     fun getLastName(): String
     fun getMiddleName(): String
     fun getImageAvatarUrl(): String
-    fun getSex(): Boolean
+    fun getSex(): String
     fun getBirthDate(): String
     fun getFieldOfActivity(): String
     fun getInterests(): String

@@ -74,6 +74,7 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
         val args = Bundle()
         val profile: ProfileImpl = user.getProfile() as ProfileImpl
         args.putParcelable(Constants.EXTRA_PROFILE, profile)
+        args.putBoolean(Constants.EXTRA_USER_LEVEL_UP, false)
         navigateTo(item.id, args)
     }
 
@@ -93,7 +94,11 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
     }
 
     private fun onUserLevelUp() {
-        navigateTo(R.id.profileCategoryFragment, Bundle())
+        val args = Bundle()
+        val profile: ProfileImpl = user.getProfile() as ProfileImpl
+        args.putParcelable(Constants.EXTRA_PROFILE, profile)
+        args.putBoolean(Constants.EXTRA_USER_LEVEL_UP, false)
+        navigateTo(R.id.profileCategoryFragment, args)
     }
 
     private fun onShowMyTasksClick() {

@@ -6,7 +6,7 @@
         android:layout_height="match_parent">
 
     <LinearLayout
-            android:id="@+id/group_step_color"
+            android:id="@+id/groupStepLevelUp"
             android:layout_width="0dp"
             android:layout_height="4dp"
             android:orientation="horizontal"
@@ -19,28 +19,26 @@
                 android:id="@+id/view_step_01"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.4"
+                android:layout_weight="0.1"
                 android:background="@color/purple"/>
 
         <View
                 android:id="@+id/view_step_02"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6"
+                android:layout_weight="0.9"
                 android:background="@color/gray_light"/>
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvCountry"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_step"
+            android:layout_marginTop="@dimen/top_step_small"
             android:hint="@string/profile_country_title"
-            style="@style/textLayout"
+            style="@style/textNoLine"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/group_step_color">
+            app:layout_constraintTop_toBottomOf="@+id/groupStepLevelUp">
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/etCountry"
@@ -51,11 +49,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvCity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:hint="@string/profile_city_title"
-            style="@style/textLayout"
-            android:layout_marginTop="@dimen/top_step"
+            style="@style/textNoLine"
+            android:layout_marginTop="@dimen/top_step_small"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +80,8 @@
             android:id="@+id/rvSocialAccounts"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_top_16dp"
+            android:layout_marginBottom="@dimen/margin_bottom_16dp"
             style="@style/marginLeftRight16dp"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleSocial"
             app:layout_constraintBottom_toTopOf="@+id/btNext"
@@ -97,4 +95,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.task2trip.widgetlibrary.LoadingAndMessage
+            android:id="@+id/viewLoadAndMessage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:elevation="2dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
