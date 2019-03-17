@@ -19,7 +19,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     private var message = ""
     private var isMessage = false
     private var userId = ""
-    private var userRole = ""
+    private var userRoleStr = ""
 
     companion object {
         fun getInstance(userId: String, userRole: String): TaskListTravelerFragment {
@@ -37,7 +37,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
             isMessage = it.getBoolean(Constants.EXTRA_IS_MESSAGE, false)
             message = it.getString(Constants.EXTRA_MESSAGE_TEXT, "")
             userId = it.getString(Constants.EXTRA_USER_ID, "")
-            userRole = it.getString(Constants.EXTRA_USER_ROLE, "")
+            userRoleStr = it.getString(Constants.EXTRA_USER_ROLE, "")
         }
     }
 
@@ -83,7 +83,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
         with(args) {
             putParcelable(Constants.EXTRA_TASK, item)
             putBoolean(Constants.EXTRA_TASK_IS_EDIT, true)
-            putString(Constants.EXTRA_USER_ROLE, userRole)
+            putString(Constants.EXTRA_USER_ROLE, userRoleStr)
         }
         navigateTo(R.id.taskDetailOfferPagerFragment, args)
     }

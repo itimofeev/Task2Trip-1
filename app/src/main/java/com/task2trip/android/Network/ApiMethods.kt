@@ -84,11 +84,11 @@ interface ApiMethods {
     fun updateUserProfile(@Body profile: ProfileImpl): Call<ProfileImpl>
 
     @POST("user")
-    fun setUserRoleLocal(@Body role: String): Call<UserImpl>
+    fun updateUserRoleLocal(@Body role: UserLevelUp): Call<UserImpl>
 
     @Multipart
     @PUT("user/profile/image")
-    fun saveUserImageAvatar(@Part image: MultipartBody.Part)
+    fun saveUserImageAvatar(@Part image: MultipartBody.Part): Call<String>
 
     @GET("category")
     fun getCategoryList(): Call<List<TaskCategory>>

@@ -33,19 +33,23 @@ class ProfileAboutFragment : BaseFragment(), UserProfileView {
         presenter = UserProfilePresenter(this, view.context)
         viewLoadAndMessage.setMessageCloseCallback(object : MessageFinishShowCallback {
             override fun onCloseMessage() {
-                val args = Bundle()
-                args.putParcelable(Constants.EXTRA_PROFILE, profile)
-                args.putBoolean(Constants.EXTRA_USER_LEVEL_UP, isLevelUp)
-                navigateTo(R.id.profileContactsFragment, args)
+                if (isLevelUp) {
+                    val args = Bundle()
+                    args.putParcelable(Constants.EXTRA_PROFILE, profile)
+                    args.putBoolean(Constants.EXTRA_USER_LEVEL_UP, isLevelUp)
+                    navigateTo(R.id.profileContactsFragment, args)
+                } else {
+                    navigateTo(R.id.profileFragment, Bundle())
+                }
             }
         })
         initProfileData(profile)
         if (isLevelUp) {
             groupStepLevelUp.visibility = View.VISIBLE
-            btNext.text = getString(R.string.save)
+            btNext.text = getString(R.string.next_step)
         } else {
             groupStepLevelUp.visibility = View.GONE
-            btNext.text = getString(R.string.next_step)
+            btNext.text = getString(R.string.save)
         }
         btNext.setOnClickListener {
             saveProfileAboutInfo()
@@ -70,7 +74,7 @@ class ProfileAboutFragment : BaseFragment(), UserProfileView {
     override fun onUserProfileResult(profile: ProfileImpl) {
         setUserProfile(profile)
         viewLoadAndMessage.show()
-        viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_MIDDLE)
+        viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)
     }
 
     override fun onProgress(isProgress: Boolean) {

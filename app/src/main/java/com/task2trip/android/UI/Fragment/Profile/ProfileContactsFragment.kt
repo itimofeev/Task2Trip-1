@@ -8,12 +8,16 @@ import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.SocialNetwork
 import com.task2trip.android.Model.User.ProfileImpl
 import com.task2trip.android.Model.User.UserImpl
+import com.task2trip.android.Model.User.UserLevelUp
+import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.Presenter.UserProfileLevelUpPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.SocialNetworkAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.UI.Listener.ItemClickListener
 import com.task2trip.android.View.UserProfileLevelUpView
+import com.task2trip.widgetlibrary.LoadingAndMessage
+import com.task2trip.widgetlibrary.MessageFinishShowCallback
 import kotlinx.android.synthetic.main.fragment_profile_contacts.*
 
 class ProfileContactsFragment : BaseFragment(), UserProfileLevelUpView, ItemClickListener<SocialNetwork> {
@@ -34,19 +38,30 @@ class ProfileContactsFragment : BaseFragment(), UserProfileLevelUpView, ItemClic
 
     override fun initComponents(view: View) {
         presenter = UserProfileLevelUpPresenter(this, view.context)
+        viewLoadAndMessage.setMessageCloseCallback(object: MessageFinishShowCallback {
+            override fun onCloseMessage() {
+                if (isLevelUp) {
+                    val args = Bundle()
+                    args.putParcelable(Constants.EXTRA_PROFILE, profile)
+                    args.putBoolean(Constants.EXTRA_USER_LEVEL_UP, isLevelUp)
+                    navigateTo(R.id.profileFragment, args)
+                } else {
+                    navigateTo(R.id.profileFragment, Bundle())
+                }
+            }
+        })
         if (isLevelUp) {
             groupStepLevelUp.visibility = View.VISIBLE
-            btNext.text = getString(R.string.save)
+            btNext.text = getString(R.string.next_finish)
         } else {
             groupStepLevelUp.visibility = View.GONE
-            btNext.text = getString(R.string.next_finish)
+            btNext.text = getString(R.string.save)
         }
         initRecycleView(view)
         val country = etCountry.text.toString()
         val city = etCity.text.toString()
         btNext.setOnClickListener {
-            presenter.setLevelUpUserProfile()
-            //navigateTo(R.id.profileFragment)
+            presenter.setLevelUpUserProfile(UserLevelUp(UserRole.LOCAL.name.toLowerCase()))
         }
     }
 
@@ -66,10 +81,21 @@ class ProfileContactsFragment : BaseFragment(), UserProfileLevelUpView, ItemClic
     }
 
     override fun onUserLevelUpResult(user: UserImpl) {
-        //
+        viewLoadAndMessage.show()
+        if (user.getId().isNotEmpty()) {
+            setUserRole(user.getRole().name)
+            viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)
+        } else {
+            viewLoadAndMessage.setMessage("Проверьте корректность данных", LoadingAndMessage.SHOW_MIDDLE)
+        }
     }
 
     override fun onProgress(isProgress: Boolean) {
-        //
+        if (isProgress) {
+            viewLoadAndMessage.show()
+        } else {
+            viewLoadAndMessage.hide()
+        }
+        viewLoadAndMessage.setProgress(isProgress)
     }
 }

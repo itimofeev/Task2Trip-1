@@ -40,12 +40,23 @@ class ProfileCategoryFragment : BaseFragment(), TaskCategoryView, UserProfileVie
         initPresenter(view)
         viewLoadAndMessage.setMessageCloseCallback(object : MessageFinishShowCallback {
             override fun onCloseMessage() {
-                val args = Bundle()
-                args.putParcelable(Constants.EXTRA_PROFILE, profile)
-                args.putBoolean(Constants.EXTRA_USER_LEVEL_UP, isLevelUp)
-                navigateTo(R.id.profileAboutFragment, args)
+                if (isLevelUp) {
+                    val args = Bundle()
+                    args.putParcelable(Constants.EXTRA_PROFILE, profile)
+                    args.putBoolean(Constants.EXTRA_USER_LEVEL_UP, isLevelUp)
+                    navigateTo(R.id.profileAboutFragment, args)
+                } else {
+                    navigateTo(R.id.profileFragment, Bundle())
+                }
             }
         })
+        if (isLevelUp) {
+            groupStepLevelUp.visibility = View.VISIBLE
+            btNextStep.text = getString(R.string.next_step)
+        } else {
+            groupStepLevelUp.visibility = View.GONE
+            btNextStep.text = getString(R.string.save)
+        }
         btNextStep.setOnClickListener {
             saveProfileCategories()
         }
@@ -94,7 +105,7 @@ class ProfileCategoryFragment : BaseFragment(), TaskCategoryView, UserProfileVie
     override fun onUserProfileResult(profile: ProfileImpl) {
         setUserProfile(profile)
         viewLoadAndMessage.show()
-        viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_MIDDLE)
+        viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)
     }
 
     override fun onProgress(isProgress: Boolean) {

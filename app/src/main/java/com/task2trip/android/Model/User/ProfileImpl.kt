@@ -71,7 +71,11 @@ data class ProfileImpl(private var firstName: String,
     }
 
     override fun getCategories(): List<TaskCategory> {
-        return categories
+        return if (categories.isNullOrEmpty()) {
+            ArrayList()
+        } else {
+            categories
+        }
     }
 
     override fun setFirstName(firstName: String) {

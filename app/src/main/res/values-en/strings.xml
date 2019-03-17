@@ -105,4 +105,5 @@
     <string name="task_finished">Finished</string>
     <string name="next_finish">Finish</string>
     <string name="save">Save</string>
+    <string name="profile_category">Categories</string>
 </resources>

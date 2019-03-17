@@ -19,7 +19,7 @@ class ProfileMainCategoryHolder(itemView: View) : BaseHolder<UserCategoryForUsed
 
     override fun setData(item: UserCategoryForUsed) {
         tvCategoryName?.text = item.catName
-        tvCategoryDescription?.text = "enum 1, enum 2, enum 3"
+        tvCategoryDescription?.text = item.shortText
     }
 
     override fun setItemClickListener(listener: View.OnClickListener?) {

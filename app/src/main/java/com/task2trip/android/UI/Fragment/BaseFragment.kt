@@ -75,6 +75,10 @@ abstract class BaseFragment : Fragment() {
         activityListener?.setUserProfile(profile)
     }
 
+    protected fun setUserRole(role: String) {
+        activityListener?.setUserRole(role)
+    }
+
     protected fun logoutUser() {
         activityListener?.logoutUser()
     }

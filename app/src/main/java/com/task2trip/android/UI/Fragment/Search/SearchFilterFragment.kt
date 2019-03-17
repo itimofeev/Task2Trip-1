@@ -24,12 +24,12 @@ import kotlinx.android.synthetic.main.fragment_search_filter.*
 class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchCountryAndCityView {
     private lateinit var presenterCategory: TaskCategoryPresenter
     private lateinit var presenterSearch: SearchCountryAndCityPresenter
-    private var userRole = ""
+    private var userRoleStr = ""
     private val categoryList: ArrayList<TaskCategory> = ArrayList()
 
     override fun getArgs(args: Bundle?) {
         args?.let {
-            userRole = it.getString(Constants.EXTRA_USER_ROLE, "")
+            userRoleStr = it.getString(Constants.EXTRA_USER_ROLE, "")
         }
     }
 
@@ -102,7 +102,7 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchCountryAndC
             putParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST, selectedCategoryList)
             putString(Constants.EXTRA_TASK_SEARCH_COUNTRY_CITY, etCountryAndCity.text.toString())
             putString(Constants.EXTRA_TASK_SEARCH_STATUS, etStatus.selectedItem.toString())
-            putString(Constants.EXTRA_USER_ROLE, userRole)
+            putString(Constants.EXTRA_USER_ROLE, userRoleStr)
         }
         navigateTo(R.id.searchFragment, args)
     }

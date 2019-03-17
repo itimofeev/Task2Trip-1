@@ -36,6 +36,7 @@
     <string name="profile_contacts">Контакты</string>
     <string name="profile_about">Обо мне</string>
     <string name="profile_social">Аккаунты в соц.сетях</string>
+    <string name="profile_category">Категории</string>
     <string name="profile_male">Мужской</string>
     <string name="profile_female">Женский</string>
     <string name="profile_my_activity">Сфера деятельности</string>

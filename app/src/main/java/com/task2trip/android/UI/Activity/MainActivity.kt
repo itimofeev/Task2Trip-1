@@ -15,10 +15,7 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.snackbar.Snackbar
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.MockData
-import com.task2trip.android.Model.User.Profile
-import com.task2trip.android.Model.User.ProfileImpl
-import com.task2trip.android.Model.User.User
-import com.task2trip.android.Model.User.UserRole
+import com.task2trip.android.Model.User.*
 import com.task2trip.android.Presenter.MainActivityPresenter
 import com.task2trip.android.R
 import com.task2trip.android.View.MainActivityView
@@ -27,7 +24,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), MainActivityView {
     private lateinit var presenter: MainActivityPresenter
     private lateinit var navController: NavController
-    private var user: User = MockData.getEmptyUser()
+    private var user: UserImpl = MockData.getEmptyUser()
     private var actionBar: ActionBar? = null
     private val navHostID = R.id.nav_host_fragment
 
@@ -132,14 +129,26 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 setToolBarParams(true, getString(R.string.title_search_task), false)
             }
             R.id.profileFragment -> {
+                args?.putParcelable(Constants.EXTRA_USER, user)
                 navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_profile), false)
                 presenter.setLastMenu(R.menu.menu_settings)
             }
-            R.id.profileCategoryFragment, R.id.profileMainInfoFragment,
-            R.id.profileContactsFragment, R.id.profileAboutFragment -> {
+            R.id.profileCategoryFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle(getString(R.string.title_profile_params))
+                setToolBarParams(true, getString(R.string.profile_category), true)
+            }
+            R.id.profileMainInfoFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, getString(R.string.profile_main), true)
+            }
+            R.id.profileContactsFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, getString(R.string.profile_contacts), true)
+            }
+            R.id.profileAboutFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, getString(R.string.profile_about), true)
             }
             R.id.profileUserFragment -> {
                 navController.navigate(resourceId, args)
@@ -313,11 +322,18 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     }
 
     override fun setUser(user: User) {
-        this.user = user
+        this.user = user as UserImpl
+        this.user.saveUserData(applicationContext)
     }
 
     override fun setUserProfile(profile: Profile) {
         this.user.setProfile(profile as ProfileImpl)
+        this.user.saveUserData(applicationContext)
+    }
+
+    override fun setUserRole(role: String) {
+        this.user.setRole(UserRole.getName(role))
+        this.user.saveUserData(applicationContext)
     }
 
     override fun onMessage(message: String) {

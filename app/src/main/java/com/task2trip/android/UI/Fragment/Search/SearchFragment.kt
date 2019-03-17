@@ -20,7 +20,7 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     private val categoryList: ArrayList<TaskCategory> = ArrayList()
     private var taskCountryAndCity = ""
     private var taskStatus = ""
-    private var userRole = ""
+    private var userRoleStr = ""
 
     override fun getArgs(args: Bundle?) {
         args?.let {
@@ -30,7 +30,7 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
             }
             taskCountryAndCity = it.getString(Constants.EXTRA_TASK_SEARCH_COUNTRY_CITY, "")
             taskStatus = it.getString(Constants.EXTRA_TASK_SEARCH_STATUS, "")
-            userRole = it.getString(Constants.EXTRA_USER_ROLE, "")
+            userRoleStr = it.getString(Constants.EXTRA_USER_ROLE, "")
         }
     }
 
@@ -80,7 +80,7 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
         with(args) {
             putParcelable(Constants.EXTRA_TASK, item)
             putBoolean(Constants.EXTRA_TASK_IS_EDIT, false)
-            putString(Constants.EXTRA_USER_ROLE, userRole)
+            putString(Constants.EXTRA_USER_ROLE, userRoleStr)
         }
         navigateTo(R.id.taskDetailsFragment, args)
     }

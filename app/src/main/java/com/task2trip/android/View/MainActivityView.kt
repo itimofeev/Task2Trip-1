@@ -8,5 +8,6 @@ interface MainActivityView: BaseView {
     fun navigateTo(resourceId: Int, args: Bundle?)
     fun setUser(user: User)
     fun setUserProfile(profile: Profile)
+    fun setUserRole(role: String)
     fun logoutUser()
 }

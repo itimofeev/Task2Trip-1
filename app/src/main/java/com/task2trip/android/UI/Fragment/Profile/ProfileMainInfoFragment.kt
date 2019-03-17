@@ -11,15 +11,18 @@ import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.View.UserProfileView
 import com.task2trip.widgetlibrary.LoadingAndMessage
+import com.task2trip.widgetlibrary.MessageFinishShowCallback
 import kotlinx.android.synthetic.main.fragment_profile_main_info.*
 
 class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
     private lateinit var presenter: UserProfilePresenter
     private var profile: ProfileImpl = MockData.getEmptyProfile()
+    private var isLevelUp = false
 
     override fun getArgs(args: Bundle?) {
         args?.let {
             profile = args.getParcelable(Constants.EXTRA_PROFILE) ?: MockData.getEmptyProfile()
+            isLevelUp = args.getBoolean(Constants.EXTRA_USER_LEVEL_UP, false)
         }
     }
 
@@ -30,6 +33,13 @@ class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
     override fun initComponents(view: View) {
         presenter = UserProfilePresenter(this, view.context)
         viewLoadAndMessage.hide()
+        viewLoadAndMessage.setMessageCloseCallback(object: MessageFinishShowCallback {
+            override fun onCloseMessage() {
+                if (!isLevelUp) {
+                    navigateTo(R.id.profileFragment, Bundle())
+                }
+            }
+        })
         initProfileData(profile)
         btSaveMainInfo.setOnClickListener {
             if (validateData(etName.text.toString(), etBirthday.text.toString())) {
@@ -65,7 +75,7 @@ class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
     override fun onUserProfileResult(profile: ProfileImpl) {
         setUserProfile(profile)
         viewLoadAndMessage.show()
-        viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_MIDDLE)
+        viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)
     }
 
     override fun onProgress(isProgress: Boolean) {

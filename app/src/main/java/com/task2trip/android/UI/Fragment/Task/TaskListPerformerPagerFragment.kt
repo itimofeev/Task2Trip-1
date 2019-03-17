@@ -12,14 +12,14 @@ import kotlinx.android.synthetic.main.fragment_task_list_performer_pager.*
 
 class TaskListPerformerPagerFragment: BaseFragment() {
     private var userId: String = ""
-    private var userRole: String = ""
+    private var userRoleStr: String = ""
     private var isMessage = false
     private var message = ""
 
     override fun getArgs(args: Bundle?) {
         args?.let {
             userId = it.getString(Constants.EXTRA_USER_ID, "") ?: ""
-            userRole = it.getString(Constants.EXTRA_USER_ROLE, "") ?: ""
+            userRoleStr = it.getString(Constants.EXTRA_USER_ROLE, "") ?: ""
             isMessage = it.getBoolean(Constants.EXTRA_IS_MESSAGE, false)
             message = it.getString(Constants.EXTRA_MESSAGE_TEXT, "")
         }
@@ -40,7 +40,7 @@ class TaskListPerformerPagerFragment: BaseFragment() {
         childFragmentManager.let {
             val adapter = TabAdapter(it)
             adapter.addItem(
-                TabFragmentTitle(TaskListTravelerFragment.getInstance(userId, userRole), getString(R.string.title_travel)))
+                TabFragmentTitle(TaskListTravelerFragment.getInstance(userId, userRoleStr), getString(R.string.title_travel)))
             adapter.addItem(
                 TabFragmentTitle(TaskListPerformerFragment.getInstance(userId), getString(R.string.title_local)))
             vpTaskList.adapter = adapter
