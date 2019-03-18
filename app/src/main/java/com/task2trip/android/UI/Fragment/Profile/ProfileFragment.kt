@@ -4,13 +4,19 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import androidx.core.app.ActivityCompat
+import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.ImageLoader.ImageLoader
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.User.ProfileImpl
 import com.task2trip.android.Model.User.UserCategoryForUsed
@@ -24,14 +30,9 @@ import com.task2trip.android.UI.Dialog.show
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.UI.Listener.ItemClickListener
 import com.task2trip.android.View.UserView
-import kotlinx.android.synthetic.main.fragment_profile.*
-import android.net.Uri
-import android.os.Environment
-import java.io.File
-import android.graphics.Bitmap
-import androidx.core.content.FileProvider
-import com.task2trip.android.BuildConfig
 import com.task2trip.widgetlibrary.LoadingAndMessage
+import kotlinx.android.synthetic.main.fragment_profile.*
+import java.io.File
 
 class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategoryForUsed> {
     private lateinit var presenter: UserPresenter
@@ -194,6 +195,7 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
 
     override fun onUserInfoResult(user: UserImpl) {
         this.user = user
+        ImageLoader(user.getProfile().getImageAvatarUrl(), ivProfilePhoto)
     }
 
     override fun onProgress(isProgress: Boolean) {

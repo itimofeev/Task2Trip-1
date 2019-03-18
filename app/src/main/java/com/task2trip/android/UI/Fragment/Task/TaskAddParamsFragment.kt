@@ -20,6 +20,8 @@ import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.View.TaskParamsView
 import kotlinx.android.synthetic.main.fragment_task_add_params.*
 import java.util.Calendar
+import kotlin.collections.ArrayList
+import kotlin.collections.isNullOrEmpty
 
 class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
     private lateinit var presenter: TaskAddParamsPresenter
@@ -115,10 +117,10 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         context?.let {
             val title = if (isStartDialog) {
                 dateAndTime = dateStart
-                "Укажите НАЧАЛО задания"
+                getString(R.string.choose_begin_task_date)
             } else {
                 dateAndTime = dateEnd
-                "Укажите ОКОНЧАНИЕ задания"
+                getString(R.string.choose_end_task_date)
             }
             DateTimeDialog.getInstance(title, true, isStartDialog, dateAndTime.timeInMillis)
                 .show(this)

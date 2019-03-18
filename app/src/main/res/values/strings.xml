@@ -108,4 +108,7 @@
     <string name="error_no_location">Местоположение не определено</string>
 
     <string name="payment_type_cash">Оплата наличными</string>
+    <string name="choose_begin_task_date">Укажите НАЧАЛО задания</string>
+    <string name="choose_end_task_date">Укажите ОКОНЧАНИЕ задания</string>
+    <string name="empty_task_list">У вас еще не было задач!</string>
 </resources>

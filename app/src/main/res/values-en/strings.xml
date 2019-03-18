@@ -38,7 +38,7 @@
     <string name="task_show">Show tasks</string>
     <string name="task_create">Create task</string>
     <string name="task_get_my">My tasks</string>
-    <string name="task_add_my">Add offer</string>
+    <string name="task_add_my">Publish</string>
     <string name="task_add_offer">offer me</string>
     <string name="task_edit">Edit</string>
     <string name="board_skip_text"><u>Skip</u></string>
@@ -107,4 +107,7 @@
     <string name="save">Save</string>
     <string name="profile_category">Categories</string>
     <string name="task_get_my_offers">My offers</string>
+    <string name="choose_begin_task_date">Choose begin date</string>
+    <string name="choose_end_task_date">Choose end date</string>
+    <string name="empty_task_list">You have no tasks yet</string>
 </resources>
