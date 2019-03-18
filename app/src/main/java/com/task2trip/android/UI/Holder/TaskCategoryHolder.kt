@@ -12,8 +12,8 @@ class TaskCategoryHolder(itemView: View) : BaseHolder<TaskCategory>(itemView) {
     private var ivCategoryImage: ImageView? = null
 
     init {
-        tvCategoryName = itemView.findViewById<TextView>(R.id.tvCategoryName)
-        ivCategoryImage = itemView.findViewById<ImageView>(R.id.ivCategoryImage)
+        tvCategoryName = itemView.findViewById(R.id.tvCategoryName)
+        ivCategoryImage = itemView.findViewById(R.id.ivCategoryImage)
     }
 
     override fun setData(item: TaskCategory) {
