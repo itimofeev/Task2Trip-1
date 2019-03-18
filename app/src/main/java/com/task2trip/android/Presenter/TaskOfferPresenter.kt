@@ -4,6 +4,7 @@ import android.content.Context
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Offer
 import com.task2trip.android.Model.OfferForSave
+import com.task2trip.android.Model.Task.TaskStatusAndRating
 import com.task2trip.android.View.TaskOfferView
 import retrofit2.Call
 
@@ -61,10 +62,9 @@ class TaskOfferPresenter(val view: TaskOfferView, context: Context): BasePresent
         }
     }
 
-    fun setTaskWithOfferFinished(taskId: String, offerId: String, status: String) {
+    fun setTaskWithOfferFinished(taskId: String, offerId: String, statusAndRating: TaskStatusAndRating) {
         view.onProgress(true)
-        //TODO: offer должен быть не null
-        val req: Call<Offer> = getApi().setTaskCompletedOrCanceled(taskId, offerId, status)
+        val req: Call<Offer> = getApi().setTaskCompletedOrCanceled(taskId, offerId, statusAndRating)
         req.enqueue {
             onResponse = { response ->
                 view.onProgress(false)

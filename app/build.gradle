@@ -27,6 +27,7 @@ ext {
     navLib = '1.0.0-rc02'
     coroutinLib = '1.0.0'
     moxyLib = '1.5.0'
+    okhttpLib = '3.10.0'
 }
 
 dependencies {
@@ -48,13 +49,14 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitLib"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitLib"
-    implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpLib"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpLib"
 
     implementation "com.squareup.picasso:picasso:2.71828"
 
     implementation project(path: ':widgetlibrary')
 
-    // not support AndroidX
     //implementation "com.arello-mobile:moxy:$moxyLib"
     //implementation "com.arello-mobile:moxy-android:$moxyLib"
     //implementation "com.arello-mobile:moxy-app-compat:$moxyLib"

@@ -1,5 +1,6 @@
 package com.task2trip.android.Model.User
 
+import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.Task.TaskCategory
 
 interface Profile {
@@ -14,6 +15,7 @@ interface Profile {
     fun getAbout(): String
     fun getWhyUse(): String
     fun getCategories(): List<TaskCategory>
+    fun getLocation(): GeoCountryCity
 
     fun setFirstName(firstName: String)
     fun setLastName(lastName: String)
@@ -26,4 +28,5 @@ interface Profile {
     fun setAbout(about: String)
     fun setWhyUse(whyUse: String)
     fun setCategories(items: List<TaskCategory>)
+    fun setLocation(location: GeoCountryCity)
 }

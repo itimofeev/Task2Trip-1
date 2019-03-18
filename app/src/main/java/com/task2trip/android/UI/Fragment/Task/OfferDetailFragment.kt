@@ -6,17 +6,22 @@ import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.ImageLoader.ImageLoader
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Offer
+import com.task2trip.android.Model.User.UserImpl
 import com.task2trip.android.Presenter.TaskOfferPresenter
+import com.task2trip.android.Presenter.UserPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.View.TaskOfferView
+import com.task2trip.android.View.UserView
 import kotlinx.android.synthetic.main.fragment_offer_detail.*
 
-class OfferDetailFragment : BaseFragment(), TaskOfferView {
-    private lateinit var presenter: TaskOfferPresenter
+class OfferDetailFragment : BaseFragment(), TaskOfferView, UserView {
+    private lateinit var presenterOffer: TaskOfferPresenter
+    private lateinit var presenterUser: UserPresenter
     private var taskId: String = ""
     private var offer: Offer = MockData.getEmptyOffer()
     private var isMyOffers = false
+    private var userLocal = MockData.getEmptyUser()
 
     companion object {
         fun getInstance(offer: Offer, taskId: String): OfferDetailFragment {
@@ -72,10 +77,14 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
             tvPerformerName.visibility = View.VISIBLE
             btSetMyLocal.visibility = View.VISIBLE
             btSendMessage.visibility = View.VISIBLE
-            btSetMyLocal.text = "Выбрать исполнителем"
+            if (taskId == offer.task.id) {
+                btSetMyLocal.text = "Выбрать исполнителем"
+            } else {
+                btSetMyLocal.text = "Выбрать исполнителем"
+            }
         }
         btSetMyLocal.setOnClickListener {
-            presenter.setOfferForUser(taskId, offer.id)
+            presenterOffer.setOfferForUser(taskId, offer.id)
         }
         btSendMessage.setOnClickListener {
             onSendMessage()
@@ -83,7 +92,9 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
     }
 
     private fun initPresenter(view: View) {
-        presenter = TaskOfferPresenter(this, view.context)
+        presenterOffer = TaskOfferPresenter(this, view.context)
+        presenterUser = UserPresenter(this, view.context)
+        presenterUser.getProfileById(offer.user.getId())
     }
 
     private fun onSetMyLocal() {
@@ -102,8 +113,30 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
 
     private fun onViewProfileDetail() {
         val args = Bundle()
-        args.putParcelable(Constants.EXTRA_USER, offer.user)
+        args.putParcelable(Constants.EXTRA_USER, userLocal)
         navigateTo(R.id.profileUserFragment, args)
+    }
+
+    private fun setProfileInfo(user: UserImpl) {
+        if (user.getId().isNotEmpty()) {
+            tvLikeCount.text = "0"
+            tvDisLikeCount.text = "0"
+            ImageLoader(user.getProfile().getImageAvatarUrl(), ivUserPhoto)
+            tvPerformerName.text = user.getName()
+        }
+    }
+
+    override fun onMySelfInfoResult(user: UserImpl) {
+        //
+    }
+
+    override fun onUserResult(user: UserImpl) {
+        this.userLocal = user
+        setProfileInfo(userLocal)
+    }
+
+    override fun onUploadImageAvatarResult() {
+        //
     }
 
     override fun onSaveOfferResult(offer: Offer) {
@@ -127,6 +160,11 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
     }
 
     override fun onProgress(isProgress: Boolean) {
-        //
+        if (isProgress) {
+            viewLoadAndMessage.show()
+        } else {
+            viewLoadAndMessage.hide()
+        }
+        viewLoadAndMessage.setProgress(isProgress)
     }
 }

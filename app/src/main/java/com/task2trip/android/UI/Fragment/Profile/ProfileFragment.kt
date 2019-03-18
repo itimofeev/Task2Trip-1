@@ -192,7 +192,7 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
         }
     }
 
-    override fun onUserInfoResult(user: UserImpl) {
+    override fun onMySelfInfoResult(user: UserImpl) {
         this.user = user
     }
 
@@ -219,5 +219,9 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
 
     private fun onShowMyTasksClick() {
         navigateTo(R.id.taskListPerformerFragment, Bundle())
+    }
+
+    override fun onUserResult(user: UserImpl) {
+        //
     }
 }

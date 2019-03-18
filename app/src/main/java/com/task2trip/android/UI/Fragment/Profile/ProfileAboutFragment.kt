@@ -71,7 +71,7 @@ class ProfileAboutFragment : BaseFragment(), UserProfileView {
         presenter.updateUserProfile(profile)
     }
 
-    override fun onUserProfileResult(profile: ProfileImpl) {
+    override fun onUserProfileUpdateResult(profile: ProfileImpl) {
         setUserProfile(profile)
         viewLoadAndMessage.show()
         viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)

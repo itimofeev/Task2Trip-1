@@ -15,7 +15,7 @@ class ImageLoader() {
     }
 
     private fun loadImage(url: String, imageView: ImageView, placeHolderRes: Int, errorRes: Int, isCircle: Boolean) {
-        with (Picasso.get().load(ApiMethods.BASE_URL + url)) {
+        with (Picasso.get().load(ApiMethods.HTTP_ADDRESS + url)) {
             placeholder(placeHolderRes)
             error(errorRes)
             if (isCircle) {
