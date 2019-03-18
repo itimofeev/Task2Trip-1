@@ -37,7 +37,7 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
     private lateinit var presenter: UserPresenter
     private var user: UserImpl = MockData.getEmptyUser()
     private var outputFileUri: Uri? = null
-    private val file = File(Environment.getExternalStorageDirectory(),"test.jpg")
+    private val file = File(Environment.getExternalStorageDirectory(), Constants.FILE_NAME_AVATAR)
 
     override fun getArgs(args: Bundle?) {
         args?.let {

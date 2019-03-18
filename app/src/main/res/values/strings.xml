@@ -50,6 +50,7 @@
 
     <string name="task_create">Создать задание</string>
     <string name="task_get_my">Мои задания</string>
+    <string name="task_get_my_offers">Мои предложения</string>
     <string name="task_add_my">Опубликовать</string>
     <string name="task_add_offer">Предложить свои услуги</string>
     <string name="task_edit">Редактировать</string>

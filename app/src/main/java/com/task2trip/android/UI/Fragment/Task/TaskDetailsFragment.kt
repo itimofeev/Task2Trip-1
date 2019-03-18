@@ -23,6 +23,7 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
     private lateinit var presenter: TaskOfferPresenter
     private var isEditTask = false
     private var taskItem: Task = MockData.getEmptyTask()
+    private var offerItem: Offer = MockData.getEmptyOffer()
     private var userRole: UserRole = MockData.getEmptyUser().getRole()
 
     companion object {
@@ -43,6 +44,7 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
         args?.let {
             isEditTask = it.getBoolean(Constants.EXTRA_TASK_IS_EDIT, false)
             taskItem = it.getParcelable(Constants.EXTRA_TASK) ?: MockData.getEmptyTask()
+            offerItem = it.getParcelable(Constants.EXTRA_OFFER) ?: MockData.getEmptyOffer()
             val userRoleName = it.getString(Constants.EXTRA_USER_ROLE, UserRole.TRAVELER.name) ?: MockData.getEmptyUser().getRole().name
             userRole = UserRole.getName(userRoleName)
         }
@@ -64,10 +66,10 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
     }
 
     private fun setData(task: Task) {
-        val dateTime = task.canceledTime?.toCalendar()
+        val dateTime = task.toDate?.toCalendar()
         var statusAndTime = task.status.parseStatusValue().getMyName()
-        if (dateTime != null) {
-            statusAndTime += ". актуальна до: " + dateTime.toPattern("dd.MM.yyyy HH:mm")
+        dateTime?.let {
+            statusAndTime += ". актуальна до: " + it.toPattern("dd.MM.yyyy HH:mm")
         }
         tvStatusDateTime.text = statusAndTime
         tvTaskName.text = task.name
@@ -88,7 +90,7 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
                 TaskStatus.IN_PROGRESS -> {
                     btTaskOfferOrEdit.text = getString(R.string.task_finish)
                     btTaskOfferOrEdit.setOnClickListener {
-                        onApplyFinishClick(taskItem, MockData.getEmptyOffer())//TODO: offer должен быть
+                        onApplyFinishClick(taskItem, taskItem.chosen_offer_id)
                     }
                 }
                 else -> {
@@ -127,8 +129,8 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
         navigateTo(R.id.taskAddParamsFragment, args)
     }
 
-    private fun onApplyFinishClick(task: Task, offer: Offer) {
-        presenter.setTaskWithOfferFinished(task.id, offer.id, TaskStatus.FINISHED.name.toLowerCase())
+    private fun onApplyFinishClick(task: Task, offerId: String) {
+        presenter.setTaskWithOfferFinished(task.id, offerId, TaskStatus.FINISHED.name.toLowerCase())
     }
 
     override fun onSaveOfferResult(offer: Offer) {

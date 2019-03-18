@@ -4,4 +4,5 @@ import com.task2trip.android.Model.Task.Task
 
 interface TaskParamsView: BaseView {
     fun onSaveTaskResult(task: Task)
+    fun onUpdateTaskResult(task: Task)
 }

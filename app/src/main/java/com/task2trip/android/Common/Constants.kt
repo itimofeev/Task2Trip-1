@@ -44,9 +44,11 @@ class Constants {
         const val EXTRA_DIALOG_IS_SHOW_TIME = "EXTRA_DIALOG_IS_SHOW_TIME"
         const val EXTRA_DIALOG_INIT_DATE_TIME = "EXTRA_DIALOG_INIT_DATE_TIME"
         const val EXTRA_DIALOG_PHOTO_SOURCE = "EXTRA_DIALOG_PHOTO_SOURCE"
+        const val EXTRA_DIALOG_IS_START = "EXTRA_DIALOG_IS_START"
 
         const val EXTRA_IS_MESSAGE = "EXTRA_IS_MESSAGE"
         const val EXTRA_MESSAGE_TEXT = "EXTRA_MESSAGE_TEXT"
+        const val EXTRA_SELECTED_DATE_TIME = "EXTRA_SELECTED_DATE_TIME"
 
         const val EXTRA_SELECTED_PAGE = "EXTRA_SELECTED_PAGE"
         const val EXTRA_USER_LEVEL_UP = "EXTRA_USER_LEVEL_UP"
@@ -63,5 +65,8 @@ class Constants {
         const val MIN_EMAIL_LENGTH = 8
         const val MIN_PASSWORD_LENGTH = 5
         const val MIN_NAME_LENGTH = 3
+
+        const val FILE_NAME_AVATAR = "user_avatar.jpg"
+        const val TIME_PATTERN_DDMMYYYY = "dd.MM.yyyy"
     }
 }

@@ -61,10 +61,10 @@ class SettingsFragment : BaseFragment(), ItemClickListener<UserSettingItem> {
 
     private fun initAboutUserCategoryList(@NonNull view: View) {
         val items = ArrayList<UserSettingItem>()
-        items.add(UserSettingItem(R.id.profileCategoryFragment, getString(R.string.setting_black_list), R.drawable.vector_ic_user_block))
-        items.add(UserSettingItem(R.id.profileMainInfoFragment, getString(R.string.setting_change_password), R.drawable.vector_ic_change_password))
-        items.add(UserSettingItem(R.id.profileContactsFragment, getString(R.string.setting_notifications), R.drawable.vector_ic_notifications))
-        items.add(UserSettingItem(R.id.profileAboutFragment, getString(R.string.setting_ask_question), R.drawable.vector_ic_questions_about))
+        items.add(UserSettingItem(R.id.noContentFragment, getString(R.string.setting_black_list), R.drawable.vector_ic_user_block))
+        items.add(UserSettingItem(R.id.noContentFragment, getString(R.string.setting_change_password), R.drawable.vector_ic_change_password))
+        items.add(UserSettingItem(R.id.noContentFragment, getString(R.string.setting_notifications), R.drawable.vector_ic_notifications))
+        items.add(UserSettingItem(R.id.noContentFragment, getString(R.string.setting_ask_question), R.drawable.vector_ic_questions_about))
 
         val adapter = ProfileSettingAdapter(items)
         adapter.setClickListener(this)

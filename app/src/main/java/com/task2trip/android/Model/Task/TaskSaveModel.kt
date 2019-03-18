@@ -4,7 +4,7 @@ import com.task2trip.android.Model.Location.GeoCountryCity
 
 data class TaskSaveModel(val name: String,
                          val description: String,
-                         val categoryId: String,
+                         var categoryId: String,
                          val budgetEstimate: Int,
                          val fromDate: String,
                          val toDate: String,

@@ -49,6 +49,11 @@ class TaskAddCategoryFragment : BaseFragment(), TaskCategoryView, ItemClickListe
     }
 
     override fun onProgress(isProgress: Boolean) {
-        //
+        if (isProgress) {
+            viewLoadAndMessage.show()
+        } else {
+            viewLoadAndMessage.hide()
+        }
+        viewLoadAndMessage.setProgress(isProgress)
     }
 }

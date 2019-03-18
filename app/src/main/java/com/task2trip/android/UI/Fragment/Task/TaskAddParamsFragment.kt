@@ -1,11 +1,11 @@
 package com.task2trip.android.UI.Fragment.Task
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Common.toCalendar
 import com.task2trip.android.Common.toInt
 import com.task2trip.android.Common.toPattern
 import com.task2trip.android.Model.MockData
@@ -25,12 +25,18 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
     private lateinit var presenter: TaskAddParamsPresenter
     private var categoryList = ArrayList<TaskCategory>()
     private var categorySelectedPosition = 0
-    private val dateStart = Calendar.getInstance()
-    private val dateEnd = Calendar.getInstance()
+    private var dateStart = Calendar.getInstance()
+    private var dateEnd = Calendar.getInstance()
+    private var taskForEdit = MockData.getEmptyTask()
+    private var isEditTask = false
 
     override fun getArgs(args: Bundle?) {
         args?.let {
             val lst: ArrayList<TaskCategory>? = it.getParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST)
+            taskForEdit = it.getParcelable<Task>(Constants.EXTRA_TASK) ?: MockData.getEmptyTask()
+            if (taskForEdit.id.isNotEmpty()) {
+                isEditTask = true
+            }
             if (!lst.isNullOrEmpty()) {
                 categoryList.addAll(lst)
             }
@@ -46,26 +52,53 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         presenter = TaskAddParamsPresenter(this, view.context)
         initDateTimeCalendar()
         tvCategoryName.text = getSelectedCategory().defaultValue
+        if (isEditTask) {
+            btAddMyTask.text = getString(R.string.save)
+            updateFields(taskForEdit)
+        } else {
+            btAddMyTask.text = getString(R.string.task_add_my)
+        }
         btAddMyTask.setOnClickListener {
             hideKeyboard()
-            addMyTaskClick(TaskSaveModel(etTaskName.text.toString() + " " + etCountryAndCity.text.toString(),
-                etTaskDescription.text.toString(), getSelectedCategory().id, etPrice.toInt(),
-                Calendar.getInstance().toPattern(), Calendar.getInstance().toPattern(), MockData.getEmptyGeoLocations()))
+            val taskForSave = TaskSaveModel(etTaskName.text.toString(),
+                etTaskDescription.text.toString(),
+                getSelectedCategory().id,
+                etPrice.toInt(),
+                dateStart.toPattern(),
+                dateEnd.toPattern(),
+                MockData.getEmptyGeoLocations())
+            if (isEditTask) {
+                taskForSave.categoryId = taskForEdit.category.id
+                editMyTaskClick(taskForEdit.id, taskForSave)
+            } else {
+                addMyTaskClick(taskForSave)
+            }
         }
+    }
+
+    private fun updateFields(task: Task) {
+        tvCategoryName.text = task.category.defaultValue
+        etTaskName.setText(task.name)
+        etTaskDescription.setText(task.description)
+        etCountryAndCity.setText("")
+        dateStart = task.fromDate.toCalendar()
+        dateEnd = task.toDate.toCalendar()
+        setDateTime(dateStart, dateEnd)
+        etPrice.setText(task.budgetEstimate.toString())
     }
 
     private fun initDateTimeCalendar() {
         layoutDateTime.setOnClickListener {
-            onShowCalendar()
+            onShowCalendar(true)
         }
         ivDateTime.setOnClickListener {
-            onShowCalendar()
+            onShowCalendar(true)
         }
         tvDateTimeFromTo.setOnClickListener {
-            onShowCalendar()
+            onShowCalendar(true)
         }
         ivArrowRight3.setOnClickListener {
-            onShowCalendar()
+            onShowCalendar(true)
         }
     }
 
@@ -77,10 +110,17 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         }
     }
 
-    private fun onShowCalendar() {
-        val dateAndTime = Calendar.getInstance()
+    private fun onShowCalendar(isStartDialog: Boolean) {
+        var dateAndTime = Calendar.getInstance()
         context?.let {
-            DateTimeDialog.getInstance("Укажите НАЧАЛО задания", true, dateAndTime.timeInMillis)
+            val title = if (isStartDialog) {
+                dateAndTime = dateStart
+                "Укажите НАЧАЛО задания"
+            } else {
+                dateAndTime = dateEnd
+                "Укажите ОКОНЧАНИЕ задания"
+            }
+            DateTimeDialog.getInstance(title, true, isStartDialog, dateAndTime.timeInMillis)
                 .show(this)
         }
     }
@@ -89,24 +129,38 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == Constants.REQUEST_DIALOG_DATE_TIME) {
             if (resultCode == Activity.RESULT_OK) {
-                //
+                data?.let {
+                    val selectedDT: Long = it.getLongExtra(Constants.EXTRA_SELECTED_DATE_TIME, 0L)
+                    val isStartDialog: Boolean = it.getBooleanExtra(Constants.EXTRA_DIALOG_IS_START, true)
+                    val clndr = Calendar.getInstance()
+                    clndr.timeInMillis = selectedDT
+                    if (isStartDialog) {
+                        dateStart = clndr
+                        onShowCalendar(false)
+                    } else {
+                        dateEnd = clndr
+                    }
+                    setDateTime(dateStart, dateEnd)
+                }
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 //
             }
         }
     }
 
-    var dateCallback: DatePickerDialog.OnDateSetListener =
-        DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            val dateAndTime = Calendar.getInstance()
-            dateAndTime.set(Calendar.YEAR, year)
-            dateAndTime.set(Calendar.MONTH, monthOfYear)
-            dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-            tvDateTimeFromTo.text = dateAndTime.toPattern("yyyy.MM.dd")
-        }
+    private fun setDateTime(dateStart: Calendar, dateEnd: Calendar) {
+        tvDateTimeFromTo.text = "с "
+            .plus(dateStart.toPattern(Constants.TIME_PATTERN_DDMMYYYY))
+            .plus(" по ")
+            .plus(dateEnd.toPattern(Constants.TIME_PATTERN_DDMMYYYY))
+    }
 
     private fun addMyTaskClick(taskSaveModel: TaskSaveModel) {
         presenter.saveTask(taskSaveModel)
+    }
+
+    private fun editMyTaskClick(taskId: String, taskSaveModel: TaskSaveModel) {
+        presenter.editTask(taskId, taskSaveModel)
     }
 
     override fun onSaveTaskResult(task: Task) {
@@ -122,7 +176,25 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         }
     }
 
+    override fun onUpdateTaskResult(task: Task) {
+        if (task.id.isNotEmpty()) {
+            val args = Bundle()
+            with(args) {
+                putBoolean(Constants.EXTRA_IS_MESSAGE, true)
+                putString(Constants.EXTRA_MESSAGE_TEXT, "Задача с id=${task.id} успешно обновлена")
+            }
+            navigateTo(R.id.taskListTravelerFragment, args)
+        } else {
+            onMessage("Не удалось корректно обновить задачу. Повторите позже!")
+        }
+    }
+
     override fun onProgress(isProgress: Boolean) {
-        //
+        if (isProgress) {
+            viewLoadAndMessage.show()
+        } else {
+            viewLoadAndMessage.hide()
+        }
+        viewLoadAndMessage.setProgress(isProgress)
     }
 }

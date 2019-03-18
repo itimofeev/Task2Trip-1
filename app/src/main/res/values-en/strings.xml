@@ -106,4 +106,5 @@
     <string name="next_finish">Finish</string>
     <string name="save">Save</string>
     <string name="profile_category">Categories</string>
+    <string name="task_get_my_offers">My offers</string>
 </resources>

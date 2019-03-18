@@ -15,19 +15,23 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.R
+import java.util.Calendar
 
 class DateTimeDialog: DialogFragment() {
     private var initDateTime = 0L
+    private var selectedDateTime = 0L
     private var isShowTime = true
+    private var isStartDialog = true
     private var title = ""
 
     companion object {
-        fun getInstance(title: String, isShowTime: Boolean, initDateTimeMillisec: Long = 0L): DateTimeDialog {
+        fun getInstance(title: String, isShowTime: Boolean, isStartDialog: Boolean, initDateTimeMillisec: Long = Calendar.getInstance().timeInMillis): DateTimeDialog {
             val fragment = DateTimeDialog()
             val args = Bundle()
             args.putLong(Constants.EXTRA_DIALOG_INIT_DATE_TIME, initDateTimeMillisec)
             args.putBoolean(Constants.EXTRA_DIALOG_IS_SHOW_TIME, isShowTime)
             args.putString(Constants.EXTRA_DIALOG_TITLE, title)
+            args.putBoolean(Constants.EXTRA_DIALOG_IS_START, isStartDialog)
             fragment.arguments = args
             return fragment
         }
@@ -36,9 +40,11 @@ class DateTimeDialog: DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            initDateTime = it.getLong(Constants.EXTRA_DIALOG_INIT_DATE_TIME, 0L)
+            initDateTime = it.getLong(Constants.EXTRA_DIALOG_INIT_DATE_TIME, Calendar.getInstance().timeInMillis)
             isShowTime = it.getBoolean(Constants.EXTRA_DIALOG_IS_SHOW_TIME, true)
             title = it.getString(Constants.EXTRA_DIALOG_TITLE, "")
+            isStartDialog = it.getBoolean(Constants.EXTRA_DIALOG_IS_START, true)
+            selectedDateTime = initDateTime
         }
     }
 
@@ -48,7 +54,10 @@ class DateTimeDialog: DialogFragment() {
         initComponents(view)
         return AlertDialog.Builder(context!!)
             .setPositiveButton("ok") { dialog, _ ->
-                targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_CANCELED, Intent())
+                val args = Intent()
+                args.putExtra(Constants.EXTRA_SELECTED_DATE_TIME, selectedDateTime)
+                args.putExtra(Constants.EXTRA_DIALOG_IS_START, isStartDialog)
+                targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, args)
                 dialog.dismiss()
             }
             .setNegativeButton("Отмена") { dialog, _ ->
@@ -66,8 +75,30 @@ class DateTimeDialog: DialogFragment() {
             val datePicker = it.findViewById<CalendarView>(R.id.datePicker)
             timePicker.setIs24HourView(true)
             tvTitle.text = title
-            datePicker.setOnDateChangeListener { view, year, month, dayOfMonth ->  }
-            timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->  }
+            val initCalendar = Calendar.getInstance()
+            initCalendar.timeInMillis = initDateTime
+            datePicker.date = initCalendar.timeInMillis
+            datePicker.setOnDateChangeListener { view, year, month, dayOfMonth ->
+                val dateAndTime = Calendar.getInstance()
+                if (selectedDateTime > 0L) {
+                    dateAndTime.timeInMillis = selectedDateTime
+                }
+                dateAndTime.set(Calendar.YEAR, year)
+                dateAndTime.set(Calendar.MONTH, month)
+                dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                selectedDateTime = dateAndTime.timeInMillis
+            }
+            timePicker.currentHour = initCalendar.get(Calendar.HOUR_OF_DAY)
+            timePicker.currentMinute = initCalendar.get(Calendar.MINUTE)
+            timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->
+                val dateAndTime = Calendar.getInstance()
+                if (selectedDateTime > 0L) {
+                    dateAndTime.timeInMillis = selectedDateTime
+                }
+                dateAndTime.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                dateAndTime.set(Calendar.MINUTE, minute)
+                selectedDateTime = dateAndTime.timeInMillis
+            }
         }
     }
 }

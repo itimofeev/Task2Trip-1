@@ -193,17 +193,21 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             R.id.offersShowMyFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.task_get_my), true)
+                setToolBarParams(true, getString(R.string.task_get_my_offers), true)
             }
             R.id.taskDetailsFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle(getString(R.string.title_task_details))
+                setToolBarParams(true, getString(R.string.title_task_details), true)
+            }
+            R.id.noContentFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, "Нет страницы", true)
             }
             android.R.id.home -> {
                 navController.popBackStack()
             }
             else -> {
-                navController.navigate(R.id.loginRegisterFragment)
+                navController.navigate(R.id.noContentFragment)
                 setToolBarTitle(getString(R.string.app_name))
             }
         }

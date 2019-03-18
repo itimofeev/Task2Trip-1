@@ -93,6 +93,10 @@ interface ApiMethods {
     @GET("category")
     fun getCategoryList(): Call<List<TaskCategory>>
 
+    @PATCH("task/{taskId}")
+    fun updateTask(@Path("taskId") taskId: String,
+                   @Body taskSaveModel: TaskSaveModel): Call<Task>
+
     @PUT("task")
     fun saveTask(@Body taskSaveModel: TaskSaveModel): Call<Task>
 

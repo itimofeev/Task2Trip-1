@@ -61,19 +61,21 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView {
 
     private fun initButtons() {
         if (isMyOffers) {
+            groupLikes.visibility = View.GONE
+            ivUserPhoto.visibility = View.GONE
+            tvPerformerName.visibility = View.GONE
             btSetMyLocal.visibility = View.GONE
             btSendMessage.visibility = View.GONE
         } else {
+            groupLikes.visibility = View.VISIBLE
+            ivUserPhoto.visibility = View.VISIBLE
+            tvPerformerName.visibility = View.VISIBLE
             btSetMyLocal.visibility = View.VISIBLE
             btSendMessage.visibility = View.VISIBLE
-        }
-        if (taskId == offer.task.id) {
-            btSetMyLocal.text = "Отменить исполнение"
+            btSetMyLocal.text = "Выбрать исполнителем"
         }
         btSetMyLocal.setOnClickListener {
-            if (taskId != offer.task.id) {
-                presenter.setOfferForUser(taskId, offer.id)
-            }
+            presenter.setOfferForUser(taskId, offer.id)
         }
         btSendMessage.setOnClickListener {
             onSendMessage()
