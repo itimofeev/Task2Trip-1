@@ -5,48 +5,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
-            android:id="@+id/ivBannerTaskCreate"
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/banner_task_create"
-            android:scaleType="centerCrop"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_bottom_16dp"
-            android:layout_marginLeft="@dimen/margin_left_16dp"
-            android:layout_marginStart="@dimen/margin_left_16dp"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:text="@string/board_no_task"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="parent"/>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="@dimen/margin_bottom_16dp"
-            android:layout_marginLeft="@dimen/margin_left_16dp"
-            android:layout_marginStart="@dimen/margin_left_16dp"
-            android:text="@string/board_no_task_subtitle"
-            app:layout_constraintBottom_toTopOf="@+id/btCreateTask"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/textView"/>
+            <ImageView
+                    android:id="@+id/ivBannerTaskCreate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/banner_task_create"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-            android:id="@+id/btCreateTask"
-            style="@style/buttonSolid"
-            android:layout_width="wrap_content"
-            android:text="@string/task_create"
-            android:paddingLeft="@dimen/padding_right_16dp"
-            android:paddingStart="@dimen/padding_right_16dp"
-            android:paddingEnd="@dimen/padding_right_16dp"
-            android:paddingRight="@dimen/padding_right_16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/ivBannerTaskCreate"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                    android:id="@+id/tvCreateAnyTask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/ivBannerTaskCreate"
+                    android:layout_alignStart="@id/ivBannerTaskCreate"
+                    android:layout_alignTop="@id/ivBannerTaskCreate"
+                    android:layout_marginTop="@dimen/margin_top_16dp"
+                    android:layout_marginLeft="@dimen/margin_left_16dp"
+                    android:layout_marginStart="@dimen/margin_left_16dp"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:text="@string/board_no_task"
+                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="@dimen/margin_bottom_16dp"
+                    android:layout_marginLeft="@dimen/margin_left_16dp"
+                    android:layout_marginStart="@dimen/margin_left_16dp"
+                    android:text="@string/board_no_task_subtitle"
+                    android:layout_centerVertical="true"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            <Button
+                    android:id="@+id/btCreateTask"
+                    style="@style/buttonSolid"
+                    android:layout_width="wrap_content"
+                    android:text="@string/task_create"
+                    android:paddingLeft="@dimen/padding_right_16dp"
+                    android:paddingStart="@dimen/padding_right_16dp"
+                    android:paddingEnd="@dimen/padding_right_16dp"
+                    android:paddingRight="@dimen/padding_right_16dp"
+                    android:layout_alignBottom="@id/ivBannerTaskCreate"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
