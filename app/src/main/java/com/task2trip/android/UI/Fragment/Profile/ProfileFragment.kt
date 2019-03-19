@@ -157,6 +157,10 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
                         ex.printStackTrace()
                     }
                     presenter.saveImageAvatar(file)
+                    //avatarInteractor.uploadAvatar(MultipartBody.Part.createFormData(avatarFileName, avatarFileName, RequestBody.create(MediaType.parse(MEDIA_TYPE), new File(localUri)))
+                    //avatarFileName = "avatar.jpg"
+                    //MEDIA_TYPE = "image/JPEG"
+                    //localUri = ""
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     //
                 }
