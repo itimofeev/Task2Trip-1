@@ -4,12 +4,10 @@ import android.content.Context
 import com.google.gson.GsonBuilder
 import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Common.ServerConstants
 import com.task2trip.android.Model.*
 import com.task2trip.android.Model.Location.GeoCountryCity
-import com.task2trip.android.Model.Task.Task
-import com.task2trip.android.Model.Task.TaskCategory
-import com.task2trip.android.Model.Task.TaskList
-import com.task2trip.android.Model.Task.TaskSaveModel
+import com.task2trip.android.Model.Task.*
 import com.task2trip.android.Model.User.*
 import okhttp3.Interceptor
 import okhttp3.MultipartBody
@@ -23,12 +21,15 @@ import retrofit2.http.*
 
 interface ApiMethods {
     companion object {
-        const val BASE_URL = "https://task2trip.com/api/"
-        private const val VERSION: String = "v1/"
+        const val HTTP_ADDRESS = ServerConstants.PROTOCOL_HTTP
+            .plus(ServerConstants.API_ADDRESS_DOMAIN)
+            .plus("/api/")
+            .plus(ServerConstants.API_VERSION)
+            .plus("/")
 
         fun getInstance(context: Context): ApiMethods {
             val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
-                .baseUrl(BASE_URL + VERSION)
+                .baseUrl(HTTP_ADDRESS)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
                 .client(getOkHttpClient(context))
 
@@ -86,10 +87,19 @@ interface ApiMethods {
     @POST("user")
     fun updateUserRoleLocal(@Body role: UserLevelUp): Call<UserImpl>
 
+    @GET("user/{userId}")
+    fun getUserProfileById(@Path("userId") userId: String): Call<UserImpl>
+
+    /**
+     * Сохранение аватарки пользователя
+     */
     @Multipart
     @PUT("user/profile/image")
     fun saveUserImageAvatar(@Part image: MultipartBody.Part): Call<String>
 
+    /**
+     * Получение списка категорий
+     */
     @GET("category")
     fun getCategoryList(): Call<List<TaskCategory>>
 
@@ -125,7 +135,7 @@ interface ApiMethods {
     @PATCH("task/{taskId}/offer/{offerId}")
     fun setTaskCompletedOrCanceled(@Path("taskId") taskId: String,
                                    @Path("offerId") offerId: String,
-                                   @Body status: String): Call<Offer>
+                                   @Body statusAndRating: TaskStatusAndRating): Call<Offer>
 
     @GET("offer")
     fun getMyOffers(): Call<List<Offer>>

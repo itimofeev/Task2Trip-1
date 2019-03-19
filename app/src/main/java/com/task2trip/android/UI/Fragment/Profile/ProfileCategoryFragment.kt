@@ -102,7 +102,7 @@ class ProfileCategoryFragment : BaseFragment(), TaskCategoryView, UserProfileVie
         rvCategoryList.adapter = adapter
     }
 
-    override fun onUserProfileResult(profile: ProfileImpl) {
+    override fun onUserProfileUpdateResult(profile: ProfileImpl) {
         setUserProfile(profile)
         viewLoadAndMessage.show()
         viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)

@@ -82,7 +82,7 @@ class MockData {
 
         fun getEmptyProfile(): ProfileImpl {
             return ProfileImpl("", "", "", "", "", "",
-                "", "", "", "", ArrayList<TaskCategory>())
+                "", "", "", "", ArrayList<TaskCategory>(), GeoCountryCity("", "", LatLng(0.0, 0.0)))
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.task2trip.android.UI.Fragment.Task
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import com.task2trip.android.Common.Constants
@@ -12,6 +13,7 @@ import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Offer
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskStatus
+import com.task2trip.android.Model.Task.TaskStatusAndRating
 import com.task2trip.android.Model.User.UserRole
 import com.task2trip.android.Presenter.TaskOfferPresenter
 import com.task2trip.android.R
@@ -90,7 +92,7 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
                 TaskStatus.IN_PROGRESS -> {
                     btTaskOfferOrEdit.text = getString(R.string.task_finish)
                     btTaskOfferOrEdit.setOnClickListener {
-                        onApplyFinishClick(taskItem, taskItem.chosen_offer_id)
+                        onApplyFinishClick(taskItem, taskItem.chosenOfferId)
                     }
                 }
                 else -> {
@@ -111,6 +113,16 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
     private fun setButtonFinished() {
         btTaskOfferOrEdit.text = getString(R.string.task_finished)
         btTaskOfferOrEdit.isEnabled = false
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            btTaskOfferOrEdit.setTextColor(resources.getColor(R.color.gray, null))
+        } else {
+            btTaskOfferOrEdit.setTextColor(resources.getColor(R.color.gray))
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            btTaskOfferOrEdit.background = resources.getDrawable(R.drawable.bg_button_border, null)
+        } else {
+            btTaskOfferOrEdit.background = resources.getDrawable(R.drawable.bg_button_border)
+        }
     }
 
     private fun onApplyOfferTaskClick(task: Task) {
@@ -130,7 +142,8 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
     }
 
     private fun onApplyFinishClick(task: Task, offerId: String) {
-        presenter.setTaskWithOfferFinished(task.id, offerId, TaskStatus.FINISHED.name.toLowerCase())
+        presenter.setTaskWithOfferFinished(task.id, offerId,
+            TaskStatusAndRating(TaskStatus.FINISHED.name.toLowerCase(), 0))
     }
 
     override fun onSaveOfferResult(offer: Offer) {
@@ -150,9 +163,7 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
     }
 
     override fun onTaskStatusResult(offer: Offer) {
-        if (offer.task.status.parseStatusValue() == TaskStatus.FINISHED) {
-            setButtonFinished()
-        }
+        setButtonFinished()
     }
 
     override fun onProgress(isProgress: Boolean) {

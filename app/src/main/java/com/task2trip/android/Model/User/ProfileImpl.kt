@@ -2,6 +2,7 @@ package com.task2trip.android.Model.User
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.Task.TaskCategory
 
 data class ProfileImpl(private var firstName: String,
@@ -14,7 +15,8 @@ data class ProfileImpl(private var firstName: String,
                        private var interests: String,
                        private var about: String,
                        private var whyUse: String,
-                       private var categories: List<TaskCategory>): Profile, Parcelable {
+                       private var categories: List<TaskCategory>,
+                       private var place: GeoCountryCity): Profile, Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -27,19 +29,20 @@ data class ProfileImpl(private var firstName: String,
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.createTypedArrayList(TaskCategory)
+        parcel.createTypedArrayList(TaskCategory),
+        parcel.readParcelable(GeoCountryCity::class.java.classLoader)
     )
 
     override fun getFirstName(): String {
-        return firstName
+        return firstName ?: ""
     }
 
     override fun getLastName(): String {
-        return lastName
+        return lastName ?: ""
     }
 
     override fun getMiddleName(): String {
-        return middleName
+        return middleName ?: ""
     }
 
     override fun getImageAvatarUrl(): String {
@@ -76,6 +79,10 @@ data class ProfileImpl(private var firstName: String,
         } else {
             categories
         }
+    }
+
+    override fun getLocation(): GeoCountryCity {
+        return place
     }
 
     override fun setFirstName(firstName: String) {
@@ -122,6 +129,10 @@ data class ProfileImpl(private var firstName: String,
         this.categories = items
     }
 
+    override fun setLocation(location: GeoCountryCity) {
+        this.place = location
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(firstName)
         parcel.writeString(lastName)
@@ -134,6 +145,7 @@ data class ProfileImpl(private var firstName: String,
         parcel.writeString(about)
         parcel.writeString(whyUse)
         parcel.writeTypedList(categories)
+        parcel.writeParcelable(place, flags)
     }
 
     override fun describeContents(): Int {

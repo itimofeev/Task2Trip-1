@@ -44,7 +44,9 @@ class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
         btSaveMainInfo.setOnClickListener {
             if (validateData(etName.text.toString(), etBirthday.text.toString())) {
                 profile.setFirstName(etName.text.toString())
-                profile.setBirthDate(etBirthday.text.toString())
+                if (etBirthday.text.toString().isNotEmpty()) {
+                    profile.setBirthDate(etBirthday.text.toString())
+                }
                 if (rgGender.checkedRadioButtonId == R.id.rbMale) {
                     profile.setSex(UserSex.getUserSex(true).name)
                 } else if (rgGender.checkedRadioButtonId == R.id.rbFemale) {
@@ -72,7 +74,7 @@ class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
         return true
     }
 
-    override fun onUserProfileResult(profile: ProfileImpl) {
+    override fun onUserProfileUpdateResult(profile: ProfileImpl) {
         setUserProfile(profile)
         viewLoadAndMessage.show()
         viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)

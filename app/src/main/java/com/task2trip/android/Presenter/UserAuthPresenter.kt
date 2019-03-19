@@ -12,10 +12,10 @@ class UserAuthPresenter(val view: UserAuthView, context: Context): BasePresenter
         val req: Call<Void> = getApi().userRegister(UserSignUpReq(email, password, locale, name))
         req.enqueue {
             onResponse = { response ->
+                view.onProgress(false)
                 if (response.code() in 200..299) {
                     view.onRegisterResult(response.body())
                 }
-                view.onProgress(false)
             }
         }
     }
@@ -24,10 +24,10 @@ class UserAuthPresenter(val view: UserAuthView, context: Context): BasePresenter
         val req: Call<UserLoginResp> = getApi().userLogin(UserLoginReq(email, password))
         req.enqueue {
             onResponse = { response ->
+                view.onProgress(false)
                 if (response.code() in 200..299) {
                     view.onLoginResult(response.body() ?: MockData.getEmptyUserLoginResp())
                 }
-                view.onProgress(false)
             }
         }
     }

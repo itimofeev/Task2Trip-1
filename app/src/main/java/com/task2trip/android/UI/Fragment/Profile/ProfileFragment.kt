@@ -158,6 +158,10 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
                         ex.printStackTrace()
                     }
                     presenter.saveImageAvatar(file)
+                    //avatarInteractor.uploadAvatar(MultipartBody.Part.createFormData(avatarFileName, avatarFileName, RequestBody.create(MediaType.parse(MEDIA_TYPE), new File(localUri)))
+                    //avatarFileName = "avatar.jpg"
+                    //MEDIA_TYPE = "image/JPEG"
+                    //localUri = ""
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     //
                 }
@@ -193,7 +197,7 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
         }
     }
 
-    override fun onUserInfoResult(user: UserImpl) {
+    override fun onMySelfInfoResult(user: UserImpl) {
         this.user = user
         ImageLoader(user.getProfile().getImageAvatarUrl(), ivProfilePhoto)
     }
@@ -221,5 +225,9 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
 
     private fun onShowMyTasksClick() {
         navigateTo(R.id.taskListPerformerFragment, Bundle())
+    }
+
+    override fun onUserResult(user: UserImpl) {
+        //
     }
 }

@@ -159,4 +159,15 @@
             android:id="@+id/guidelineRight"
             app:layout_constraintGuide_end="@dimen/margin_right_16dp"
             android:orientation="vertical"/>
+
+    <com.task2trip.widgetlibrary.LoadingAndMessage
+            android:id="@+id/viewLoadAndMessage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="2dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

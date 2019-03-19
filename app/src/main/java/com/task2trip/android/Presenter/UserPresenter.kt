@@ -19,7 +19,7 @@ class UserPresenter(val view: UserView, context: Context) : BasePresenter(view, 
             onResponse = { response ->
                 view.onProgress(false)
                 if (response.code() in 200..299) {
-                    view.onUserInfoResult(response.body() ?: MockData.getEmptyUser())
+                    view.onMySelfInfoResult(response.body() ?: MockData.getEmptyUser())
                 }
             }
         }
@@ -35,6 +35,21 @@ class UserPresenter(val view: UserView, context: Context) : BasePresenter(view, 
                 view.onProgress(false)
                 if (response.code() in 200..299) {
                     view.onUploadImageAvatarResult()
+                }
+            }
+        }
+    }
+
+    fun getProfileById(profileId: String) {
+        view.onProgress(true)
+        val req: Call<UserImpl> = getApi().getUserProfileById(profileId)
+        req.enqueue {
+            onResponse = { response ->
+                view.onProgress(false)
+                if (response.code() in 200..299) {
+                    view.onUserResult(response.body() ?: MockData.getEmptyUser())
+                } else {
+                    view.onMessage("Запрос прошел, но есть ошибка ${response.code()}")
                 }
             }
         }
