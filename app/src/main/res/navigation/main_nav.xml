@@ -65,4 +65,6 @@
               android:label="fragment_offers_show_my" tools:layout="@layout/fragment_offers_show_my"/>
     <fragment android:id="@+id/noContentFragment" android:name="com.task2trip.android.UI.Fragment.NoContentFragment"
               android:label="fragment_no_content" tools:layout="@layout/fragment_no_content"/>
+    <fragment android:id="@+id/messageChatDialogFragment" android:name="com.task2trip.android.MessageChatDialogFragment"
+              android:label="fragment_message_chat_dialog" tools:layout="@layout/fragment_message_chat_dialog"/>
 </navigation>

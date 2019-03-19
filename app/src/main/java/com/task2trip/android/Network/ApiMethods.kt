@@ -6,6 +6,7 @@ import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Common.ServerConstants
 import com.task2trip.android.Model.*
+import com.task2trip.android.Model.Chat.*
 import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.Task.*
 import com.task2trip.android.Model.User.*
@@ -95,7 +96,7 @@ interface ApiMethods {
      */
     @Multipart
     @PUT("user/profile/image")
-    fun saveUserImageAvatar(@Part image: MultipartBody.Part): Call<String>
+    fun saveUserImageAvatar(@Part profileImage: MultipartBody.Part): Call<String>
 
     /**
      * Получение списка категорий
@@ -143,4 +144,31 @@ interface ApiMethods {
     @GET("geocode")
     fun getCountryAndCity(@Query("query") query: String?): Call<List<GeoCountryCity>>
 
+    /**
+     * Список чатов для текущего пользователя
+     */
+    @GET("chat")
+    fun getChats(@Query("limit") limit: Int?,
+                 @Query("skip") skip: Int?): Call<ChatList>
+
+    /**
+     * Создание чата с пользователем
+     */
+    @POST("chat")
+    fun createChat(@Body userId: ChatCreateForUser): Call<Chat>
+
+    /**
+     * Отправка сообщения в чат
+     */
+    @POST("chat/{chatId}/message")
+    fun sendMessageToChat(@Path("chatId") chatId: String,
+                          @Body message: ChatMessageForSend): Call<ChatMessage>
+
+    /**
+     * Получение сообщений для чата
+     */
+    @GET("chat/{chatId}/message")
+    fun getMessagesFromChat(@Path("chatId") chatId: String,
+                            @Query("beforeTime") beforeTime: String?,
+                            @Query("limit") limit: Int?): Call<List<ChatMessage>>
 }

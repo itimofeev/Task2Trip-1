@@ -2,9 +2,12 @@ package com.task2trip.android.Model.ImageLoader
 
 import android.graphics.*
 import com.squareup.picasso.Transformation
-import android.graphics.RectF
 
-class ImageTransformRounded(val radius: Float = 8f): Transformation {
+class ImageTransform(private val key: String, private val isCircle: Boolean) : Transformation {
+    companion object {
+        val CIRCLE = ImageTransform("circle", true)
+        val ROUNDED = ImageTransform("rounded", false)
+    }
 
     override fun transform(source: Bitmap?): Bitmap {
         source?.let {
@@ -25,8 +28,14 @@ class ImageTransformRounded(val radius: Float = 8f): Transformation {
             paint.shader = BitmapShader(squaredBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
             paint.isAntiAlias = true
 
-            val r = size / radius
-            canvas.drawRoundRect(RectF(0f, 0f, it.width * 1f, it.height * 1f), r, r, paint)
+            if (isCircle) {
+                val r = size / 2f
+                canvas.drawCircle(r, r, r, paint)
+            } else {
+                val r = size / 12f
+                val margin = 0f
+                canvas.drawRoundRect(RectF(margin, margin, it.width * 1f, it.height * 1f), r, r, paint)
+            }
 
             squaredBitmap.recycle()
             return bitmap
@@ -35,6 +44,6 @@ class ImageTransformRounded(val radius: Float = 8f): Transformation {
     }
 
     override fun key(): String {
-        return "rounded"
+        return key
     }
 }

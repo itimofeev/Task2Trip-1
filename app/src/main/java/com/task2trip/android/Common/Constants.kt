@@ -55,6 +55,8 @@ class Constants {
         const val EXTRA_PHOTO_SOURCE_CAMERA = "Фотокамера"
         const val EXTRA_PHOTO_SOURCE_STORAGE = "На диске"
 
+        const val REQUEST_PERMISSION_STORAGE = 248
+        const val REQUEST_PERMISSION_PHOTO = 249
         const val REQUEST_STORAGE_BROWSER = 250
         const val REQUEST_CAMERA_PHOTO = 251
         const val REQUEST_DIALOG_CAMERA_SOURCE = 252

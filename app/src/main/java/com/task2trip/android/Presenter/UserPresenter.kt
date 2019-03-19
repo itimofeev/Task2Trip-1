@@ -9,6 +9,7 @@ import okhttp3.MultipartBody
 import retrofit2.Call
 import okhttp3.RequestBody
 import java.io.File
+import java.util.*
 
 class UserPresenter(val view: UserView, context: Context) : BasePresenter(view, context) {
 
@@ -27,14 +28,18 @@ class UserPresenter(val view: UserView, context: Context) : BasePresenter(view, 
 
     fun saveImageAvatar(file: File) {
         view.onProgress(true)
+        val postfix = Calendar.getInstance().timeInMillis.toString()
+        val avatarFileName = "avatar$postfix.jpg"
         val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
-        val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
+        val body = MultipartBody.Part.createFormData("profileImage", avatarFileName, requestFile)
         val req: Call<String> = getApi().saveUserImageAvatar(body)
         req.enqueue {
             onResponse = { response ->
                 view.onProgress(false)
                 if (response.code() in 200..299) {
-                    view.onUploadImageAvatarResult()
+                    view.onUploadImageAvatarResult(true)
+                } else {
+                    view.onUploadImageAvatarResult(false)
                 }
             }
         }

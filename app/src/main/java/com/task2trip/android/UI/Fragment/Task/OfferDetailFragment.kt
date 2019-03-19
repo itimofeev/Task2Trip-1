@@ -135,7 +135,7 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView, UserView {
         setProfileInfo(userLocal)
     }
 
-    override fun onUploadImageAvatarResult() {
+    override fun onUploadImageAvatarResult(isSuccess: Boolean) {
         //
     }
 

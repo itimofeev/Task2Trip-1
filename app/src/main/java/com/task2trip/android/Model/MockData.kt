@@ -1,5 +1,8 @@
 package com.task2trip.android.Model
 
+import com.task2trip.android.Model.Chat.Chat
+import com.task2trip.android.Model.Chat.ChatList
+import com.task2trip.android.Model.Chat.ChatMessage
 import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.Location.LatLng
 import com.task2trip.android.Model.Task.Task
@@ -83,6 +86,22 @@ class MockData {
         fun getEmptyProfile(): ProfileImpl {
             return ProfileImpl("", "", "", "", "", "",
                 "", "", "", "", ArrayList<TaskCategory>(), GeoCountryCity("", "", LatLng(0.0, 0.0)))
+        }
+
+        fun getEmptyChatList(): ChatList {
+            return ChatList(ArrayList<Chat>(), 0)
+        }
+
+        fun getEmptyChat(): Chat {
+            return Chat("", getEmptyUser())
+        }
+
+        fun getEmptyChatMessage(): ChatMessage {
+            return ChatMessage("", getEmptyUser(), "", "")
+        }
+
+        fun getEmptyChatMessageList(): List<ChatMessage> {
+            return ArrayList<ChatMessage>()
         }
     }
 }
