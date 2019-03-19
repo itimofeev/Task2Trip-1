@@ -110,4 +110,8 @@
     <string name="choose_begin_task_date">Choose begin date</string>
     <string name="choose_end_task_date">Choose end date</string>
     <string name="empty_task_list">You have no tasks yet</string>
+    <string name="board_category_routes">Travel routes</string>
+    <string name="board_category_guides">Guides</string>
+    <string name="board_category_travel_mates">Travel mates</string>
+    <string name="board_category_travel_transfer">Transfer</string>
 </resources>
