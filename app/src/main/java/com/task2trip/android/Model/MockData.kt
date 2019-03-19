@@ -5,7 +5,10 @@ import com.task2trip.android.Model.Location.LatLng
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskAddCategory
 import com.task2trip.android.Model.Task.TaskCategory
-import com.task2trip.android.Model.User.*
+import com.task2trip.android.Model.User.ProfileImpl
+import com.task2trip.android.Model.User.UserImpl
+import com.task2trip.android.Model.User.UserLoginResp
+import com.task2trip.android.Model.User.UserSignUpResp
 
 class MockData {
     companion object {

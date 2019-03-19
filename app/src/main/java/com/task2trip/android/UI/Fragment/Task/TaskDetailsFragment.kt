@@ -3,11 +3,7 @@ package com.task2trip.android.UI.Fragment.Task
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import com.task2trip.android.Common.Constants
-import com.task2trip.android.Common.getMyName
-import com.task2trip.android.Common.parseStatusValue
-import com.task2trip.android.Common.toCalendar
-import com.task2trip.android.Common.toPattern
+import com.task2trip.android.Common.*
 import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Offer

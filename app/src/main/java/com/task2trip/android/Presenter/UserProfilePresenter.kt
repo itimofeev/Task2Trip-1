@@ -3,7 +3,6 @@ package com.task2trip.android.Presenter
 import android.content.Context
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.User.ProfileImpl
-import com.task2trip.android.Model.User.UserImpl
 import com.task2trip.android.View.UserProfileView
 import retrofit2.Call
 

@@ -6,8 +6,8 @@ import com.task2trip.android.Model.User.UserImpl
 import com.task2trip.android.View.UserView
 import okhttp3.MediaType
 import okhttp3.MultipartBody
-import retrofit2.Call
 import okhttp3.RequestBody
+import retrofit2.Call
 import java.io.File
 
 class UserPresenter(val view: UserView, context: Context) : BasePresenter(view, context) {

@@ -2,7 +2,6 @@ package com.task2trip.android.Model.ImageLoader
 
 import android.graphics.*
 import com.squareup.picasso.Transformation
-import android.graphics.RectF
 
 class ImageTransformRounded(val radius: Float = 8f): Transformation {
 
