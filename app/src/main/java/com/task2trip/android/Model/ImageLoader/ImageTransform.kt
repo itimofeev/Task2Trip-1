@@ -32,7 +32,7 @@ class ImageTransform(private val key: String, private val isCircle: Boolean) : T
                 val r = size / 2f
                 canvas.drawCircle(r, r, r, paint)
             } else {
-                val r = size / 12f
+                val r = size / 7f
                 val margin = 0f
                 canvas.drawRoundRect(RectF(margin, margin, it.width * 1f, it.height * 1f), r, r, paint)
             }
