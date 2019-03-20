@@ -6,7 +6,7 @@ import android.widget.TextView
 import com.task2trip.android.Model.ImageLoader.ImageLoader
 import com.task2trip.android.R
 
-class ChatMessageDialogHolder(itemView: View) : BaseHolder<TaskCategory>(itemView) {
+class ChatMessageDialogHolder(itemView: View) : BaseHolder<ChatMessage>(itemView) {
     private var tvCategoryName: TextView? = null
     private var ivCategoryImage: ImageView? = null
 
@@ -15,7 +15,7 @@ class ChatMessageDialogHolder(itemView: View) : BaseHolder<TaskCategory>(itemVie
         ivCategoryImage = itemView.findViewById(R.id.ivCategoryImage)
     }
 
-    override fun setData(item: TaskCategory) {
+    override fun setData(item: ChatMessage) {
         tvCategoryName?.text = item.defaultValue
         ivCategoryImage?.let {
             ImageLoader(item.imageUrl, it)
