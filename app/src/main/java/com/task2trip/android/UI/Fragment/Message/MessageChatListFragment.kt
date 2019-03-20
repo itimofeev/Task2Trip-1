@@ -21,12 +21,24 @@ class MessageChatListFragment : BaseFragment(), ChatView {
     }
 
     override fun initComponents(view: View) {
+        initPresenter()
+        initRecycleView()
+    }
+    
+    private fun initPresenter() {   
         presenter = ChatPresenter(this, view.context)
         presenter.getChats()
     }
+    
+    private fun initRecycleView(view: View) {
+        rvChatList.setHasFixedSize(true)
+        rvChatList.layoutManager = LinearLayoutManager(view.context)
+    }
 
     override fun onChatListResult(chats: ChatList) {
-        //
+        val adapter = ChatsAdapter(chats.playloads)
+        adapter.setClickListener(this)
+        rvChatList.adapter = adapter
     }
 
     override fun onChatCreateResult(chat: Chat) {
