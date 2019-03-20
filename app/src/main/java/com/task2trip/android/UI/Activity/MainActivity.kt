@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 params.putString(Constants.EXTRA_USER_ID, this.user.getId())
                 params.putString(Constants.EXTRA_USER_ROLE, this.user.getRole().name)
                 navController.clearBackStack(resourceId, params)
-                setToolBarParams(true, getString(R.string.title_my_tasks), false)
+                setToolBarParams(false, getString(R.string.title_my_tasks), false)
             }
             R.id.taskAddOfferFragment -> {
                 navController.navigate(resourceId, args)

@@ -115,10 +115,10 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         context?.let {
             val title = if (isStartDialog) {
                 dateAndTime = dateStart
-                "Укажите НАЧАЛО задания"
+                getString(R.string.choose_begin_task_date)
             } else {
                 dateAndTime = dateEnd
-                "Укажите ОКОНЧАНИЕ задания"
+                getString(R.string.choose_end_task_date)
             }
             DateTimeDialog.getInstance(title, true, isStartDialog, dateAndTime.timeInMillis)
                 .show(this)

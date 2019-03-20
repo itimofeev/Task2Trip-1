@@ -72,7 +72,7 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
         adapter.setClickListener(this)
         rvTaskList?.adapter = adapter
         if (taskResult.total < 1) {
-            viewLoadAndMessage.setMessage("У вас еще не было задач!")
+            viewLoadAndMessage.setMessage(getString(R.string.empty_task_list))
         } else {
             viewLoadAndMessage.hide()
         }

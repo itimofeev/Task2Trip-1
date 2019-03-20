@@ -7,20 +7,23 @@ import com.squareup.picasso.RequestCreator
 import com.task2trip.android.R
 import java.io.File
 
+val DefaultCropType = ImageCropType.CROP_ROUNDED
+
 class ImageLoader() {
-    constructor(url: String, imageView: ImageView, cropType: ImageCropType = ImageCropType.CROP_CIRCLE) : this() {
+
+    constructor(url: String, imageView: ImageView, cropType: ImageCropType = DefaultCropType) : this() {
         if (url.isNotEmpty()) {
             loadImage(url, imageView, R.drawable.vector_ic_default_travel, R.drawable.vector_ic_default_travel, cropType)
         }
     }
 
-    constructor(uri: Uri?, imageView: ImageView, cropType: ImageCropType = ImageCropType.CROP_CIRCLE): this() {
+    constructor(uri: Uri?, imageView: ImageView, cropType: ImageCropType = DefaultCropType): this() {
         uri?.let {
             loadImage(it, imageView, R.drawable.vector_ic_default_travel, R.drawable.vector_ic_default_travel, cropType)
         }
     }
 
-    constructor(file: File?, imageView: ImageView, cropType: ImageCropType = ImageCropType.CROP_CIRCLE): this() {
+    constructor(file: File?, imageView: ImageView, cropType: ImageCropType = DefaultCropType): this() {
         file?.let {
             loadImage(it, imageView, R.drawable.vector_ic_default_travel, R.drawable.vector_ic_default_travel, cropType)
         }
@@ -30,7 +33,7 @@ class ImageLoader() {
                           imageView: ImageView,
                           placeHolderRes: Int,
                           errorRes: Int,
-                          cropType: ImageCropType = ImageCropType.CROP_CIRCLE) {
+                          cropType: ImageCropType = DefaultCropType) {
         loadImageCreator(Picasso.get().load(file), imageView, placeHolderRes, errorRes, cropType)
     }
 
@@ -38,7 +41,7 @@ class ImageLoader() {
                           imageView: ImageView,
                           placeHolderRes: Int,
                           errorRes: Int,
-                          cropType: ImageCropType = ImageCropType.CROP_CIRCLE) {
+                          cropType: ImageCropType = DefaultCropType) {
         loadImageCreator(Picasso.get().load(uri), imageView, placeHolderRes, errorRes, cropType)
     }
 
@@ -46,7 +49,7 @@ class ImageLoader() {
                           imageView: ImageView,
                           placeHolderRes: Int,
                           errorRes: Int,
-                          cropType: ImageCropType = ImageCropType.CROP_CIRCLE) {
+                          cropType: ImageCropType = DefaultCropType) {
         if (url.isNotEmpty()) {
             loadImageCreator(Picasso.get().load(url), imageView, placeHolderRes, errorRes, cropType)
         }
@@ -56,7 +59,7 @@ class ImageLoader() {
                                  imageView: ImageView,
                                  placeHolderRes: Int,
                                  errorRes: Int,
-                                 cropType: ImageCropType = ImageCropType.CROP_CIRCLE) {
+                                 cropType: ImageCropType = DefaultCropType) {
         with(creator) {
             placeholder(placeHolderRes)
             error(errorRes)

@@ -13,13 +13,15 @@
     <string name="reg_name">Name</string>
     <string name="reg_forgot">Forgot password</string>
     <string name="reg_login_social">Log in with social</string>
-    <string name="board_title_01">Locals all over the world will be happy to help you with issues while travelling</string>
+    <string name="board_title_01">Locals all over the world will be happy to help you with issues while travelling
+    </string>
     <string name="board_title_02">Create your task and locals will help!</string>
     <string name="board_msg_01">Create travel route, find guide or transfer</string>
     <string name="board_msg_02">
         1. Describe task to help with.\n
         2. Locals will propose their offers and prices\n
-        3. Choose best offer and make a deal</string>
+        3. Choose best offer and make a deal
+    </string>
     <string name="profile_name_title">Name</string>
     <string name="profile_birthday_title">Birthday</string>
     <string name="profile_gender_title">Gender</string>
@@ -27,10 +29,11 @@
     <string name="profile_city_title">City</string>
     <string name="profile_photo">My photo</string>
     <string name="profile_task_execute">Execute tasks</string>
-    <string name="profile_task_execute_description">Make offers for travelers tasks and get a reward for your job!</string>
+    <string name="profile_task_execute_description">Make offers for travelers tasks and get a reward for your job!
+    </string>
     <string name="profile_task_created">Task\ncreated</string>
     <string name="profile_task_executed">Task\nexecuted</string>
-  
+
     <string name="search_filter_category_title">Category</string>
     <string name="search_filter_region_title">Region for search</string>
     <string name="search_filter_status_title">Status of tasks</string>
@@ -38,10 +41,12 @@
     <string name="task_show">Show tasks</string>
     <string name="task_create">Create task</string>
     <string name="task_get_my">My tasks</string>
-    <string name="task_add_my">Add offer</string>
+    <string name="task_add_my">Publish</string>
     <string name="task_add_offer">offer me</string>
     <string name="task_edit">Edit</string>
-    <string name="board_skip_text"><u>Skip</u></string>
+    <string name="board_skip_text">
+        <u>Skip</u>
+    </string>
     <string name="logo1">Create any task</string>
     <string name="logo2">and find locals\nto help with</string>
     <string name="board_no_task">Create\nany task</string>
@@ -107,4 +112,27 @@
     <string name="save">Save</string>
     <string name="profile_category">Categories</string>
     <string name="task_get_my_offers">My offers</string>
+    <string name="choose_begin_task_date">Choose begin date</string>
+    <string name="choose_end_task_date">Choose end date</string>
+    <string name="empty_task_list">You have no tasks yet</string>
+    <string name="board_category_routes">Travel routes</string>
+    <string name="board_category_guides">Guides</string>
+    <string name="board_category_travel_mates">Travel mates</string>
+    <string name="board_category_travel_transfer">Transfer</string>
+    <string name="board_category_routes_details">Book your travel plan from locals:\n
+        - route to non-tourist places\n
+        - quest-route\n
+        - route for traveling with children\n
+        - and much more
+    </string>
+    <string name="board_category_guides_details">Find a guide or a handler for\n
+        - visiting non-tourist places\n
+        - getting to know local traditions and ways of life\n
+        - visiting local people
+    </string>
+    <string name="board_category_travel_mates_details">Find a utility man, photographer, translator or interpreter,
+        doctor and many others
+    </string>
+    <string name="board_category_travel_transfer_details">Book a transfer to the airport, driver around the city or country of your travel
+    </string>
 </resources>

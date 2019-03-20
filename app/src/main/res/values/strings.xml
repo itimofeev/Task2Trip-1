@@ -12,14 +12,17 @@
     <string name="reg_name">Ваше имя</string>
     <string name="reg_forgot">Забыли пароль</string>
     <string name="reg_login_social">Войти через социальные сети</string>
-    <string name="board_skip_text"><u>Пропустить</u></string>
+    <string name="board_skip_text">
+        <u>Пропустить</u>
+    </string>
     <string name="board_title_01">Местные жители выполняют ваши задачи в путешествиях по всему миру!</string>
     <string name="board_title_02">Создайте любое задание!</string>
     <string name="board_msg_01">Создать маршрут путешествия,\nнайти гида или трансфер</string>
     <string name="board_msg_02">
-        1. Опишите задачу, которую нужно выполнить.\n
+        1. Опишите задачу, которую нужно выполнить\n
         2. Местные жители предложат вам свои услуги и цены\n
-        3. Выберите лучшее предложение и заключите сделку</string>
+        3. Выберите лучшее предложение и заключите сделку
+    </string>
     <string name="profile_name_title">Имя</string>
     <string name="profile_birthday_title">Дата рождения</string>
     <string name="profile_gender_title">Пол</string>
@@ -60,6 +63,26 @@
     <string name="logo2">и находите местных жителей\nдля их выполнения</string>
     <string name="board_no_task">Создавайте\nлюбые задания</string>
     <string name="board_no_task_subtitle">и находите местных жителей\nдля его выполнения!</string>
+    <string name="board_category_routes">Маршруты путешествий</string>
+    <string name="board_category_routes_details">Заказать составление маршрута путешествия у местных жителей:\n
+        – маршрут по не туристическим местам\n
+        – маршрут-квест\n
+        – маршрут для путешествий с детьми
+    </string>
+    <string name="board_category_guides">Гиды и проводники</string>
+    <string name="board_category_guides_details">Найти гида или проводника\n
+        – посещение не туристических мест\n
+        – знакомство с местными традициями и бытом\n
+        – в гости к местным жителям
+    </string>
+    <string name="board_category_travel_mates">Помощники в путешествиях</string>
+    <string name="board_category_travel_mates_details">Найти мастера по ремонту, фотографа, переводчика, врача и многих
+        других
+    </string>
+    <string name="board_category_travel_transfer">Трансфер</string>
+    <string name="board_category_travel_transfer_details">Заказать трансфер в аэропорт, по городу или стране вашего
+        путешествия
+    </string>
 
     <string name="next_step">Далее</string>
     <string name="next_finish">Готово</string>
@@ -108,4 +131,7 @@
     <string name="error_no_location">Местоположение не определено</string>
 
     <string name="payment_type_cash">Оплата наличными</string>
+    <string name="choose_begin_task_date">Укажите НАЧАЛО задания</string>
+    <string name="choose_end_task_date">Укажите ОКОНЧАНИЕ задания</string>
+    <string name="empty_task_list">У вас еще не было задач!</string>
 </resources>
