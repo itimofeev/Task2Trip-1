@@ -9,8 +9,8 @@ android {
         applicationId "com.task2trip.android"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 107
-        versionName "1.0.7"
+        versionCode 108
+        versionName "1.0.8"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -22,9 +22,9 @@ android {
 }
 
 ext {
-    supLib = '1.1.0-alpha01'
+    supLib = '1.1.0-alpha03'
     retrofitLib = '2.4.0'
-    navLib = '1.0.0-rc02'
+    navLib = '1.0.0'
     coroutinLib = '1.0.0'
     moxyLib = '1.5.0'
     okhttpLib = '3.10.0'
@@ -36,7 +36,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$supLib"
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
-    implementation "androidx.viewpager2:viewpager2:1.0.0-alpha01"
+    implementation "androidx.viewpager2:viewpager2:1.0.0-alpha02"
 
     implementation "com.google.android.material:material:1.0.0"
 
