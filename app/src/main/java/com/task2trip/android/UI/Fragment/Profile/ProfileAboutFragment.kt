@@ -10,8 +10,8 @@ import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.View.UserProfileView
 import com.task2trip.widgetlibrary.LoadingAndMessage
-import com.task2trip.widgetlibrary.MessageFinishShowCallback
 import kotlinx.android.synthetic.main.fragment_profile_about.*
+import com.task2trip.widgetlibrary.MessageFinishShowCallback
 
 class ProfileAboutFragment : BaseFragment(), UserProfileView {
     private var profile: ProfileImpl = MockData.getEmptyProfile()

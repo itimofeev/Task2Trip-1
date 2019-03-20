@@ -2,9 +2,7 @@ package com.task2trip.android.Presenter
 
 import android.content.Context
 import com.task2trip.android.Model.MockData
-import com.task2trip.android.Model.User.UserLoginReq
-import com.task2trip.android.Model.User.UserLoginResp
-import com.task2trip.android.Model.User.UserSignUpReq
+import com.task2trip.android.Model.User.*
 import com.task2trip.android.View.UserAuthView
 import retrofit2.Call
 

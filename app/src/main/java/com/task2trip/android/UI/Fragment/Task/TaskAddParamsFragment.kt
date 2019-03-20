@@ -20,8 +20,6 @@ import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.View.TaskParamsView
 import kotlinx.android.synthetic.main.fragment_task_add_params.*
 import java.util.Calendar
-import kotlin.collections.ArrayList
-import kotlin.collections.isNullOrEmpty
 
 class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
     private lateinit var presenter: TaskAddParamsPresenter

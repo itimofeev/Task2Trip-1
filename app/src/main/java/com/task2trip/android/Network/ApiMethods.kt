@@ -5,11 +5,9 @@ import com.google.gson.GsonBuilder
 import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Common.ServerConstants
+import com.task2trip.android.Model.*
 import com.task2trip.android.Model.Chat.*
-import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.Location.GeoCountryCity
-import com.task2trip.android.Model.Offer
-import com.task2trip.android.Model.OfferForSave
 import com.task2trip.android.Model.Task.*
 import com.task2trip.android.Model.User.*
 import okhttp3.Interceptor
