@@ -3,12 +3,16 @@ package com.task2trip.android.UI.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.task2trip.android.UI.Holder.BaseHolder
 import com.task2trip.android.UI.Listener.ItemClickListener
 
-abstract class BaseListAdapter<VH: BaseHolder<IL>, IL: Any>(@NonNull private val items: List<IL>): RecyclerView.Adapter<VH>() {
+abstract class BaseListAdapter<VH: BaseHolder<IL>, IL: Any>(items: List<IL>): RecyclerView.Adapter<VH>() {
+    private val items: ArrayList<IL> = ArrayList()
+
+    init {
+        this.items.addAll(items)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val view = LayoutInflater.from(parent.context).inflate(setLayoutRes(), parent, false)
@@ -30,6 +34,16 @@ abstract class BaseListAdapter<VH: BaseHolder<IL>, IL: Any>(@NonNull private val
 
     fun getItems(): List<IL> {
         return items
+    }
+
+    open fun addItems(items: List<IL>) {
+        this.items.addAll(items)
+        notifyItemRangeInserted(this.items.size, items.size)
+    }
+
+    fun addItem(item: IL) {
+        this.items.add(item)
+        notifyItemInserted(this.items.size)
     }
 
     abstract fun setLayoutRes(): Int

@@ -6,8 +6,7 @@ import com.task2trip.android.R
 import com.task2trip.android.UI.Holder.TaskCategorySearchHolder
 import com.task2trip.android.UI.Listener.ItemClickListener
 
-class TaskCategorySearchAdapter(items: List<TaskCategory>):
-    BaseListAdapter<TaskCategorySearchHolder, TaskCategory>(items) {
+class TaskCategorySearchAdapter(items: List<TaskCategory>): BaseListAdapter<TaskCategorySearchHolder, TaskCategory>(items) {
     private var listener: ItemClickListener<TaskCategory>? = null
 
     override fun setLayoutRes(): Int {

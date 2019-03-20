@@ -4,6 +4,7 @@ import android.content.Context
 import com.task2trip.android.Model.Chat.Chat
 import com.task2trip.android.Model.Chat.ChatCreateForUser
 import com.task2trip.android.Model.Chat.ChatList
+import com.task2trip.android.Model.Chat.ChatMessage
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.View.ChatView
 import retrofit2.Call
@@ -24,6 +25,10 @@ class ChatPresenter(val view: ChatView, context: Context) : BasePresenter(view, 
     }
 
     fun createChat(userId: ChatCreateForUser) {
+        if (userId.userId.isEmpty()) {
+            view.onMessage("Невозможно создать чат без пользователя!")
+            return
+        }
         view.onProgress(true)
         val req: Call<Chat> = getApi().createChat(userId)
         req.enqueue {
@@ -31,6 +36,19 @@ class ChatPresenter(val view: ChatView, context: Context) : BasePresenter(view, 
                 view.onProgress(false)
                 if (response.code() in 200..299) {
                     view.onChatCreateResult(response.body() ?: MockData.getEmptyChat())
+                }
+            }
+        }
+    }
+
+    fun markChatAsRead(chatId: String) {
+        view.onProgress(true)
+        val req: Call<ChatMessage> = getApi().markChatAsRead(chatId)
+        req.enqueue {
+            onResponse = { response ->
+                view.onProgress(false)
+                if (response.code() in 200..299) {
+                    view.onChatMarkAsReadResult(response.body() ?: MockData.getEmptyChatMessage())
                 }
             }
         }

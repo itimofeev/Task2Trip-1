@@ -6,8 +6,7 @@ import com.task2trip.android.R
 import com.task2trip.android.UI.Holder.ProfileSettingHolder
 import com.task2trip.android.UI.Listener.ItemClickListener
 
-class ProfileSettingAdapter(items: List<UserSettingItem>) :
-    BaseListAdapter<ProfileSettingHolder, UserSettingItem>(items) {
+class ProfileSettingAdapter(items: ArrayList<UserSettingItem>): BaseListAdapter<ProfileSettingHolder, UserSettingItem>(items) {
     private var listener: ItemClickListener<UserSettingItem>? = null
 
     override fun setLayoutRes(): Int {

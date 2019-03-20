@@ -171,4 +171,10 @@ interface ApiMethods {
     fun getMessagesFromChat(@Path("chatId") chatId: String,
                             @Query("beforeTime") beforeTime: String?,
                             @Query("limit") limit: Int?): Call<List<ChatMessage>>
+
+    /**
+     * Помечает чат, как прочитанный
+     */
+    @POST("chat/{chatId}/read")
+    fun markChatAsRead(@Path("chatId") chatId: String): Call<ChatMessage>
 }

@@ -117,6 +117,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_inbox), false)
             }
+            R.id.messageChatDialogFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, "Диалог с пользователем", true)
+            }
             R.id.searchFragment -> {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_result_task_list), true)
@@ -173,7 +177,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 params.putString(Constants.EXTRA_USER_ID, this.user.getId())
                 params.putString(Constants.EXTRA_USER_ROLE, this.user.getRole().name)
                 navController.clearBackStack(resourceId, params)
-                setToolBarParams(false, getString(R.string.title_my_tasks), false)
+                setToolBarParams(true, getString(R.string.title_my_tasks), false)
             }
             R.id.taskAddOfferFragment -> {
                 navController.navigate(resourceId, args)

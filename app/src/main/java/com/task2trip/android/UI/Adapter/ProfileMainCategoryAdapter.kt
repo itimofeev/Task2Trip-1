@@ -6,8 +6,7 @@ import com.task2trip.android.R
 import com.task2trip.android.UI.Holder.ProfileMainCategoryHolder
 import com.task2trip.android.UI.Listener.ItemClickListener
 
-class ProfileMainCategoryAdapter(items: List<UserCategoryForUsed>) :
-    BaseListAdapter<ProfileMainCategoryHolder, UserCategoryForUsed>(items) {
+class ProfileMainCategoryAdapter(items: List<UserCategoryForUsed>): BaseListAdapter<ProfileMainCategoryHolder, UserCategoryForUsed>(items) {
 
     private var listener: ItemClickListener<UserCategoryForUsed>? = null
 

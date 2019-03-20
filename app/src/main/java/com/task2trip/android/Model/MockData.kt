@@ -93,11 +93,11 @@ class MockData {
         }
 
         fun getEmptyChat(): Chat {
-            return Chat("", getEmptyUser())
+            return Chat("", getEmptyChatMessage(), 0, getEmptyUser())
         }
 
         fun getEmptyChatMessage(): ChatMessage {
-            return ChatMessage("", getEmptyUser(), "", "")
+            return ChatMessage("", getEmptyUser(), "", "", "")
         }
 
         fun getEmptyChatMessageList(): List<ChatMessage> {

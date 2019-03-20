@@ -3,6 +3,7 @@ package com.task2trip.android.Model.User
 import android.os.Parcel
 import android.os.Parcelable
 import com.task2trip.android.Model.Location.GeoCountryCity
+import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Task.TaskCategory
 
 data class ProfileImpl(private var firstName: String,
@@ -82,7 +83,7 @@ data class ProfileImpl(private var firstName: String,
     }
 
     override fun getLocation(): GeoCountryCity {
-        return place
+        return place ?: MockData.getEmptyGeoLocations()
     }
 
     override fun setFirstName(firstName: String) {

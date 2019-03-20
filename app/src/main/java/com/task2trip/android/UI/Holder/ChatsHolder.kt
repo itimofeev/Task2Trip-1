@@ -27,9 +27,9 @@ class ChatsHolder(itemView: View) : BaseHolder<Chat>(itemView) {
             ImageLoader(item.user.getProfile().getImageAvatarUrl(), it)
         }
         tvUserName?.text = item.user.getName()
-        tvMessageDateTime?.text = "tvMessageDateTime"
-        tvMessageLast?.text = "tvMessageLast"
-        tvMessageCount?.text = "tvMessageCount"
+        tvMessageDateTime?.text = item.lastMessage.time
+        tvMessageLast?.text = item.lastMessage.value
+        tvMessageCount?.text = item.unreadCount.toString()
     }
 
     override fun setItemClickListener(listener: View.OnClickListener?) {

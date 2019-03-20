@@ -6,8 +6,7 @@ import com.task2trip.android.R
 import com.task2trip.android.UI.Holder.ChatMessageDialogHolder
 import com.task2trip.android.UI.Listener.ItemClickListener
 
-class ChatMessageDialogAdapter(items: List<ChatMessage>):
-    BaseListAdapter<ChatMessageDialogHolder, ChatMessage>(items) {
+class ChatMessageDialogAdapter(items: List<ChatMessage>): BaseListAdapter<ChatMessageDialogHolder, ChatMessage>(items) {
     private var listener: ItemClickListener<ChatMessage>? = null
 
     override fun setLayoutRes(): Int {

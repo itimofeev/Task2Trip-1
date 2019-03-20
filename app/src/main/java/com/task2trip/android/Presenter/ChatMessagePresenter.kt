@@ -10,6 +10,10 @@ import retrofit2.Call
 class ChatMessagePresenter(val view: ChatMessageView, context: Context) : BasePresenter(view, context) {
 
     fun sendMessageToChat(chatId: String, message: ChatMessageForSend) {
+        if (chatId.isEmpty()) {
+            view.onMessage("Невозможно отправить сообщение!")
+            return
+        }
         view.onProgress(true)
         val req: Call<ChatMessage> = getApi().sendMessageToChat(chatId, message)
         req.enqueue {
@@ -22,7 +26,7 @@ class ChatMessagePresenter(val view: ChatMessageView, context: Context) : BasePr
         }
     }
 
-    fun getMessagesFromChat(chatId: String, beforeTime: String, limit: Int) {
+    fun getMessagesFromChat(chatId: String, beforeTime: String? = null, limit: Int? = null) {
         view.onProgress(true)
         val req: Call<List<ChatMessage>> = getApi().getMessagesFromChat(chatId, beforeTime, limit)
         req.enqueue {

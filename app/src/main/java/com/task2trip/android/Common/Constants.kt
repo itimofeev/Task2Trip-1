@@ -57,6 +57,9 @@ class Constants {
         const val EXTRA_PHOTO_SOURCE_CAMERA = "Фотокамера"
         const val EXTRA_PHOTO_SOURCE_STORAGE = "На диске"
 
+        const val EXTRA_CHAT_ID = "EXTRA_CHAT_ID"
+        const val EXTRA_CHAT_CLIENT_TAG = "EXTRA_CHAT_CLIENT_TAG"
+
         const val REQUEST_PERMISSION_STORAGE = 248
         const val REQUEST_PERMISSION_PHOTO = 249
         const val REQUEST_STORAGE_BROWSER = 250

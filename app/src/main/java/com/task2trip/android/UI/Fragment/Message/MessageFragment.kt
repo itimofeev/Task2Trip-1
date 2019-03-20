@@ -3,6 +3,7 @@ package com.task2trip.android.UI.Fragment.Message
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager.widget.ViewPager
+import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.TabFragmentTitle
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.TabAdapter
@@ -10,8 +11,12 @@ import com.task2trip.android.UI.Fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_message.*
 
 class MessageFragment : BaseFragment() {
+    private var userId: String = ""
+
     override fun getArgs(args: Bundle?) {
-        //
+        args?.let {
+            userId = it.getString(Constants.EXTRA_USER_ID, "")
+        }
     }
 
     override fun setResourceLayout(): Int {
@@ -25,7 +30,7 @@ class MessageFragment : BaseFragment() {
     private fun initViewPager() {
         fragmentManager?.let {
             val adapter = TabAdapter(it)
-            adapter.addItem(TabFragmentTitle(MessageChatListFragment(), getString(R.string.title_messages)))
+            adapter.addItem(TabFragmentTitle(MessageChatListFragment.getInstance(userId), getString(R.string.title_messages)))
             adapter.addItem(TabFragmentTitle(MessageNotificationFragment(), getString(R.string.title_notifications)))
             vpMessage.adapter = adapter
             vpMessage.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
