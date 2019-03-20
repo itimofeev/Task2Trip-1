@@ -3,31 +3,41 @@ package com.task2trip.android.UI.Holder
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.task2trip.android.Model.Chat.Chat
 import com.task2trip.android.Model.ImageLoader.ImageLoader
 import com.task2trip.android.R
 
 class ChatsHolder(itemView: View) : BaseHolder<Chat>(itemView) {
-    private var ivCategoryImage: ImageView? = null
-    private var tvCategoryName: TextView? = null
-    private var tvLasMessage: TextView? = null
+    private var ivAvatar: ImageView? = null
+    private var tvUserName: TextView? = null
+    private var tvMessageDateTime: TextView? = null
+    private var tvMessageLast: TextView? = null
+    private var tvMessageCount: TextView? = null
 
     init {
-        ivCategoryImage = itemView.findViewById(R.id.ivCategoryImage)
-        tvCategoryName = itemView.findViewById(R.id.tvCategoryName)
-        tvLasMessage = itemView.findViewById(R.id.tvLasMessage)
+        ivAvatar = itemView.findViewById(R.id.ivAvatar)
+        tvUserName = itemView.findViewById(R.id.tvUserName)
+        tvMessageDateTime = itemView.findViewById(R.id.tvMessageDateTime)
+        tvMessageLast = itemView.findViewById(R.id.tvMessageLast)
+        tvMessageCount = itemView.findViewById(R.id.tvMessageCount)
     }
 
     override fun setData(item: Chat) {
-        ivCategoryImage?.let {
-            ImageLoader(item.imageUrl, it)
+        ivAvatar?.let {
+            ImageLoader(item.user.getProfile().getImageAvatarUrl(), it)
         }
-        tvCategoryName?.text = item.defaultValue
-        tvLasMessage?.text = item.defaultValue
+        tvUserName?.text = item.user.getName()
+        tvMessageDateTime?.text = "tvMessageDateTime"
+        tvMessageLast?.text = "tvMessageLast"
+        tvMessageCount?.text = "tvMessageCount"
     }
 
     override fun setItemClickListener(listener: View.OnClickListener?) {
         itemView.setOnClickListener(listener)
-        tvCategoryName?.setOnClickListener(listener)
-        tvLasMessage?.setOnClickListener(listener)
+        ivAvatar?.setOnClickListener(listener)
+        tvUserName?.setOnClickListener(listener)
+        tvMessageDateTime?.setOnClickListener(listener)
+        tvMessageLast?.setOnClickListener(listener)
+        tvMessageCount?.setOnClickListener(listener)
     }
 }

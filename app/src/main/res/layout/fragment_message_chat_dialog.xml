@@ -51,7 +51,7 @@
             android:layout_marginRight="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivSendMessage"
-            app:srcCompat="@drawable/ic_attach_file" />
+            android:src="@drawable/vector_ic_attach_file" />
 
         <ImageView
             android:id="@+id/ivSendMessage"
@@ -59,6 +59,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_send_message" />
+            android:src="@drawable/vector_ic_send_message" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,9 @@
 package com.task2trip.android.Model.Chat
 
-data class ChatList(val payload: List<Chat>,
-                    val total: Int)
+class ChatList(payload: List<Chat>, total: Int) {
+    val payload: List<Chat> = payload
+    get() = field ?: ArrayList<Chat>()
+
+    val total: Int = total
+    get() = field ?: 0
+}

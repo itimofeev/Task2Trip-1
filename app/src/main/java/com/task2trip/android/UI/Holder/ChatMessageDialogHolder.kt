@@ -1,29 +1,27 @@
 package com.task2trip.android.UI.Holder
 
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
-import com.task2trip.android.Model.ImageLoader.ImageLoader
+import com.task2trip.android.Model.Chat.ChatMessage
 import com.task2trip.android.R
 
 class ChatMessageDialogHolder(itemView: View) : BaseHolder<ChatMessage>(itemView) {
-    private var tvCategoryName: TextView? = null
-    private var ivCategoryImage: ImageView? = null
+    private var tvMessage: TextView? = null
+    private var tvMessageDate: TextView? = null
 
     init {
-        tvCategoryName = itemView.findViewById(R.id.tvCategoryName)
-        ivCategoryImage = itemView.findViewById(R.id.ivCategoryImage)
+        tvMessage = itemView.findViewById(R.id.tvMessageDate)
+        tvMessageDate = itemView.findViewById(R.id.tvMessageDate)
     }
 
     override fun setData(item: ChatMessage) {
-        tvCategoryName?.text = item.defaultValue
-        ivCategoryImage?.let {
-            ImageLoader(item.imageUrl, it)
-        }
+        tvMessage?.text = item.value
+        tvMessageDate?.text = item.time
     }
 
     override fun setItemClickListener(listener: View.OnClickListener?) {
         itemView.setOnClickListener(listener)
-        tvCategoryName?.setOnClickListener(listener)
+        tvMessage?.setOnClickListener(listener)
+        tvMessageDate?.setOnClickListener(listener)
     }
 }

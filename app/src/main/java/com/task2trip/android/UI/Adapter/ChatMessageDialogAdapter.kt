@@ -1,14 +1,17 @@
 package com.task2trip.android.UI.Adapter
 
 import android.view.View
+import com.task2trip.android.Model.Chat.ChatMessage
 import com.task2trip.android.R
+import com.task2trip.android.UI.Holder.ChatMessageDialogHolder
+import com.task2trip.android.UI.Listener.ItemClickListener
 
 class ChatMessageDialogAdapter(items: List<ChatMessage>):
     BaseListAdapter<ChatMessageDialogHolder, ChatMessage>(items) {
     private var listener: ItemClickListener<ChatMessage>? = null
 
     override fun setLayoutRes(): Int {
-        return R.layout.item_task_add_category
+        return R.layout.item_chat_message
     }
 
     override fun returnViewHolder(view: View): ChatMessageDialogHolder {

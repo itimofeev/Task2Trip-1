@@ -1,5 +1,7 @@
 package com.task2trip.android.Common
 
+import com.task2trip.android.Model.ImageLoader.ImageCropType
+
 class Constants {
     companion object {
         const val EXTRA_BOARD_TITLE = "EXTRA_BOARD_TITLE"
@@ -70,5 +72,7 @@ class Constants {
 
         const val FILE_NAME_AVATAR = "user_avatar.jpg"
         const val TIME_PATTERN_DDMMYYYY = "dd.MM.yyyy"
+
+        val DEFAULT_CROP_TYPE = ImageCropType.CROP_ROUNDED
     }
 }
