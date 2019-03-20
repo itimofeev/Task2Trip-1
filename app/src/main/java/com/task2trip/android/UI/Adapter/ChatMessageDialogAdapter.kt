@@ -1,4 +1,4 @@
-ackage com.task2trip.android.UI.Adapter
+package com.task2trip.android.UI.Adapter
 
 import android.view.View
 import com.task2trip.android.R
