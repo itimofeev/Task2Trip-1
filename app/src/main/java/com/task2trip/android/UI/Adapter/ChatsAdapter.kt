@@ -8,7 +8,7 @@ class ChatsAdapter(items: List<Chat>):
     private var listener: ItemClickListener<Chat>? = null
 
     override fun setLayoutRes(): Int {
-        return R.layout.item_task_add_category
+        return R.layout.item_chat
     }
 
     override fun returnViewHolder(view: View): ChatsHolder {
