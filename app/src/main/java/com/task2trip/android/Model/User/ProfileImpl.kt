@@ -46,7 +46,7 @@ data class ProfileImpl(private var firstName: String,
     }
 
     override fun getImageAvatarUrl(): String {
-        return imageUrl
+        return imageUrl ?: ""
     }
 
     override fun getSex(): String {

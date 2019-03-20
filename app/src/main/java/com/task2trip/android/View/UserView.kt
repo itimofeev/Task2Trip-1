@@ -5,5 +5,5 @@ import com.task2trip.android.Model.User.UserImpl
 interface UserView: BaseView {
     fun onMySelfInfoResult(user: UserImpl)
     fun onUserResult(user: UserImpl)
-    fun onUploadImageAvatarResult()
+    fun onUploadImageAvatarResult(isSuccess: Boolean)
 }

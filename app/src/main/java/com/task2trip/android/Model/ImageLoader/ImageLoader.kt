@@ -1,31 +1,82 @@
 package com.task2trip.android.Model.ImageLoader
 
+import android.net.Uri
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.RequestCreator
 import com.task2trip.android.R
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
+import java.io.File
 
 class ImageLoader() {
-    constructor(url: String, imageView: ImageView) : this() {
-        loadImageCircle(url, imageView)
-    }
-
-    fun loadImage(url: String, imageView: ImageView) {
-        loadImage(url, imageView, R.drawable.vector_ic_default_travel, R.drawable.vector_ic_default_travel, false)
-    }
-
-    private fun loadImage(url: String, imageView: ImageView, placeHolderRes: Int, errorRes: Int, isCircle: Boolean) {
-        with (Picasso.get().load(url)) {
-            placeholder(placeHolderRes)
-            error(errorRes)
-            if (isCircle) {
-                transform(RoundedCornersTransformation(110, 0))
-            }
-            into(imageView)
+    constructor(url: String, imageView: ImageView, cropType: ImageCropType = ImageCropType.CROP_CIRCLE) : this() {
+        if (url.isNotEmpty()) {
+            loadImage(url, imageView, R.drawable.vector_ic_default_travel, R.drawable.vector_ic_default_travel, cropType)
         }
     }
 
-    fun loadImageCircle(url: String, imageView: ImageView) {
-        loadImage(url, imageView, R.drawable.vector_ic_default_travel, R.drawable.vector_ic_default_travel, true)
+    constructor(uri: Uri?, imageView: ImageView, cropType: ImageCropType = ImageCropType.CROP_CIRCLE): this() {
+        uri?.let {
+            loadImage(it, imageView, R.drawable.vector_ic_default_travel, R.drawable.vector_ic_default_travel, cropType)
+        }
+    }
+
+    constructor(file: File?, imageView: ImageView, cropType: ImageCropType = ImageCropType.CROP_CIRCLE): this() {
+        file?.let {
+            loadImage(it, imageView, R.drawable.vector_ic_default_travel, R.drawable.vector_ic_default_travel, cropType)
+        }
+    }
+
+    private fun loadImage(file: File,
+                          imageView: ImageView,
+                          placeHolderRes: Int,
+                          errorRes: Int,
+                          cropType: ImageCropType = ImageCropType.CROP_CIRCLE) {
+        loadImageCreator(Picasso.get().load(file), imageView, placeHolderRes, errorRes, cropType)
+    }
+
+    private fun loadImage(uri: Uri,
+                          imageView: ImageView,
+                          placeHolderRes: Int,
+                          errorRes: Int,
+                          cropType: ImageCropType = ImageCropType.CROP_CIRCLE) {
+        loadImageCreator(Picasso.get().load(uri), imageView, placeHolderRes, errorRes, cropType)
+    }
+
+    private fun loadImage(url: String,
+                          imageView: ImageView,
+                          placeHolderRes: Int,
+                          errorRes: Int,
+                          cropType: ImageCropType = ImageCropType.CROP_CIRCLE) {
+        if (url.isNotEmpty()) {
+            loadImageCreator(Picasso.get().load(url), imageView, placeHolderRes, errorRes, cropType)
+        }
+    }
+
+    private fun loadImageCreator(creator: RequestCreator,
+                                 imageView: ImageView,
+                                 placeHolderRes: Int,
+                                 errorRes: Int,
+                                 cropType: ImageCropType = ImageCropType.CROP_CIRCLE) {
+        with(creator) {
+            placeholder(placeHolderRes)
+            error(errorRes)
+            //networkPolicy(NetworkPolicy.OFFLINE)
+            //memoryPolicy(MemoryPolicy.NO_STORE)
+            when(cropType) {
+                ImageCropType.CROP_CIRCLE -> {
+                    transform(com.task2trip.android.Model.ImageLoader.ImageTransform.CIRCLE)
+                }
+                ImageCropType.CROP_ROUNDED -> {
+                    transform(com.task2trip.android.Model.ImageLoader.ImageTransform.ROUNDED)
+                }
+                ImageCropType.CROP_SQUARE -> {
+                    //TODO
+                }
+                ImageCropType.CROP_NO -> {
+                    //no transformation
+                }
+            }
+            into(imageView)
+        }
     }
 }
