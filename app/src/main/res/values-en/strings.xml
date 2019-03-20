@@ -120,14 +120,14 @@
     <string name="board_category_travel_mates">Travel mates</string>
     <string name="board_category_travel_transfer">Transfer</string>
     <string name="board_category_routes_details">Book your travel plan from locals:\n
-        - route to non-tourist places
-        - quest-route
-        - route for traveling with children
+        - route to non-tourist places\n
+        - quest-route\n
+        - route for traveling with children\n
         - and much more
     </string>
     <string name="board_category_guides_details">Find a guide or a handler for\n
-        - visiting non-tourist places
-        - getting to know local traditions and ways of life
+        - visiting non-tourist places\n
+        - getting to know local traditions and ways of life\n
         - visiting local people
     </string>
     <string name="board_category_travel_mates_details">Find a utility man, photographer, translator or interpreter,
