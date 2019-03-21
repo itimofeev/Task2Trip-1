@@ -43,12 +43,12 @@ class ChatPresenter(val view: ChatView, context: Context) : BasePresenter(view, 
 
     fun markChatAsRead(chatId: String) {
         view.onProgress(true)
-        val req: Call<ChatMessage> = getApi().markChatAsRead(chatId)
+        val req: Call<Void> = getApi().markChatAsRead(chatId)
         req.enqueue {
             onResponse = { response ->
                 view.onProgress(false)
                 if (response.code() in 200..299) {
-                    view.onChatMarkAsReadResult(response.body() ?: MockData.getEmptyChatMessage())
+                    view.onChatMarkAsReadResult()
                 }
             }
         }

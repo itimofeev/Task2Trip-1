@@ -91,7 +91,7 @@ class MessageChatListFragment : BaseFragment(), ChatView, ItemClickListener<Chat
         navigateToChat(chat)
     }
 
-    override fun onChatMarkAsReadResult(message: ChatMessage) {
+    override fun onChatMarkAsReadResult() {
         //
     }
 

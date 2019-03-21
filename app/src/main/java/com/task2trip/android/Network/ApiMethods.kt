@@ -176,5 +176,5 @@ interface ApiMethods {
      * Помечает чат, как прочитанный
      */
     @POST("chat/{chatId}/read")
-    fun markChatAsRead(@Path("chatId") chatId: String): Call<ChatMessage>
+    fun markChatAsRead(@Path("chatId") chatId: String): Call<Void>
 }
