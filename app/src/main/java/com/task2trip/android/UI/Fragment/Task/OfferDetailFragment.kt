@@ -107,7 +107,8 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView, UserView {
 
     private fun onSendMessage() {
         val args = Bundle()
-        args.putString(Constants.EXTRA_USER_ID, offer.user.getId())
+        args.putString(Constants.EXTRA_USER_LOCAL_ID, offer.user.getId())
+        args.putBoolean(Constants.EXTRA_DIALOG_IS_GOTO_MESSAGE, true)
         navigateTo(R.id.messageFragment, args)
     }
 

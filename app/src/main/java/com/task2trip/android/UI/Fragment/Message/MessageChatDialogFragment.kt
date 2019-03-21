@@ -7,7 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.Chat.ChatMessage
-import com.task2trip.android.Model.Chat.ChatMessageForSend
+import com.task2trip.android.Model.Chat.MessageScheduler
 import com.task2trip.android.Presenter.ChatMessagePresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.ChatMessageDialogAdapter
@@ -23,12 +23,15 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
     private lateinit var presenter: ChatMessagePresenter
     private lateinit var adapter: ChatMessageDialogAdapter
     private var chatId: String = ""
-    private var chatClientTag: String = ""
+    private var userOwnerId: String = ""
+    private val tDelay = 8*1000L
+    private val tPeriod = 12*1000L
+    private var timer: Timer? = null
 
     override fun getArgs(args: Bundle?) {
         args?.let {
             chatId = it.getString(Constants.EXTRA_CHAT_ID, "")
-            chatClientTag = it.getString(Constants.EXTRA_CHAT_CLIENT_TAG, "")
+            userOwnerId = it.getString(Constants.EXTRA_USER_ID, "")
         }
     }
 
@@ -61,7 +64,7 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
     }
 
     private fun initAdapter() {
-        adapter = ChatMessageDialogAdapter(ArrayList<ChatMessage>())
+        adapter = ChatMessageDialogAdapter(ArrayList<ChatMessage>(), userOwnerId)
         adapter.setClickListener(this)
     }
     
@@ -70,7 +73,20 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
         dialog.show(this)
     }
 
+    override fun onStart() {
+        super.onStart()
+        timer = Timer()
+        timer?.schedule(MessageScheduler(presenter, chatId), tDelay, tPeriod)//Старт через tDelay сек, повторять каждые tPeriod сек
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timer?.cancel()
+        timer = null
+    }
+
     override fun onMessageList(messages: List<ChatMessage>) {
+        adapter.clear()
         adapter.addItems(messages)
         rvChatDialogList.adapter = adapter
     }
@@ -78,9 +94,6 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
     private fun sendMessage(message: String) {
         if (message.isNotEmpty()) {
             presenter.sendMessageToChat(chatId, message)
-            //onMessageResult(ChatMessage("1", MockData.getEmptyUser(), "test message 1", "t001-a223-g110", ""))
-            //val timer = Timer()
-            //timer.schedule(TimerTask(), 10000L)
         }
     }
 
@@ -90,6 +103,8 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
 
     override fun onMessageResult(message: ChatMessage) {
         adapter.addItem(message)
+        etInputField.setText("")
+        rvChatDialogList.scrollToPosition(adapter.itemCount)
     }
 
     override fun onItemClick(item: ChatMessage, position: Int) {
@@ -119,5 +134,10 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        timer = null
     }
 }

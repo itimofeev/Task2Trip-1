@@ -36,6 +36,14 @@ abstract class BaseListAdapter<VH: BaseHolder<IL>, IL: Any>(items: List<IL>): Re
         return items
     }
 
+    protected fun getItemByPosition(position: Int): IL {
+        return items[position]
+    }
+
+    fun clear() {
+        items.clear()
+    }
+
     open fun addItems(items: List<IL>) {
         this.items.addAll(items)
         notifyItemRangeInserted(this.items.size, items.size)

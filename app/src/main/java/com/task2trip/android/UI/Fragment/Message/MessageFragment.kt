@@ -11,11 +11,15 @@ import com.task2trip.android.UI.Fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_message.*
 
 class MessageFragment : BaseFragment() {
+    private var userLocalId: String = ""
     private var userId: String = ""
+    private var isGotoMessages: Boolean = false
 
     override fun getArgs(args: Bundle?) {
         args?.let {
+            userLocalId = it.getString(Constants.EXTRA_USER_LOCAL_ID, "")
             userId = it.getString(Constants.EXTRA_USER_ID, "")
+            isGotoMessages = it.getBoolean(Constants.EXTRA_DIALOG_IS_GOTO_MESSAGE, false)
         }
     }
 
@@ -30,7 +34,7 @@ class MessageFragment : BaseFragment() {
     private fun initViewPager() {
         fragmentManager?.let {
             val adapter = TabAdapter(it)
-            adapter.addItem(TabFragmentTitle(MessageChatListFragment.getInstance(userId), getString(R.string.title_messages)))
+            adapter.addItem(TabFragmentTitle(MessageChatListFragment.getInstance(userLocalId, userId, isGotoMessages), getString(R.string.title_messages)))
             adapter.addItem(TabFragmentTitle(MessageNotificationFragment(), getString(R.string.title_notifications)))
             vpMessage.adapter = adapter
             vpMessage.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

@@ -12,6 +12,7 @@ class Constants {
         const val EXTRA_USER = "EXTRA_USER"
         const val EXTRA_PROFILE = "EXTRA_PROFILE"
         const val EXTRA_USER_ID = "EXTRA_USER_ID"
+        const val EXTRA_USER_LOCAL_ID = "EXTRA_USER_LOCAL_ID"
         const val EXTRA_USER_ROLE = "EXTRA_USER_ROLE"
         const val EXTRA_USER_TOKEN = "EXTRA_USER_TOKEN"
         const val EXTRA_USER_FIRST_NAME = "EXTRA_USER_FIRST_NAME"
@@ -47,6 +48,7 @@ class Constants {
         const val EXTRA_DIALOG_INIT_DATE_TIME = "EXTRA_DIALOG_INIT_DATE_TIME"
         const val EXTRA_DIALOG_PHOTO_SOURCE = "EXTRA_DIALOG_PHOTO_SOURCE"
         const val EXTRA_DIALOG_IS_START = "EXTRA_DIALOG_IS_START"
+        const val EXTRA_DIALOG_IS_GOTO_MESSAGE = "EXTRA_DIALOG_IS_GOTO_MESSAGE"
 
         const val EXTRA_IS_MESSAGE = "EXTRA_IS_MESSAGE"
         const val EXTRA_MESSAGE_TEXT = "EXTRA_MESSAGE_TEXT"

@@ -3,7 +3,10 @@ package com.task2trip.android.UI.Holder
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.task2trip.android.Common.toCalendar
+import com.task2trip.android.Common.toPattern
 import com.task2trip.android.Model.Chat.Chat
+import com.task2trip.android.Model.ImageLoader.ImageCropType
 import com.task2trip.android.Model.ImageLoader.ImageLoader
 import com.task2trip.android.R
 
@@ -24,12 +27,18 @@ class ChatsHolder(itemView: View) : BaseHolder<Chat>(itemView) {
 
     override fun setData(item: Chat) {
         ivAvatar?.let {
-            ImageLoader(item.user.getProfile().getImageAvatarUrl(), it)
+            ImageLoader(item.user.getProfile().getImageAvatarUrl(), it, ImageCropType.CROP_CIRCLE)
         }
         tvUserName?.text = item.user.getName()
-        tvMessageDateTime?.text = item.lastMessage.time
+        tvMessageDateTime?.text = item.lastMessage.time.toCalendar().toPattern("HH:mm")
         tvMessageLast?.text = item.lastMessage.value
-        tvMessageCount?.text = item.unreadCount.toString()
+        val unreadMsg = item.unreadCount
+        if (unreadMsg > 0) {
+            tvMessageCount?.text = unreadMsg.toString()
+            tvMessageCount?.visibility = View.VISIBLE
+        } else {
+            tvMessageCount?.visibility = View.GONE
+        }
     }
 
     override fun setItemClickListener(listener: View.OnClickListener?) {

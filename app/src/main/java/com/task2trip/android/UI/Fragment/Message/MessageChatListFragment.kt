@@ -7,7 +7,6 @@ import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.Chat.Chat
 import com.task2trip.android.Model.Chat.ChatCreateForUser
 import com.task2trip.android.Model.Chat.ChatList
-import com.task2trip.android.Model.Chat.ChatMessage
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Presenter.ChatPresenter
 import com.task2trip.android.R
@@ -18,14 +17,18 @@ import com.task2trip.android.View.ChatView
 import kotlinx.android.synthetic.main.fragment_message_chat_list.*
 
 class MessageChatListFragment : BaseFragment(), ChatView, ItemClickListener<Chat> {
+    private var userLocalId: String = ""
     private var userId: String = ""
+    private var isGotoMessages: Boolean = false
     private lateinit var presenter: ChatPresenter
 
     companion object {
-        fun getInstance(userId: String): MessageChatListFragment {
+        fun getInstance(userLocalId: String, userId: String, isGotoMessages: Boolean): MessageChatListFragment {
             val fragment = MessageChatListFragment()
             val args = Bundle()
+            args.putString(Constants.EXTRA_USER_LOCAL_ID, userLocalId)
             args.putString(Constants.EXTRA_USER_ID, userId)
+            args.putBoolean(Constants.EXTRA_DIALOG_IS_GOTO_MESSAGE, isGotoMessages)
             fragment.arguments = args
             return fragment
         }
@@ -33,7 +36,9 @@ class MessageChatListFragment : BaseFragment(), ChatView, ItemClickListener<Chat
 
     override fun getArgs(args: Bundle?) {
         args?.let {
+            userLocalId = it.getString(Constants.EXTRA_USER_LOCAL_ID, "")
             userId = it.getString(Constants.EXTRA_USER_ID, "")
+            isGotoMessages = it.getBoolean(Constants.EXTRA_DIALOG_IS_GOTO_MESSAGE, false)
         }
     }
 
@@ -61,8 +66,7 @@ class MessageChatListFragment : BaseFragment(), ChatView, ItemClickListener<Chat
             val adapter = ChatsAdapter(chats.payload)
             adapter.setClickListener(this)
             rvChatList.adapter = adapter
-            // Если указан пользователь, то должны начать чат с ним, если с ним чат есть
-            if (userId.isNotEmpty()) {
+            if (isGotoMessages) {
                 val chat = getChatId(chats.payload)
                 if (chat.id.isEmpty()) {
                     presenter.createChat(ChatCreateForUser(userId))
@@ -80,7 +84,7 @@ class MessageChatListFragment : BaseFragment(), ChatView, ItemClickListener<Chat
      */
     private fun getChatId(items: List<Chat>): Chat {
         for (item in items) {
-            if (item.user.getId() == userId) {
+            if (item.user.getId() == userLocalId) {
                 return item
             }
         }
@@ -99,7 +103,7 @@ class MessageChatListFragment : BaseFragment(), ChatView, ItemClickListener<Chat
         presenter.markChatAsRead(chat.id)
         val args = Bundle()
         args.putString(Constants.EXTRA_CHAT_ID, chat.id)
-        args.putString(Constants.EXTRA_CHAT_CLIENT_TAG, chat.lastMessage.clientTag)
+        args.putString(Constants.EXTRA_USER_ID, userId)
         navigateTo(R.id.messageChatDialogFragment, args)
     }
 

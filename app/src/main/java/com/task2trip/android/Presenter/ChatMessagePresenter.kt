@@ -6,6 +6,7 @@ import com.task2trip.android.Model.Chat.ChatMessageForSend
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.View.ChatMessageView
 import retrofit2.Call
+import java.util.*
 
 class ChatMessagePresenter(val view: ChatMessageView, context: Context) : BasePresenter(view, context) {
 

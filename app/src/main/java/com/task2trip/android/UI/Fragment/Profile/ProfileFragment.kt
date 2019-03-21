@@ -15,6 +15,7 @@ import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.BuildConfig
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.ImageLoader.ImageCropType
 import com.task2trip.android.Model.ImageLoader.ImageLoader
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.User.ProfileImpl
@@ -225,7 +226,7 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
 
     override fun onMySelfInfoResult(user: UserImpl) {
         this.user = user
-        ImageLoader(user.getProfile().getImageAvatarUrl(), ivProfilePhoto)
+        ImageLoader(user.getProfile().getImageAvatarUrl(), ivProfilePhoto, ImageCropType.CROP_CIRCLE)
     }
 
     override fun onProgress(isProgress: Boolean) {

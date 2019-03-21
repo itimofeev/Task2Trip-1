@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
     override fun navigateTo(@IdRes resourceId: Int, args: Bundle?) {
         setToolBarVisibility(true)
         showBottomPanel(resourceId)
-        navigateApp(navController, resourceId, args)
+        navigateApp(navController, resourceId, args ?: Bundle())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         return navigateApp(navController, item.itemId, Bundle()) || super.onOptionsItemSelected(item)
     }
 
-    private fun navigateApp(navController: NavController, @IdRes resourceIdNav: Int, args: Bundle?): Boolean {
+    private fun navigateApp(navController: NavController, @IdRes resourceIdNav: Int, args: Bundle): Boolean {
         setDefaultMenu()
         setToolBarVisibility(true)
         val resourceId = navigationHook(resourceIdNav)
@@ -114,6 +114,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 setToolBarParams(true, getString(R.string.title_task_params), true)
             }
             R.id.messageFragment -> {
+                args.putString(Constants.EXTRA_USER_ID, user.getId())
                 navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_inbox), false)
             }
@@ -127,13 +128,12 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 presenter.setLastMenu(R.menu.menu_serch_filter)
             }
             R.id.searchFilterFragment -> {
-                val params = args ?: Bundle()
-                params.putString(Constants.EXTRA_USER_ROLE, user.getRole().name)
-                navController.clearBackStack(resourceId, params)
+                args.putString(Constants.EXTRA_USER_ROLE, user.getRole().name)
+                navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_search_task), false)
             }
             R.id.profileFragment -> {
-                args?.putParcelable(Constants.EXTRA_USER, user)
+                args.putParcelable(Constants.EXTRA_USER, user)
                 navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_profile), false)
                 presenter.setLastMenu(R.menu.menu_settings)
@@ -173,10 +173,9 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             R.id.taskListPerformerFragment, R.id.taskListPerformerPagerFragment,
             R.id.taskListNotAuthorizedFragment, R.id.taskListTravelerFragment -> {
-                val params = args ?: Bundle()
-                params.putString(Constants.EXTRA_USER_ID, this.user.getId())
-                params.putString(Constants.EXTRA_USER_ROLE, this.user.getRole().name)
-                navController.clearBackStack(resourceId, params)
+                args.putString(Constants.EXTRA_USER_ID, this.user.getId())
+                args.putString(Constants.EXTRA_USER_ROLE, this.user.getRole().name)
+                navController.clearBackStack(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_my_tasks), false)
             }
             R.id.taskAddOfferFragment -> {
