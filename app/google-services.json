@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "162811062547",
+    "firebase_url": "https://task2trip-2a0f2.firebaseio.com",
+    "project_id": "task2trip-2a0f2",
+    "storage_bucket": "task2trip-2a0f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162811062547:android:976b1777528781a5",
+        "android_client_info": {
+          "package_name": "com.task2trip.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162811062547-ak4tm1t27movpl39umcljd7ss28ls1rr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.task2trip.android",
+            "certificate_hash": "3998c755171252d0ceeab39ad6b05e81ef507396"
+          }
+        },
+        {
+          "client_id": "162811062547-kuctp38pap5l6bqahj8gust5udk2f8lq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmhhcg6nWzR6OX8wfbxhdwXRy_cPsMQTU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162811062547-kuctp38pap5l6bqahj8gust5udk2f8lq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
