@@ -9,13 +9,13 @@ import retrofit2.Call
 
 class ChatMessagePresenter(val view: ChatMessageView, context: Context) : BasePresenter(view, context) {
 
-    fun sendMessageToChat(chatId: String, message: ChatMessageForSend) {
+    fun sendMessageToChat(chatId: String, message: String) {
         if (chatId.isEmpty()) {
             view.onMessage("Невозможно отправить сообщение!")
             return
         }
         view.onProgress(true)
-        val req: Call<ChatMessage> = getApi().sendMessageToChat(chatId, message)
+        val req: Call<ChatMessage> = getApi().sendMessageToChat(chatId, ChatMessageForSend(message, UUID.randomUUID().toString()))
         req.enqueue {
             onResponse = { response ->
                 view.onProgress(false)
