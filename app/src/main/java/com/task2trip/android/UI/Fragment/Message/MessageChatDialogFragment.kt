@@ -77,7 +77,7 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
 
     private fun sendMessage(message: String) {
         if (message.isNotEmpty()) {
-            presenter.sendMessageToChat(chatId, ChatMessageForSend(message, chatClientTag))
+            presenter.sendMessageToChat(chatId, message)
             //onMessageResult(ChatMessage("1", MockData.getEmptyUser(), "test message 1", "t001-a223-g110", ""))
             //val timer = Timer()
             //timer.schedule(TimerTask(), 10000L)
