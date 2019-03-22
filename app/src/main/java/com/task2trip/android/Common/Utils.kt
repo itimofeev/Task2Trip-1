@@ -9,12 +9,12 @@ class Utils {
     //
 }
 
-fun Calendar.toPattern(pattern: String = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"): String {
+fun Calendar?.toPattern(pattern: String = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"): String {
     val formatter = SimpleDateFormat(pattern, Locale.getDefault())
-    return formatter.format(this.time)
+    return formatter.format(this?.time)
 }
 
-fun String.toCalendar(pattern: String = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"): Calendar {
+fun String?.toCalendar(pattern: String = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"): Calendar {
     val formatter = SimpleDateFormat(pattern, Locale.getDefault())
     return try {
         val parsedDate = Calendar.getInstance()
@@ -25,18 +25,18 @@ fun String.toCalendar(pattern: String = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"): Calenda
     }
 }
 
-fun EditText.toInt(): Int {
+fun EditText?.toInt(): Int {
     return try {
-        val strValue: String = this.text.toString()
+        val strValue: String = this?.text.toString()
         strValue.toInt()
     } catch (ex: Exception) {
         0
     }
 }
 
-fun String.parseStatusValue(): TaskStatus {
+fun String?.parseStatusValue(): TaskStatus {
     return try {
-        TaskStatus.valueOf(this.toUpperCase())
+        TaskStatus.valueOf(this?.toUpperCase() ?: "")
     } catch (ex: Exception) {
         TaskStatus.NEW
     }

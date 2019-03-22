@@ -23,7 +23,7 @@ android {
 }
 
 ext {
-    supLib = '1.1.0-alpha02'
+    supLib = '1.1.0-alpha03'
 }
 
 dependencies {
