@@ -35,6 +35,8 @@
     <string name="search_filter_category_title">Category</string>
     <string name="search_filter_region_title">Region for search</string>
     <string name="search_filter_status_title">Status of tasks</string>
+    <string name="search_location">Location for search</string>
+    <string name="search_location_default">All world</string>
 
     <string name="task_show">Show tasks</string>
     <string name="task_create">Create task</string>

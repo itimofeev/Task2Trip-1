@@ -2,294 +2,265 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:background="@color/gray_light">
+        android:background="@color/white">
 
-    <LinearLayout
-            android:id="@+id/llContent"
-            android:layout_width="0dp"
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/btAddMyTask">
+            app:layout_constraintBottom_toTopOf="@+id/btAddMyTask"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.core.widget.NestedScrollView
-                android:id="@+id/scroll"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/groupMainContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
 
-                <androidx.cardview.widget.CardView
-                        android:id="@+id/cardCategory"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="2dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/layoutCategory"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical">
+                    <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="@dimen/image_size_very_small"
+                            android:layout_height="@dimen/image_size_very_small"
+                            android:layout_marginStart="@dimen/margin_left_16dp"
+                            android:layout_marginLeft="@dimen/margin_left_16dp"
+                            android:padding="2dp"
+                            android:src="@drawable/vector_ic_category"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
 
-                        <ImageView
-                                android:id="@+id/imageView"
-                                android:layout_width="@dimen/image_size_very_small"
-                                android:layout_height="@dimen/image_size_very_small"
-                                android:layout_marginStart="@dimen/margin_left_16dp"
-                                android:layout_marginLeft="@dimen/margin_left_16dp"
-                                android:src="@drawable/vector_ic_category"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView
+                            android:id="@+id/tvCategoryName"
+                            android:gravity="center_vertical"
+                            style="@style/textGrayConstraint"
+                            android:layout_marginStart="@dimen/margin_left_16dp"
+                            android:layout_marginLeft="@dimen/margin_left_16dp"
+                            android:layout_marginEnd="@dimen/margin_right_8dp"
+                            android:layout_marginRight="@dimen/margin_right_8dp"
+                            android:textSize="20sp"
+                            android:text=""
+                            tools:text="Категория"
+                            app:layout_constraintEnd_toStartOf="@+id/ivArrowRight"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageView"/>
 
-                        <TextView
-                                android:id="@+id/tvCategoryName"
-                                android:gravity="center_vertical"
-                                style="@style/textGrayConstraint"
-                                android:layout_marginStart="@dimen/margin_left_8dp"
-                                android:layout_marginLeft="@dimen/margin_left_8dp"
-                                android:layout_marginEnd="@dimen/margin_right_8dp"
-                                android:layout_marginRight="@dimen/margin_right_8dp"
-                                android:textSize="20sp"
-                                android:text="Категория"
-                                app:layout_constraintEnd_toStartOf="@+id/ivArrowRight"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/imageView"/>
+                    <ImageView
+                            android:id="@+id/ivArrowRight"
+                            style="@style/arrowRight"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-                        <ImageView
-                                android:id="@+id/ivArrowRight"
-                                android:layout_width="@dimen/image_size_arrow"
-                                android:layout_height="@dimen/image_size_arrow"
-                                android:layout_gravity="end"
-                                android:src="@drawable/vector_ic_arrow_right"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
+            <View
+                    android:id="@+id/view_delimiter_01"
+                    style="@style/viewDelimiterBig"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardCategory"/>
 
-                <androidx.cardview.widget.CardView
-                        android:id="@+id/cardDescription"
-                        android:layout_width="0dp"
-                        android:layout_height="250dp"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/margin_bottom_8dp"
-                        android:padding="@dimen/padding_all_16dp"
-                        app:layout_constraintTop_toBottomOf="@+id/cardCategory"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
-
-                    <LinearLayout
-                            android:id="@+id/layoutDescription"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/tvTaskName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="@dimen/padding_top_8dp"
-                                android:hint="@string/title_name"
-                                style="@style/textLayoutSearch">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/etTaskName"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:paddingTop="16dp"
-                                    android:background="@android:color/transparent"
-                                    android:text=""/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <TextView
-                                android:id="@+id/tvDescription"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/margin_left_16dp"
-                                android:layout_marginStart="@dimen/margin_left_16dp"
-                                android:layout_marginEnd="@dimen/margin_right_16dp"
-                                android:layout_marginRight="@dimen/margin_right_16dp"
-                                android:layout_marginBottom="0dp"
-                                android:text="@string/title_description"/>
-
-                        <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etTaskDescription"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="top|start"
-                                android:layout_marginLeft="@dimen/margin_left_16dp"
-                                android:layout_marginStart="@dimen/margin_left_16dp"
-                                android:layout_marginEnd="@dimen/margin_right_16dp"
-                                android:layout_marginRight="@dimen/margin_right_16dp"
-                                android:layout_marginBottom="@dimen/margin_bottom_16dp"
-                                android:text=""/>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/cardDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_all_16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/view_delimiter_01"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
 
                 <LinearLayout
-                        android:id="@+id/cardDetail"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_bottom_8dp"
-                        app:layout_constraintTop_toBottomOf="@+id/cardDescription"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:id="@+id/layoutDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/layoutAddress"
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tvTaskName"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginBottom="1dp"
-                            android:background="@color/white">
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/padding_top_8dp"
+                            android:hint="@string/title_name"
+                            style="@style/textLayoutSearch">
 
-                        <ImageView
-                                android:id="@+id/ivAddress"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:padding="8dp"
-                                android:src="@drawable/vector_ic_location_map_pin"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"/>
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etTaskName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="16dp"
+                                android:background="@android:color/transparent"
+                                android:text=""/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                                android:id="@+id/etCountryAndCity"
-                                android:gravity="center_vertical"
-                                style="@style/textGrayConstraint"
-                                android:layout_marginStart="@dimen/margin_left_8dp"
-                                android:layout_marginLeft="@dimen/margin_left_8dp"
-                                android:layout_marginEnd="@dimen/margin_right_8dp"
-                                android:layout_marginRight="@dimen/margin_right_8dp"
-                                android:hint="@string/title_select_location"
-                                android:textSize="20sp"
-                                android:text=""
-                                app:layout_constraintEnd_toStartOf="@+id/ivArrowRight2"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/ivAddress"/>
-
-                        <ImageView
-                                android:id="@+id/ivArrowRight2"
-                                android:layout_width="@dimen/image_size_arrow"
-                                android:layout_height="@dimen/image_size_arrow"
-                                android:layout_gravity="end"
-                                android:src="@drawable/vector_ic_arrow_right"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/layoutDateTime"
+                    <TextView
+                            android:id="@+id/tvDescription"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginBottom="1dp"
-                            android:background="@color/white">
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_left_16dp"
+                            android:layout_marginStart="@dimen/margin_left_16dp"
+                            android:layout_marginEnd="@dimen/margin_right_16dp"
+                            android:layout_marginRight="@dimen/margin_right_16dp"
+                            android:layout_marginBottom="0dp"
+                            android:text="@string/title_description"/>
 
-                        <ImageView
-                                android:id="@+id/ivDateTime"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:padding="8dp"
-                                android:src="@drawable/vector_ic_clock_time"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"/>
-
-                        <TextView
-                                android:id="@+id/tvDateTimeFromTo"
-                                android:gravity="center_vertical"
-                                style="@style/textGrayConstraint"
-                                android:layout_marginStart="@dimen/margin_left_8dp"
-                                android:layout_marginLeft="@dimen/margin_left_8dp"
-                                android:layout_marginEnd="@dimen/margin_right_8dp"
-                                android:layout_marginRight="@dimen/margin_right_8dp"
-                                android:textSize="20sp"
-                                android:text="@string/title_date_time_start_finish"
-                                app:layout_constraintEnd_toStartOf="@+id/ivArrowRight3"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/ivDateTime"/>
-
-                        <ImageView
-                                android:id="@+id/ivArrowRight3"
-                                android:layout_width="@dimen/image_size_arrow"
-                                android:layout_height="@dimen/image_size_arrow"
-                                android:layout_gravity="end"
-                                android:src="@drawable/vector_ic_arrow_right"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/layoutPrice"
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etTaskDescription"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginBottom="1dp"
-                            android:background="@color/white">
-
-                        <ImageView
-                                android:id="@+id/ivPrice"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:padding="8dp"
-                                android:src="@drawable/vector_ic_price_coin"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"/>
-
-                        <EditText
-                                android:id="@+id/etPrice"
-                                android:gravity="center_vertical"
-                                style="@style/textGrayConstraint"
-                                android:layout_marginStart="@dimen/margin_left_8dp"
-                                android:layout_marginLeft="@dimen/margin_left_8dp"
-                                android:layout_marginEnd="@dimen/margin_right_8dp"
-                                android:layout_marginRight="@dimen/margin_right_8dp"
-                                android:hint="@string/title_price"
-                                android:textSize="20sp"
-                                android:text=""
-                                app:layout_constraintEnd_toStartOf="@+id/ivArrowRight4"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/ivPrice"/>
-
-                        <ImageView
-                                android:id="@+id/ivArrowRight4"
-                                android:layout_width="@dimen/image_size_arrow"
-                                android:layout_height="@dimen/image_size_arrow"
-                                android:layout_gravity="end"
-                                android:src="@drawable/vector_ic_arrow_right"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            android:layout_height="match_parent"
+                            android:gravity="top|start"
+                            android:layout_marginLeft="@dimen/margin_left_16dp"
+                            android:layout_marginStart="@dimen/margin_left_16dp"
+                            android:layout_marginEnd="@dimen/margin_right_16dp"
+                            android:layout_marginRight="@dimen/margin_right_16dp"
+                            android:layout_marginBottom="@dimen/margin_bottom_16dp"
+                            android:text=""/>
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
+            <View
+                    android:id="@+id/view_delimiter_02"
+                    style="@style/viewDelimiterBig"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardDescription"/>
 
-    <Button
-            android:id="@+id/btAddMyTask"
-            style="@style/buttonSolid"
-            android:text="@string/task_add_my"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            <LinearLayout
+                    android:id="@+id/cardDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_bottom_8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/view_delimiter_02"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="84dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@color/white">
+
+                    <ImageView
+                            android:id="@+id/ivAddress"
+                            style="@style/iconTask"
+                            android:src="@drawable/vector_ic_location_map_pin"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
+
+                    <com.task2trip.android.UI.Widget.SearchLocationField
+                            android:id="@+id/searchLocationView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_all_8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivAddress"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@color/white">
+
+                    <ImageView
+                            android:id="@+id/ivDateTime"
+                            style="@style/iconTask"
+                            android:src="@drawable/vector_ic_clock_time"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                            android:id="@+id/tvDateTimeFromTo"
+                            android:gravity="center_vertical"
+                            style="@style/textGrayConstraint"
+                            android:layout_marginStart="@dimen/margin_left_8dp"
+                            android:layout_marginLeft="@dimen/margin_left_8dp"
+                            android:layout_marginEnd="@dimen/margin_right_8dp"
+                            android:layout_marginRight="@dimen/margin_right_8dp"
+                            android:textSize="20sp"
+                            android:text="@string/title_date_time_start_finish"
+                            app:layout_constraintEnd_toStartOf="@+id/ivArrowRight3"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivDateTime"/>
+
+                    <ImageView
+                            android:id="@+id/ivArrowRight3"
+                            style="@style/arrowRight"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@color/white">
+
+                    <ImageView
+                            android:id="@+id/ivPrice"
+                            style="@style/iconTask"
+                            android:src="@drawable/vector_ic_price_coin"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
+
+                    <EditText
+                            android:id="@+id/etPrice"
+                            android:gravity="center_vertical"
+                            style="@style/textGrayConstraint"
+                            android:layout_marginStart="@dimen/margin_left_8dp"
+                            android:layout_marginLeft="@dimen/margin_left_8dp"
+                            android:layout_marginEnd="@dimen/margin_right_8dp"
+                            android:layout_marginRight="@dimen/margin_right_8dp"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/title_price"
+                            android:inputType="number"
+                            android:textSize="20sp"
+                            android:text=""
+                            app:layout_constraintEnd_toStartOf="@+id/ivArrowRight4"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivPrice"/>
+
+                    <ImageView
+                            android:id="@+id/ivArrowRight4"
+                            style="@style/arrowRight"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <com.task2trip.widgetlibrary.LoadingAndMessage
             android:id="@+id/viewLoadAndMessage"
@@ -301,4 +272,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+            android:id="@+id/btAddMyTask"
+            style="@style/buttonSolid"
+            android:text="@string/task_add_my"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

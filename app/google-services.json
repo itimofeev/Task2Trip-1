@@ -49,6 +49,37 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162811062547:android:3d1326c4507b43e2",
+        "android_client_info": {
+          "package_name": "com.task2trip.android.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162811062547-kuctp38pap5l6bqahj8gust5udk2f8lq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmhhcg6nWzR6OX8wfbxhdwXRy_cPsMQTU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

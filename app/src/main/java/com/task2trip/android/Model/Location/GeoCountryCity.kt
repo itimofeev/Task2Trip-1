@@ -29,4 +29,8 @@ data class GeoCountryCity(val description: String, val name: String, val point: 
             return arrayOfNulls(size)
         }
     }
+
+    fun isEmpty(): Boolean {
+        return description.isEmpty() && name.isEmpty()
+    }
 }

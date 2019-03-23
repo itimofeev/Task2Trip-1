@@ -8,16 +8,18 @@ import android.widget.ArrayAdapter
 import com.task2trip.android.Model.Task.TaskStatus
 import com.task2trip.android.UI.Holder.TaskStatusHolder
 
-class TaskStatusAdapter(context: Context, resource: Int, statusItems: MutableList<TaskStatus>):
+class TaskStatusAdapter(context: Context, resource: Int, resourceDropDown: Int, statusItems: MutableList<TaskStatus>):
     ArrayAdapter<TaskStatus>(context, resource, statusItems) {
 
     private val items: MutableList<TaskStatus> = ArrayList()
     private var resIdLayout: Int = 0
+    private var resIdLayoutDropDown: Int = 0
 
     init {
         items.clear()
         items.addAll(statusItems)
         resIdLayout = resource
+        resIdLayoutDropDown = resourceDropDown
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
@@ -45,7 +47,7 @@ class TaskStatusAdapter(context: Context, resource: Int, statusItems: MutableLis
         var view: View? = convertView
         var holder: TaskStatusHolder? = null
         if (view == null) {
-            view = LayoutInflater.from(parent.context).inflate(resIdLayout, parent, false)
+            view = LayoutInflater.from(parent.context).inflate(resIdLayoutDropDown, parent, false)
             holder = TaskStatusHolder(view)
             view.tag = holder
         }

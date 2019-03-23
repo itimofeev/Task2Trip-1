@@ -8,21 +8,26 @@ import com.task2trip.android.Common.Constants
 import com.task2trip.android.Common.toCalendar
 import com.task2trip.android.Common.toInt
 import com.task2trip.android.Common.toPattern
+import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskSaveModel
+import com.task2trip.android.Presenter.SearchLocationPresenter
 import com.task2trip.android.Presenter.TaskAddParamsPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Dialog.DateTimeDialog
 import com.task2trip.android.UI.Dialog.show
 import com.task2trip.android.UI.Fragment.BaseFragment
+import com.task2trip.android.UI.Widget.SearchLocationFieldCallback
+import com.task2trip.android.View.SearchLocationView
 import com.task2trip.android.View.TaskParamsView
 import kotlinx.android.synthetic.main.fragment_task_add_params.*
 import java.util.Calendar
 
-class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
-    private lateinit var presenter: TaskAddParamsPresenter
+class TaskAddParamsFragment : BaseFragment(), TaskParamsView, SearchLocationView, SearchLocationFieldCallback {
+    private lateinit var presenterTask: TaskAddParamsPresenter
+    private lateinit var presenterSearch: SearchLocationPresenter
     private var categoryList = ArrayList<TaskCategory>()
     private var categorySelectedPosition = 0
     private var dateStart = Calendar.getInstance()
@@ -49,8 +54,9 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
     }
 
     override fun initComponents(view: View) {
-        presenter = TaskAddParamsPresenter(this, view.context)
+        initPresenter(view)
         initDateTimeCalendar()
+        searchLocationView.setSearchLocationFieldCallback(this)
         tvCategoryName.text = getSelectedCategory().defaultValue
         if (isEditTask) {
             btAddMyTask.text = getString(R.string.save)
@@ -66,7 +72,7 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
                 etPrice.toInt(),
                 dateStart.toPattern(),
                 dateEnd.toPattern(),
-                MockData.getEmptyGeoLocations())
+                searchLocationView.getItem())
             if (isEditTask) {
                 taskForSave.categoryId = taskForEdit.category.id
                 editMyTaskClick(taskForEdit.id, taskForSave)
@@ -76,11 +82,15 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
         }
     }
 
+    private fun initPresenter(view: View) {
+        presenterTask = TaskAddParamsPresenter(this, view.context)
+        presenterSearch = SearchLocationPresenter(this, view.context)
+    }
+
     private fun updateFields(task: Task) {
         tvCategoryName.text = task.category.defaultValue
         etTaskName.setText(task.name)
         etTaskDescription.setText(task.description)
-        etCountryAndCity.setText("")
         dateStart = task.fromDate.toCalendar()
         dateEnd = task.toDate.toCalendar()
         setDateTime(dateStart, dateEnd)
@@ -156,11 +166,11 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
     }
 
     private fun addMyTaskClick(taskSaveModel: TaskSaveModel) {
-        presenter.saveTask(taskSaveModel)
+        presenterTask.saveTask(taskSaveModel)
     }
 
     private fun editMyTaskClick(taskId: String, taskSaveModel: TaskSaveModel) {
-        presenter.editTask(taskId, taskSaveModel)
+        presenterTask.editTask(taskId, taskSaveModel)
     }
 
     override fun onSaveTaskResult(task: Task) {
@@ -196,5 +206,24 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView {
             viewLoadAndMessage.hide()
         }
         viewLoadAndMessage.setProgress(isProgress)
+    }
+
+    override fun onSearchLocationResult(items: List<GeoCountryCity>) {
+        searchLocationView.setDataForSearch(items)
+    }
+
+    override fun onTextLocationChanged(text: String) {
+        // Ищем, если хотя бы введено searchLocationView.getMinimumTextSearchSize() символов
+        if (text.length >= searchLocationView.getMinimumTextSearchSize()) {
+            presenterSearch.getCountryAndCityByText(text)
+        }
+    }
+
+    override fun onItemLocationChanged(item: GeoCountryCity) {
+        //
+    }
+
+    override fun onLocationClick() {
+        //
     }
 }

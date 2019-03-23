@@ -19,4 +19,14 @@
         <item name="android:colorControlNormal">@color/gray</item>
         <item name="android:colorControlActivated">@color/gray</item>
     </style>
+
+    <style name="textLayoutSearchLocation" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@color/gray</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:colorControlNormal">@color/gray</item>
+        <item name="android:colorControlActivated">@color/gray</item>
+    </style>
 </resources>

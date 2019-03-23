@@ -110,6 +110,14 @@
         <item name="android:paddingStart">4dp</item>
     </style>
 
+    <style name="textLayoutSearchLocation" parent="textLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@color/gray</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+    </style>
+
     <style name="textNoLine">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -149,5 +157,25 @@
         <item name="android:layout_marginBottom">@dimen/margin_bottom_8dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="arrowRight">
+        <item name="android:layout_width">@dimen/image_size_arrow</item>
+        <item name="android:layout_height">@dimen/image_size_arrow</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:src">@drawable/vector_ic_arrow_right</item>
+    </style>
+
+    <style name="viewDelimiterBig">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:background">@color/gray_very_light</item>
+    </style>
+
+    <style name="iconTask">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:padding">12dp</item>
     </style>
 </resources>

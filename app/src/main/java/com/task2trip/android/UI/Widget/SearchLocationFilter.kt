@@ -1,10 +1,10 @@
-package com.task2trip.android.UI
+package com.task2trip.android.UI.Widget
 
 import android.widget.Filter
 import com.task2trip.android.Model.Location.GeoCountryCity
 import kotlin.collections.ArrayList
 
-class CountryAndCityFilter: Filter() {
+class SearchLocationFilter: Filter() {
     private val items: ArrayList<GeoCountryCity> = ArrayList()
     private var lastWord = ""
 

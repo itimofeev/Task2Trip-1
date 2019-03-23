@@ -114,13 +114,19 @@ interface ApiMethods {
     @GET("task")
     fun getAllTasks(): Call<TaskList>
 
+    /**
+     * Поиск задач по критериям
+     */
     @GET("task")
     fun getTasks(@Query("userId") userId: String? = null,
                  @Query("searchString") searchString: String? = null,
                  @Query("categoryId") categoryIds: String? = null,
                  @Query("skip") skip: Int? = null,
                  @Query("limit") limit: Int? = null,
-                 @Query("status") status: String? = null): Call<TaskList>
+                 @Query("status") status: String? = null,
+                 @Query("lat") lat: Double? = null,
+                 @Query("long") long: Double? = null,
+                 @Query("radius") radius: Int? = null): Call<TaskList>
 
     @PUT("task/{taskId}/offer")
     fun sendOfferByTaskId(@Path("taskId") taskId: String,

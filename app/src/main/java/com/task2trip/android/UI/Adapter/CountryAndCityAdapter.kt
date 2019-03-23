@@ -10,12 +10,12 @@ import android.widget.Filterable
 import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.R
-import com.task2trip.android.UI.CountryAndCityFilter
+import com.task2trip.android.UI.Widget.SearchLocationFilter
 import com.task2trip.android.UI.Holder.CountryAndCityHolder
 
 class CountryAndCityAdapter(val context: Context): BaseAdapter(), Filterable {
     private val items = ArrayList<GeoCountryCity>()
-    private val filter = CountryAndCityFilter()
+    private val filter = SearchLocationFilter()
 
     init {
         items.addAll(MockData.getGeoLocations())
@@ -24,6 +24,7 @@ class CountryAndCityAdapter(val context: Context): BaseAdapter(), Filterable {
     fun setItems(items: List<GeoCountryCity>) {
         this.items.clear()
         this.items.addAll(items)
+        notifyDataSetChanged()
         filter.setItems(this.items)
     }
 

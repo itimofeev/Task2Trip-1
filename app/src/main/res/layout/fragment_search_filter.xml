@@ -4,9 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvCategory"
@@ -34,24 +32,15 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvCountryAndCity"
-            android:hint="@string/search_filter_region_title"
-            style="@style/textLayoutSearch"
+    <com.task2trip.android.UI.Widget.SearchLocationField
+            android:id="@+id/searchLocationView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_all_16dp"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCategory">
-
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                android:id="@+id/etCountryAndCity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:background="@android:color/transparent"
-                android:text="Весь мир"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/tvCategory"/>
 
     <TextView
             android:id="@+id/etStatusHint"
@@ -62,7 +51,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCountryAndCity"/>
+            app:layout_constraintTop_toBottomOf="@+id/searchLocationView"/>
 
     <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/etStatus"

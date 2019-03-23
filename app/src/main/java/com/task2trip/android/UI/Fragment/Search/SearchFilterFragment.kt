@@ -3,27 +3,25 @@ package com.task2trip.android.UI.Fragment.Search
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskStatus
-import com.task2trip.android.Presenter.SearchCountryAndCityPresenter
+import com.task2trip.android.Presenter.SearchLocationPresenter
 import com.task2trip.android.Presenter.TaskCategoryPresenter
 import com.task2trip.android.R
-import com.task2trip.android.UI.Adapter.CountryAndCityAdapter
 import com.task2trip.android.UI.Adapter.TaskStatusAdapter
 import com.task2trip.android.UI.Dialog.SearchCategoryDialog
 import com.task2trip.android.UI.Fragment.BaseFragment
-import com.task2trip.android.View.SearchCountryAndCityView
+import com.task2trip.android.UI.Widget.SearchLocationFieldCallback
+import com.task2trip.android.View.SearchLocationView
 import com.task2trip.android.View.TaskCategoryView
 import kotlinx.android.synthetic.main.fragment_search_filter.*
 
-class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchCountryAndCityView {
+class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchLocationView, SearchLocationFieldCallback {
     private lateinit var presenterCategory: TaskCategoryPresenter
-    private lateinit var presenterSearch: SearchCountryAndCityPresenter
+    private lateinit var presenterSearch: SearchLocationPresenter
     private var userRoleStr = ""
     private val categoryList: ArrayList<TaskCategory> = ArrayList()
 
@@ -40,42 +38,32 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchCountryAndC
     override fun initComponents(view: View) {
         initPresenter(view)
         initStatuses(view)
-        CountryAndCityAdapter(view.context)
         tvCategory.setOnClickListener {
             onCategoryClick()
         }
         etCategory.setOnClickListener {
             onCategoryClick()
         }
-        etCountryAndCity.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                //
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                //
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                presenterSearch.getCountryAndCityByText(s?.toString() ?: "")
-            }
-        })
-        etCountryAndCity.threshold = 3
         btSearch.setOnClickListener {
             onSearchClick()
         }
+        searchLocationView.setSearchLocationFieldCallback(this)
+        searchLocationView.setHint(getText(R.string.search_location))
     }
 
     private fun initPresenter(view: View) {
         presenterCategory = TaskCategoryPresenter(this, view.context)
         presenterCategory.getCategoryList()
-        presenterSearch = SearchCountryAndCityPresenter(this, view.context)
+        presenterSearch = SearchLocationPresenter(this, view.context)
     }
 
     private fun initStatuses(view: View) {
         val statusList = ArrayList<TaskStatus>()
         statusList.addAll(TaskStatus.values())
-        val adapter = TaskStatusAdapter(view.context, R.layout.item_task_status, statusList)
+        val adapter = TaskStatusAdapter(view.context,
+            R.layout.item_task_status,
+            R.layout.item_task_status_drop_down,
+            statusList)
         etStatus.adapter = adapter
         etStatus.setSelection(0)
     }
@@ -100,7 +88,7 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchCountryAndC
                 }
             }
             putParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST, selectedCategoryList)
-            putString(Constants.EXTRA_TASK_SEARCH_COUNTRY_CITY, etCountryAndCity.text.toString())
+            putParcelable(Constants.EXTRA_TASK_SEARCH_LOCATION, searchLocationView.getItem().point)
             putString(Constants.EXTRA_TASK_SEARCH_STATUS, etStatus.selectedItem.toString())
             putString(Constants.EXTRA_USER_ROLE, userRoleStr)
         }
@@ -148,11 +136,22 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchCountryAndC
         }
     }
 
-    override fun onSearchCountryAndCityResult(items: List<GeoCountryCity>) {
-        context?.let {
-            val adapter = CountryAndCityAdapter(it)
-            adapter.setItems(items)
-            etCountryAndCity.setAdapter(adapter)
+    override fun onSearchLocationResult(items: List<GeoCountryCity>) {
+        searchLocationView.setDataForSearch(items)
+    }
+
+    override fun onTextLocationChanged(text: String) {
+        // Ищем, если хотя бы введено searchLocationView.getMinimumTextSearchSize() символов
+        if (text.length >= searchLocationView.getMinimumTextSearchSize()) {
+            presenterSearch.getCountryAndCityByText(text)
         }
+    }
+
+    override fun onItemLocationChanged(item: GeoCountryCity) {
+        //
+    }
+
+    override fun onLocationClick() {
+        //
     }
 }

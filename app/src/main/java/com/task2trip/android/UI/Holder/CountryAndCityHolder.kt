@@ -10,7 +10,17 @@ class CountryAndCityHolder(itemView: View) {
     private var tvCity: TextView = itemView.findViewById(R.id.tvCity)
 
     fun setData(item: GeoCountryCity) {
-        tvCountry.text = item.description
-        tvCity.text = item.name
+        if (item.description.isNullOrEmpty()) {
+            tvCountry.visibility = View.GONE
+        } else {
+            tvCountry.visibility = View.VISIBLE
+            tvCountry.text = item.description
+        }
+        if (item.name.isNullOrEmpty()) {
+            tvCity.visibility = View.GONE
+        } else {
+            tvCity.visibility = View.VISIBLE
+            tvCity.text = item.name
+        }
     }
 }

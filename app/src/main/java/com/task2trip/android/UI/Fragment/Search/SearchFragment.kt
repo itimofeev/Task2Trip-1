@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.Location.LatLng
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskCategory
 import com.task2trip.android.Model.Task.TaskList
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_task_search.*
 class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     private lateinit var presenter: TaskListPresenter
     private val categoryList: ArrayList<TaskCategory> = ArrayList()
-    private var taskCountryAndCity = ""
+    private var location = LatLng(0.0, 0.0)
     private var taskStatus = ""
     private var userRoleStr = ""
 
@@ -28,7 +29,7 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
             if (!lst.isNullOrEmpty()) {
                 categoryList.addAll(lst)
             }
-            taskCountryAndCity = it.getString(Constants.EXTRA_TASK_SEARCH_COUNTRY_CITY, "")
+            location = it.getParcelable<LatLng>(Constants.EXTRA_TASK_SEARCH_LOCATION) ?: LatLng(0.0, 0.0)
             taskStatus = it.getString(Constants.EXTRA_TASK_SEARCH_STATUS, "")
             userRoleStr = it.getString(Constants.EXTRA_USER_ROLE, "")
         }
@@ -51,7 +52,11 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     private fun initPresenter(view: View) {
         val query = getSearchCategoryQuery()
         presenter = TaskListPresenter(this, view.context)
-        presenter.searchTasks(null, null, "",null, null, taskStatus.toLowerCase())
+        if (location.isEmpty()) {
+            presenter.searchTasks(null, null, query, null, null, taskStatus.toLowerCase())
+        } else {
+            presenter.searchTasks(null, null, query, null, null, taskStatus.toLowerCase(), location)
+        }
     }
 
     private fun getSearchCategoryQuery(): String {
