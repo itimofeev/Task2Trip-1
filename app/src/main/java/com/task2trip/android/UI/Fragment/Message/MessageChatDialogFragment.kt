@@ -18,6 +18,7 @@ import com.task2trip.android.UI.Listener.ItemClickListener
 import com.task2trip.android.View.ChatMessageView
 import kotlinx.android.synthetic.main.fragment_message_chat_dialog.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListener<ChatMessage> {
     private lateinit var presenter: ChatMessagePresenter
@@ -86,8 +87,11 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
     }
 
     override fun onMessageList(messages: List<ChatMessage>) {
+        val sortedList = ArrayList<ChatMessage>()
+        sortedList.addAll(messages)
+        sortedList.sortBy { it.time }
         adapter.clear()
-        adapter.addItems(messages)
+        adapter.addItems(sortedList)
         rvChatDialogList?.adapter = adapter
     }
 
@@ -112,12 +116,13 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
     }
 
     override fun onProgress(isProgress: Boolean) {
-        if (isProgress) {
-            viewLoadAndMessage?.show()
-        } else {
-            viewLoadAndMessage?.hide()
-        }
-        viewLoadAndMessage?.setProgress(isProgress)
+        //TODO: Only the original thread that created a view hierarchy can touch its views.
+//        if (isProgress) {
+//            viewLoadAndMessage?.show()
+//        } else {
+//            viewLoadAndMessage?.hide()
+//        }
+//        viewLoadAndMessage?.setProgress(isProgress)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
