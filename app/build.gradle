@@ -10,8 +10,8 @@ android {
         applicationId "com.task2trip.android"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 110
-        versionName "1.1.0"
+        versionCode 111
+        versionName "1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
