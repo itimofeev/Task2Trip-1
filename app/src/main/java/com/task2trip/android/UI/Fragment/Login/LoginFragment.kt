@@ -2,9 +2,11 @@ package com.task2trip.android.UI.Fragment.Login
 
 import android.os.Bundle
 import android.view.View
+import com.google.firebase.iid.FirebaseInstanceId
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.User.*
+import com.task2trip.android.Presenter.PushPresenter
 import com.task2trip.android.Presenter.UserAuthPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
@@ -13,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment(), UserAuthView {
     private lateinit var presenter: UserAuthPresenter
+    private lateinit var presenterPush: PushPresenter
     private lateinit var localStoreManager: LocalStoreManager
 
     override fun getArgs(args: Bundle?) {
@@ -25,6 +28,7 @@ class LoginFragment : BaseFragment(), UserAuthView {
 
     override fun initComponents(view: View) {
         presenter = UserAuthPresenter(this, view.context)
+        presenterPush = PushPresenter(this, view.context)
         localStoreManager = LocalStoreManager(view.context)
         btLogin.setOnClickListener {
             super.hideKeyboard()
@@ -63,6 +67,7 @@ class LoginFragment : BaseFragment(), UserAuthView {
 
     override fun onLoginResult(userToken: UserLoginResp) {
         if (userToken.authToken.isNotEmpty()) {
+            presenterPush.registerPushToken()
             val user: User = userToken.user
             user.setToken(userToken.authToken)
             context?.let {

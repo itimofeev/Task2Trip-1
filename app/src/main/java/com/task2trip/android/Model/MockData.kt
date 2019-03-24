@@ -5,6 +5,8 @@ import com.task2trip.android.Model.Chat.ChatList
 import com.task2trip.android.Model.Chat.ChatMessage
 import com.task2trip.android.Model.Location.GeoCountryCity
 import com.task2trip.android.Model.Location.LatLng
+import com.task2trip.android.Model.Notification.NotificationData
+import com.task2trip.android.Model.Notification.NotificationList
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskAddCategory
 import com.task2trip.android.Model.Task.TaskCategory
@@ -102,6 +104,10 @@ class MockData {
 
         fun getEmptyChatMessageList(): List<ChatMessage> {
             return ArrayList<ChatMessage>()
+        }
+
+        fun getEmptyNotificationList(): NotificationList {
+            return NotificationList(0, ArrayList<NotificationData>())
         }
     }
 }

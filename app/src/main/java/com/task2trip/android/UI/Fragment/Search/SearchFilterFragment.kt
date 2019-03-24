@@ -152,6 +152,6 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchLocationVie
     }
 
     override fun onLocationClick() {
-        //
+        navigateTo(R.id.mapFragment, Bundle())
     }
 }

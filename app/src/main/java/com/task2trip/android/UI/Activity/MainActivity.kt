@@ -12,17 +12,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.iid.FirebaseInstanceId
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.User.*
 import com.task2trip.android.Presenter.MainActivityPresenter
+import com.task2trip.android.Presenter.PushPresenter
 import com.task2trip.android.R
 import com.task2trip.android.View.MainActivityView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainActivityView {
     private lateinit var presenter: MainActivityPresenter
+    private lateinit var presenterPush: PushPresenter
     private lateinit var navController: NavController
     private var user: UserImpl = MockData.getEmptyUser()
     private var actionBar: ActionBar? = null
@@ -39,8 +43,15 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         initToolBar()
         initNavigation()
 
-        presenter = MainActivityPresenter(this)
-        presenter.setNavigation(if (user.isAuthorized()) R.id.taskListPerformerFragment else R.id.loginRegisterFragment)
+        presenter = MainActivityPresenter(this, applicationContext)
+        presenterPush = PushPresenter(this, applicationContext)
+        val startScreenId = if (user.isAuthorized()) {
+            presenterPush.registerPushToken()
+            R.id.taskListPerformerFragment
+        } else {
+            R.id.loginRegisterFragment
+        }
+        presenter.setNavigation(startScreenId)
     }
 
     private fun initToolBar() {
@@ -205,6 +216,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             R.id.noContentFragment -> {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, "Нет страницы", true)
+            }
+            R.id.mapFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, "Карта", true)
             }
             android.R.id.home -> {
                 navController.popBackStack()

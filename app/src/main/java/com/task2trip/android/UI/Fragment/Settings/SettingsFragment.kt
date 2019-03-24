@@ -5,13 +5,16 @@ import android.view.View
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Model.User.UserSettingItem
+import com.task2trip.android.Presenter.PushPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Adapter.ProfileSettingAdapter
 import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.UI.Listener.ItemClickListener
+import com.task2trip.android.View.BaseView
 import kotlinx.android.synthetic.main.fragment_settings.*
 
-class SettingsFragment : BaseFragment(), ItemClickListener<UserSettingItem> {
+class SettingsFragment : BaseFragment(), ItemClickListener<UserSettingItem>, BaseView {
+    private lateinit var presenterPush: PushPresenter
 
     override fun getArgs(args: Bundle?) {
         //
@@ -40,14 +43,14 @@ class SettingsFragment : BaseFragment(), ItemClickListener<UserSettingItem> {
     }
 
     private fun initSettingExit() {
-        groupExitApp.setOnClickListener {
-            onProfileExitClick()
+        groupExitApp.setOnClickListener {view ->
+            onProfileExitClick(view)
         }
-        ivTypeExit.setOnClickListener {
-            onProfileExitClick()
+        ivTypeExit.setOnClickListener { view ->
+            onProfileExitClick(view)
         }
-        tvTypeExit.setOnClickListener {
-            onProfileExitClick()
+        tvTypeExit.setOnClickListener {view ->
+            onProfileExitClick(view)
         }
     }
 
@@ -55,7 +58,9 @@ class SettingsFragment : BaseFragment(), ItemClickListener<UserSettingItem> {
         //
     }
 
-    private fun onProfileExitClick() {
+    private fun onProfileExitClick(view: View) {
+        presenterPush = PushPresenter(this, view.context)
+        //presenterPush.unRegisterPushToken("132")//TODO: getToken from settings
         super.logoutUser()
     }
 
@@ -77,5 +82,9 @@ class SettingsFragment : BaseFragment(), ItemClickListener<UserSettingItem> {
 
     override fun onItemClick(item: UserSettingItem, position: Int) {
         navigateTo(item.id, Bundle())
+    }
+
+    override fun onProgress(isProgress: Boolean) {
+        //
     }
 }

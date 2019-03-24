@@ -8,6 +8,9 @@ import com.task2trip.android.Common.ServerConstants
 import com.task2trip.android.Model.*
 import com.task2trip.android.Model.Chat.*
 import com.task2trip.android.Model.Location.GeoCountryCity
+import com.task2trip.android.Model.Notification.NotificationList
+import com.task2trip.android.Model.Notification.UserDeviceToken
+import com.task2trip.android.Model.Notification.UserDeviceTokenResp
 import com.task2trip.android.Model.Task.*
 import com.task2trip.android.Model.User.*
 import okhttp3.Interceptor
@@ -183,4 +186,34 @@ interface ApiMethods {
      */
     @POST("chat/{chatId}/read")
     fun markChatAsRead(@Path("chatId") chatId: String): Call<Void>
+
+    /**
+     * Список уведомлений для пользователя
+     */
+    @GET("notifications")
+    fun getNotifications(): Call<NotificationList>
+
+    /**
+     * Помечает уведомление прочитанным
+     */
+    @POST("notifications/{notificationId}/read")
+    fun markNotificationAsRead(@Path("notificationId") notificationId: String): Call<Void>
+
+    /**
+     * Регистрирует токен для отправки ПУШ-уведомлений
+     */
+    @POST("userDevice")
+    fun registerPushToken(@Body token: UserDeviceToken): Call<Void>
+
+    /**
+     * Получает все зарегистрированные пользовательские устройства
+     */
+    @GET("userDevice")
+    fun getDevises(): Call<List<UserDeviceTokenResp>>
+
+    /**
+     * Удаляет токен для ПУШ уведомлений
+     */
+    @DELETE("userDevice/{token}")
+    fun deletePushToken(@Path("token") token: String): Call<Void>
 }
