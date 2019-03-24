@@ -45,15 +45,15 @@ class TaskAddCategoryFragment : BaseFragment(), TaskCategoryView, ItemClickListe
     override fun onCategoryList(categoryList: List<TaskCategory>) {
         val adapter = TaskCategoryAdapter(categoryList)
         adapter.setClickListener(this)
-        rvTaskCategory.adapter = adapter
+        rvTaskCategory?.adapter = adapter
     }
 
     override fun onProgress(isProgress: Boolean) {
         if (isProgress) {
-            viewLoadAndMessage.show()
+            viewLoadAndMessage?.show()
         } else {
-            viewLoadAndMessage.hide()
+            viewLoadAndMessage?.hide()
         }
-        viewLoadAndMessage.setProgress(isProgress)
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 }

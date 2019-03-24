@@ -96,14 +96,14 @@ class TaskOffersFragment : BaseFragment(), TaskOfferView, ItemClickListener<Offe
 
     private fun setAdapter(offerList: List<Offer>) {
         if (offerList.isEmpty()) {
-            tvEmptyMessage.visibility = View.VISIBLE
-            rvOffersList.visibility = View.GONE
+            tvEmptyMessage?.visibility = View.VISIBLE
+            rvOffersList?.visibility = View.GONE
         } else {
-            tvEmptyMessage.visibility = View.GONE
-            rvOffersList.visibility = View.VISIBLE
+            tvEmptyMessage?.visibility = View.GONE
+            rvOffersList?.visibility = View.VISIBLE
         }
         val adapter = TaskOfferListAdapter(offerList)
         adapter.setClickListener(this)
-        rvOffersList.adapter = adapter
+        rvOffersList?.adapter = adapter
     }
 }

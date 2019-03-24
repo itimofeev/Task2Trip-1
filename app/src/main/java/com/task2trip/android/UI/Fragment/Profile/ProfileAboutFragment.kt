@@ -73,16 +73,18 @@ class ProfileAboutFragment : BaseFragment(), UserProfileView {
 
     override fun onUserProfileUpdateResult(profile: ProfileImpl) {
         setUserProfile(profile)
-        viewLoadAndMessage.show()
-        viewLoadAndMessage.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)
+        viewLoadAndMessage?.let {
+            it.show()
+            it.setMessage("Профиль успешно обновлен", LoadingAndMessage.SHOW_SHORT)
+        }
     }
 
     override fun onProgress(isProgress: Boolean) {
         if (isProgress) {
-            viewLoadAndMessage.show()
+            viewLoadAndMessage?.show()
         } else {
-            viewLoadAndMessage.hide()
+            viewLoadAndMessage?.hide()
         }
-        viewLoadAndMessage
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 }

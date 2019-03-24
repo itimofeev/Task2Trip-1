@@ -30,22 +30,15 @@
                 android:background="@color/gray_light"/>
     </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvCountry"
-            android:layout_marginTop="@dimen/top_step_small"
-            android:hint="@string/profile_country_title"
-            style="@style/textNoLine"
+    <com.task2trip.android.UI.Widget.SearchLocationField
+            android:id="@+id/searchLocationView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_all_16dp"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/groupStepLevelUp">
-
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                android:id="@+id/etCountry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/groupStepLevelUp"/>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvCity"
@@ -55,7 +48,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCountry">
+            app:layout_constraintTop_toBottomOf="@+id/searchLocationView">
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/etCity"

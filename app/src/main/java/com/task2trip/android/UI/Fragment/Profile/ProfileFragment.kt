@@ -226,21 +226,23 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
 
     override fun onMySelfInfoResult(user: UserImpl) {
         this.user = user
-        ImageLoader(user.getProfile().getImageAvatarUrl(), ivProfilePhoto, ImageCropType.CROP_CIRCLE)
+        ivProfilePhoto?.let {
+            ImageLoader(user.getProfile().getImageAvatarUrl(), it, ImageCropType.CROP_CIRCLE)
+        }
     }
 
     override fun onProgress(isProgress: Boolean) {
         if (isProgress) {
-            viewLoadAndMessage.show()
+            viewLoadAndMessage?.show()
         } else {
-            viewLoadAndMessage.hide()
+            viewLoadAndMessage?.hide()
         }
-        viewLoadAndMessage.setProgress(isProgress)
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 
     override fun onUploadImageAvatarResult(isSuccess: Boolean) {
         if (isSuccess) {
-            viewLoadAndMessage.setMessage("Фотография успешно загружена!", LoadingAndMessage.SHOW_MIDDLE)
+            viewLoadAndMessage?.setMessage("Фотография успешно загружена!", LoadingAndMessage.SHOW_MIDDLE)
         } else {
             onMessage("При загрузке возникли ошибки. Попробуйте позже!")
         }

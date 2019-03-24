@@ -65,7 +65,7 @@ class MessageChatListFragment : BaseFragment(), ChatView, ItemClickListener<Chat
         if (chats.total > 0) {
             val adapter = ChatsAdapter(chats.payload)
             adapter.setClickListener(this)
-            rvChatList.adapter = adapter
+            rvChatList?.adapter = adapter
             if (isGotoMessages) {
                 val chat = getChatId(chats.payload)
                 if (chat.id.isEmpty()) {
@@ -112,6 +112,11 @@ class MessageChatListFragment : BaseFragment(), ChatView, ItemClickListener<Chat
     }
 
     override fun onProgress(isProgress: Boolean) {
-        //
+        if (isProgress) {
+            viewLoadAndMessage?.show()
+        } else {
+            viewLoadAndMessage?.hide()
+        }
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 }

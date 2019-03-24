@@ -7,4 +7,10 @@
         android:id="@+id/rvChatList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <com.task2trip.widgetlibrary.LoadingAndMessage
+            android:id="@+id/viewLoadAndMessage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 </FrameLayout>

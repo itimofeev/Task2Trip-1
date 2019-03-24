@@ -137,12 +137,12 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchLocationVie
     }
 
     override fun onSearchLocationResult(items: List<GeoCountryCity>) {
-        searchLocationView.setDataForSearch(items)
+        searchLocationView?.setDataForSearch(items)
     }
 
     override fun onTextLocationChanged(text: String) {
         // Ищем, если хотя бы введено searchLocationView.getMinimumTextSearchSize() символов
-        if (text.length >= searchLocationView.getMinimumTextSearchSize()) {
+        if (text.length >= searchLocationView?.getMinimumTextSearchSize() ?: 0) {
             presenterSearch.getCountryAndCityByText(text)
         }
     }

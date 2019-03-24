@@ -120,10 +120,12 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView, UserView {
 
     private fun setProfileInfo(user: UserImpl) {
         if (user.getId().isNotEmpty()) {
-            tvLikeCount.text = "0"
-            tvDisLikeCount.text = "0"
-            ImageLoader(user.getProfile().getImageAvatarUrl(), ivUserPhoto)
-            tvPerformerName.text = user.getName()
+            tvLikeCount?.text = "0"
+            tvDisLikeCount?.text = "0"
+            ivUserPhoto?.let {
+                ImageLoader(user.getProfile().getImageAvatarUrl(), it)
+            }
+            tvPerformerName?.text = user.getName()
         }
     }
 
@@ -162,10 +164,10 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView, UserView {
 
     override fun onProgress(isProgress: Boolean) {
         if (isProgress) {
-            viewLoadAndMessage.show()
+            viewLoadAndMessage?.show()
         } else {
-            viewLoadAndMessage.hide()
+            viewLoadAndMessage?.hide()
         }
-        viewLoadAndMessage.setProgress(isProgress)
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 }

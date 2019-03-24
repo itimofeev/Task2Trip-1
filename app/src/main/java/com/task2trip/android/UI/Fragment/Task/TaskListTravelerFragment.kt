@@ -72,9 +72,9 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
         adapter.setClickListener(this)
         rvTaskList?.adapter = adapter
         if (taskResult.total < 1) {
-            viewLoadAndMessage.setMessage(getString(R.string.empty_task_list))
+            viewLoadAndMessage?.setMessage(getString(R.string.empty_task_list))
         } else {
-            viewLoadAndMessage.hide()
+            viewLoadAndMessage?.hide()
         }
     }
 
@@ -89,6 +89,6 @@ class TaskListTravelerFragment : BaseFragment(), TaskListView, ItemClickListener
     }
 
     override fun onProgress(isProgress: Boolean) {
-        viewLoadAndMessage.setProgress(isProgress)
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 }

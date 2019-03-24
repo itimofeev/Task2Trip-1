@@ -77,7 +77,7 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     override fun onTaskListResult(taskResult: TaskList) {
         val adapter = TaskListAdapter(taskResult.payload)
         adapter.setClickListener(this)
-        rvSearchResultList.adapter = adapter
+        rvSearchResultList?.adapter = adapter
     }
 
     override fun onItemClick(item: Task, position: Int) {
@@ -91,6 +91,11 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     }
 
     override fun onProgress(isProgress: Boolean) {
-        //
+        if (isProgress) {
+            viewLoadAndMessage?.show()
+        } else {
+            viewLoadAndMessage?.hide()
+        }
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 }

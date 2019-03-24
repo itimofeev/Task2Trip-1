@@ -68,7 +68,7 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
     }
 
     private fun setData(task: Task) {
-        val dateTime = task.toDate?.toCalendar()
+        val dateTime = task.toDate.toCalendar()
         var statusAndTime = task.status.parseStatusValue().getMyName()
         dateTime?.let {
             statusAndTime += ". актуальна до: " + it.toPattern("dd.MM.yyyy HH:mm")

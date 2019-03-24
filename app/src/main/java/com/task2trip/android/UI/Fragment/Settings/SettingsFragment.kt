@@ -68,9 +68,11 @@ class SettingsFragment : BaseFragment(), ItemClickListener<UserSettingItem> {
 
         val adapter = ProfileSettingAdapter(items)
         adapter.setClickListener(this)
-        rvSettingList.setHasFixedSize(true)
-        rvSettingList.layoutManager = LinearLayoutManager(view.context)
-        rvSettingList.adapter = adapter
+        rvSettingList?.let {
+            it.setHasFixedSize(true)
+            it.layoutManager = LinearLayoutManager(view.context)
+            it.adapter = adapter
+        }
     }
 
     override fun onItemClick(item: UserSettingItem, position: Int) {

@@ -88,7 +88,7 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
     override fun onMessageList(messages: List<ChatMessage>) {
         adapter.clear()
         adapter.addItems(messages)
-        rvChatDialogList.adapter = adapter
+        rvChatDialogList?.adapter = adapter
     }
 
     private fun sendMessage(message: String) {
@@ -103,8 +103,8 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
 
     override fun onMessageResult(message: ChatMessage) {
         adapter.addItem(message)
-        etInputField.setText("")
-        rvChatDialogList.scrollToPosition(adapter.itemCount)
+        etInputField?.setText("")
+        rvChatDialogList?.scrollToPosition(adapter.itemCount)
     }
 
     override fun onItemClick(item: ChatMessage, position: Int) {
@@ -112,7 +112,12 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
     }
 
     override fun onProgress(isProgress: Boolean) {
-        //
+        if (isProgress) {
+            viewLoadAndMessage?.show()
+        } else {
+            viewLoadAndMessage?.hide()
+        }
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

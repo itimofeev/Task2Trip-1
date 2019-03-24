@@ -201,20 +201,20 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView, SearchLocationView
 
     override fun onProgress(isProgress: Boolean) {
         if (isProgress) {
-            viewLoadAndMessage.show()
+            viewLoadAndMessage?.show()
         } else {
-            viewLoadAndMessage.hide()
+            viewLoadAndMessage?.hide()
         }
-        viewLoadAndMessage.setProgress(isProgress)
+        viewLoadAndMessage?.setProgress(isProgress)
     }
 
     override fun onSearchLocationResult(items: List<GeoCountryCity>) {
-        searchLocationView.setDataForSearch(items)
+        searchLocationView?.setDataForSearch(items)
     }
 
     override fun onTextLocationChanged(text: String) {
         // Ищем, если хотя бы введено searchLocationView.getMinimumTextSearchSize() символов
-        if (text.length >= searchLocationView.getMinimumTextSearchSize()) {
+        if (text.length >= searchLocationView?.getMinimumTextSearchSize() ?: 0) {
             presenterSearch.getCountryAndCityByText(text)
         }
     }
