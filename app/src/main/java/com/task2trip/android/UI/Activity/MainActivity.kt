@@ -367,3 +367,26 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         //
     }
 }
+/*
+<RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyle"/>
+defaultRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                smallRatingBar.setRating(rating);
+                indicatorRatingBar.setRating(rating);
+
+                Toast.makeText(MainActivity.this, "рейтинг: " + String.valueOf(rating),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+<style name="MyRatingBar" parent="Theme.AppCompat">
+    <item name="colorControlNormal">@android:color/holo_green_light</item>
+    <item name="colorControlActivated">@android:color/holo_orange_dark</item>
+</style>
+*/
