@@ -94,6 +94,12 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="buttonSolidGray" parent="buttonMargin">
+        <item name="android:background">@drawable/bg_button_solid_gray</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="textLayout" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:text">@color/gray</item>
     </style>
@@ -177,5 +183,10 @@
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="RatingBarStyle" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/gray_light</item>
+        <item name="colorControlActivated">@color/coral</item>
     </style>
 </resources>

@@ -7,5 +7,4 @@ interface TaskOfferView: BaseView {
     fun onOffersResult(offerList: List<Offer>)
     fun onSetOfferForUser(offer: Offer)
     fun onMyOffersResult(offers: List<Offer>)
-    fun onTaskStatusResult(offer: Offer)
 }

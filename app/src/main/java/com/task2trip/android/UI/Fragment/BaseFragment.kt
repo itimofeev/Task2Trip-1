@@ -42,6 +42,10 @@ abstract class BaseFragment : Fragment() {
         activityListener?.navigateTo(resourceFragment, args)
     }
 
+    protected fun navigateToBack() {
+        activityListener?.navigateToBack()
+    }
+
     protected fun hideKeyboard() {
         val imm = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         var view = activity?.currentFocus

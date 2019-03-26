@@ -12,10 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.iid.FirebaseInstanceId
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.ExternalNavigation
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.User.*
 import com.task2trip.android.Presenter.MainActivityPresenter
@@ -83,6 +82,11 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         setToolBarVisibility(true)
         showBottomPanel(resourceId)
         navigateApp(navController, resourceId, args ?: Bundle())
+    }
+
+    override fun navigateToBack() {
+        navController.popBackStack()
+        //navController.navigateUp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -201,6 +205,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_offers), true)
             }
+            R.id.taskFinishFragment -> {
+                navController.navigate(resourceId, args)
+                setToolBarParams(true, "Завершение задачи", true)
+            }
             R.id.offerDetailFragment -> {
                 navController.navigate(resourceId, args)
                 setToolBarParams(true, getString(R.string.title_offer_details), true)
@@ -223,6 +231,17 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             android.R.id.home -> {
                 navController.popBackStack()
+            }
+            Constants.EXTRA_NAVIGATION_ID -> {
+                val navList = args.getParcelableArrayList<ExternalNavigation>(Constants.EXTRA_NAVIGATION_LIST) ?: ArrayList<ExternalNavigation>()
+                if (navList.isNotEmpty()) {
+                    val navScreenId = navList[0].screenId
+                    val navArgs = navList[0].args
+                    val arrBundle: ArrayList<ExternalNavigation> = navList.clone() as ArrayList<ExternalNavigation>
+                    arrBundle.removeAt(0)
+                    navArgs.putParcelableArrayList(Constants.EXTRA_NAVIGATION_LIST, arrBundle)
+                    navigateApp(navController, navScreenId, navArgs)
+                }
             }
             else -> {
                 navController.navigate(R.id.noContentFragment)
@@ -367,26 +386,3 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         //
     }
 }
-/*
-<RatingBar
-                android:id="@+id/ratingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/ratingBarStyle"/>
-defaultRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                smallRatingBar.setRating(rating);
-                indicatorRatingBar.setRating(rating);
-
-                Toast.makeText(MainActivity.this, "рейтинг: " + String.valueOf(rating),
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-<style name="MyRatingBar" parent="Theme.AppCompat">
-    <item name="colorControlNormal">@android:color/holo_green_light</item>
-    <item name="colorControlActivated">@android:color/holo_orange_dark</item>
-</style>
-*/

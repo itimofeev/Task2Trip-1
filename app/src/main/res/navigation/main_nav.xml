@@ -69,4 +69,6 @@
               android:label="fragment_message_chat_dialog" tools:layout="@layout/fragment_message_chat_dialog"/>
     <fragment android:id="@+id/mapFragment" android:name="com.task2trip.android.UI.Fragment.MapFragment"
               android:label="fragment_map" tools:layout="@layout/fragment_map"/>
+    <fragment android:id="@+id/taskFinishFragment" android:name="com.task2trip.android.UI.Fragment.Task.TaskFinishFragment"
+              android:label="fragment_task_finish" tools:layout="@layout/fragment_task_finish"/>
 </navigation>

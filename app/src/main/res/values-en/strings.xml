@@ -133,4 +133,7 @@
     </string>
     <string name="board_category_travel_transfer_details">Book a transfer to the airport, driver around the city or country of your travel
     </string>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>

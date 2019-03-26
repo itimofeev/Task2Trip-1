@@ -90,10 +90,6 @@ class TaskOffersFragment : BaseFragment(), TaskOfferView, ItemClickListener<Offe
         setAdapter(offers)
     }
 
-    override fun onTaskStatusResult(offer: Offer) {
-        //
-    }
-
     private fun setAdapter(offerList: List<Offer>) {
         if (offerList.isEmpty()) {
             tvEmptyMessage?.visibility = View.VISIBLE

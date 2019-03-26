@@ -158,10 +158,6 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView, UserView {
         //
     }
 
-    override fun onTaskStatusResult(offer: Offer) {
-        //
-    }
-
     override fun onProgress(isProgress: Boolean) {
         if (isProgress) {
             viewLoadAndMessage?.show()

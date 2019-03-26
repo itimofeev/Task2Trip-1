@@ -109,5 +109,13 @@ class MockData {
         fun getEmptyNotificationList(): NotificationList {
             return NotificationList(0, ArrayList<NotificationData>())
         }
+
+        fun getNotificationList(): ArrayList<NotificationData> {
+            val lst = ArrayList<NotificationData>()
+            lst.add(NotificationData("1", "111", "", "", "", ""))
+            lst.add(NotificationData("2", "222", "", "", "", ""))
+            lst.add(NotificationData("3", "333", "", "", "", ""))
+            return lst
+        }
     }
 }

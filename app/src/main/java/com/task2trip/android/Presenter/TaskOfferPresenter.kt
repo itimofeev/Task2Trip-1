@@ -61,17 +61,4 @@ class TaskOfferPresenter(val view: TaskOfferView, context: Context): BasePresent
             }
         }
     }
-
-    fun setTaskWithOfferFinished(taskId: String, offerId: String, statusAndRating: TaskStatusAndRating) {
-        view.onProgress(true)
-        val req: Call<Offer> = getApi().setTaskCompletedOrCanceled(taskId, offerId, statusAndRating)
-        req.enqueue {
-            onResponse = { response ->
-                view.onProgress(false)
-                if (response.code() in 200..299) {
-                    view.onTaskStatusResult(response.body() ?: MockData.getEmptyOffer())
-                }
-            }
-        }
-    }
 }

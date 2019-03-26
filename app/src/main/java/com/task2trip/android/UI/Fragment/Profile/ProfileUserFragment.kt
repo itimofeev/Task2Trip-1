@@ -29,6 +29,8 @@ class ProfileUserFragment : BaseFragment() {
             tvUserNameLocation.text = user.getProfile().getLocation().name
             tvLikeCount.text = "0"
             tvDisLikeCount.text = "0"
+            ratingBar.rating = 0f
+            ratingBar.isEnabled = false
         }
     }
 }

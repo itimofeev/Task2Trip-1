@@ -3,26 +3,18 @@ package com.task2trip.android.UI.Fragment.Task
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import com.task2trip.android.Common.Constants
-import com.task2trip.android.Common.getMyName
-import com.task2trip.android.Common.parseStatusValue
-import com.task2trip.android.Common.toCalendar
-import com.task2trip.android.Common.toPattern
+import com.task2trip.android.Common.*
 import com.task2trip.android.Model.LocalStoreManager
 import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Offer
 import com.task2trip.android.Model.Task.Task
 import com.task2trip.android.Model.Task.TaskStatus
-import com.task2trip.android.Model.Task.TaskStatusAndRating
 import com.task2trip.android.Model.User.UserRole
-import com.task2trip.android.Presenter.TaskOfferPresenter
 import com.task2trip.android.R
 import com.task2trip.android.UI.Fragment.BaseFragment
-import com.task2trip.android.View.TaskOfferView
 import kotlinx.android.synthetic.main.fragment_task_details.*
 
-class TaskDetailsFragment : BaseFragment(), TaskOfferView {
-    private lateinit var presenter: TaskOfferPresenter
+class TaskDetailsFragment : BaseFragment() {
     private var isEditTask = false
     private var taskItem: Task = MockData.getEmptyTask()
     private var offerItem: Offer = MockData.getEmptyOffer()
@@ -57,7 +49,6 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
     }
 
     override fun initComponents(view: View) {
-        presenter = TaskOfferPresenter(this, view.context)
         val storage = LocalStoreManager(view.context)
         // Если моя собственная задача
         if (taskItem.user.getId() == storage.get(Constants.EXTRA_USER_ID, "")) {
@@ -142,31 +133,10 @@ class TaskDetailsFragment : BaseFragment(), TaskOfferView {
     }
 
     private fun onApplyFinishClick(task: Task, offerId: String) {
-        presenter.setTaskWithOfferFinished(task.id, offerId,
-            TaskStatusAndRating(TaskStatus.FINISHED.name.toLowerCase(), 0))
-    }
-
-    override fun onSaveOfferResult(offer: Offer) {
-        //
-    }
-
-    override fun onOffersResult(offerList: List<Offer>) {
-        //
-    }
-
-    override fun onSetOfferForUser(offer: Offer) {
-        //
-    }
-
-    override fun onMyOffersResult(offers: List<Offer>) {
-        //
-    }
-
-    override fun onTaskStatusResult(offer: Offer) {
-        setButtonFinished()
-    }
-
-    override fun onProgress(isProgress: Boolean) {
-        //
+        val args = Bundle().apply {
+            putString(Constants.EXTRA_TASK_ID, task.id)
+            putString(Constants.EXTRA_OFFER_ID, offerId)
+        }
+        navigateTo(R.id.taskFinishFragment, args)
     }
 }

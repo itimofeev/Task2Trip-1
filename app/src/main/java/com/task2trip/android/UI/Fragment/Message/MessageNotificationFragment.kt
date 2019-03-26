@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
+import com.task2trip.android.Model.ExternalNavigation
+import com.task2trip.android.Model.MockData
 import com.task2trip.android.Model.Notification.NotificationData
 import com.task2trip.android.Model.Notification.NotificationList
 import com.task2trip.android.Presenter.NotificationPresenter
@@ -41,6 +43,12 @@ class MessageNotificationFragment: BaseFragment(), NotificationView, ItemClickLi
     }
 
     override fun onNotificationListResult(result: NotificationList) {
+//        var lst = ArrayList<NotificationData>()
+//        if (result.notifications.isEmpty()) {
+//            lst = MockData.getNotificationList()
+//        } else {
+//            lst = result.notifications.toCollection(lst)
+//        }
         val adapter = NotificationAdapter(result.notifications)
         adapter.setClickListener(this)
         rvNotification?.adapter = adapter
@@ -59,9 +67,14 @@ class MessageNotificationFragment: BaseFragment(), NotificationView, ItemClickLi
     override fun onItemClick(item: NotificationData, position: Int) {
         presenter.markNotificationAsRead(item.id)
         val args = Bundle()
-        //args.putParcelableArrayList(Constants.EXTRA_TASK_CATEGORY_LIST, ArrayList((rvTaskCategory.adapter as TaskCategoryAdapter).getItems()))
+        val navigationList = ArrayList<ExternalNavigation>()
+        navigationList.add(ExternalNavigation(R.id.taskAddParamsFragment, Bundle()))
+        navigationList.add(ExternalNavigation(R.id.taskAddParamsFragment, Bundle()))
+        navigationList.add(ExternalNavigation(R.id.taskAddParamsFragment, Bundle()))
+
+        args.putParcelableArrayList(Constants.EXTRA_NAVIGATION_LIST, navigationList)
         args.putInt(Constants.EXTRA_TASK_CATEGORY_SELECTED_POSITION, position)
-        //navigateTo(R.id.taskAddParamsFragment, args)
+        navigateTo(Constants.EXTRA_NAVIGATION_ID, args)
     }
 
     override fun onProgress(isProgress: Boolean) {

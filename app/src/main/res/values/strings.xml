@@ -12,7 +12,9 @@
     <string name="reg_name">Ваше имя</string>
     <string name="reg_forgot">Забыли пароль</string>
     <string name="reg_login_social">Войти через социальные сети</string>
-    <string name="board_skip_text"><u>Пропустить</u></string>
+    <string name="board_skip_text">
+        <u>Пропустить</u>
+    </string>
     <string name="board_title_01">Местные жители выполняют ваши задачи в путешествиях по всему миру!</string>
     <string name="board_title_02">Создайте любое задание!</string>
     <string name="board_msg_01">Создать маршрут путешествия,\nнайти гида или трансфер</string>
@@ -29,7 +31,8 @@
     <string name="profile_photo">Моя фотография</string>
     <string name="profile_task_execute">Выполнять задания</string>
     <string name="profile_task_execute_description">Откликайтесь на задания путешественников и получайте вознаграждение
-        за свою работу!</string>
+        за свою работу!
+    </string>
     <string name="profile_task_created">Заданий\nсоздано</string>
     <string name="profile_task_executed">Заданий\nвыполнено</string>
     <string name="profile_main">Основное</string>
@@ -133,4 +136,7 @@
     <string name="choose_begin_task_date">Укажите НАЧАЛО задания</string>
     <string name="choose_end_task_date">Укажите ОКОНЧАНИЕ задания</string>
     <string name="empty_task_list">У вас еще не было задач!</string>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>

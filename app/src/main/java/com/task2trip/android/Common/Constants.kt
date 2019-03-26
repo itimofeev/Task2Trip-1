@@ -37,6 +37,7 @@ class Constants {
         const val EXTRA_TASK_SEARCH_STATUS = "EXTRA_TASK_SEARCH_STATUS"
 
         const val EXTRA_OFFER = "EXTRA_OFFER"
+        const val EXTRA_OFFER_ID = "EXTRA_OFFER_D"
         const val EXTRA_OFFER_IS_SHOW_MY = "EXTRA_OFFER_IS_SHOW_MY"
 
         const val EXTRA_DIALOG_TITLE = "EXTRA_DIALOG_TITLE"
@@ -60,7 +61,8 @@ class Constants {
         const val EXTRA_PHOTO_SOURCE_STORAGE = "На диске"
 
         const val EXTRA_CHAT_ID = "EXTRA_CHAT_ID"
-        const val EXTRA_CHAT_CLIENT_TAG = "EXTRA_CHAT_CLIENT_TAG"
+        const val EXTRA_NAVIGATION_LIST = "EXTRA_NAVIGATION_LIST"
+        const val EXTRA_NAVIGATION_ID = 90001
 
         const val REQUEST_PERMISSION_STORAGE = 248
         const val REQUEST_PERMISSION_PHOTO = 249
