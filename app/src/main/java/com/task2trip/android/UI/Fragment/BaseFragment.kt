@@ -11,6 +11,7 @@ import com.task2trip.android.Model.User.User
 import com.task2trip.android.View.MainActivityView
 import android.app.Activity
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.Toolbar
 import com.task2trip.android.Model.User.Profile
 import java.util.*
 
@@ -44,6 +45,10 @@ abstract class BaseFragment : Fragment() {
 
     protected fun navigateToBack() {
         activityListener?.navigateToBack()
+    }
+
+    protected fun setToolbar(toolbar: Toolbar) {
+        activityListener?.setToolbarSupport(toolbar)
     }
 
     protected fun hideKeyboard() {

@@ -1,7 +1,9 @@
 package com.task2trip.android.UI.Fragment.Task
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task2trip.android.Common.Constants
 import com.task2trip.android.Model.Task.TaskCategory
@@ -12,6 +14,7 @@ import com.task2trip.android.UI.Fragment.BaseFragment
 import com.task2trip.android.UI.Listener.ItemClickListener
 import com.task2trip.android.View.TaskCategoryView
 import kotlinx.android.synthetic.main.fragment_task_add_category.*
+import java.util.*
 
 class TaskAddCategoryFragment : BaseFragment(), TaskCategoryView, ItemClickListener<TaskCategory> {
     private lateinit var presenter: TaskCategoryPresenter
@@ -25,6 +28,15 @@ class TaskAddCategoryFragment : BaseFragment(), TaskCategoryView, ItemClickListe
     }
 
     override fun initComponents(view: View) {
+        toolbar.title = "11234"
+        //toolbar.setNavigationIcon(R.drawable.vector_ic_arrow_left)
+        toolbar.setOnMenuItemClickListener {
+            item: MenuItem? -> true
+        }
+        toolbar.setNavigationOnClickListener {
+            //What to do on back clicked
+        }
+        setToolbar(toolbar)
         initRecycleView(view)
         presenter = TaskCategoryPresenter(this, view.context)
         presenter.getCategoryList()

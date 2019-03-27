@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.annotation.IdRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -57,6 +58,12 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         setSupportActionBar(toolBarApp)
         this.actionBar = supportActionBar
         setToolBarVisibility(false)
+    }
+
+    override fun setToolbarSupport(toolbar: Toolbar) {
+        setSupportActionBar(toolbar)
+        this.actionBar = supportActionBar
+        setToolBarVisibilityBackButton(false)
     }
 
     private fun initNavigation() {
