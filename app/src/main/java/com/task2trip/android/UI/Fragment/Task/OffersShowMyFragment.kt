@@ -28,6 +28,7 @@ class OffersShowMyFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         initViewPager()
         btCreateTask.setOnClickListener {
             navigateTo(R.id.taskCategoryFragment, Bundle())

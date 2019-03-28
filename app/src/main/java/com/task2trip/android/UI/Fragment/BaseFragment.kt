@@ -13,6 +13,7 @@ import android.app.Activity
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.Toolbar
 import com.task2trip.android.Model.User.Profile
+import com.task2trip.android.R
 import java.util.*
 
 abstract class BaseFragment : Fragment() {
@@ -48,6 +49,14 @@ abstract class BaseFragment : Fragment() {
     }
 
     protected fun setToolbar(toolbar: Toolbar) {
+//        toolbar.title = "11234"
+        toolbar.setNavigationIcon(R.drawable.vector_ic_arrow_left)
+//        toolbar.setOnMenuItemClickListener {
+//                item: MenuItem? -> true
+//        }
+//        toolbar.setNavigationOnClickListener {
+//            //What to do on back clicked
+//        }
         activityListener?.setToolbarSupport(toolbar)
     }
 

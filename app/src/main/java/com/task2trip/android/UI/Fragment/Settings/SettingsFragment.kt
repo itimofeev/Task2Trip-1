@@ -25,6 +25,7 @@ class SettingsFragment : BaseFragment(), ItemClickListener<UserSettingItem>, Bas
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         initAboutUserCategoryList(view)
         initSettingAbout()
         initSettingExit()

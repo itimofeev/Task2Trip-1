@@ -31,6 +31,7 @@ class TaskFinishFragment : BaseFragment(), TaskChangeStatusView, MessageFinishSh
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         presenter = TaskChangeStatusPresenter(this, view.context)
         viewLoadAndMessage.setMessageCloseCallback(this)
         btYes.setOnClickListener {

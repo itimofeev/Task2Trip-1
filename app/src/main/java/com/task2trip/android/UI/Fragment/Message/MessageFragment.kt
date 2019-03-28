@@ -28,11 +28,12 @@ class MessageFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         initViewPager()
     }
 
     private fun initViewPager() {
-        fragmentManager?.let {
+        childFragmentManager.let {
             val adapter = TabAdapter(it)
             adapter.addItem(TabFragmentTitle(MessageChatListFragment.getInstance(userLocalId, userId, isGotoMessages), getString(R.string.title_messages)))
             adapter.addItem(TabFragmentTitle(MessageNotificationFragment(), getString(R.string.title_notifications)))

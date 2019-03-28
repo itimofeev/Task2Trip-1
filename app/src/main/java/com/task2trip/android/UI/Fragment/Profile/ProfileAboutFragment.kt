@@ -31,6 +31,7 @@ class ProfileAboutFragment : BaseFragment(), UserProfileView {
 
     override fun initComponents(view: View) {
         presenter = UserProfilePresenter(this, view.context)
+        setToolbar(toolbar)
         viewLoadAndMessage.setMessageCloseCallback(object : MessageFinishShowCallback {
             override fun onCloseMessage() {
                 if (isLevelUp) {

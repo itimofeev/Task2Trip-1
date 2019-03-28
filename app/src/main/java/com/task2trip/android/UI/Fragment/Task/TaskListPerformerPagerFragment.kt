@@ -30,6 +30,7 @@ class TaskListPerformerPagerFragment: BaseFragment() {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         initViewPager()
         if (isMessage) {
             onMessage(message)

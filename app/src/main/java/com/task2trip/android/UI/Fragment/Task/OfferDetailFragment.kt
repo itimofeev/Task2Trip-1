@@ -49,6 +49,7 @@ class OfferDetailFragment : BaseFragment(), TaskOfferView, UserView {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         ImageLoader("offer.url", ivUserPhoto)
         ivUserPhoto.setOnClickListener {
             onViewProfileDetail()

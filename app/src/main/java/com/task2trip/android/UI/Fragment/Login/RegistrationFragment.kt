@@ -25,6 +25,7 @@ class RegistrationFragment : BaseFragment(), UserAuthView {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         presenter = UserAuthPresenter(this, view.context)
         btReg.setOnClickListener {
             val email = etEmail.text.toString().trim()

@@ -31,6 +31,7 @@ class TaskDetailOfferPagerFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         initViewPager()
     }
 

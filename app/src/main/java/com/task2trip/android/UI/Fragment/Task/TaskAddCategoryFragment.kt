@@ -28,14 +28,6 @@ class TaskAddCategoryFragment : BaseFragment(), TaskCategoryView, ItemClickListe
     }
 
     override fun initComponents(view: View) {
-        toolbar.title = "11234"
-        //toolbar.setNavigationIcon(R.drawable.vector_ic_arrow_left)
-        toolbar.setOnMenuItemClickListener {
-            item: MenuItem? -> true
-        }
-        toolbar.setNavigationOnClickListener {
-            //What to do on back clicked
-        }
         setToolbar(toolbar)
         initRecycleView(view)
         presenter = TaskCategoryPresenter(this, view.context)

@@ -6,13 +6,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
             android:id="@+id/tvStatusDateTime"
             android:layout_marginTop="@dimen/margin_top_16dp"
             style="@style/textBaseConstraintContent"
             android:text=""
             tools:text="tvStatusDateTime"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"/>
 

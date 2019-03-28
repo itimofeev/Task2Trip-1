@@ -27,6 +27,7 @@ class TaskAddOfferFragment : BaseFragment(), TaskOfferView {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         initPresenter(view)
         btAddOffer.setOnClickListener {
             onOfferAddClick(etAboutOffer.text.toString(), etOfferPrice.toInt())

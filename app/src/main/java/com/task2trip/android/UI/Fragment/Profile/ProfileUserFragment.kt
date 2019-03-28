@@ -23,6 +23,7 @@ class ProfileUserFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         if (user.getId().isNotEmpty()) {
             tvUserName.text = user.getName()
             tvAboutMe.text = user.getProfile().getAbout()

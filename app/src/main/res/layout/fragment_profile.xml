@@ -5,6 +5,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
             android:id="@+id/tvProfilePhoto"
             android:layout_width="0dp"
@@ -12,7 +26,7 @@
             android:layout_margin="@dimen/margin_all_16dp"
             android:gravity="center_vertical"
             android:text="@string/profile_photo"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivProfilePhoto"/>
 
@@ -23,7 +37,7 @@
             android:layout_margin="@dimen/margin_all_16dp"
             android:src="@drawable/vector_ic_default_travel"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"/>
 
     <View
             android:id="@+id/view_big_delimiter"

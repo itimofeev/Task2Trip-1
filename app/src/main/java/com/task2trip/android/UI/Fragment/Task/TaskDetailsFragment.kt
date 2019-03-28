@@ -49,6 +49,7 @@ class TaskDetailsFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         val storage = LocalStoreManager(view.context)
         // Если моя собственная задача
         if (taskItem.user.getId() == storage.get(Constants.EXTRA_USER_ID, "")) {

@@ -47,6 +47,7 @@ class ProfileContactsFragment : BaseFragment(), UserProfileLevelUpView, ItemClic
     }
 
     override fun initComponents(view: View) {
+        setToolbar(toolbar)
         initPresenters(view)
         initSearchLocation()
         viewLoadAndMessage.setMessageCloseCallback(this)

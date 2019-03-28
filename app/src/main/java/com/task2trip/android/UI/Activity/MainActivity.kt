@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
 
     private fun initComponents() {
         user.initStorageData(applicationContext)
-        initToolBar()
+        //initToolBar()
         initNavigation()
 
         presenter = MainActivityPresenter(this, applicationContext)
@@ -52,12 +52,6 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             R.id.loginRegisterFragment
         }
         presenter.setNavigation(startScreenId)
-    }
-
-    private fun initToolBar() {
-        setSupportActionBar(toolBarApp)
-        this.actionBar = supportActionBar
-        setToolBarVisibility(false)
     }
 
     override fun setToolbarSupport(toolbar: Toolbar) {
