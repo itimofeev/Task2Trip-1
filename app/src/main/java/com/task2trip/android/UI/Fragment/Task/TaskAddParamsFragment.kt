@@ -54,7 +54,7 @@ class TaskAddParamsFragment : BaseFragment(), TaskParamsView, SearchLocationView
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_task_params), true)
         initPresenter(view)
         initDateTimeCalendar()
         searchLocationView.setSearchLocationFieldCallback(this)

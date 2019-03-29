@@ -28,7 +28,7 @@ class TaskAddCategoryFragment : BaseFragment(), TaskCategoryView, ItemClickListe
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_create_task), false)
         initRecycleView(view)
         presenter = TaskCategoryPresenter(this, view.context)
         presenter.getCategoryList()

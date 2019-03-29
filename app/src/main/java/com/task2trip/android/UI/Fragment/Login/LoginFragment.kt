@@ -27,7 +27,7 @@ class LoginFragment : BaseFragment(), UserAuthView {
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_login_into_app), false)
         presenter = UserAuthPresenter(this, view.context)
         presenterPush = PushPresenter(this, view.context)
         localStoreManager = LocalStoreManager(view.context)

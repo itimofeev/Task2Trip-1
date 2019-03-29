@@ -28,7 +28,7 @@ class MessageFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_inbox), false)
         initViewPager()
     }
 

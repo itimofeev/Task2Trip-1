@@ -41,7 +41,7 @@ class MessageChatDialogFragment: BaseFragment(), ChatMessageView, ItemClickListe
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_chat_user), true)
         initPresenter(view)
         initRecycleView(view)
         initAdapter()

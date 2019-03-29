@@ -50,7 +50,7 @@ class ProfileFragment : BaseFragment(), UserView, ItemClickListener<UserCategory
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_profile), false)
         initPresenter(view)
         tvProfilePhoto.setOnClickListener {
             onChangePhotoClick()

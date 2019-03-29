@@ -37,7 +37,7 @@ class ProfileCategoryFragment : BaseFragment(), TaskCategoryView, UserProfileVie
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.profile_category), true)
         initPresenter(view)
         viewLoadAndMessage.setMessageCloseCallback(object : MessageFinishShowCallback {
             override fun onCloseMessage() {

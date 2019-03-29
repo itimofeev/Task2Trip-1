@@ -40,7 +40,7 @@ class SearchFragment : BaseFragment(), TaskListView, ItemClickListener<Task> {
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_result_task_list), true)
         initPresenter(view)
         initRecyclerView(view)
     }

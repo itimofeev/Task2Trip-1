@@ -17,7 +17,7 @@ class SettingsBlackListFragment : BaseFragment() {
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_black_list), true)
         rvBlackList.setHasFixedSize(false)
         rvBlackList.layoutManager = LinearLayoutManager(view.context)
     }

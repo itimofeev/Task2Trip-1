@@ -54,10 +54,10 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         presenter.setNavigation(startScreenId)
     }
 
-    override fun setToolbarSupport(toolbar: Toolbar) {
+    override fun setToolbarSupport(toolbar: Toolbar, hasBackButton: Boolean) {
         setSupportActionBar(toolbar)
         this.actionBar = supportActionBar
-        setToolBarVisibilityBackButton(false)
+        setToolBarVisibilityBackButton(hasBackButton)
     }
 
     private fun initNavigation() {
@@ -111,81 +111,81 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         when(resourceId) {
             R.id.loginRegisterFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(false, getString(R.string.title_login_registration), false)
+                //setToolBarParams(false, getString(R.string.title_login_registration), false)
             }
             R.id.loginFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_login_into_app), false)
+                //setToolBarParams(true, getString(R.string.title_login_into_app), false)
             }
             R.id.registrationFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_registration), false)
+                //setToolBarParams(true, getString(R.string.title_registration), false)
             }
             R.id.taskCategoryFragment -> {
                 navController.clearBackStack(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_create_task), false)
+                //setToolBarParams(true, getString(R.string.title_create_task), false)
             }
             R.id.taskAddParamsFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_task_params), true)
+                //setToolBarParams(true, getString(R.string.title_task_params), true)
             }
             R.id.messageFragment -> {
                 args.putString(Constants.EXTRA_USER_ID, user.getId())
                 navController.clearBackStack(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_inbox), false)
+                //setToolBarParams(true, getString(R.string.title_inbox), false)
             }
             R.id.messageChatDialogFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, "Диалог с пользователем", true)
+                //setToolBarParams(true, "Диалог с пользователем", true)
             }
             R.id.searchFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_result_task_list), true)
+                //setToolBarParams(true, getString(R.string.title_result_task_list), true)
                 presenter.setLastMenu(R.menu.menu_serch_filter)
             }
             R.id.searchFilterFragment -> {
                 args.putString(Constants.EXTRA_USER_ROLE, user.getRole().name)
                 navController.clearBackStack(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_search_task), false)
+                //setToolBarParams(true, getString(R.string.title_search_task), false)
             }
             R.id.profileFragment -> {
                 args.putParcelable(Constants.EXTRA_USER, user)
                 navController.clearBackStack(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_profile), false)
+                //setToolBarParams(true, getString(R.string.title_profile), false)
                 presenter.setLastMenu(R.menu.menu_settings)
             }
             R.id.profileCategoryFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.profile_category), true)
+                //setToolBarParams(true, getString(R.string.profile_category), true)
             }
             R.id.profileMainInfoFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.profile_main), true)
+                //setToolBarParams(true, getString(R.string.profile_main), true)
             }
             R.id.profileContactsFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.profile_contacts), true)
+                //setToolBarParams(true, getString(R.string.profile_contacts), true)
             }
             R.id.profileAboutFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.profile_about), true)
+                //setToolBarParams(true, getString(R.string.profile_about), true)
             }
             R.id.profileUserFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle(getString(R.string.title_view_profile))
+                //setToolBarTitle(getString(R.string.title_view_profile))
             }
             R.id.settingsFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_settings), true)
+                //setToolBarParams(true, getString(R.string.title_settings), true)
             }
             R.id.settingsBlackListFragment -> {
                 navController.navigate(resourceId, args)
                 presenter.setLastMenu(R.menu.menu_serch_filter)
-                setToolBarTitle(getString(R.string.title_black_list))
+                //setToolBarTitle(getString(R.string.title_black_list))
             }
             R.id.settingsNotificationFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarTitle(getString(R.string.title_notifications))
+                //setToolBarTitle(getString(R.string.title_notifications))
             }
             R.id.taskListPerformerFragment, R.id.taskListPerformerPagerFragment,
             R.id.taskListNotAuthorizedFragment, R.id.taskListTravelerFragment -> {
@@ -196,7 +196,7 @@ class MainActivity : AppCompatActivity(), MainActivityView {
             }
             R.id.taskAddOfferFragment -> {
                 navController.navigate(resourceId, args)
-                setToolBarParams(true, getString(R.string.title_add_offer), true)
+                //setToolBarParams(true, getString(R.string.title_add_offer), true)
             }
             R.id.taskDetailOfferPagerFragment -> {
                 navController.navigate(resourceId, args)

@@ -31,7 +31,7 @@ class ProfileMainInfoFragment : BaseFragment(), UserProfileView {
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_view_profile), true)
         presenter = UserProfilePresenter(this, view.context)
         viewLoadAndMessage.hide()
         viewLoadAndMessage.setMessageCloseCallback(object: MessageFinishShowCallback {

@@ -36,7 +36,7 @@ class SearchFilterFragment : BaseFragment(), TaskCategoryView, SearchLocationVie
     }
 
     override fun initComponents(view: View) {
-        setToolbar(toolbar)
+        setToolbar(toolbar, true, getString(R.string.title_search_task), false)
         initPresenter(view)
         initStatuses(view)
         tvCategory.setOnClickListener {

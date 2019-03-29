@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.task2trip.android.Model.User.User
 import com.task2trip.android.View.MainActivityView
 import android.app.Activity
+import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.Toolbar
 import com.task2trip.android.Model.User.Profile
@@ -48,16 +49,36 @@ abstract class BaseFragment : Fragment() {
         activityListener?.navigateToBack()
     }
 
+    protected fun setToolbar(toolbar: Toolbar, isVisible: Boolean = true, title: String = "", hasBackButton: Boolean) {
+        if (isVisible) {
+            toolbar.visibility = View.VISIBLE
+        } else {
+            toolbar.visibility = View.GONE
+        }
+        toolbar.title = title
+        if (hasBackButton) {
+            toolbar.setNavigationIcon(R.drawable.vector_ic_arrow_left)
+        }
+        toolbar.setNavigationOnClickListener {
+            navigateToBack()
+        }
+        toolbar.setOnMenuItemClickListener { item: MenuItem? ->
+            navigateToBack()
+            true
+        }
+        activityListener?.setToolbarSupport(toolbar, hasBackButton)
+    }
+
     protected fun setToolbar(toolbar: Toolbar) {
 //        toolbar.title = "11234"
-        toolbar.setNavigationIcon(R.drawable.vector_ic_arrow_left)
+//        toolbar.setNavigationIcon(R.drawable.vector_ic_arrow_left)
 //        toolbar.setOnMenuItemClickListener {
 //                item: MenuItem? -> true
 //        }
 //        toolbar.setNavigationOnClickListener {
 //            //What to do on back clicked
 //        }
-        activityListener?.setToolbarSupport(toolbar)
+        //activityListener?.setToolbarSupport(toolbar)
     }
 
     protected fun hideKeyboard() {
