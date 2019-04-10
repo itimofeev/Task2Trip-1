@@ -13,13 +13,13 @@
     <string name="reg_name">Name</string>
     <string name="reg_forgot">Forgot password</string>
     <string name="reg_login_social">Log in with social</string>
-    <string name="board_title_01">Locals all over the world will be happy to help you with issues while travelling</string>
+    <string name="board_title_01">Locals can do any task you need while traveling all around the world.</string>
     <string name="board_title_02">Create your task and locals will help!</string>
-    <string name="board_msg_01">Create travel route, find guide or transfer</string>
+    <string name="board_msg_01">Create a travel route, find a guide or a handler</string>
     <string name="board_msg_02">
-        1. Describe task to help with.\n
-        2. Locals will propose their offers and prices\n
-        3. Choose best offer and make a deal</string>
+        1. Create any task\n
+        2. Locals  will offer you their services and indicate the prices\n
+        3. Choose the best offer</string>
     <string name="profile_name_title">Name</string>
     <string name="profile_birthday_title">Birthday</string>
     <string name="profile_gender_title">Gender</string>
