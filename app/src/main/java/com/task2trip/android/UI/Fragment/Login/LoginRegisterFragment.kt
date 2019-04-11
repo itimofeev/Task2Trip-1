@@ -67,12 +67,12 @@ class LoginRegisterFragment : BaseFragment() {
                 OnBoardingFragment.instance(
                     getString(R.string.board_title_01),
                     getString(R.string.board_msg_01),
-                    R.drawable.image_board_01, 1), "01"))
+                    R.drawable.image_board_01, 0, 1), "01"))
             adapter.addItem(TabFragmentTitle(
                 OnBoardingFragment.instance(
                     getString(R.string.board_title_02),
                     getString(R.string.board_msg_02),
-                    R.drawable.image_board_02, 2), "02"))
+                    R.drawable.image_board_02, 0, 2), "02"))
             adapter.addItem(TabFragmentTitle(
                 OnBoardingFragment.instance("", "", R.drawable.image_board_03, 3), "03"))
             vpOnBoardPages.adapter = adapter

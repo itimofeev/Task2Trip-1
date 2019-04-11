@@ -18,6 +18,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <ImageView
+            android:id="@+id/ivImage2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     <TextView
             android:id="@+id/tvTextTitle"
             android:layout_width="0dp"
