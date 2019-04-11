@@ -15,6 +15,9 @@
     <dimen name="margin_top_16dp">16dp</dimen>
     <dimen name="margin_bottom_16dp">16dp</dimen>
 
+    <dimen name="margin_24dp">24dp</dimen>
+
+
     <dimen name="margin_left_32dp">32dp</dimen>
     <dimen name="margin_right_32dp">32dp</dimen>
     <dimen name="margin_top_32dp">32dp</dimen>
@@ -74,5 +77,7 @@
 
     <dimen name="text_size_setting_item">18sp</dimen>
     <dimen name="text_size_text_16sp">16sp</dimen>
+    <dimen name="text_size_text_17sp">17sp</dimen>
+    <dimen name="text_size_text_18sp">18sp</dimen>
     <dimen name="text_size_text_24sp">24sp</dimen>
 </resources>

@@ -34,20 +34,20 @@
             android:fontFamily="@font/futuramdeium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
             android:id="@+id/tvTextMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="@dimen/margin_top_16dp"
-            android:layout_marginStart="@dimen/margin_left_32dp"
-            android:layout_marginLeft="@dimen/margin_left_32dp"
-            android:layout_marginRight="@dimen/margin_right_32dp"
-            android:layout_marginEnd="@dimen/margin_right_32dp"
+            android:layout_marginTop="@dimen/margin_top_32dp"
+            android:layout_marginStart="@dimen/margin_24dp"
+            android:layout_marginLeft="@dimen/margin_24dp"
+            android:layout_marginRight="@dimen/margin_24dp"
+            android:layout_marginEnd="@dimen/margin_24dp"
             android:lineSpacingMultiplier="1.2"
-            android:textSize="@dimen/text_size_text_16sp"
+            android:textSize="@dimen/text_size_text_17sp"
             android:textColor="@color/boarding_dark"
             android:text=""
             tools:text="Под Заголовок"
