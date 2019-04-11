@@ -12,6 +12,7 @@ class OnBoardingFragment : BaseFragment() {
     private var textTitle: String = ""
     private var textMessage: String = ""
     private var imageBackground: Int = 0
+    private var image2: Int = 0
     private var pageNo: Int = 0
 
     companion object {
@@ -34,6 +35,7 @@ class OnBoardingFragment : BaseFragment() {
             textMessage = args?.getString(Constants.EXTRA_BOARD_MESSAGE, "").toString()
             imageBackground = args?.getInt(Constants.EXTRA_BOARD_IMAGE, 0) ?: 0
             pageNo = args?.getInt(Constants.EXTRA_BOARD_PAGE, 0) ?: 0
+            image2 = args?.getInt(Constants.EXTRA_BOARD_IMAGE_2, 0) ?: 0
         }
     }
 
@@ -51,6 +53,9 @@ class OnBoardingFragment : BaseFragment() {
         }
         if (imageBackground != 0) {
             ivBackground.setImageResource(imageBackground)
+        }
+        if (image2 != 0) {
+            ivImage2.setImageResource(image2)
         }
     }
 }
