@@ -16,12 +16,13 @@ class OnBoardingFragment : BaseFragment() {
 
     companion object {
         @JvmStatic
-        fun instance(title: String, msg: String, @DrawableRes imageBg: Int, pageNo: Int) =
+        fun instance(title: String, msg: String, @DrawableRes imageBg: Int, @DrawableRes image2: Int, pageNo: Int) =
             OnBoardingFragment().apply {
                 arguments = Bundle().apply {
                     putString(Constants.EXTRA_BOARD_TITLE, title)
                     putString(Constants.EXTRA_BOARD_MESSAGE, msg)
                     putInt(Constants.EXTRA_BOARD_IMAGE, imageBg)
+                    putInt(Constants.EXTRA_BOARD_IMAGE_2, image2)
                     putInt(Constants.EXTRA_BOARD_PAGE, pageNo)
                 }
             }

@@ -7,6 +7,7 @@ class Constants {
         const val EXTRA_BOARD_TITLE = "EXTRA_BOARD_TITLE"
         const val EXTRA_BOARD_MESSAGE = "EXTRA_BOARD_MESSAGE"
         const val EXTRA_BOARD_IMAGE = "EXTRA_BOARD_IMAGE"
+        const val EXTRA_BOARD_IMAGE_2 = "EXTRA_BOARD_IMAGE_2"
         const val EXTRA_BOARD_PAGE = "EXTRA_BOARD_PAGE"
 
         const val EXTRA_USER = "EXTRA_USER"
